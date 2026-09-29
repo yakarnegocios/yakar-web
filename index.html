@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,6 +9,8 @@
         content="YAKAR — Abastecimiento estratégico para operaciones que necesitan cumplir."
     >
 
+    <meta name="theme-color" content="#1B3A6B">
+
     <title>YAKAR — Abastecimiento estratégico</title>
 
     <link rel="stylesheet" href="css/styles.css">
@@ -20,7 +21,7 @@
     <header class="site-header">
         <div class="container header-inner">
 
-            <a href="#inicio" class="brand" aria-label="YAKAR — Inicio">
+            <a class="brand" href="#inicio" aria-label="YAKAR — Inicio">
                 <span class="brand-name">YAKAR</span>
                 <span class="brand-descriptor">ABASTECIMIENTO ESTRATÉGICO</span>
             </a>
@@ -28,19 +29,18 @@
             <nav class="main-nav" aria-label="Navegación principal">
                 <a href="#como-trabajamos">Cómo trabajamos</a>
                 <a href="#que-abastecemos">Qué abastecemos</a>
-                <a href="#evidencia">Evidencia</a>
-                <a href="#requerimiento" class="nav-cta">Iniciar requerimiento</a>
+                <a href="#requerimiento">Iniciar requerimiento</a>
             </nav>
 
         </div>
     </header>
 
 
-    <main id="inicio">
+    <main>
 
         <!-- HERO -->
 
-        <section class="hero">
+        <section id="inicio" class="hero">
             <div class="container hero-grid">
 
                 <div class="hero-content">
@@ -54,25 +54,25 @@
                     </h1>
 
                     <p class="hero-lead">
-                        Gestionamos requerimientos de seguridad industrial,
+                        YAKAR gestiona requerimientos de seguridad industrial,
                         textil industrial, ferretería, suministros y equipamiento
-                        seleccionable con un proceso orientado a la especificación,
-                        verificación, control y trazabilidad.
+                        seleccionable con método, verificación y trazabilidad.
                     </p>
 
                     <div class="hero-actions">
-                        <a href="#requerimiento" class="button button-primary">
+
+                        <a class="button button-primary" href="#requerimiento">
                             Iniciar un requerimiento
                         </a>
 
-                        <a href="#como-trabajamos" class="button button-secondary">
-                            Ver cómo trabajamos
+                        <a class="button button-secondary" href="#como-trabajamos">
+                            Conocer cómo trabajamos
                         </a>
+
                     </div>
 
                     <p class="hero-note">
-                        No se trata solo de conseguir un producto.
-                        Se trata de gestionar correctamente el abastecimiento.
+                        CUMPLIR ES PARTE DEL PRODUCTO.
                     </p>
 
                 </div>
@@ -81,21 +81,22 @@
                 <div class="hero-panel">
 
                     <p class="panel-label">
-                        PRINCIPIO YAKAR
+                        NUESTRO ENFOQUE
                     </p>
 
-                    <p class="panel-statement">
-                        CUMPLIR ES PARTE DEL PRODUCTO.
-                    </p>
-
-                    <div class="panel-line"></div>
+                    <div class="process-line">
+                        <span>ENTENDER</span>
+                        <span>ESPECIFICAR</span>
+                        <span>VERIFICAR</span>
+                        <span>ABASTECER</span>
+                        <span>CONTROLAR</span>
+                        <span>ENTREGAR</span>
+                        <span>RESPONDER</span>
+                    </div>
 
                     <p class="panel-text">
-                        Comprender el requerimiento.
-                        Especificar correctamente.
-                        Verificar antes de comprometer.
-                        Controlar durante la operación.
-                        Responder hasta el cierre.
+                        No se trata solamente de conseguir un producto.
+                        Se trata de gestionar correctamente el abastecimiento.
                     </p>
 
                 </div>
@@ -104,74 +105,48 @@
         </section>
 
 
-        <!-- POSITIONING -->
-
-        <section class="section section-light">
-            <div class="container narrow">
-
-                <p class="eyebrow">
-                    CERTEZA EN EL ABASTECIMIENTO
-                </p>
-
-                <h2>
-                    La operación empieza antes de comprar.
-                </h2>
-
-                <p class="section-intro">
-                    Un abastecimiento confiable no depende únicamente del producto.
-                    Depende de entender qué se necesita, establecer correctamente
-                    la especificación, verificar las condiciones y mantener el
-                    control hasta la entrega y la conformidad.
-                </p>
-
-            </div>
-        </section>
-
-
-        <!-- WHAT WE SUPPLY -->
+        <!-- QUÉ HACEMOS -->
 
         <section id="que-abastecemos" class="section">
             <div class="container">
 
                 <div class="section-heading">
+
                     <p class="eyebrow">
                         TERRITORIO COMERCIAL
                     </p>
 
                     <h2>
-                        Abastecemos donde podemos responder.
+                        Abastecemos lo que podemos comprender, especificar,
+                        controlar y respaldar.
                     </h2>
 
                     <p>
-                        Nuestro foco inicial está definido. No buscamos convertir
-                        el objeto social de la empresa en un catálogo ilimitado.
+                        Nuestro foco inicial está en categorías vinculadas
+                        directamente con las necesidades de operación de empresas.
                     </p>
+
                 </div>
 
 
-                <div class="cards-grid">
+                <div class="solution-grid">
 
-                    <article class="card">
+                    <article class="solution-card">
                         <span class="card-number">01</span>
 
-                        <h3>
-                            Seguridad industrial
-                        </h3>
+                        <h3>Seguridad industrial</h3>
 
                         <p>
-                            Elementos de protección personal, seguridad y
-                            suministros relacionados con las necesidades de
-                            operación.
+                            EPP, protección y suministros relacionados con
+                            seguridad y operación.
                         </p>
                     </article>
 
 
-                    <article class="card">
+                    <article class="solution-card">
                         <span class="card-number">02</span>
 
-                        <h3>
-                            Textil industrial
-                        </h3>
+                        <h3>Textil industrial</h3>
 
                         <p>
                             Uniformes, prendas corporativas, textiles
@@ -180,31 +155,26 @@
                     </article>
 
 
-                    <article class="card">
+                    <article class="solution-card">
                         <span class="card-number">03</span>
 
-                        <h3>
-                            Ferretería y suministros
-                        </h3>
+                        <h3>Ferretería y suministros</h3>
 
                         <p>
-                            Productos y materiales destinados a mantenimiento,
-                            operaciones y necesidades de abastecimiento.
+                            Productos y materiales necesarios para mantenimiento,
+                            operación y proyectos.
                         </p>
                     </article>
 
 
-                    <article class="card">
+                    <article class="solution-card">
                         <span class="card-number">04</span>
 
-                        <h3>
-                            Equipamiento seleccionable
-                        </h3>
+                        <h3>Equipamiento</h3>
 
                         <p>
-                            Equipos y requerimientos especiales cuando podamos
-                            comprender, especificar, abastecer, controlar y
-                            respaldar correctamente la operación.
+                            Requerimientos especiales cuando podemos comprender,
+                            especificar, abastecer, controlar y respaldar la operación.
                         </p>
                     </article>
 
@@ -214,136 +184,110 @@
         </section>
 
 
-        <!-- HOW WE WORK -->
+        <!-- MÉTODO -->
 
         <section id="como-trabajamos" class="section section-dark">
+
             <div class="container">
 
-                <div class="section-heading section-heading-dark">
+                <div class="section-heading section-heading-light">
 
                     <p class="eyebrow">
                         MÉTODO YAKAR
                     </p>
 
                     <h2>
-                        Del requerimiento al cierre.
+                        Menos improvisación. Más control.
                     </h2>
 
                     <p>
-                        Nuestro trabajo se estructura alrededor de una operación
-                        controlada y trazable.
+                        Nuestro valor no está únicamente en el producto.
+                        Está en cómo gestionamos el proceso que permite abastecerlo.
                     </p>
 
                 </div>
 
 
-                <div class="process-grid">
+                <div class="method-grid">
 
-                    <div class="process-step">
+                    <div class="method-step">
                         <span>01</span>
-                        <h3>Entender</h3>
+                        <strong>Entender</strong>
                         <p>
-                            Comprendemos qué necesita realmente la operación.
+                            Comprendemos el requerimiento y su contexto.
                         </p>
                     </div>
 
-                    <div class="process-step">
+
+                    <div class="method-step">
                         <span>02</span>
-                        <h3>Especificar</h3>
+                        <strong>Especificar</strong>
                         <p>
-                            Convertimos el requerimiento en una especificación
-                            suficientemente clara para evaluar alternativas.
+                            Convertimos la necesidad en información utilizable.
                         </p>
                     </div>
 
-                    <div class="process-step">
+
+                    <div class="method-step">
                         <span>03</span>
-                        <h3>Verificar</h3>
+                        <strong>Verificar</strong>
                         <p>
-                            Revisamos información, condiciones, proveedores
-                            y riesgos antes de comprometer.
+                            Revisamos información, alternativas y condiciones.
                         </p>
                     </div>
 
-                    <div class="process-step">
+
+                    <div class="method-step">
                         <span>04</span>
-                        <h3>Abastecer</h3>
+                        <strong>Abastecer</strong>
                         <p>
-                            Gestionamos la compra y coordinación de acuerdo
-                            con las condiciones de la operación.
+                            Gestionamos proveedores y condiciones de suministro.
                         </p>
                     </div>
 
-                    <div class="process-step">
+
+                    <div class="method-step">
                         <span>05</span>
-                        <h3>Controlar</h3>
+                        <strong>Controlar</strong>
                         <p>
-                            Seguimos avances, desviaciones, evidencias y
-                            condiciones relevantes.
+                            Seguimos la operación y registramos desviaciones.
                         </p>
                     </div>
 
-                    <div class="process-step">
+
+                    <div class="method-step">
                         <span>06</span>
-                        <h3>Entregar y responder</h3>
+                        <strong>Entregar</strong>
                         <p>
-                            Cerramos la operación con entrega, conformidad,
-                            documentación y aprendizaje.
+                            Coordinamos el despacho y la entrega correspondiente.
+                        </p>
+                    </div>
+
+
+                    <div class="method-step">
+                        <span>07</span>
+                        <strong>Responder</strong>
+                        <p>
+                            Comunicamos, corregimos y cerramos con evidencia.
                         </p>
                     </div>
 
                 </div>
 
             </div>
+
         </section>
 
 
-        <!-- DIFFERENTIATION -->
+        <!-- EVIDENCIA -->
 
         <section class="section">
-            <div class="container">
-
-                <div class="two-column">
-
-                    <div>
-                        <p class="eyebrow">
-                            DIFERENCIACIÓN
-                        </p>
-
-                        <h2>
-                            No prometemos cualquier cosa.
-                        </h2>
-                    </div>
-
-                    <div>
-                        <p class="large-text">
-                            YAKAR busca construir confianza mediante
-                            <strong>método, verificación, responsabilidad y evidencia.</strong>
-                        </p>
-
-                        <p>
-                            La capacidad legal de una empresa no significa que
-                            cualquier requerimiento deba convertirse automáticamente
-                            en una oferta. Trabajamos dentro de aquello que podemos
-                            comprender y gestionar correctamente.
-                        </p>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- EVIDENCE -->
-
-        <section id="evidencia" class="section section-light">
-            <div class="container">
+            <div class="container evidence-layout">
 
                 <div class="section-heading">
 
                     <p class="eyebrow">
-                        EVIDENCIA Y TRAZABILIDAD
+                        CERTEZA EN EL ABASTECIMIENTO
                     </p>
 
                     <h2>
@@ -351,9 +295,9 @@
                     </h2>
 
                     <p>
-                        YAKAR está estructurando una forma de trabajo donde cada
-                        operación pueda reconstruirse a partir de sus registros
-                        y evidencias.
+                        YAKAR está construyendo una operación basada en trazabilidad:
+                        requerimientos, especificaciones, decisiones, proveedores,
+                        entregas y conformidades deben poder reconstruirse.
                     </p>
 
                 </div>
@@ -361,58 +305,12 @@
 
                 <div class="evidence-chain">
 
-                    <div>
-                        <span>01</span>
-                        <strong>Promesa</strong>
-                    </div>
-
-                    <div class="chain-arrow">→</div>
-
-                    <div>
-                        <span>02</span>
-                        <strong>Registro</strong>
-                    </div>
-
-                    <div class="chain-arrow">→</div>
-
-                    <div>
-                        <span>03</span>
-                        <strong>Ejecución</strong>
-                    </div>
-
-                    <div class="chain-arrow">→</div>
-
-                    <div>
-                        <span>04</span>
-                        <strong>Evidencia</strong>
-                    </div>
-
-                    <div class="chain-arrow">→</div>
-
-                    <div>
-                        <span>05</span>
-                        <strong>Medición</strong>
-                    </div>
-
-                    <div class="chain-arrow">→</div>
-
-                    <div>
-                        <span>06</span>
-                        <strong>Reputación</strong>
-                    </div>
-
-                </div>
-
-
-                <div class="evidence-note">
-
-                    <strong>Una operación = un expediente = un ID.</strong>
-
-                    <p>
-                        La arquitectura operativa de YAKAR está diseñada para
-                        conservar el historial del requerimiento, especificación,
-                        abastecimiento, control, entrega, conformidad y cierre.
-                    </p>
+                    <div>PROMESA</div>
+                    <div>REGISTRO</div>
+                    <div>EJECUCIÓN</div>
+                    <div>EVIDENCIA</div>
+                    <div>MEDICIÓN</div>
+                    <div>REPUTACIÓN</div>
 
                 </div>
 
@@ -420,279 +318,102 @@
         </section>
 
 
-        <!-- WHO WE WORK WITH -->
+        <!-- REQUERIMIENTO -->
 
-        <section class="section">
-            <div class="container">
+        <section id="requerimiento" class="section section-request">
 
-                <div class="section-heading">
+            <div class="container request-layout">
+
+                <div class="request-content">
 
                     <p class="eyebrow">
-                        ENTORNO B2B
+                        YAKAR REQUIREMENT FORM
                     </p>
 
                     <h2>
-                        Diseñado para operaciones que necesitan coordinación.
+                        Cuéntanos qué necesitas abastecer.
                     </h2>
 
                     <p>
-                        Nuestro enfoque está dirigido a empresas formales y áreas
-                        que necesitan resolver requerimientos de abastecimiento
-                        con claridad y seguimiento.
+                        No necesitas tener todo perfectamente definido.
+                        Puedes enviarnos una especificación existente o explicarnos
+                        qué necesitas estructurar.
+                    </p>
+
+                    <p class="request-principle">
+                        El primer objetivo es entender correctamente el requerimiento.
                     </p>
 
                 </div>
 
 
-                <div class="sector-list">
+                <div class="request-options">
 
-                    <span>Minería</span>
-                    <span>Contratistas mineros</span>
-                    <span>Industria</span>
-                    <span>Construcción</span>
-                    <span>Energía</span>
-                    <span>Infraestructura</span>
-                    <span>Compras</span>
-                    <span>Operaciones</span>
-                    <span>Mantenimiento</span>
-                    <span>Logística</span>
-                    <span>Administración</span>
-                    <span>Proyectos</span>
+                    <a class="request-option" href="#contacto">
 
-                </div>
+                        <span class="option-number">01</span>
 
-            </div>
-        </section>
+                        <span>
+                            <strong>Tengo una especificación definida</strong>
+                            <small>
+                                Producto, cantidad, características, ficha técnica
+                                o documentación disponible.
+                            </small>
+                        </span>
+
+                        <span class="option-arrow">→</span>
+
+                    </a>
 
 
-        <!-- REQUIREMENT -->
+                    <a class="request-option" href="#contacto">
 
-        <section id="requerimiento" class="section section-dark requirement-section">
-            <div class="container">
+                        <span class="option-number">02</span>
 
-                <div class="requirement-layout">
+                        <span>
+                            <strong>Necesito ayuda para estructurarla</strong>
+                            <small>
+                                Tengo una necesidad, pero necesito ayuda para
+                                convertirla en un requerimiento evaluable.
+                            </small>
+                        </span>
 
-                    <div class="requirement-intro">
+                        <span class="option-arrow">→</span>
 
-                        <p class="eyebrow">
-                            YAKAR REQUIREMENT FORM
-                        </p>
-
-                        <h2>
-                            Cuéntanos qué necesitas abastecer.
-                        </h2>
-
-                        <p>
-                            Puedes llegar con una especificación definida o
-                            necesitar ayuda para estructurarla.
-                        </p>
-
-                        <div class="requirement-options">
-
-                            <div class="requirement-option">
-                                <strong>01</strong>
-                                <span>
-                                    Tengo una especificación definida.
-                                </span>
-                            </div>
-
-                            <div class="requirement-option">
-                                <strong>02</strong>
-                                <span>
-                                    Necesito ayuda para estructurarla.
-                                </span>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <form class="requirement-form" action="#" method="post">
-
-                        <div class="form-field">
-                            <label for="company">
-                                Empresa
-                            </label>
-
-                            <input
-                                type="text"
-                                id="company"
-                                name="company"
-                                placeholder="Nombre de la empresa"
-                            >
-                        </div>
-
-
-                        <div class="form-row">
-
-                            <div class="form-field">
-                                <label for="name">
-                                    Nombre
-                                </label>
-
-                                <input
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    placeholder="Tu nombre"
-                                >
-                            </div>
-
-
-                            <div class="form-field">
-                                <label for="email">
-                                    Correo corporativo
-                                </label>
-
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    placeholder="nombre@empresa.com"
-                                >
-                            </div>
-
-                        </div>
-
-
-                        <div class="form-row">
-
-                            <div class="form-field">
-                                <label for="area">
-                                    Área
-                                </label>
-
-                                <input
-                                    type="text"
-                                    id="area"
-                                    name="area"
-                                    placeholder="Compras, operaciones, mantenimiento..."
-                                >
-                            </div>
-
-
-                            <div class="form-field">
-                                <label for="required-date">
-                                    Fecha requerida
-                                </label>
-
-                                <input
-                                    type="date"
-                                    id="required-date"
-                                    name="required-date"
-                                >
-                            </div>
-
-                        </div>
-
-
-                        <div class="form-field">
-                            <label for="solution">
-                                ¿Qué necesitas?
-                            </label>
-
-                            <select id="solution" name="solution">
-
-                                <option value="">
-                                    Selecciona una categoría
-                                </option>
-
-                                <option value="seguridad">
-                                    Seguridad industrial
-                                </option>
-
-                                <option value="textil">
-                                    Textil industrial
-                                </option>
-
-                                <option value="ferreteria">
-                                    Ferretería y suministros
-                                </option>
-
-                                <option value="equipamiento">
-                                    Equipamiento
-                                </option>
-
-                                <option value="otro">
-                                    Necesito ayuda para definirlo
-                                </option>
-
-                            </select>
-                        </div>
-
-
-                        <div class="form-field">
-                            <label for="description">
-                                Describe el requerimiento
-                            </label>
-
-                            <textarea
-                                id="description"
-                                name="description"
-                                rows="6"
-                                placeholder="Producto, cantidad, características, medidas, materiales, ubicación de entrega, condiciones especiales u otra información relevante."
-                            ></textarea>
-                        </div>
-
-
-                        <div class="form-field">
-                            <label for="reference">
-                                Referencia o archivo
-                            </label>
-
-                            <input
-                                type="text"
-                                id="reference"
-                                name="reference"
-                                placeholder="Puedes indicar si cuentas con ficha técnica, fotografía, plano o archivo."
-                            >
-                        </div>
-
-
-                        <button type="submit" class="button button-primary button-full">
-                            Enviar requerimiento
-                        </button>
-
-
-                        <p class="form-disclaimer">
-                            Este formulario corresponde a la estructura inicial
-                            del proceso YAKAR. La recepción de un requerimiento
-                            no constituye aceptación, cotización ni compromiso
-                            de suministro.
-                        </p>
-
-                    </form>
+                    </a>
 
                 </div>
 
             </div>
+
         </section>
 
 
-        <!-- FINAL CTA -->
+        <!-- CONTACTO -->
 
-        <section class="section final-cta">
-            <div class="container narrow text-center">
+        <section id="contacto" class="section contact-section">
+
+            <div class="container contact-box">
 
                 <p class="eyebrow">
-                    YAKAR
+                    PRÓXIMO PASO
                 </p>
 
                 <h2>
-                    CUMPLIR ES PARTE DEL PRODUCTO.
+                    Iniciemos por el requerimiento.
                 </h2>
 
                 <p>
-                    Si tu operación necesita abastecimiento, empecemos por
-                    entender correctamente el requerimiento.
+                    La infraestructura digital crecerá conforme validemos
+                    la operación real de YAKAR.
                 </p>
 
-                <a href="#requerimiento" class="button button-primary">
-                    Iniciar requerimiento
+                <a class="button button-primary" href="mailto:contacto@yakarnegocios.com">
+                    Contactar a YAKAR
                 </a>
 
             </div>
+
         </section>
 
     </main>
@@ -704,32 +425,15 @@
 
             <div>
                 <strong>YAKAR</strong>
-                <p>
-                    Abastecimiento estratégico
-                </p>
+                <span>ABASTECIMIENTO ESTRATÉGICO</span>
             </div>
-
-            <div>
-                <p>
-                    Yakar Negocios E.I.R.L.
-                </p>
-
-                <p>
-                    Perú
-                </p>
-            </div>
-
-        </div>
-
-
-        <div class="container footer-bottom">
 
             <p>
-                © 2026 Yakar Negocios E.I.R.L. Todos los derechos reservados.
+                CUMPLIR ES PARTE DEL PRODUCTO.
             </p>
 
             <p>
-                Certeza en el abastecimiento.
+                © 2026 Yakar Negocios E.I.R.L.
             </p>
 
         </div>
@@ -741,4 +445,3 @@
 
 </body>
 </html>
-```
