@@ -33,6 +33,31 @@
 
   <link rel="stylesheet" href="css/styles.css">
   <script src="js/main.js" defer></script>
+
+  <style>
+    /* Evolución local de portada; compatible con los archivos compartidos. */
+    .commercial .solutions-grid-v5{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:40px 0 24px}
+    .commercial .solution-card-v5{display:flex;flex-direction:column;min-width:0;padding:30px 26px;background:#edf2f6;border-top:4px solid #1B3A6B}
+    .commercial .solution-top-v5{display:flex;align-items:center;gap:16px;margin-bottom:28px;color:#1B3A6B}
+    .commercial .solution-top-v5>span{font-size:2.3rem;line-height:1;font-weight:400}
+    .commercial .solution-top-v5>p{margin:0;font-size:.75rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase}
+    .commercial .solution-card-v5 h3{font-size:1.8rem;line-height:1.2;margin:0 0 20px;color:#1B3A6B}
+    .commercial .solution-description-v5{font-size:1rem;line-height:1.7;margin:0 0 22px}
+    .commercial .solution-examples-v5{font-size:.86rem;line-height:1.7;border-top:1px solid #cad5e0;padding-top:18px;margin:0 0 28px}
+    .commercial .solution-card-v5 .btn{margin-top:auto;align-self:flex-start;white-space:normal;text-align:left}
+    .commercial .footer-grid-v4{grid-template-columns:1.2fr 1fr 1fr;grid-template-rows:auto auto;column-gap:60px;row-gap:32px;align-items:start}
+    .commercial .footer-grid-v4>section:first-child{grid-column:1;grid-row:1 / span 2}
+    .commercial .footer-grid-v4>nav{grid-column:2;grid-row:2}
+    .commercial .footer-grid-v4>.footer-contact-v4{grid-column:3;grid-row:2}
+    .commercial .footer-grid-v4:before{content:"";grid-column:2 / span 2;grid-row:1;min-height:68px}
+    .commercial .footer-grid-v4 h2{margin-top:0}
+    .commercial .footer-nx-v5{margin-top:42px;padding:24px 0;color:#b8c4d5;max-width:700px}
+    .commercial .footer-nx-v5 strong{color:#fff;font-size:.9rem}
+    .commercial .footer-nx-v5 p{margin:8px 0 0;font-size:.9rem;line-height:1.6}
+    @media(max-width:1000px){.commercial .solutions-grid-v5{gap:16px}.commercial .solution-card-v5{padding:24px 20px}.commercial .solution-card-v5 h3{font-size:1.5rem}.commercial .footer-grid-v4{column-gap:28px}}
+    @media(max-width:760px){.commercial .solutions-grid-v5{grid-template-columns:1fr}.commercial .solution-top-v5{margin-bottom:20px}.commercial .footer-grid-v4{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto auto;gap:32px 24px}.commercial .footer-grid-v4>section:first-child{grid-column:1 / -1;grid-row:1}.commercial .footer-grid-v4>nav{grid-column:1;grid-row:2}.commercial .footer-grid-v4>.footer-contact-v4{grid-column:2;grid-row:2}.commercial .footer-grid-v4:before{display:none}.commercial .footer-contact-v4 a{overflow-wrap:anywhere}}
+    @media(max-width:420px){.commercial .footer-grid-v4{grid-template-columns:1fr}.commercial .footer-grid-v4>.footer-contact-v4{grid-column:1;grid-row:3}}
+  </style>
 </head>
 
 <body>
@@ -131,7 +156,7 @@
   <figcaption>
     <span>PRODUCTOS, SERVICIOS Y PROYECTOS</span>
     <strong>Entender tu operación. Cuidar cada detalle.</strong>
-    <small>Imagen ilustrativa generada</small>
+    <small>Escena ilustrativa · generada con IA</small>
   </figcaption>
 </figure>
           </div>
@@ -191,98 +216,38 @@
             <div>
               <p class="eyebrow">Tres líneas. Un punto de contacto.</p>
               <h2 id="solutions-title">
-                Lo que necesitas,<br>
-                con un alcance definido.
+                Productos, servicios y proyectos<br>
+                para tu operación.
               </h2>
             </div>
             <p>
-              Productos, servicios y proyectos. Precisamos qué incluye la
-              atención y qué falta confirmar antes de avanzar.
+              Entendemos tu requerimiento y coordinamos una propuesta con
+              especificaciones, responsables y condiciones claras.
             </p>
           </div>
 
-          <div class="offering-grid">
-            <article class="textile-offer" id="productos">
-              <div>
-                <span class="label-tag">PRODUCTOS Y SUMINISTROS</span>
-                <h3>Equipar tu operación.</h3>
-
-                <p>
-                  Uniformes industriales, tecnología y suministros según uso,
-                  especificaciones y condiciones de entrega.
-                </p>
-
-                <ul class="offer-list">
-                  <li>Uniformes: materiales, tallas y personalización.</li>
-                  <li>PC y estaciones de trabajo: configuración según uso.</li>
-                  <li>
-                    Cámaras y equipos audiovisuales: características y compatibilidad.
-                  </li>
-                  <li>Seguridad, ferretería y suministros industriales.</li>
-                </ul>
-
-                <a
-                  class="btn"
-                  href="#requerimiento"
-                  data-request-family="Productos y suministros"
-                >
-                  Consultar productos
-                </a>
-              </div>
-
-              <div class="textile-detail">
-                <span class="detail-label">ANTES DE CONFIRMAR</span>
-                <p>
-                  Especificaciones.<br>
-                  Entrega y garantía.
-                </p>
-                <span>El alcance se acuerda contigo.</span>
-              </div>
+          <div class="solutions-grid-v5">
+            <article class="solution-card-v5" id="productos">
+              <div class="solution-top-v5"><span aria-hidden="true">01</span><p>Productos y suministros</p></div>
+              <h3>Equipa tu operación.</h3>
+              <p class="solution-description-v5">Uniformes, tecnología y suministros seleccionados según el uso, las especificaciones y las condiciones de entrega.</p>
+              <p class="solution-examples-v5">Uniformes industriales y personalizados · PC y estaciones de trabajo · Cámaras y equipos audiovisuales · Seguridad y ferretería.</p>
+              <a class="btn" href="#requerimiento" data-request-family="Productos y suministros">Consultar productos</a>
             </article>
-
-            <div class="other-offers">
-              <article id="servicios">
-                <span class="offer-number" aria-hidden="true">02</span>
-                <div>
-                  <span class="category-status">
-                    SERVICIOS · POR REQUERIMIENTO
-                  </span>
-
-                  <h3>Cuidar y mejorar tu operación.</h3>
-
-                  <p>
-                    Evaluación de mantenimiento de equipos industriales y
-                    diagnóstico de procesos operativos. Definimos el alcance,
-                    los responsables y los entregables de la propuesta.
-                  </p>
-
-                  <a href="#requerimiento" data-request-family="Servicios">
-                    Consultar un servicio
-                  </a>
-                </div>
-              </article>
-
-              <article id="proyectos">
-                <span class="offer-number" aria-hidden="true">03</span>
-                <div>
-                  <span class="category-status">
-                    PROYECTOS · EVALUACIÓN DE ALCANCE
-                  </span>
-
-                  <h3>Estructurar el siguiente paso.</h3>
-
-                  <p>
-                    Evaluamos requerimientos de estructuras metálicas,
-                    infraestructura vial y espacios públicos para precisar
-                    alcance, condiciones y viabilidad de atención.
-                  </p>
-
-                  <a href="#requerimiento" data-request-family="Proyectos">
-                    Conversar sobre un proyecto
-                  </a>
-                </div>
-              </article>
-            </div>
+            <article class="solution-card-v5" id="servicios">
+              <div class="solution-top-v5"><span aria-hidden="true">02</span><p>Servicios industriales</p></div>
+              <h3>Cuida y mejora tu operación.</h3>
+              <p class="solution-description-v5">Evaluación de mantenimiento de equipos y diagnóstico de procesos, con alcance, responsables y entregables definidos.</p>
+              <p class="solution-examples-v5">Equipos industriales · Procesos operativos.</p>
+              <a class="btn" href="#requerimiento" data-request-family="Servicios">Consultar un servicio</a>
+            </article>
+            <article class="solution-card-v5" id="proyectos">
+              <div class="solution-top-v5"><span aria-hidden="true">03</span><p>Proyectos</p></div>
+              <h3>Dale estructura al siguiente paso.</h3>
+              <p class="solution-description-v5">Evaluamos requerimientos para definir su alcance, condiciones y viabilidad de atención.</p>
+              <p class="solution-examples-v5">Estructuras metálicas · Infraestructura vial · Espacios públicos.</p>
+              <a class="btn" href="#requerimiento" data-request-family="Proyectos">Conversar sobre un proyecto</a>
+            </article>
           </div>
 
           <p class="small">
@@ -841,7 +806,7 @@
         <div class="footer-grid-v4">
           <section aria-label="Identidad YAKAR">
             <span class="footer-wordmark">YAKAR</span>
-            <p class="footer-motto">Cumplir es parte del producto.</p>  <p class="small">   <strong>Filosofía NX · Netinho Xperience</strong><br>   Entender tu necesidad, cuidar cada detalle<br>   y acompañar cada compromiso. </p>
+            <p class="footer-motto">Cumplir es parte del producto.</p>
             <p class="footer-identity">
               <strong>Yakar Negocios E.I.R.L.</strong><br>
               RUC 20612733261<br> RNP · Bienes y servicios<br> <a   href="https://www.rnp.gob.pe/constancia/rnp_constancia/consultaruc.asp"   target="_blank"   rel="noopener noreferrer" >   Consultar inscripción en el RNP → </a><br>
@@ -883,13 +848,17 @@
           </section>
         </div>
 
+        <div class="footer-nx-v5">
+          <strong>Filosofía NX · Netinho Xperience</strong>
+          <p>Entender tu necesidad, cuidar cada detalle y acompañar cada compromiso.</p>
+        </div>
         <div class="footer-base-v4">
           <nav aria-label="Información y acceso">
             <a href="privacidad.html">
-              Privacidad · información provisional
+              Privacidad
             </a>
             <a href="reclamaciones.html">
-              Libro de Reclamaciones · en preparación
+              Libro de Reclamaciones
             </a>
             <a
               href="https://yakar-abastecimiento.ernesto-malasquez.chatgpt.site"
@@ -904,5 +873,45 @@
       </div>
     </footer>
   </div>
+
+<script>
+/* Raccorde la courbe aux centres réels des cinq hitos, même après redimensionnement. */
+document.addEventListener('DOMContentLoaded', () => {
+  const map = document.querySelector('.route-map');
+  const svg = map?.querySelector('.route-connector');
+  const dots = [...(map?.querySelectorAll('.milestone-dot') || [])];
+  const buttons = [...(map?.querySelectorAll('.roadmap-track button') || [])];
+  const base = svg?.querySelector('.route-base');
+  const lit = svg?.querySelector('.route-lit');
+  if (!base || !lit || dots.length !== 5) return;
+  let distances = [];
+  function paint() {
+    const index = Math.max(0, buttons.findIndex(button => button.classList.contains('active')));
+    const value = distances[index] ?? 0;
+    const dash = `${value} 1000`;
+    if (lit.getAttribute('stroke-dasharray') !== dash) lit.setAttribute('stroke-dasharray', dash);
+  }
+  function layout() {
+    if (!svg.getBoundingClientRect().width) return;
+    const rect = svg.getBoundingClientRect();
+    const points = dots.map(dot => { const r = dot.getBoundingClientRect(); return {x:(r.left+r.width/2-rect.left)*1000/rect.width,y:(r.top+r.height/2-rect.top)*80/rect.height}; });
+    let d = `M${points[0].x} ${points[0].y}`;
+    const lengths = [0];
+    for (let i=1;i<points.length;i++) {
+      const p=points[i-1], q=points[i], mid=(p.x+q.x)/2;
+      d += ` C${mid} ${p.y} ${mid} ${q.y} ${q.x} ${q.y}`;
+      base.setAttribute('d',d); lengths.push(base.getTotalLength());
+    }
+    lit.setAttribute('d',d);
+    distances = lengths.map(length => length/lengths[4]*1000);
+    paint();
+  }
+  new MutationObserver(paint).observe(lit,{attributes:true,attributeFilter:['stroke-dasharray']});
+  buttons.forEach(button => new MutationObserver(paint).observe(button,{attributes:true,attributeFilter:['class']}));
+  new ResizeObserver(layout).observe(map);
+  document.fonts.ready.then(layout);
+  layout();
+});
+</script>
 </body>
 </html>
