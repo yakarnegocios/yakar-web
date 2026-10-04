@@ -10,373 +10,332 @@
   <title>Libro de Reclamaciones | YAKAR</title>
   <meta
     name="description"
-    content="Libro de Reclamaciones de Yakar Negocios E.I.R.L. Canal virtual en preparación."
+    content="Libro de Reclamaciones de Yakar Negocios E.I.R.L. Registra tu queja o reclamo y conserva tu constancia."
   >
 
   <link rel="stylesheet" href="css/styles.css">
 
   <style>
-    [hidden] {
-      display: none !important;
+    [hidden]{display:none!important}
+
+    .commercial .book-navigation{
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      flex-wrap:wrap;
+      gap:12px 24px;
+      width:auto;
+      padding:0;
+      font-size:.875rem;
     }
 
-    .commercial .book-navigation {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      flex-wrap: wrap;
-      gap: 12px 24px;
-      width: auto;
-      padding: 0;
-      font-size: .875rem;
+    .book-navigation a{
+      min-height:44px;
+      display:inline-flex;
+      align-items:center;
+      color:#1B3A6B;
+      text-decoration:underline;
+      text-underline-offset:4px;
     }
 
-    .book-navigation a {
-      min-height: 44px;
-      display: inline-flex;
-      align-items: center;
-      color: #1B3A6B;
-      text-decoration: underline;
-      text-underline-offset: 4px;
+    .commercial .book-main{
+      width:min(860px,calc(100% - 48px));
+      margin:auto;
+      padding:40px 0 48px;
     }
 
-    .commercial .book-main {
-      width: min(860px, calc(100% - 48px));
-      margin: auto;
-      padding: 40px 0 48px;
+    .commercial .book-main h1{
+      font-size:clamp(1.9rem,4.5vw,2.75rem);
+      line-height:1.12;
+      letter-spacing:-.035em;
+      margin:0 0 16px;
     }
 
-    .commercial .book-main h1 {
-      font-size: clamp(1.9rem, 4.5vw, 2.75rem);
-      line-height: 1.12;
-      letter-spacing: -.035em;
-      margin: 0 0 16px;
+    .book-main a{
+      color:#1B3A6B;
+      text-decoration:underline;
+      text-underline-offset:4px;
+      overflow-wrap:anywhere;
     }
 
-    .book-main a {
-      color: #1B3A6B;
-      text-decoration: underline;
-      text-underline-offset: 4px;
-      overflow-wrap: anywhere;
+    .commercial .book-main .eyebrow{margin-bottom:12px}
+    .commercial .book-main p{line-height:1.65}
+
+    .intro{
+      max-width:680px;
+      margin:0 0 20px;
     }
 
-    .commercial .book-main .eyebrow {
-      margin-bottom: 12px;
+    .status{
+      padding:16px 18px;
+      background:#F4F6F8;
+      border-left:3px solid #1B3A6B;
+      margin-bottom:20px;
     }
 
-    .commercial .book-main p {
-      line-height: 1.65;
+    .status strong{
+      display:block;
+      margin-bottom:6px;
+      color:#1B3A6B;
     }
 
-    .intro {
-      max-width: 680px;
-      margin: 0 0 20px;
+    .commercial .status p{
+      font-size:.88rem;
+      margin:0 0 8px;
     }
 
-    .status {
-      padding: 16px 18px;
-      background: #F4F6F8;
-      border-left: 3px solid #1B3A6B;
-      margin-bottom: 20px;
+    .commercial .status p:last-child{margin-bottom:0}
+
+    .provider{
+      font-size:.85rem;
+      border-bottom:1px solid #DCE1E7;
+      padding-bottom:16px;
+      margin-bottom:18px;
     }
 
-    .status strong {
-      display: block;
-      margin-bottom: 6px;
-      color: #1B3A6B;
+    .commercial .provider p{margin:0}
+
+    .draft-warning{
+      font-size:.83rem;
+      margin:0 0 20px;
     }
 
-    .commercial .status p {
-      font-size: .88rem;
-      margin: 0 0 8px;
+    #complaint-form fieldset{
+      min-width:0;
+      padding:18px 22px;
+      margin:0 0 20px;
+      border:1px solid #DCE1E7;
+      border-radius:4px;
     }
 
-    .commercial .status p:last-child {
-      margin-bottom: 0;
+    #complaint-form legend{
+      padding:0 8px;
+      color:#1B3A6B;
+      font-size:1rem;
+      font-weight:700;
     }
 
-    .provider {
-      font-size: .85rem;
-      border-bottom: 1px solid #DCE1E7;
-      padding-bottom: 16px;
-      margin-bottom: 18px;
+    #complaint-form .grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:18px;
     }
 
-    .commercial .provider p {
-      margin: 0;
+    #complaint-form .field{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      min-width:0;
     }
 
-    .draft-warning {
-      font-size: .83rem;
-      margin: 0 0 20px;
+    #complaint-form .full{grid-column:1/-1}
+
+    #complaint-form label{
+      font-size:.85rem;
+      color:#172033;
     }
 
-    #complaint-form fieldset {
-      min-width: 0;
-      padding: 18px 22px;
-      margin: 0 0 20px;
-      border: 1px solid #DCE1E7;
-      border-radius: 4px;
-    }
-
-    #complaint-form legend {
-      padding: 0 8px;
-      color: #1B3A6B;
-      font-size: 1rem;
-      font-weight: 700;
-    }
-
-    #complaint-form .grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    #complaint-form .field {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      min-width: 0;
-    }
-
-    #complaint-form .full {
-      grid-column: 1 / -1;
-    }
-
-    #complaint-form label {
-      font-size: .85rem;
-      color: #172033;
-    }
-
-    #complaint-form .field label {
-      font-weight: 700;
-    }
+    #complaint-form .field label{font-weight:700}
 
     #complaint-form .field input,
     #complaint-form .field select,
-    #complaint-form .field textarea {
-      width: 100%;
-      min-width: 0;
-      padding: 11px 12px;
-      border: 1px solid #BCC6D2;
-      border-radius: 3px;
-      background: #fff;
-      color: #172033;
-      font: inherit;
-      font-size: 1rem;
+    #complaint-form .field textarea{
+      width:100%;
+      min-width:0;
+      padding:11px 12px;
+      border:1px solid #BCC6D2;
+      border-radius:3px;
+      background:#fff;
+      color:#172033;
+      font:inherit;
+      font-size:1rem;
     }
 
-    #complaint-form textarea {
-      resize: vertical;
-      line-height: 1.6;
+    #complaint-form textarea{
+      resize:vertical;
+      line-height:1.6;
     }
 
-    #complaint-form input[aria-invalid="true"] {
-      border-color: #9C2C25;
+    #complaint-form input[aria-invalid=true]{border-color:#9C2C25}
+
+    .commercial .book-main .help{
+      font-size:.78rem;
+      color:#596273;
+      margin:0;
     }
 
-    .commercial .book-main .help {
-      font-size: .78rem;
-      color: #596273;
-      margin: 0;
+    .commercial .book-main .counter{
+      font-size:.75rem;
+      color:#596273;
+      margin:0;
+      text-align:right;
+      font-variant-numeric:tabular-nums;
     }
 
-    .commercial .book-main .counter {
-      font-size: .75rem;
-      color: #596273;
-      margin: 0;
-      text-align: right;
-      font-variant-numeric: tabular-nums;
+    .commercial .book-main .counter.near-limit{
+      color:#8A4300;
+      font-weight:700;
     }
 
-    .commercial .book-main .counter.near-limit {
-      color: #8A4300;
-      font-weight: 700;
-    }
-
-    .commercial .book-main .document-error {
-      font-size: .8rem;
-      color: #9C2C25;
-      margin: 2px 0 0;
+    .commercial .book-main .document-error{
+      font-size:.8rem;
+      color:#9C2C25;
+      margin:2px 0 0;
     }
 
     .document-error:empty,
-    .feedback:empty {
-      display: none;
-    }
+    .feedback:empty{display:none}
 
-    .expand-button {
-      align-self: flex-start;
-      min-height: 36px;
-      padding: 4px 0;
-      border: 0;
-      background: transparent;
-      color: #1B3A6B;
-      text-decoration: underline;
-      text-underline-offset: 4px;
-      font-size: .8rem;
-      cursor: pointer;
+    .expand-button{
+      align-self:flex-start;
+      min-height:36px;
+      padding:4px 0;
+      border:0;
+      background:transparent;
+      color:#1B3A6B;
+      text-decoration:underline;
+      text-underline-offset:4px;
+      font-size:.8rem;
+      cursor:pointer;
     }
 
     .check,
-    .choice {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: .87rem;
+    .choice{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      font-size:.87rem;
     }
 
-    .check {
-      margin-top: 18px;
-    }
+    .check{margin-top:18px}
 
     .check input,
-    .choice input {
-      flex: 0 0 auto;
-      width: 18px;
-      height: 18px;
-      margin: 4px 0 0;
-      accent-color: #1B3A6B;
+    .choice input{
+      flex:0 0 auto;
+      width:18px;
+      height:18px;
+      margin:4px 0 0;
+      accent-color:#1B3A6B;
     }
 
     .choice strong,
-    .choice small {
-      display: block;
+    .choice small{display:block}
+
+    .choice small{
+      color:#596273;
+      font-size:.8rem;
     }
 
-    .choice small {
-      color: #596273;
-      font-size: .8rem;
+    .choices{
+      display:grid;
+      gap:16px;
+      margin-bottom:20px;
     }
 
-    .choices {
-      display: grid;
-      gap: 16px;
-      margin-bottom: 20px;
+    .guardian{margin-top:18px}
+
+    .security-box{
+      margin-top:22px;
+      display:grid;
+      gap:10px;
     }
 
-    .guardian {
-      margin-top: 18px;
+    #turnstile-widget{min-height:65px}
+
+    .submit-button{
+      width:100%;
+      min-height:50px;
+      padding:12px 18px;
+      margin-top:18px;
+      border:0;
+      border-radius:4px;
+      background:#1B3A6B;
+      color:#fff;
+      font-size:.9rem;
+      font-weight:700;
+      cursor:pointer;
     }
 
-    .security-box {
-      margin-top: 22px;
-      display: grid;
-      gap: 10px;
+    .submit-button:disabled{
+      opacity:1;
+      background:#E5EAF0;
+      color:#4A586B;
+      cursor:not-allowed;
     }
 
-    #turnstile-widget {
-      min-height: 65px;
+    .commercial .book-main .registration-note{margin-top:12px}
+
+    .commercial .book-main .feedback{
+      font-size:.85rem;
+      color:#1B3A6B;
+      margin:12px 0;
     }
 
-    .submit-button {
-      width: 100%;
-      min-height: 50px;
-      padding: 12px 18px;
-      margin-top: 18px;
-      border: 0;
-      border-radius: 4px;
-      background: #1B3A6B;
-      color: #fff;
-      font-size: .9rem;
-      font-weight: 700;
-      cursor: pointer;
+    .commercial .after h2{
+      font-size:1.15rem;
+      letter-spacing:normal;
+      font-weight:600;
+      margin:0 0 10px;
     }
 
-    .submit-button:disabled {
-      opacity: 1;
-      background: #E5EAF0;
-      color: #4A586B;
-      cursor: not-allowed;
+    .after{
+      font-size:.85rem;
+      padding-top:6px;
     }
 
-    .commercial .book-main .registration-note {
-      margin-top: 12px;
+    .honeypot{
+      position:absolute;
+      width:1px;
+      height:1px;
+      overflow:hidden;
+      clip-path:inset(50%);
     }
 
-    .commercial .book-main .feedback {
-      font-size: .85rem;
-      color: #1B3A6B;
-      margin: 12px 0;
+    .commercial .footer-v4 .footer-nx{
+      margin:0;
+      padding:0 0 20px;
+      color:#BDCADD;
+      font-size:.8rem;
+      line-height:1.65;
     }
 
-    .commercial .after h2 {
-      font-size: 1.15rem;
-      letter-spacing: normal;
-      font-weight: 600;
-      margin: 0 0 10px;
+    .footer-nx strong{
+      color:#DCE5F1;
+      font-weight:600;
     }
 
-    .after {
-      font-size: .85rem;
-      padding-top: 6px;
-    }
-
-    .honeypot {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-      clip-path: inset(50%);
-    }
-
-    .commercial .footer-v4 .footer-nx {
-      margin: 0;
-      padding: 0 0 20px;
-      color: #BDCADD;
-      font-size: .8rem;
-      line-height: 1.65;
-    }
-
-    .footer-nx strong {
-      color: #DCE5F1;
-      font-weight: 600;
-    }
-
-    @media (max-width: 800px) {
-      .commercial .book-navigation {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        width: auto;
-        padding: 0;
-        gap: 8px 18px;
-        font-size: .82rem;
+    @media(max-width:800px){
+      .commercial .book-navigation{
+        display:flex;
+        flex-direction:row;
+        justify-content:flex-start;
+        width:auto;
+        padding:0;
+        gap:8px 18px;
+        font-size:.82rem;
       }
 
-      .commercial .book-main {
-        width: min(860px, calc(100% - 32px));
-        padding: 30px 0 40px;
+      .commercial .book-main{
+        width:min(860px,calc(100% - 32px));
+        padding:30px 0 40px;
       }
     }
 
-    @media (max-width: 600px) {
-      #complaint-form .grid {
-        grid-template-columns: 1fr;
-      }
-
-      #complaint-form .full {
-        grid-column: auto;
-      }
-
-      #complaint-form fieldset {
-        padding: 16px;
-      }
+    @media(max-width:600px){
+      #complaint-form .grid{grid-template-columns:1fr}
+      #complaint-form .full{grid-column:auto}
+      #complaint-form fieldset{padding:16px}
     }
 
-    @media (max-width: 480px) {
-      .commercial .book-navigation {
-        width: 100%;
+    @media(max-width:480px){
+      .commercial .book-navigation{width:100%}
+
+      .footer-nx strong{
+        display:block;
+        margin-bottom:4px;
       }
 
-      .footer-nx strong {
-        display: block;
-        margin-bottom: 4px;
-      }
-
-      .nx-separator {
-        display: none;
-      }
+      .nx-separator{display:none}
     }
   </style>
 </head>
@@ -419,7 +378,10 @@
     <main id="contenido" class="book-main">
       <p class="eyebrow">Libro de Reclamaciones</p>
 
-      <h1>Tu experiencia importa.<br>Queremos escucharte.</h1>
+      <h1>
+        Tu experiencia importa.<br>
+        Queremos escucharte.
+      </h1>
 
       <p class="intro">
         Cuéntanos qué ocurrió y qué solución esperas.
@@ -428,19 +390,20 @@
 
       <section class="status" aria-labelledby="channel-status">
         <strong id="channel-status">
-          Canal virtual en preparación
+          Registro virtual de quejas y reclamos
         </strong>
 
         <p>
-          Estamos conectando el formulario y verificando su funcionamiento.
-          Durante esta etapa utiliza únicamente datos ficticios.
-          La recepción del servidor permanece desactivada.
+          Completa el formulario y conserva la constancia que se abrirá
+          en otra pestaña. Tu caso queda registrado cuando recibes
+          un código de recepción.
         </p>
 
         <p>
-          Contáctanos en
+          Si necesitas ayuda para utilizar el formulario, contáctanos en
           <a href="mailto:negocios.yakar@gmail.com">
-            negocios.yakar@gmail.com</a>
+            negocios.yakar@gmail.com
+          </a>
           o al
           <a
             href="https://wa.me/51973669004"
@@ -517,11 +480,7 @@
 
             <div class="field">
               <label for="document-type">Tipo de documento *</label>
-              <select
-                id="document-type"
-                name="documentType"
-                required
-              >
+              <select id="document-type" name="documentType" required>
                 <option value="">Selecciona una opción</option>
                 <option value="DNI">DNI</option>
                 <option value="CE">Carné de extranjería</option>
@@ -545,7 +504,9 @@
               <p id="document-help" class="help">
                 Selecciona el tipo de documento para ver las indicaciones.
               </p>
+
               <p id="document-counter" class="counter">0 / 30</p>
+
               <p
                 id="document-error"
                 class="document-error"
@@ -576,6 +537,7 @@
                 maxlength="254"
                 aria-describedby="email-help"
               >
+
               <p id="email-help" class="help">
                 Obligatorio si eliges recibir la respuesta por correo.
               </p>
@@ -640,9 +602,7 @@
             </div>
 
             <div class="field">
-              <label for="guardian-phone">
-                Teléfono del representante
-              </label>
+              <label for="guardian-phone">Teléfono del representante</label>
               <input
                 id="guardian-phone"
                 name="guardianPhone"
@@ -653,9 +613,7 @@
             </div>
 
             <div class="field">
-              <label for="guardian-email">
-                Correo del representante
-              </label>
+              <label for="guardian-email">Correo del representante</label>
               <input
                 id="guardian-email"
                 name="guardianEmail"
@@ -681,9 +639,7 @@
             </div>
 
             <div class="field">
-              <label for="operation-reference">
-                Referencia de la operación
-              </label>
+              <label for="operation-reference">Referencia de la operación</label>
               <input
                 id="operation-reference"
                 name="operationReference"
@@ -717,6 +673,7 @@
               <label for="item-description">
                 Describe el producto o servicio *
               </label>
+
               <textarea
                 id="item-description"
                 name="itemDescription"
@@ -735,9 +692,7 @@
                 class="expand-button"
                 type="button"
                 data-expand="item-description"
-              >
-                Necesito más espacio
-              </button>
+              >Necesito más espacio</button>
             </div>
           </div>
         </fieldset>
@@ -780,6 +735,7 @@
           <div class="grid">
             <div class="field full">
               <label for="case-detail">¿Qué ocurrió? *</label>
+
               <textarea
                 id="case-detail"
                 name="caseDetail"
@@ -791,9 +747,8 @@
               ></textarea>
 
               <p id="detail-help" class="help">
-                Incluye fechas y detalles que nos ayuden a entender
-                tu experiencia. Puedes escribir o pegar información
-                que hayas preparado.
+                Incluye fechas y detalles que nos ayuden a entender tu experiencia.
+                Puedes escribir o pegar información que hayas preparado.
               </p>
 
               <p id="case-detail-counter" class="counter">0 / 1000</p>
@@ -802,15 +757,14 @@
                 class="expand-button"
                 type="button"
                 data-expand="case-detail"
-              >
-                Necesito más espacio
-              </button>
+              >Necesito más espacio</button>
             </div>
 
             <div class="field full">
               <label for="requested-action">
                 ¿Qué solución solicitas? *
               </label>
+
               <textarea
                 id="requested-action"
                 name="requestedAction"
@@ -829,9 +783,7 @@
                 class="expand-button"
                 type="button"
                 data-expand="requested-action"
-              >
-                Necesito más espacio
-              </button>
+              >Necesito más espacio</button>
             </div>
           </div>
         </fieldset>
@@ -847,7 +799,6 @@
               target="_blank"
               rel="noopener"
             >información sobre privacidad</a>.
-            Esta etapa es de preparación y pruebas.
           </p>
 
           <label class="check">
@@ -868,14 +819,11 @@
             <p id="security-status" class="help" role="status">
               Cargando la verificación de seguridad…
             </p>
-
             <button
               id="renew-security"
               class="expand-button"
               type="button"
-            >
-              Renovar verificación
-            </button>
+            >Renovar verificación</button>
           </div>
 
           <button
@@ -883,9 +831,7 @@
             class="submit-button"
             type="submit"
             disabled
-          >
-            Enviar prueba de conexión
-          </button>
+          >Registrar mi caso</button>
 
           <p class="help registration-note">
             La respuesta se abrirá en otra pestaña.
@@ -903,19 +849,20 @@
             id="new-form"
             class="expand-button"
             type="button"
-          >
-            Limpiar e iniciar un formulario nuevo
-          </button>
+          >Limpiar e iniciar un formulario nuevo</button>
         </fieldset>
       </form>
 
       <section class="after" aria-labelledby="after-title">
         <h2 id="after-title">Una atención con seguimiento</h2>
+
         <p>
-          Una vez habilitado el registro, podrás conservar tu constancia
-          y recibir una respuesta por el medio elegido. El plazo máximo
-          de respuesta es de 15 días hábiles, improrrogables.
+          Al registrar tu caso, conserva tu constancia.
+          Te responderemos por el medio elegido.
+          El plazo máximo de respuesta es de 15 días hábiles,
+          improrrogables.
         </p>
+
         <p>
           Presentar una queja o reclamo no impide utilizar otros mecanismos
           de solución ni es un requisito previo para acudir a Indecopi.
@@ -988,8 +935,7 @@
         <p class="footer-nx">
           <strong>Filosofía NX · Netinho Xperience</strong>
           <span class="nx-separator"> — </span>
-          Entender tu necesidad, cuidar cada detalle
-          y acompañar cada compromiso.
+          Entender tu necesidad, cuidar cada detalle y acompañar cada compromiso.
         </p>
 
         <div class="footer-base-v4">
@@ -997,17 +943,18 @@
             <a href="privacidad.html">
               Privacidad del Libro de Reclamaciones
             </a>
+
             <a href="reclamaciones.html">
-              Libro de Reclamaciones · en preparación
+              Libro de Reclamaciones
             </a>
+
             <a
               href="https://yakar-abastecimiento.ernesto-malasquez.chatgpt.site"
               target="_blank"
               rel="noopener noreferrer"
-            >
-              Acceso al sistema privado
-            </a>
+            >Acceso al sistema privado</a>
           </nav>
+
           <span>YAKAR · 2026</span>
         </div>
       </div>
@@ -1024,13 +971,11 @@
       const token = document.getElementById("security-token");
       const requestId = document.getElementById("request-id");
       const securityStatus = document.getElementById("security-status");
-
       const documentType = document.getElementById("document-type");
       const documentNumber = document.getElementById("document-number");
       const documentHelp = document.getElementById("document-help");
       const documentError = document.getElementById("document-error");
       const documentCounter = document.getElementById("document-counter");
-
       const responseChannel = document.getElementById("response-channel");
       const email = document.getElementById("consumer-email");
       const minor = document.getElementById("is-minor");
@@ -1050,6 +995,7 @@
         }
 
         const bytes = window.crypto.getRandomValues(new Uint8Array(16));
+
         bytes[6] = (bytes[6] & 15) | 64;
         bytes[8] = (bytes[8] & 63) | 128;
 
@@ -1068,12 +1014,14 @@
 
       function warnBeforeExit(event) {
         if (!dirty) return;
+
         event.preventDefault();
         event.returnValue = "";
       }
 
       function setDirty(value) {
         dirty = value;
+
         window.removeEventListener("beforeunload", warnBeforeExit);
 
         if (dirty) {
@@ -1088,16 +1036,17 @@
           ? "Envío en curso…"
           : submittedSnapshot
             ? "Reintentar el mismo envío"
-            : "Enviar prueba de conexión";
+            : "Registrar mi caso";
       }
 
       function updateCounter(field) {
         const counter = document.getElementById(field.id + "-counter");
 
         counter.textContent = field.value.length + " / " + field.maxLength;
+
         counter.classList.toggle(
           "near-limit",
-          field.value.length >= field.maxLength * .9
+          field.value.length >= field.maxLength * 0.9
         );
       }
 
@@ -1129,9 +1078,11 @@
           : /^[A-Za-z0-9]{1,30}$/.test(value);
 
         const error = value && !valid
-          ? dni
-            ? "El DNI debe contener exactamente 8 números."
-            : "Ingresa hasta 30 letras o números, sin espacios."
+          ? (
+              dni
+                ? "El DNI debe contener exactamente 8 números."
+                : "Ingresa hasta 30 letras o números, sin espacios."
+            )
           : "";
 
         documentNumber.setCustomValidity(error);
@@ -1147,9 +1098,10 @@
       function updateEmail() {
         email.required = responseChannel.value === "EMAIL";
 
-        document.getElementById("email-label").textContent = email.required
-          ? "Correo electrónico *"
-          : "Correo electrónico";
+        document.getElementById("email-label").textContent =
+          email.required
+            ? "Correo electrónico *"
+            : "Correo electrónico";
       }
 
       function updateGuardian() {
@@ -1157,6 +1109,7 @@
 
         guardian.querySelectorAll("input").forEach(input => {
           input.disabled = !minor.checked;
+
           input.required =
             minor.checked &&
             ["guardian-name", "guardian-address"].includes(input.id);
@@ -1167,7 +1120,7 @@
         return JSON.stringify(
           [...new FormData(form).entries()]
             .filter(([name]) => name !== "cf-turnstile-response")
-            .sort(([a], [b]) => a.localeCompare(b))
+            .sort(([first], [second]) => first.localeCompare(second))
         );
       }
 
@@ -1189,9 +1142,12 @@
         }
 
         retryTimer = null;
+
         form.reset();
+
         busy = false;
         submittedSnapshot = null;
+
         requestId.value = uuid();
         feedback.textContent = "";
 
@@ -1234,24 +1190,30 @@
 
           callback: value => {
             token.value = value;
+
             securityStatus.textContent =
               "Verificación completada. " +
               "El servidor la comprobará al recibir el envío.";
+
             updateButton();
           },
 
           "expired-callback": () => {
             token.value = "";
+
             securityStatus.textContent =
               "La verificación venció. Pulsa Renovar verificación.";
+
             updateButton();
           },
 
           "error-callback": () => {
             token.value = "";
+
             securityStatus.textContent =
               "No se pudo completar la verificación. " +
               "Renueva o solicita asistencia.";
+
             updateButton();
             return true;
           }
@@ -1260,9 +1222,11 @@
 
       window.yakarSecurityLoadFailed = () => {
         token.value = "";
+
         securityStatus.textContent =
           "La verificación no pudo cargarse. " +
           "Revisa tu conexión o solicita asistencia.";
+
         updateButton();
       };
 
@@ -1289,6 +1253,7 @@
           /[^0-9]/.test(event.data)
         ) {
           event.preventDefault();
+
           documentError.textContent =
             "Para DNI, ingresa únicamente números.";
         }
@@ -1311,6 +1276,7 @@
           documentNumber.value.length - (end - start) + pasted.length > 8
         ) {
           event.preventDefault();
+
           documentError.textContent =
             "El DNI admite exactamente 8 números.";
         }
@@ -1327,7 +1293,9 @@
           );
 
           field.maxLength = 6000;
+
           updateCounter(field);
+
           expandButton.hidden = true;
           field.focus();
         });
@@ -1342,6 +1310,7 @@
             securityStatus.textContent =
               "La protección aún no está disponible. " +
               "Recarga la página si no has ingresado información.";
+
             return;
           }
 
@@ -1349,18 +1318,21 @@
         }
       );
 
-      document.getElementById("new-form").addEventListener("click", () => {
-        const confirmed = window.confirm(
-          "Se borrarán los campos y se preparará un identificador nuevo. " +
-          "Si el envío anterior tuvo constancia, conserva su código " +
-          "y evita repetir el mismo caso. ¿Deseas continuar?"
-        );
+      document.getElementById("new-form").addEventListener(
+        "click",
+        () => {
+          const accepted = window.confirm(
+            "Se borrarán los campos y se preparará un identificador nuevo. " +
+            "Si el envío anterior tuvo constancia, conserva su código " +
+            "y evita repetir el mismo caso. ¿Deseas continuar?"
+          );
 
-        if (!confirmed) return;
+          if (!accepted) return;
 
-        resetDraft();
-        document.getElementById("consumer-name").focus();
-      });
+          resetDraft();
+          document.getElementById("consumer-name").focus();
+        }
+      );
 
       form.addEventListener("submit", event => {
         updateDocument();
@@ -1372,8 +1344,10 @@
           !requestId.value
         ) {
           event.preventDefault();
+
           feedback.textContent =
             "Revisa los campos y completa la verificación de seguridad.";
+
           return;
         }
 
@@ -1384,10 +1358,11 @@
           submittedSnapshot !== current
         ) {
           event.preventDefault();
+
           feedback.textContent =
             "Los datos cambiaron después del intento. " +
-            "Revisa la constancia anterior antes de iniciar " +
-            "un formulario nuevo.";
+            "Revisa la constancia anterior antes de iniciar un formulario nuevo.";
+
           return;
         }
 
@@ -1400,6 +1375,7 @@
           });
 
         confirmation.setAttribute("aria-disabled", "true");
+
         busy = true;
         updateButton();
 
@@ -1416,11 +1392,12 @@
         }, 1500);
 
         // El navegador realiza el POST.
-        // La confirmación del registro corresponde al servidor.
+        // El registro se confirma únicamente en la respuesta del servidor.
       });
 
       window.addEventListener("pagehide", resetDraft);
       window.addEventListener("pageshow", resetDraft);
+
       resetDraft();
     })();
   </script>
