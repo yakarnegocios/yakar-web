@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1B3A6B">
+  <meta name="robots" content="noindex, nofollow">
+
+  <title>Libro de Reclamaciones | YAKAR</title>
+  <meta
+    name="description"
+    content="Un espacio para escuchar tu experiencia y atender tus reclamos y quejas."
+  >
+
+  <link rel="stylesheet" href="css/styles.css">
+
+  <style>
+    .complaints-page {
+      max-width: 900px;
+      padding-block: 48px 64px;
+    }
+
+    .complaints-page h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      line-height: 1.12;
+      margin-bottom: 20px;
+    }
+
+    .complaints-page h2 {
+      font-size: 1.25rem;
+      line-height: 1.35;
+    }
+
+    .complaints-intro {
+      max-width: 680px;
+      margin-bottom: 28px;
+    }
+
+    .complaints-status {
+      padding: 18px 20px;
+      background: #f4f6f8;
+      border-left: 3px solid #1B3A6B;
+      margin-bottom: 28px;
+    }
+
+    .complaints-status p {
+      margin: 6px 0 0;
+    }
+
+    .complaints-provider {
+      padding: 20px;
+      border: 1px solid #dce1e7;
+      margin-bottom: 24px;
+    }
+
+    .complaints-provider p {
+      margin-bottom: 0;
+    }
+
+    .complaints-form fieldset {
+      min-width: 0;
+      margin: 0 0 24px;
+      padding: 24px;
+      border: 1px solid #dce1e7;
+    }
+
+    .complaints-form legend {
+      padding-inline: 8px;
+      color: #1B3A6B;
+      font-weight: 700;
+    }
+
+    .complaints-form .formgrid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .complaints-form .full {
+      grid-column: 1 / -1;
+    }
+
+    .complaints-choice {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 14px;
+      border: 1px solid #dce1e7;
+      cursor: pointer;
+    }
+
+    .complaints-choice input {
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+
+    .complaints-choice strong,
+    .complaints-choice small {
+      display: block;
+    }
+
+    .complaints-choice small {
+      margin-top: 4px;
+      color: #596273;
+    }
+
+    .complaints-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-block: 18px;
+    }
+
+    .complaints-check input {
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+
+    .complaints-note {
+      font-size: .85rem;
+      color: #596273;
+    }
+
+    .complaints-feedback {
+      min-height: 1.6em;
+      color: #1B3A6B;
+      font-size: .85rem;
+    }
+
+    .complaints-submit:disabled {
+      cursor: not-allowed;
+      opacity: .6;
+    }
+
+    .complaints-footer {
+      padding: 24px 0;
+      border-top: 1px solid #dce1e7;
+      font-size: .85rem;
+    }
+
+    @media (max-width: 600px) {
+      .complaints-form .formgrid {
+        grid-template-columns: 1fr;
+      }
+
+      .complaints-form fieldset {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+
+  <header class="header">
+    <div class="wrap nav">
+      <a class="brand-image" href="index.html" aria-label="YAKAR, inicio">
+        <span class="brand-crop" aria-hidden="true">
+          <img
+            src="assets/yakar-identidad.png"
+            width="1448"
+            height="1086"
+            alt=""
+          >
+        </span>
+      </a>
+
+      <a class="quiet-link" href="index.html">
+        Volver a YAKAR
+      </a>
+    </div>
+  </header>
+
+  <main id="contenido" class="wrap complaints-page">
+    <div class="complaints-intro">
+      <p class="eyebrow">Libro de Reclamaciones</p>
+
+      <h1>Tu experiencia importa.<br>Queremos escucharte.</h1>
+
+      <p>
+        Si algo no salió como esperabas, cuéntanos qué ocurrió
+        y qué solución solicitas. Revisaremos tu caso con atención.
+        Escucharte también nos ayuda a mejorar.
+      </p>
+    </div>
+
+    <section
+      class="complaints-status"
+      id="complaints-status"
+      aria-labelledby="status-title"
+    >
+      <strong id="status-title">Estamos preparando este canal.</strong>
+      <p>
+        El registro virtual aún no está habilitado.
+        Este formulario no guarda ni envía información.
+        No se generará una constancia de presentación.
+      </p>
+      <p>
+        Para comunicarte con YAKAR:
+        <a href="mailto:negocios.yakar@gmail.com">
+          negocios.yakar@gmail.com
+        </a>
+        ·
+        <a
+          href="https://wa.me/51973669004"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          +51 973 669 004
+        </a>.
+      </p>
+    </section>
+
+    <section class="complaints-provider" aria-label="Identificación de YAKAR">
+      <h2>Yakar Negocios E.I.R.L.</h2>
+      <p>
+        RUC 20612733261<br>
+        La Victoria, Lima, Perú
+      </p>
+      <!--
+        Antes de activar el registro, incorporar la dirección completa
+        y confirmada del establecimiento responsable del Libro.
+      -->
+    </section>
+
+    <p class="complaints-note">
+      Vista previa del formulario. Los campos con * serán obligatorios.
+      No ingreses datos reales mientras el registro esté deshabilitado.
+    </p>
+
+    <form
+      id="complaint-form"
+      class="complaints-form"
+      autocomplete="on"
+      aria-describedby="complaints-status"
+    >
+      <fieldset>
+        <legend>1. Tus datos</legend>
+
+        <div class="formgrid">
+          <div class="field full">
+            <label for="complainant-name">Nombres y apellidos *</label>
+            <input
+              id="complainant-name"
+              name="complainantName"
+              type="text"
+              autocomplete="name"
+              maxlength="200"
+              required
+            >
+          </div>
+
+          <div class="field">
+            <label for="document-type">Tipo de documento *</label>
+            <select id="document-type" name="documentType" required>
+              <option value="">Selecciona una opción</option>
+              <option value="DNI">DNI</option>
+              <option value="CE">Carné de extranjería</option>
+              <option value="PASAPORTE">Pasaporte</option>
+              <option value="OTRO">Otro documento</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="document-number">Número de documento *</label>
+            <input
+              id="document-number"
+              name="documentNumber"
+              type="text"
+              maxlength="30"
+              required
+            >
+          </div>
+
+          <div class="field full">
+            <label for="complainant-address">Domicilio completo *</label>
+            <input
+              id="complainant-address"
+              name="complainantAddress"
+              type="text"
+              autocomplete="street-address"
+              maxlength="400"
+              required
+            >
+          </div>
+
+          <div class="field">
+            <label for="complainant-email">Correo electrónico</label>
+            <input
+              id="complainant-email"
+              name="complainantEmail"
+              type="email"
+              autocomplete="email"
+              maxlength="254"
+            >
+          </div>
+
+          <div class="field">
+            <label for="complainant-phone">Teléfono</label>
+            <input
+              id="complainant-phone"
+              name="complainantPhone"
+              type="tel"
+              autocomplete="tel"
+              maxlength="40"
+            >
+          </div>
+
+          <div class="field full">
+            <label for="response-channel">¿Cómo prefieres recibir la respuesta? *</label>
+            <select id="response-channel" name="responseChannel" required>
+              <option value="">Selecciona una opción</option>
+              <option value="EMAIL">Correo electrónico</option>
+              <option value="ADDRESS">Comunicación escrita a mi domicilio</option>
+            </select>
+          </div>
+        </div>
+
+        <label class="complaints-check">
+          <input id="is-minor" name="isMinor" type="checkbox">
+          <span>El consumidor es menor de edad.</span>
+        </label>
+
+        <div id="guardian-fields" hidden>
+          <h2>Datos del padre, madre o representante</h2>
+
+          <div class="formgrid">
+            <div class="field full">
+              <label for="guardian-name">Nombres y apellidos *</label>
+              <input
+                id="guardian-name"
+                name="guardianName"
+                type="text"
+                maxlength="200"
+                disabled
+              >
+            </div>
+
+            <div class="field full">
+              <label for="guardian-address">Domicilio completo *</label>
+              <input
+                id="guardian-address"
+                name="guardianAddress"
+                type="text"
+                maxlength="400"
+                disabled
+              >
+            </div>
+
+            <div class="field">
+              <label for="guardian-phone">Teléfono</label>
+              <input
+                id="guardian-phone"
+                name="guardianPhone"
+                type="tel"
+                maxlength="40"
+                disabled
+              >
+            </div>
+
+            <div class="field">
+              <label for="guardian-email">Correo electrónico</label>
+              <input
+                id="guardian-email"
+                name="guardianEmail"
+                type="email"
+                maxlength="254"
+                disabled
+              >
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>2. Producto o servicio</legend>
+
+        <div class="formgrid">
+          <div class="field">
+            <label for="item-type">¿Con qué se relaciona tu caso? *</label>
+            <select id="item-type" name="itemType" required>
+              <option value="">Selecciona una opción</option>
+              <option value="PRODUCTO">Producto</option>
+              <option value="SERVICIO">Servicio</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="operation-reference">Referencia de la operación (opcional)</label>
+            <input
+              id="operation-reference"
+              name="operationReference"
+              type="text"
+              maxlength="150"
+              placeholder="Cotización, pedido, contrato o comprobante"
+            >
+          </div>
+
+          <div class="field">
+            <label for="claimed-amount">Monto reclamado (si corresponde)</label>
+            <input
+              id="claimed-amount"
+              name="claimedAmount"
+              type="number"
+              min="0"
+              step="0.01"
+              inputmode="decimal"
+            >
+          </div>
+
+          <div class="field">
+            <label for="currency">Moneda</label>
+            <select id="currency" name="currency">
+              <option value="PEN">Soles — PEN</option>
+              <option value="USD">Dólares — USD</option>
+              <option value="OTRA">Otra moneda</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <label for="item-description">Describe el producto o servicio *</label>
+            <textarea
+              id="item-description"
+              name="itemDescription"
+              rows="3"
+              maxlength="3000"
+              required
+            ></textarea>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>3. Tu reclamo o queja</legend>
+
+        <div class="formgrid">
+          <label class="complaints-choice">
+            <input type="radio" name="caseType" value="RECLAMO" required>
+            <span>
+              <strong>Reclamo</strong>
+              <small>
+                Disconformidad relacionada con un producto o servicio.
+              </small>
+            </span>
+          </label>
+
+          <label class="complaints-choice">
+            <input type="radio" name="caseType" value="QUEJA" required>
+            <span>
+              <strong>Queja</strong>
+              <small>
+                Disconformidad con la atención, sin relación directa
+                con el producto o servicio.
+              </small>
+            </span>
+          </label>
+
+          <div class="field full">
+            <label for="case-detail">¿Qué ocurrió? *</label>
+            <textarea
+              id="case-detail"
+              name="caseDetail"
+              rows="6"
+              maxlength="12000"
+              aria-describedby="original-writing-note writing-feedback"
+              data-original-writing
+              required
+            ></textarea>
+            <small id="original-writing-note" class="field-hint">
+              Describe los hechos, las fechas y las personas involucradas,
+              si las conoces. En este campo debes escribir directamente:
+              copiar, pegar y arrastrar texto están deshabilitados.
+            </small>
+          </div>
+
+          <div class="field full">
+            <label for="requested-action">¿Qué solución solicitas? *</label>
+            <textarea
+              id="requested-action"
+              name="requestedAction"
+              rows="4"
+              maxlength="6000"
+              aria-describedby="request-writing-note writing-feedback"
+              data-original-writing
+              required
+            ></textarea>
+            <small id="request-writing-note" class="field-hint">
+              Indica el resultado que solicitas. Escribe directamente
+              en este campo.
+            </small>
+          </div>
+        </div>
+
+        <p
+          id="writing-feedback"
+          class="complaints-feedback"
+          role="status"
+          aria-live="polite"
+        ></p>
+      </fieldset>
+
+      <fieldset>
+        <legend>4. Revisión y presentación</legend>
+
+        <label class="complaints-check">
+          <input
+            id="complaint-confirmation"
+            name="confirmation"
+            type="checkbox"
+            required
+          >
+          <span>
+            He revisado la información y estoy conforme con el contenido
+            de mi reclamo o queja.
+          </span>
+        </label>
+
+        <p class="complaints-note">
+          Los datos se utilizarán para atender el caso y cumplir las
+          obligaciones aplicables. La presentación no estará condicionada
+          a recibir publicidad ni a aceptar comunicaciones comerciales.
+        </p>
+
+        <button
+          id="complaint-submit"
+          class="btn complaints-submit"
+          type="submit"
+          disabled
+          aria-describedby="registration-note"
+        >
+          Registro virtual aún no disponible
+        </button>
+
+        <p id="registration-note" class="complaints-note">
+          Cuando habilitemos este canal, la confirmación de recepción
+          incluirá el número de hoja y una copia de la información presentada.
+        </p>
+      </fieldset>
+    </form>
+
+    <section aria-labelledby="after-registration-title">
+      <h2 id="after-registration-title">Qué ocurrirá después del registro</h2>
+      <p>
+        Recibirás una constancia, revisaremos la información y responderemos
+        por escrito mediante el canal que hayas elegido, dentro del plazo
+        máximo de 15 días hábiles.
+      </p>
+
+      <p class="complaints-note">
+        La presentación de un reclamo no impide acudir a otras vías
+        de solución de controversias ni constituye requisito previo
+        para presentar una denuncia ante Indecopi.
+      </p>
+
+      <a
+        class="quiet-link"
+        href="https://consumidor.gob.pe/libro-de-reclamaciones/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Información oficial sobre el Libro de Reclamaciones →
+      </a>
+    </section>
+  </main>
+
+  <footer class="complaints-footer">
+    <div class="wrap">
+      <p>
+        <strong>Yakar Negocios E.I.R.L.</strong>
+        · RUC 20612733261
+      </p>
+      <a href="index.html">Volver a la página principal</a>
+    </div>
+  </footer>
+
+  <script>
+    "use strict";
+
+    (() => {
+      const form = document.getElementById("complaint-form");
+      const minorCheckbox = document.getElementById("is-minor");
+      const guardianFields = document.getElementById("guardian-fields");
+      const feedback = document.getElementById("writing-feedback");
+
+      function updateGuardianFields() {
+        const isMinor = minorCheckbox.checked;
+        guardianFields.hidden = !isMinor;
+
+        guardianFields.querySelectorAll("input").forEach((input) => {
+          input.disabled = !isMinor;
+          input.required = isMinor && (
+            input.name === "guardianName" ||
+            input.name === "guardianAddress"
+          );
+        });
+      }
+
+      minorCheckbox.addEventListener("change", updateGuardianFields);
+      updateGuardianFields();
+
+      function explainWritingRestriction(event) {
+        event.preventDefault();
+        feedback.textContent =
+          "En los campos de relato y solución debes escribir directamente. " +
+          "Si necesitas ayuda para completar la información, comunícate con YAKAR.";
+      }
+
+      document.querySelectorAll("[data-original-writing]").forEach((field) => {
+        field.addEventListener("paste", explainWritingRestriction);
+        field.addEventListener("copy", explainWritingRestriction);
+        field.addEventListener("cut", explainWritingRestriction);
+        field.addEventListener("drop", explainWritingRestriction);
+
+        field.addEventListener("beforeinput", (event) => {
+          if (
+            event.inputType === "insertFromPaste" ||
+            event.inputType === "insertFromDrop"
+          ) {
+            explainWritingRestriction(event);
+          }
+        });
+
+        field.addEventListener("input", () => {
+          feedback.textContent = "";
+        });
+      });
+
+      // Protección de esta etapa de preparación:
+      // no hay conexión de recepción, almacenamiento ni envío.
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        document.getElementById("registration-note").textContent =
+          "El registro virtual aún no está habilitado. " +
+          "No se ha enviado ni guardado información.";
+      });
+    })();
+  </script>
+</body>
+</html>
