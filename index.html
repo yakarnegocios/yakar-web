@@ -35,6 +35,14 @@
   <script src="js/main.js" defer></script>
 
   <style>
+    .commercial .assurance{background:#1B3A6B;color:#fff;padding:28px 30px;margin-top:28px;margin-bottom:28px;border:0;gap:24px}
+    .commercial .assurance strong{color:#fff;font-size:1.25rem;line-height:1.3}
+    .commercial .assurance small{color:#dce8f8;font-size:.95rem;margin-top:10px;line-height:1.5}
+    .commercial .assurance>div{border-left:2px solid #8faed4;padding-left:20px}
+    .commercial .solution-card-v5 h3{min-height:3.6em}
+    .commercial .route-lit{visibility:hidden}
+    .commercial .route-reached-v6{fill:none;stroke:#d8e7ff;stroke-width:3;vector-effect:non-scaling-stroke}
+    @media(max-width:760px){.commercial .solution-card-v5 h3{min-height:0}.commercial .assurance{padding:24px;gap:24px}}
     /* Evolución local de portada; compatible con los archivos compartidos. */
     .commercial .solutions-grid-v5{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:40px 0 24px}
     .commercial .solution-card-v5{display:flex;flex-direction:column;min-width:0;padding:30px 26px;background:#edf2f6;border-top:4px solid #1B3A6B}
@@ -170,19 +178,19 @@
         <div>
           <span>
             <strong>Alcance claro</strong>
-            <small>Entender antes de proponer.</small>
+            <small>Precisamos qué incluye tu requerimiento.</small>
           </span>
         </div>
         <div>
           <span>
             <strong>Condiciones acordadas</strong>
-            <small>Decidir con información.</small>
+            <small>Confirmamos precio, plazo y condiciones.</small>
           </span>
         </div>
         <div>
           <span>
             <strong>Seguimiento definido</strong>
-            <small>Responsables y próximos pasos.</small>
+            <small>Acordamos responsables y próximos pasos.</small>
           </span>
         </div>
       </div>
@@ -875,39 +883,40 @@
   </div>
 
 <script>
-/* Raccorde la courbe aux centres réels des cinq hitos, même après redimensionnement. */
 document.addEventListener('DOMContentLoaded', () => {
   const map = document.querySelector('.route-map');
   const svg = map?.querySelector('.route-connector');
   const dots = [...(map?.querySelectorAll('.milestone-dot') || [])];
   const buttons = [...(map?.querySelectorAll('.roadmap-track button') || [])];
   const base = svg?.querySelector('.route-base');
-  const lit = svg?.querySelector('.route-lit');
-  if (!base || !lit || dots.length !== 5) return;
-  let distances = [];
+  if (!base || dots.length !== 5) return;
+  const reached = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  reached.setAttribute('class', 'route-reached-v6');
+  svg.append(reached);
+  let prefixes = [];
   function paint() {
     const index = Math.max(0, buttons.findIndex(button => button.classList.contains('active')));
-    const value = distances[index] ?? 0;
-    const dash = `${value} 1000`;
-    if (lit.getAttribute('stroke-dasharray') !== dash) lit.setAttribute('stroke-dasharray', dash);
+    reached.setAttribute('d', prefixes[index] || '');
   }
   function layout() {
-    if (!svg.getBoundingClientRect().width) return;
     const rect = svg.getBoundingClientRect();
-    const points = dots.map(dot => { const r = dot.getBoundingClientRect(); return {x:(r.left+r.width/2-rect.left)*1000/rect.width,y:(r.top+r.height/2-rect.top)*80/rect.height}; });
+    if (!rect.width || !rect.height) return;
+    const points = dots.map(dot => {
+      const r = dot.getBoundingClientRect();
+      return {x:(r.left+r.width/2-rect.left)*1000/rect.width,y:(r.top+r.height/2-rect.top)*80/rect.height};
+    });
     let d = `M${points[0].x} ${points[0].y}`;
-    const lengths = [0];
+    prefixes = [d];
     for (let i=1;i<points.length;i++) {
       const p=points[i-1], q=points[i], mid=(p.x+q.x)/2;
       d += ` C${mid} ${p.y} ${mid} ${q.y} ${q.x} ${q.y}`;
-      base.setAttribute('d',d); lengths.push(base.getTotalLength());
+      prefixes.push(d);
     }
-    lit.setAttribute('d',d);
-    distances = lengths.map(length => length/lengths[4]*1000);
+    base.setAttribute('d',d);
     paint();
   }
-  new MutationObserver(paint).observe(lit,{attributes:true,attributeFilter:['stroke-dasharray']});
-  buttons.forEach(button => new MutationObserver(paint).observe(button,{attributes:true,attributeFilter:['class']}));
+  const observer = new MutationObserver(paint);
+  buttons.forEach(button => observer.observe(button,{attributes:true,attributeFilter:['class']}));
   new ResizeObserver(layout).observe(map);
   document.fonts.ready.then(layout);
   layout();
