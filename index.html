@@ -35,36 +35,264 @@
   <script src="js/main.js" defer></script>
 
   <style>
-    .commercial .assurance{background:#1B3A6B;color:#fff;padding:28px 30px;margin-top:28px;margin-bottom:28px;border:0;gap:24px}
-    .commercial .assurance strong{color:#fff;font-size:1.25rem;line-height:1.3}
-    .commercial .assurance small{color:#dce8f8;font-size:.95rem;margin-top:10px;line-height:1.5}
-    .commercial .assurance>div{border-left:2px solid #8faed4;padding-left:20px}
-    .commercial .solution-card-v5 h3{min-height:3.6em}
-    .commercial .route-lit{visibility:hidden}
-    .commercial .route-reached-v6{fill:none;stroke:#d8e7ff;stroke-width:3;vector-effect:non-scaling-stroke}
-    @media(max-width:760px){.commercial .solution-card-v5 h3{min-height:0}.commercial .assurance{padding:24px;gap:24px}}
-    /* Evolución local de portada; compatible con los archivos compartidos. */
-    .commercial .solutions-grid-v5{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:40px 0 24px}
-    .commercial .solution-card-v5{display:flex;flex-direction:column;min-width:0;padding:30px 26px;background:#edf2f6;border-top:4px solid #1B3A6B}
-    .commercial .solution-top-v5{display:flex;align-items:center;gap:16px;margin-bottom:28px;color:#1B3A6B}
-    .commercial .solution-top-v5>span{font-size:2.3rem;line-height:1;font-weight:400}
-    .commercial .solution-top-v5>p{margin:0;font-size:.75rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase}
-    .commercial .solution-card-v5 h3{font-size:1.8rem;line-height:1.2;margin:0 0 20px;color:#1B3A6B}
-    .commercial .solution-description-v5{font-size:1rem;line-height:1.7;margin:0 0 22px}
-    .commercial .solution-examples-v5{font-size:.86rem;line-height:1.7;border-top:1px solid #cad5e0;padding-top:18px;margin:0 0 28px}
-    .commercial .solution-card-v5 .btn{margin-top:auto;align-self:flex-start;white-space:normal;text-align:left}
-    .commercial .footer-grid-v4{grid-template-columns:1.2fr 1fr 1fr;grid-template-rows:auto auto;column-gap:60px;row-gap:32px;align-items:start}
-    .commercial .footer-grid-v4>section:first-child{grid-column:1;grid-row:1 / span 2}
-    .commercial .footer-grid-v4>nav{grid-column:2;grid-row:2}
-    .commercial .footer-grid-v4>.footer-contact-v4{grid-column:3;grid-row:2}
-    .commercial .footer-grid-v4:before{content:"";grid-column:2 / span 2;grid-row:1;min-height:68px}
-    .commercial .footer-grid-v4 h2{margin-top:0}
-    .commercial .footer-nx-v5{margin-top:42px;padding:24px 0;color:#b8c4d5;max-width:700px}
-    .commercial .footer-nx-v5 strong{color:#fff;font-size:.9rem}
-    .commercial .footer-nx-v5 p{margin:8px 0 0;font-size:.9rem;line-height:1.6}
-    @media(max-width:1000px){.commercial .solutions-grid-v5{gap:16px}.commercial .solution-card-v5{padding:24px 20px}.commercial .solution-card-v5 h3{font-size:1.5rem}.commercial .footer-grid-v4{column-gap:28px}}
-    @media(max-width:760px){.commercial .solutions-grid-v5{grid-template-columns:1fr}.commercial .solution-top-v5{margin-bottom:20px}.commercial .footer-grid-v4{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto auto;gap:32px 24px}.commercial .footer-grid-v4>section:first-child{grid-column:1 / -1;grid-row:1}.commercial .footer-grid-v4>nav{grid-column:1;grid-row:2}.commercial .footer-grid-v4>.footer-contact-v4{grid-column:2;grid-row:2}.commercial .footer-grid-v4:before{display:none}.commercial .footer-contact-v4 a{overflow-wrap:anywhere}}
-    @media(max-width:420px){.commercial .footer-grid-v4{grid-template-columns:1fr}.commercial .footer-grid-v4>.footer-contact-v4{grid-column:1;grid-row:3}}
+    .commercial .assurance {
+      background: #1B3A6B;
+      color: #fff;
+      padding: 28px 30px;
+      margin-top: 28px;
+      margin-bottom: 28px;
+      border: 0;
+      gap: 24px;
+    }
+
+    .commercial .assurance strong {
+      color: #fff;
+      font-size: 1.25rem;
+      line-height: 1.3;
+    }
+
+    .commercial .assurance small {
+      color: #dce8f8;
+      font-size: .95rem;
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    .commercial .assurance > div {
+      border-left: 2px solid #8faed4;
+      padding-left: 20px;
+    }
+
+    .commercial .route-lit {
+      visibility: hidden;
+    }
+
+    .commercial .route-reached-v6 {
+      fill: none;
+      stroke: #d8e7ff;
+      stroke-width: 3;
+      vector-effect: non-scaling-stroke;
+    }
+
+    .commercial .solutions-grid-v5 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      margin: 40px 0 24px;
+    }
+
+    .commercial .solution-card-v5 {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      padding: 30px 26px;
+      background: #edf2f6;
+      border-top: 4px solid #1B3A6B;
+    }
+
+    .commercial .solution-top-v5 {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+      color: #1B3A6B;
+    }
+
+    .commercial .solution-top-v5 > span {
+      font-size: 2.3rem;
+      line-height: 1;
+      font-weight: 400;
+    }
+
+    .commercial .solution-top-v5 > p {
+      margin: 0;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .commercial .solution-card-v5 h3 {
+      min-height: 3.6em;
+      font-size: 1.8rem;
+      line-height: 1.2;
+      margin: 0 0 20px;
+      color: #1B3A6B;
+    }
+
+    .commercial .solution-description-v5 {
+      font-size: 1rem;
+      line-height: 1.7;
+      margin: 0 0 22px;
+    }
+
+    .commercial .solution-examples-v5 {
+      font-size: .86rem;
+      line-height: 1.7;
+      border-top: 1px solid #cad5e0;
+      padding-top: 18px;
+      margin: 0 0 28px;
+    }
+
+    .commercial .solution-card-v5 .btn {
+      margin-top: auto;
+      align-self: flex-start;
+      white-space: normal;
+      text-align: left;
+    }
+
+    .commercial .footer-contact-v4 a {
+      overflow-wrap: anywhere;
+    }
+
+    .commercial .footer-v7 {
+      padding-top: 28px;
+    }
+
+    .commercial .footer-v7 .footer-grid-v4 {
+      grid-template-columns: 1.2fr 1fr 1fr;
+      grid-template-rows: auto;
+      gap: 24px 40px;
+      padding-bottom: 0;
+      align-items: start;
+    }
+
+    .commercial .footer-v7 .footer-grid-v4 > section:first-child {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .commercial .footer-v7 .footer-grid-v4 > nav {
+      grid-column: 2;
+      grid-row: 1;
+      padding-top: 70px;
+      gap: 7px;
+    }
+
+    .commercial .footer-v7 .footer-grid-v4 > .footer-contact-v4 {
+      grid-column: 3;
+      grid-row: 1;
+      padding-top: 70px;
+    }
+
+    .commercial .footer-v7 .footer-grid-v4::before {
+      display: none;
+    }
+
+    .commercial .footer-v7 .footer-wordmark {
+      margin-bottom: 10px;
+    }
+
+    .commercial .footer-v7 .footer-motto {
+      margin: 8px 0 14px;
+    }
+
+    .commercial .footer-v7 .footer-identity {
+      font-size: .8rem;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .commercial .footer-v7 .footer-grid-v4 h2 {
+      margin: 0 0 8px;
+    }
+
+    .commercial .footer-v7 .footer-contact-v4 > a {
+      margin-bottom: 10px;
+    }
+
+    .commercial .footer-v7 .footer-nx-v5 {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 6px 18px;
+      max-width: none;
+      margin-top: 20px;
+      padding: 12px 0;
+      color: #c5d2e5;
+    }
+
+    .commercial .footer-v7 .footer-nx-v5 strong {
+      font-size: .8rem;
+      color: #fff;
+    }
+
+    .commercial .footer-v7 .footer-nx-v5 p {
+      margin: 0;
+      font-size: .8rem;
+      color: #c5d2e5;
+      line-height: 1.5;
+    }
+
+    .commercial .footer-v7 .footer-base-v4 {
+      padding-block: 14px;
+    }
+
+    @media (max-width: 1000px) {
+      .commercial .solutions-grid-v5 {
+        gap: 16px;
+      }
+
+      .commercial .solution-card-v5 {
+        padding: 24px 20px;
+      }
+
+      .commercial .solution-card-v5 h3 {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .commercial .assurance {
+        padding: 24px;
+        gap: 24px;
+      }
+
+      .commercial .solutions-grid-v5 {
+        grid-template-columns: 1fr;
+      }
+
+      .commercial .solution-top-v5 {
+        margin-bottom: 20px;
+      }
+
+      .commercial .solution-card-v5 h3 {
+        min-height: 0;
+      }
+
+      .commercial .footer-v7 .footer-grid-v4 {
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+
+      .commercial .footer-v7 .footer-grid-v4 > section:first-child {
+        grid-column: 1 / -1;
+        grid-row: 1;
+      }
+
+      .commercial .footer-v7 .footer-grid-v4 > nav {
+        grid-column: 1;
+        grid-row: 2;
+        padding-top: 0;
+      }
+
+      .commercial .footer-v7 .footer-grid-v4 > .footer-contact-v4 {
+        grid-column: 2;
+        grid-row: 2;
+        padding-top: 0;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .commercial .footer-v7 .footer-grid-v4 {
+        grid-template-columns: 1fr;
+      }
+
+      .commercial .footer-v7 .footer-grid-v4 > .footer-contact-v4 {
+        grid-column: 1;
+        grid-row: 3;
+      }
+    }
   </style>
 </head>
 
@@ -153,20 +381,20 @@
 
           <div class="cover-right">
             <figure class="fabric-photo">
-  <img
-    src="assets/operacion-yakar.png"
-    width="1536"
-    height="1024"
-    alt="Escena ilustrativa de dos profesionales revisando un equipo industrial con apoyo de una tableta"
-    fetchpriority="high"
-    decoding="async"
-  >
-  <figcaption>
-    <span>PRODUCTOS, SERVICIOS Y PROYECTOS</span>
-    <strong>Entender tu operación. Cuidar cada detalle.</strong>
-    <small>Escena ilustrativa · generada con IA</small>
-  </figcaption>
-</figure>
+              <img
+                src="assets/operacion-yakar.png"
+                width="1536"
+                height="1024"
+                alt="Escena ilustrativa de dos profesionales revisando un equipo industrial con apoyo de una tableta"
+                fetchpriority="high"
+                decoding="async"
+              >
+              <figcaption>
+                <span>PRODUCTOS, SERVICIOS Y PROYECTOS</span>
+                <strong>Entender tu operación. Cuidar cada detalle.</strong>
+                <small>Escena ilustrativa · generada con IA</small>
+              </figcaption>
+            </figure>
           </div>
         </div>
       </section>
@@ -236,25 +464,82 @@
 
           <div class="solutions-grid-v5">
             <article class="solution-card-v5" id="productos">
-              <div class="solution-top-v5"><span aria-hidden="true">01</span><p>Productos y suministros</p></div>
+              <div class="solution-top-v5">
+                <span aria-hidden="true">01</span>
+                <p>Productos y suministros</p>
+              </div>
+
               <h3>Equipa tu operación.</h3>
-              <p class="solution-description-v5">Uniformes, tecnología y suministros seleccionados según el uso, las especificaciones y las condiciones de entrega.</p>
-              <p class="solution-examples-v5">Uniformes industriales y personalizados · PC y estaciones de trabajo · Cámaras y equipos audiovisuales · Seguridad y ferretería.</p>
-              <a class="btn" href="#requerimiento" data-request-family="Productos y suministros">Consultar productos</a>
+
+              <p class="solution-description-v5">
+                Uniformes, tecnología y suministros seleccionados según el uso,
+                las especificaciones y las condiciones de entrega.
+              </p>
+
+              <p class="solution-examples-v5">
+                Uniformes industriales y personalizados · PC y estaciones de
+                trabajo · Cámaras y equipos audiovisuales · Seguridad y ferretería.
+              </p>
+
+              <a
+                class="btn"
+                href="#requerimiento"
+                data-request-family="Productos y suministros"
+              >
+                Consultar productos
+              </a>
             </article>
+
             <article class="solution-card-v5" id="servicios">
-              <div class="solution-top-v5"><span aria-hidden="true">02</span><p>Servicios industriales</p></div>
+              <div class="solution-top-v5">
+                <span aria-hidden="true">02</span>
+                <p>Servicios industriales</p>
+              </div>
+
               <h3>Cuida y mejora tu operación.</h3>
-              <p class="solution-description-v5">Evaluación de mantenimiento de equipos y diagnóstico de procesos, con alcance, responsables y entregables definidos.</p>
-              <p class="solution-examples-v5">Equipos industriales · Procesos operativos.</p>
-              <a class="btn" href="#requerimiento" data-request-family="Servicios">Consultar un servicio</a>
+
+              <p class="solution-description-v5">
+                Evaluación de mantenimiento de equipos y diagnóstico de procesos,
+                con alcance, responsables y entregables definidos.
+              </p>
+
+              <p class="solution-examples-v5">
+                Equipos industriales · Procesos operativos.
+              </p>
+
+              <a
+                class="btn"
+                href="#requerimiento"
+                data-request-family="Servicios"
+              >
+                Consultar un servicio
+              </a>
             </article>
+
             <article class="solution-card-v5" id="proyectos">
-              <div class="solution-top-v5"><span aria-hidden="true">03</span><p>Proyectos</p></div>
+              <div class="solution-top-v5">
+                <span aria-hidden="true">03</span>
+                <p>Proyectos</p>
+              </div>
+
               <h3>Dale estructura al siguiente paso.</h3>
-              <p class="solution-description-v5">Evaluamos requerimientos para definir su alcance, condiciones y viabilidad de atención.</p>
-              <p class="solution-examples-v5">Estructuras metálicas · Infraestructura vial · Espacios públicos.</p>
-              <a class="btn" href="#requerimiento" data-request-family="Proyectos">Conversar sobre un proyecto</a>
+
+              <p class="solution-description-v5">
+                Evaluamos requerimientos para definir su alcance, condiciones
+                y viabilidad de atención.
+              </p>
+
+              <p class="solution-examples-v5">
+                Estructuras metálicas · Infraestructura vial · Espacios públicos.
+              </p>
+
+              <a
+                class="btn"
+                href="#requerimiento"
+                data-request-family="Proyectos"
+              >
+                Conversar sobre un proyecto
+              </a>
             </article>
           </div>
 
@@ -401,7 +686,7 @@
               Ideas y consejos para cuidar tu operación y decidir con más claridad.<br>
               <strong>
                 Edición:
-                <time datetime="2026-10-03">3 de octubre de 2026</time>
+                <time datetime="2026-10-04">domingo 4 de octubre de 2026</time>
               </strong>
             </p>
           </div>
@@ -809,26 +1094,35 @@
       </section>
     </main>
 
-    <footer class="commercial-footer footer-v4">
+    <footer class="commercial-footer footer-v4 footer-v7">
       <div class="wrap">
         <div class="footer-grid-v4">
           <section aria-label="Identidad YAKAR">
             <span class="footer-wordmark">YAKAR</span>
             <p class="footer-motto">Cumplir es parte del producto.</p>
+
             <p class="footer-identity">
               <strong>Yakar Negocios E.I.R.L.</strong><br>
-              RUC 20612733261<br> RNP · Bienes y servicios<br> <a   href="https://www.rnp.gob.pe/constancia/rnp_constancia/consultaruc.asp"   target="_blank"   rel="noopener noreferrer" >   Consultar inscripción en el RNP → </a><br>
+              RUC 20612733261<br>
+              RNP · Bienes y servicios<br>
+              <a
+                href="https://www.rnp.gob.pe/constancia/rnp_constancia/consultaruc.asp"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Consultar inscripción en el RNP →
+              </a><br>
               La Victoria, Lima, Perú
             </p>
           </section>
 
           <nav aria-label="Explorar YAKAR">
             <h2>Explorar</h2>
-            <a href="#productos">Productos y suministros</a>
-            <a href="#servicios">Servicios</a>
-            <a href="#proyectos">Proyectos</a>
-            <a href="#metodo">Nuestro método</a>
-            <a href="#perspectiva">Perspectiva YAKAR</a>
+            <a href="index.html#productos">Productos y suministros</a>
+            <a href="index.html#servicios">Servicios</a>
+            <a href="index.html#proyectos">Proyectos</a>
+            <a href="index.html#metodo">Nuestro método</a>
+            <a href="index.html#perspectiva">Perspectiva YAKAR</a>
           </nav>
 
           <section class="footer-contact-v4" aria-label="Contacto comercial">
@@ -851,23 +1145,20 @@
                 <span>negocios.yakar@gmail.com</span>
               </span>
             </a>
-
-            <!-- Incorporar solo redes sociales oficiales confirmadas. -->
           </section>
         </div>
 
         <div class="footer-nx-v5">
           <strong>Filosofía NX · Netinho Xperience</strong>
-          <p>Entender tu necesidad, cuidar cada detalle y acompañar cada compromiso.</p>
+          <p>
+            Entender tu necesidad, cuidar cada detalle y acompañar cada compromiso.
+          </p>
         </div>
+
         <div class="footer-base-v4">
           <nav aria-label="Información y acceso">
-            <a href="privacidad.html">
-              Privacidad
-            </a>
-            <a href="reclamaciones.html">
-              Libro de Reclamaciones
-            </a>
+            <a href="privacidad.html">Privacidad</a>
+            <a href="reclamaciones.html">Libro de Reclamaciones</a>
             <a
               href="https://yakar-abastecimiento.ernesto-malasquez.chatgpt.site"
               target="_blank"
@@ -882,45 +1173,82 @@
     </footer>
   </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const map = document.querySelector('.route-map');
-  const svg = map?.querySelector('.route-connector');
-  const dots = [...(map?.querySelectorAll('.milestone-dot') || [])];
-  const buttons = [...(map?.querySelectorAll('.roadmap-track button') || [])];
-  const base = svg?.querySelector('.route-base');
-  if (!base || dots.length !== 5) return;
-  const reached = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-  reached.setAttribute('class', 'route-reached-v6');
-  svg.append(reached);
-  let prefixes = [];
-  function paint() {
-    const index = Math.max(0, buttons.findIndex(button => button.classList.contains('active')));
-    reached.setAttribute('d', prefixes[index] || '');
-  }
-  function layout() {
-    const rect = svg.getBoundingClientRect();
-    if (!rect.width || !rect.height) return;
-    const points = dots.map(dot => {
-      const r = dot.getBoundingClientRect();
-      return {x:(r.left+r.width/2-rect.left)*1000/rect.width,y:(r.top+r.height/2-rect.top)*80/rect.height};
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const map = document.querySelector('.route-map');
+      const svg = map?.querySelector('.route-connector');
+      const dots = [
+        ...(map?.querySelectorAll('.milestone-dot') || [])
+      ];
+      const buttons = [
+        ...(map?.querySelectorAll('.roadmap-track button') || [])
+      ];
+      const base = svg?.querySelector('.route-base');
+
+      if (!base || dots.length !== 5) return;
+
+      const reached = document.createElementNS(
+        'http://www.w3.org/2000/svg',
+        'path'
+      );
+
+      reached.setAttribute('class', 'route-reached-v6');
+      svg.append(reached);
+
+      let prefixes = [];
+
+      function paint() {
+        const index = Math.max(
+          0,
+          buttons.findIndex(button => button.classList.contains('active'))
+        );
+
+        reached.setAttribute('d', prefixes[index] || '');
+      }
+
+      function layout() {
+        const rect = svg.getBoundingClientRect();
+
+        if (!rect.width || !rect.height) return;
+
+        const points = dots.map(dot => {
+          const r = dot.getBoundingClientRect();
+
+          return {
+            x: (r.left + r.width / 2 - rect.left) * 1000 / rect.width,
+            y: (r.top + r.height / 2 - rect.top) * 80 / rect.height
+          };
+        });
+
+        let d = `M${points[0].x} ${points[0].y}`;
+        prefixes = [d];
+
+        for (let i = 1; i < points.length; i++) {
+          const p = points[i - 1];
+          const q = points[i];
+          const mid = (p.x + q.x) / 2;
+
+          d += ` C${mid} ${p.y} ${mid} ${q.y} ${q.x} ${q.y}`;
+          prefixes.push(d);
+        }
+
+        base.setAttribute('d', d);
+        paint();
+      }
+
+      const observer = new MutationObserver(paint);
+
+      buttons.forEach(button => {
+        observer.observe(button, {
+          attributes: true,
+          attributeFilter: ['class']
+        });
+      });
+
+      new ResizeObserver(layout).observe(map);
+      document.fonts.ready.then(layout);
+      layout();
     });
-    let d = `M${points[0].x} ${points[0].y}`;
-    prefixes = [d];
-    for (let i=1;i<points.length;i++) {
-      const p=points[i-1], q=points[i], mid=(p.x+q.x)/2;
-      d += ` C${mid} ${p.y} ${mid} ${q.y} ${q.x} ${q.y}`;
-      prefixes.push(d);
-    }
-    base.setAttribute('d',d);
-    paint();
-  }
-  const observer = new MutationObserver(paint);
-  buttons.forEach(button => observer.observe(button,{attributes:true,attributeFilter:['class']}));
-  new ResizeObserver(layout).observe(map);
-  document.fonts.ready.then(layout);
-  layout();
-});
-</script>
+  </script>
 </body>
 </html>
