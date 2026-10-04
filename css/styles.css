@@ -1753,6 +1753,10 @@ p {
   background-position: -272.8px -66.6px;
 
   /* Letras blancas sobre el fondo oscuro del footer. */
-  filter: grayscale(1) invert(1) contrast(8);
+  filter: grayscale(1) invert(1) brightness(1.5);
   mix-blend-mode: screen;
+}
+
+.footer-v4 .footer-grid-v4 > section:first-child > .small {
+  color: #b8c4d5;
 }
