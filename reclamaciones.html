@@ -8,10 +8,9 @@
   <meta name="robots" content="noindex, follow">
 
   <title>Libro de Reclamaciones | YAKAR</title>
-
   <meta
     name="description"
-    content="Libro de Reclamaciones de Yakar Negocios E.I.R.L. Información y formulario para presentar quejas y reclamos."
+    content="Libro de Reclamaciones de Yakar Negocios E.I.R.L. Canal virtual en preparación."
   >
 
   <link rel="stylesheet" href="css/styles.css">
@@ -29,33 +28,36 @@
       gap: 12px 24px;
       width: auto;
       padding: 0;
-      font-size: 0.875rem;
+      font-size: .875rem;
     }
 
     .book-navigation a {
+      min-height: 44px;
       display: inline-flex;
       align-items: center;
-      min-height: 44px;
       color: #1B3A6B;
       text-decoration: underline;
       text-underline-offset: 4px;
     }
 
-    .book-navigation .book-home {
-      font-weight: 600;
-    }
-
     .commercial .book-main {
       width: min(860px, calc(100% - 48px));
-      margin-inline: auto;
-      padding-block: 40px 48px;
+      margin: auto;
+      padding: 40px 0 48px;
     }
 
     .commercial .book-main h1 {
-      margin: 0 0 16px;
       font-size: clamp(1.9rem, 4.5vw, 2.75rem);
       line-height: 1.12;
-      letter-spacing: -0.035em;
+      letter-spacing: -.035em;
+      margin: 0 0 16px;
+    }
+
+    .book-main a {
+      color: #1B3A6B;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      overflow-wrap: anywhere;
     }
 
     .commercial .book-main .eyebrow {
@@ -66,57 +68,50 @@
       line-height: 1.65;
     }
 
-    .book-main a {
-      color: #1B3A6B;
-      text-decoration: underline;
-      text-underline-offset: 4px;
-      overflow-wrap: anywhere;
-    }
-
-    .book-intro {
+    .intro {
       max-width: 680px;
-      margin-bottom: 20px;
+      margin: 0 0 20px;
     }
 
-    .book-status {
+    .status {
       padding: 16px 18px;
-      margin-bottom: 20px;
       background: #F4F6F8;
       border-left: 3px solid #1B3A6B;
+      margin-bottom: 20px;
     }
 
-    .book-status strong {
+    .status strong {
       display: block;
       margin-bottom: 6px;
       color: #1B3A6B;
     }
 
-    .commercial .book-status p {
+    .commercial .status p {
+      font-size: .88rem;
       margin: 0 0 8px;
-      font-size: 0.88rem;
     }
 
-    .commercial .book-status p:last-child {
+    .commercial .status p:last-child {
       margin-bottom: 0;
     }
 
-    .book-provider {
+    .provider {
+      font-size: .85rem;
+      border-bottom: 1px solid #DCE1E7;
       padding-bottom: 16px;
       margin-bottom: 18px;
-      border-bottom: 1px solid #DCE1E7;
-      font-size: 0.85rem;
     }
 
-    .commercial .book-provider p {
+    .commercial .provider p {
       margin: 0;
     }
 
-    .commercial .book-main .book-draft-warning {
-      margin-bottom: 20px;
-      font-size: 0.83rem;
+    .draft-warning {
+      font-size: .83rem;
+      margin: 0 0 20px;
     }
 
-    .book-form fieldset {
+    #complaint-form fieldset {
       min-width: 0;
       padding: 18px 22px;
       margin: 0 0 20px;
@@ -124,39 +119,42 @@
       border-radius: 4px;
     }
 
-    .book-form legend {
-      padding-inline: 8px;
+    #complaint-form legend {
+      padding: 0 8px;
       color: #1B3A6B;
       font-size: 1rem;
       font-weight: 700;
     }
 
-    .book-grid {
+    #complaint-form .grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
     }
 
-    .book-field {
-      min-width: 0;
+    #complaint-form .field {
       display: flex;
       flex-direction: column;
       gap: 6px;
+      min-width: 0;
     }
 
-    .book-full {
+    #complaint-form .full {
       grid-column: 1 / -1;
     }
 
-    .book-field label {
-      font-size: 0.85rem;
-      font-weight: 700;
+    #complaint-form label {
+      font-size: .85rem;
       color: #172033;
     }
 
-    .book-field input,
-    .book-field select,
-    .book-field textarea {
+    #complaint-form .field label {
+      font-weight: 700;
+    }
+
+    #complaint-form .field input,
+    #complaint-form .field select,
+    #complaint-form .field textarea {
       width: 100%;
       min-width: 0;
       padding: 11px 12px;
@@ -168,73 +166,72 @@
       font-size: 1rem;
     }
 
-    .book-field textarea {
+    #complaint-form textarea {
       resize: vertical;
       line-height: 1.6;
     }
 
-    .book-field input[aria-invalid="true"] {
+    #complaint-form input[aria-invalid="true"] {
       border-color: #9C2C25;
     }
 
-    .commercial .book-main .book-help {
-      margin: 0;
+    .commercial .book-main .help {
+      font-size: .78rem;
       color: #596273;
-      font-size: 0.78rem;
+      margin: 0;
     }
 
-    .commercial .book-main .book-counter {
-      margin: 0;
+    .commercial .book-main .counter {
+      font-size: .75rem;
       color: #596273;
-      font-size: 0.75rem;
+      margin: 0;
       text-align: right;
       font-variant-numeric: tabular-nums;
     }
 
-    .commercial .book-main .book-counter.near-limit {
+    .commercial .book-main .counter.near-limit {
       color: #8A4300;
       font-weight: 700;
     }
 
-    .commercial .book-main .book-document-error {
-      margin: 2px 0 0;
+    .commercial .book-main .document-error {
+      font-size: .8rem;
       color: #9C2C25;
-      font-size: 0.8rem;
+      margin: 2px 0 0;
     }
 
-    .book-document-error:empty,
-    .book-feedback:empty {
+    .document-error:empty,
+    .feedback:empty {
       display: none;
     }
 
-    .book-expand {
+    .expand-button {
       align-self: flex-start;
       min-height: 36px;
       padding: 4px 0;
       border: 0;
       background: transparent;
       color: #1B3A6B;
-      font-size: 0.8rem;
       text-decoration: underline;
       text-underline-offset: 4px;
+      font-size: .8rem;
       cursor: pointer;
     }
 
-    .book-check,
-    .book-choice {
+    .check,
+    .choice {
       display: flex;
       align-items: flex-start;
       gap: 10px;
-      font-size: 0.87rem;
-      color: #172033;
+      font-size: .87rem;
     }
 
-    .book-check {
+    .check {
       margin-top: 18px;
     }
 
-    .book-check input,
-    .book-choice input {
+    .check input,
+    .choice input {
       flex: 0 0 auto;
       width: 18px;
       height: 18px;
@@ -242,27 +239,37 @@
       accent-color: #1B3A6B;
     }
 
-    .book-choice strong,
-    .book-choice small {
+    .choice strong,
+    .choice small {
       display: block;
     }
 
-    .book-choice small {
+    .choice small {
       color: #596273;
-      font-size: 0.8rem;
+      font-size: .8rem;
     }
 
-    .book-choices {
+    .choices {
       display: grid;
       gap: 16px;
       margin-bottom: 20px;
     }
 
-    .book-guardian {
+    .guardian {
       margin-top: 18px;
     }
 
-    .book-submit {
+    .security-box {
+      margin-top: 22px;
+      display: grid;
+      gap: 10px;
+    }
+
+    #turnstile-widget {
+      min-height: 65px;
+    }
+
+    .submit-button {
       width: 100%;
       min-height: 50px;
       padding: 12px 18px;
@@ -271,63 +278,53 @@
       border-radius: 4px;
       background: #1B3A6B;
       color: #fff;
-      font-size: 0.9rem;
+      font-size: .9rem;
       font-weight: 700;
+      cursor: pointer;
     }
 
-    .book-submit:disabled {
+    .submit-button:disabled {
       opacity: 1;
       background: #E5EAF0;
       color: #4A586B;
       cursor: not-allowed;
     }
 
-    .commercial .book-main .book-registration-note {
+    .commercial .book-main .registration-note {
       margin-top: 12px;
     }
 
-    .commercial .book-main .book-feedback {
-      margin: 12px 0 0;
+    .commercial .book-main .feedback {
+      font-size: .85rem;
       color: #1B3A6B;
-      font-size: 0.85rem;
+      margin: 12px 0;
     }
 
-    .book-after {
-      padding-top: 6px;
-      font-size: 0.85rem;
-    }
-
-    .commercial .book-after h2 {
-      margin: 0 0 10px;
+    .commercial .after h2 {
       font-size: 1.15rem;
-      font-weight: 600;
       letter-spacing: normal;
-      line-height: 1.35;
+      font-weight: 600;
+      margin: 0 0 10px;
     }
 
-    .commercial .book-after p {
-      margin: 0 0 12px;
+    .after {
+      font-size: .85rem;
+      padding-top: 6px;
     }
 
-    .book-actions {
-      margin-top: 24px;
+    .honeypot {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
     }
 
-    .book-main .book-actions .btn {
-      width: auto;
-      color: #fff;
-      text-decoration: none;
-    }
-
-    /*
-      NX ocupa el ancho del footer, inmediatamente antes
-      de la línea divisoria de los enlaces finales.
-    */
     .commercial .footer-v4 .footer-nx {
       margin: 0;
       padding: 0 0 20px;
       color: #BDCADD;
-      font-size: 0.8rem;
+      font-size: .8rem;
       line-height: 1.65;
     }
 
@@ -340,34 +337,29 @@
       .commercial .book-navigation {
         display: flex;
         flex-direction: row;
-        align-items: center;
         justify-content: flex-start;
-        gap: 8px 18px;
         width: auto;
         padding: 0;
-        font-size: 0.82rem;
-      }
-
-      .commercial .book-navigation a {
-        padding: 8px 0;
+        gap: 8px 18px;
+        font-size: .82rem;
       }
 
       .commercial .book-main {
         width: min(860px, calc(100% - 32px));
-        padding-block: 30px 40px;
+        padding: 30px 0 40px;
       }
     }
 
     @media (max-width: 600px) {
-      .book-grid {
+      #complaint-form .grid {
         grid-template-columns: 1fr;
       }
 
-      .book-full {
+      #complaint-form .full {
         grid-column: auto;
       }
 
-      .book-form fieldset {
+      #complaint-form fieldset {
         padding: 16px;
       }
     }
@@ -382,29 +374,8 @@
         margin-bottom: 4px;
       }
 
-      .footer-nx-separator {
+      .nx-separator {
         display: none;
-      }
-    }
-
-    @media print {
-      .commercial .header,
-      .commercial .commercial-footer,
-      .commercial .skip,
-      .book-actions,
-      .book-expand,
-      .book-submit {
-        display: none !important;
-      }
-
-      .commercial .book-main {
-        width: 100%;
-        max-width: none;
-        padding: 0;
-      }
-
-      .book-form fieldset {
-        break-inside: avoid;
       }
     }
   </style>
@@ -437,13 +408,10 @@
           class="navlinks book-navigation"
           aria-label="Navegación principal"
         >
-          <a class="book-home" href="index.html">
-            Volver a YAKAR
+          <a href="index.html">
+            <strong>Volver a YAKAR</strong>
           </a>
-
-          <a href="privacidad.html">
-            Privacidad
-          </a>
+          <a href="privacidad.html">Privacidad</a>
         </nav>
       </div>
     </header>
@@ -453,77 +421,91 @@
 
       <h1>Tu experiencia importa.<br>Queremos escucharte.</h1>
 
-      <p class="book-intro">
+      <p class="intro">
         Cuéntanos qué ocurrió y qué solución esperas.
         Escucharte nos ayuda a atender tu caso y mejorar.
       </p>
 
-      <section class="book-status" aria-labelledby="channel-status">
+      <section class="status" aria-labelledby="channel-status">
         <strong id="channel-status">
           Canal virtual en preparación
         </strong>
 
         <p>
-          Este formulario todavía no registra ni envía información.
-          No ingreses datos personales reales durante esta etapa.
+          Estamos conectando el formulario y verificando su funcionamiento.
+          Durante esta etapa utiliza únicamente datos ficticios.
+          La recepción del servidor permanece desactivada.
         </p>
 
         <p>
-          Si necesitas asistencia, escríbenos a
+          Contáctanos en
           <a href="mailto:negocios.yakar@gmail.com">
-            negocios.yakar@gmail.com
-          </a>
-          o comunícate al
-          <a href="tel:+51973669004">
-            +51 973 669 004
-          </a>.
-          Estos enlaces no generan automáticamente una hoja
-          de reclamación.
+            negocios.yakar@gmail.com</a>
+          o al
+          <a
+            href="https://wa.me/51973669004"
+            target="_blank"
+            rel="noopener noreferrer"
+          >+51 973 669 004</a>.
+          Estos enlaces no generan una hoja de reclamación.
         </p>
       </section>
 
-      <section class="book-provider" aria-label="Datos de YAKAR">
+      <section class="provider" aria-label="Datos de YAKAR">
         <p>
           <strong>Yakar Negocios E.I.R.L.</strong>
           · RUC 20612733261
         </p>
-
-        <p>
-          Jr. San Cristóbal 1455, La Victoria, Lima, Perú.
-        </p>
+        <p>Jr. San Cristóbal 1455, La Victoria, Lima, Perú.</p>
       </section>
 
-      <p id="draft-warning" class="book-draft-warning">
+      <p id="draft-warning" class="draft-warning">
         <strong>
-          Si sales o recargas esta página, puedes perder
-          la información ingresada.
+          Si sales antes de enviar, perderás la información ingresada.
         </strong>
-        No se guardan borradores. Los campos con * son obligatorios.
+        Los campos con * son obligatorios.
       </p>
 
       <noscript>
-        <div class="book-status">
-          Activa JavaScript para utilizar las validaciones
-          y los contadores. La recepción virtual continúa
-          pendiente de activación.
+        <div class="status">
+          Activa JavaScript para utilizar las validaciones y los contadores.
+          El envío requiere JavaScript y la verificación de seguridad.
         </div>
       </noscript>
 
       <form
         id="complaint-form"
-        class="book-form"
+        action="https://script.google.com/macros/s/AKfycbz4s7GkQ0_XMnCIR8fl1qzG-BNVVto46VRxkoAyneaN0kBbWFj5W2LACNtkYvyqzkTVwA/exec"
+        method="post"
+        target="_blank"
+        rel="noopener"
         autocomplete="off"
         aria-describedby="channel-status draft-warning"
       >
+        <input id="request-id" name="requestId" type="hidden">
+        <input
+          id="security-token"
+          name="cf-turnstile-response"
+          type="hidden"
+        >
+
+        <div class="honeypot" aria-hidden="true">
+          <label for="website">Deja este campo vacío</label>
+          <input
+            id="website"
+            name="website"
+            type="text"
+            tabindex="-1"
+            autocomplete="off"
+          >
+        </div>
+
         <fieldset>
           <legend>1. Tus datos</legend>
 
-          <div class="book-grid">
-            <div class="book-field book-full">
-              <label for="consumer-name">
-                Nombres y apellidos *
-              </label>
-
+          <div class="grid">
+            <div class="field full">
+              <label for="consumer-name">Nombres y apellidos *</label>
               <input
                 id="consumer-name"
                 name="consumerName"
@@ -533,12 +515,13 @@
               >
             </div>
 
-            <div class="book-field">
-              <label for="document-type">
-                Tipo de documento *
-              </label>
-
-              <select id="document-type" name="documentType" required>
+            <div class="field">
+              <label for="document-type">Tipo de documento *</label>
+              <select
+                id="document-type"
+                name="documentType"
+                required
+              >
                 <option value="">Selecciona una opción</option>
                 <option value="DNI">DNI</option>
                 <option value="CE">Carné de extranjería</option>
@@ -547,11 +530,8 @@
               </select>
             </div>
 
-            <div class="book-field">
-              <label for="document-number">
-                Número de documento *
-              </label>
-
+            <div class="field">
+              <label for="document-number">Número de documento *</label>
               <input
                 id="document-number"
                 name="documentNumber"
@@ -562,39 +542,33 @@
                 aria-describedby="document-help document-counter document-error"
               >
 
-              <p id="document-help" class="book-help">
+              <p id="document-help" class="help">
                 Selecciona el tipo de documento para ver las indicaciones.
               </p>
-
-              <p id="document-counter" class="book-counter">
-                0 / 30
-              </p>
-
+              <p id="document-counter" class="counter">0 / 30</p>
               <p
                 id="document-error"
-                class="book-document-error"
+                class="document-error"
                 aria-live="polite"
               ></p>
             </div>
 
-            <div class="book-field book-full">
+            <div class="field full">
               <label for="consumer-address">Domicilio *</label>
-
               <input
                 id="consumer-address"
                 name="consumerAddress"
                 type="text"
                 maxlength="400"
-                placeholder="Dirección, distrito, provincia y departamento"
                 required
+                placeholder="Dirección, distrito, provincia y departamento"
               >
             </div>
 
-            <div class="book-field">
+            <div class="field">
               <label id="email-label" for="consumer-email">
                 Correo electrónico
               </label>
-
               <input
                 id="consumer-email"
                 name="consumerEmail"
@@ -602,17 +576,13 @@
                 maxlength="254"
                 aria-describedby="email-help"
               >
-
-              <p id="email-help" class="book-help">
+              <p id="email-help" class="help">
                 Obligatorio si eliges recibir la respuesta por correo.
               </p>
             </div>
 
-            <div class="book-field">
-              <label for="consumer-phone">
-                Teléfono de contacto
-              </label>
-
+            <div class="field">
+              <label for="consumer-phone">Teléfono de contacto</label>
               <input
                 id="consumer-phone"
                 name="consumerPhone"
@@ -621,11 +591,10 @@
               >
             </div>
 
-            <div class="book-field book-full">
+            <div class="field full">
               <label for="response-channel">
                 ¿Dónde deseas recibir la respuesta? *
               </label>
-
               <select
                 id="response-channel"
                 name="responseChannel"
@@ -638,21 +607,16 @@
             </div>
           </div>
 
-          <label class="book-check">
+          <label class="check">
             <input id="is-minor" name="isMinor" type="checkbox">
             <span>El consumidor es menor de edad.</span>
           </label>
 
-          <div
-            id="guardian-fields"
-            class="book-grid book-guardian"
-            hidden
-          >
-            <div class="book-field book-full">
+          <div id="guardian-fields" class="grid guardian" hidden>
+            <div class="field full">
               <label for="guardian-name">
                 Nombre del padre, madre o representante *
               </label>
-
               <input
                 id="guardian-name"
                 name="guardianName"
@@ -662,11 +626,10 @@
               >
             </div>
 
-            <div class="book-field book-full">
+            <div class="field full">
               <label for="guardian-address">
                 Domicilio del representante *
               </label>
-
               <input
                 id="guardian-address"
                 name="guardianAddress"
@@ -676,11 +639,10 @@
               >
             </div>
 
-            <div class="book-field">
+            <div class="field">
               <label for="guardian-phone">
                 Teléfono del representante
               </label>
-
               <input
                 id="guardian-phone"
                 name="guardianPhone"
@@ -690,11 +652,10 @@
               >
             </div>
 
-            <div class="book-field">
+            <div class="field">
               <label for="guardian-email">
                 Correo del representante
               </label>
-
               <input
                 id="guardian-email"
                 name="guardianEmail"
@@ -709,10 +670,9 @@
         <fieldset>
           <legend>2. Producto o servicio</legend>
 
-          <div class="book-grid">
-            <div class="book-field">
+          <div class="grid">
+            <div class="field">
               <label for="item-type">Tipo *</label>
-
               <select id="item-type" name="itemType" required>
                 <option value="">Selecciona una opción</option>
                 <option value="PRODUCT">Producto</option>
@@ -720,11 +680,10 @@
               </select>
             </div>
 
-            <div class="book-field">
+            <div class="field">
               <label for="operation-reference">
                 Referencia de la operación
               </label>
-
               <input
                 id="operation-reference"
                 name="operationReference"
@@ -734,11 +693,8 @@
               >
             </div>
 
-            <div class="book-field">
-              <label for="claimed-amount">
-                Monto relacionado
-              </label>
-
+            <div class="field">
+              <label for="claimed-amount">Monto relacionado</label>
               <input
                 id="claimed-amount"
                 name="claimedAmount"
@@ -749,20 +705,18 @@
               >
             </div>
 
-            <div class="book-field">
+            <div class="field">
               <label for="currency">Moneda</label>
-
               <select id="currency" name="currency">
                 <option value="PEN">Soles — PEN</option>
                 <option value="USD">Dólares estadounidenses — USD</option>
               </select>
             </div>
 
-            <div class="book-field book-full">
+            <div class="field full">
               <label for="item-description">
                 Describe el producto o servicio *
               </label>
-
               <textarea
                 id="item-description"
                 name="itemDescription"
@@ -773,12 +727,12 @@
                 aria-describedby="item-description-counter"
               ></textarea>
 
-              <p id="item-description-counter" class="book-counter">
+              <p id="item-description-counter" class="counter">
                 0 / 1000
               </p>
 
               <button
-                class="book-expand"
+                class="expand-button"
                 type="button"
                 data-expand="item-description"
               >
@@ -791,45 +745,41 @@
         <fieldset>
           <legend>3. Cuéntanos qué ocurrió</legend>
 
-          <div class="book-choices">
-            <label class="book-choice">
+          <div class="choices">
+            <label class="choice">
               <input
                 type="radio"
                 name="caseType"
                 value="RECLAMO"
                 required
               >
-
               <span>
                 <strong>Reclamo</strong>
                 <small>
-                  Disconformidad relacionada con el producto o servicio.
+                  No estás conforme con el producto o servicio recibido.
                 </small>
               </span>
             </label>
 
-            <label class="book-choice">
+            <label class="choice">
               <input
                 type="radio"
                 name="caseType"
                 value="QUEJA"
                 required
               >
-
               <span>
                 <strong>Queja</strong>
                 <small>
-                  Disconformidad no relacionada con el producto o servicio,
-                  o malestar respecto de la atención al público.
+                  Deseas expresar tu disconformidad con la atención recibida.
                 </small>
               </span>
             </label>
           </div>
 
-          <div class="book-grid">
-            <div class="book-field book-full">
+          <div class="grid">
+            <div class="field full">
               <label for="case-detail">¿Qué ocurrió? *</label>
-
               <textarea
                 id="case-detail"
                 name="caseDetail"
@@ -840,18 +790,16 @@
                 aria-describedby="detail-help case-detail-counter"
               ></textarea>
 
-              <p id="detail-help" class="book-help">
-                Incluye fechas y detalles que nos ayuden a entender tu caso.
-                Puedes escribir o pegar información que hayas preparado.
-                No incluyas contraseñas ni datos bancarios sensibles.
+              <p id="detail-help" class="help">
+                Incluye fechas y detalles que nos ayuden a entender
+                tu experiencia. Puedes escribir o pegar información
+                que hayas preparado.
               </p>
 
-              <p id="case-detail-counter" class="book-counter">
-                0 / 1000
-              </p>
+              <p id="case-detail-counter" class="counter">0 / 1000</p>
 
               <button
-                class="book-expand"
+                class="expand-button"
                 type="button"
                 data-expand="case-detail"
               >
@@ -859,11 +807,10 @@
               </button>
             </div>
 
-            <div class="book-field book-full">
+            <div class="field full">
               <label for="requested-action">
                 ¿Qué solución solicitas? *
               </label>
-
               <textarea
                 id="requested-action"
                 name="requestedAction"
@@ -874,12 +821,12 @@
                 aria-describedby="requested-action-counter"
               ></textarea>
 
-              <p id="requested-action-counter" class="book-counter">
+              <p id="requested-action-counter" class="counter">
                 0 / 1000
               </p>
 
               <button
-                class="book-expand"
+                class="expand-button"
                 type="button"
                 data-expand="requested-action"
               >
@@ -892,81 +839,93 @@
         <fieldset>
           <legend>4. Revisa tu información</legend>
 
-          <p class="book-help">
-            Cuando se habilite la recepción, el registro tendrá
-            un código correlativo y una constancia. La información
-            se utilizará para gestionar y responder tu caso.
-            Consulta la
-            <a href="privacidad.html" target="_blank" rel="noopener">
-              información sobre el tratamiento de tus datos
-            </a>.
+          <p class="help">
+            El registro solo queda confirmado cuando el servidor muestra
+            una constancia con código. Consulta la
+            <a
+              href="privacidad.html"
+              target="_blank"
+              rel="noopener"
+            >información sobre privacidad</a>.
+            Esta etapa es de preparación y pruebas.
           </p>
 
-          <label class="book-check">
+          <label class="check">
             <input
               id="confirmation"
               name="confirmation"
               type="checkbox"
               required
             >
-
             <span>
               He revisado la información y confirmo que describe mi caso.
-              Esta confirmación no autoriza el envío de publicidad.
+              Esta confirmación no autoriza publicidad.
             </span>
           </label>
 
+          <div class="security-box">
+            <div id="turnstile-widget"></div>
+            <p id="security-status" class="help" role="status">
+              Cargando la verificación de seguridad…
+            </p>
+
+            <button
+              id="renew-security"
+              class="expand-button"
+              type="button"
+            >
+              Renovar verificación
+            </button>
+          </div>
+
           <button
             id="complaint-submit"
-            class="book-submit"
+            class="submit-button"
             type="submit"
             disabled
           >
-            Registro virtual aún no disponible
+            Enviar prueba de conexión
           </button>
 
-          <p class="book-help book-registration-note">
-            No se ha generado un código ni se ha enviado información.
+          <p class="help registration-note">
+            La respuesta se abrirá en otra pestaña.
+            Conserva esta página hasta comprobar el resultado.
           </p>
 
           <p
             id="form-feedback"
-            class="book-feedback"
+            class="feedback"
             role="status"
             aria-live="polite"
           ></p>
+
+          <button
+            id="new-form"
+            class="expand-button"
+            type="button"
+          >
+            Limpiar e iniciar un formulario nuevo
+          </button>
         </fieldset>
       </form>
 
-      <section class="book-after" aria-labelledby="after-title">
+      <section class="after" aria-labelledby="after-title">
         <h2 id="after-title">Una atención con seguimiento</h2>
-
         <p>
-          Una vez habilitado el registro, podrás conservar tu
-          constancia y recibir una respuesta por el medio elegido.
-          El plazo máximo de respuesta a las quejas y los reclamos
-          es de 15 días hábiles, improrrogables.
+          Una vez habilitado el registro, podrás conservar tu constancia
+          y recibir una respuesta por el medio elegido. El plazo máximo
+          de respuesta es de 15 días hábiles, improrrogables.
         </p>
-
         <p>
-          Presentar una queja o un reclamo no impide utilizar otros
-          mecanismos de solución ni es un requisito previo para
-          acudir a Indecopi.
+          Presentar una queja o reclamo no impide utilizar otros mecanismos
+          de solución ni es un requisito previo para acudir a Indecopi.
           <a
             href="https://consumidor.gob.pe/libro-de-reclamaciones/"
             target="_blank"
             rel="noopener noreferrer"
-          >
-            Consulta la información oficial
-          </a>.
+          >Consulta la información oficial</a>.
         </p>
       </section>
-
-      <div class="book-actions">
-        <a class="btn" href="index.html">
-          Volver a YAKAR
-        </a>
-      </div>
     </main>
 
     <footer class="commercial-footer footer-v4">
@@ -974,50 +933,28 @@
         <div class="footer-grid-v4">
           <section aria-label="Identidad YAKAR">
             <span class="footer-wordmark">YAKAR</span>
-
-            <p class="footer-motto">
-              Cumplir es parte del producto.
-            </p>
+            <p class="footer-motto">Cumplir es parte del producto.</p>
 
             <p class="footer-identity">
               <strong>Yakar Negocios E.I.R.L.</strong><br>
               RUC 20612733261<br>
               RNP · Bienes y servicios<br>
-
               <a
                 href="https://www.rnp.gob.pe/constancia/rnp_constancia/consultaruc.asp"
                 target="_blank"
                 rel="noopener noreferrer"
-              >
-                Consultar inscripción en el RNP →
-              </a><br>
-
+              >Consultar inscripción en el RNP →</a><br>
               La Victoria, Lima, Perú
             </p>
           </section>
 
           <nav aria-label="Explorar YAKAR">
             <h2>Explorar</h2>
-
-            <a href="index.html#productos">
-              Productos y suministros
-            </a>
-
-            <a href="index.html#servicios">
-              Servicios
-            </a>
-
-            <a href="index.html#proyectos">
-              Proyectos
-            </a>
-
-            <a href="index.html#metodo">
-              Nuestro método
-            </a>
-
-            <a href="index.html#perspectiva">
-              Perspectiva YAKAR
-            </a>
+            <a href="index.html#productos">Productos y suministros</a>
+            <a href="index.html#servicios">Servicios</a>
+            <a href="index.html#proyectos">Proyectos</a>
+            <a href="index.html#metodo">Nuestro método</a>
+            <a href="index.html#perspectiva">Perspectiva YAKAR</a>
           </nav>
 
           <section
@@ -1050,7 +987,7 @@
 
         <p class="footer-nx">
           <strong>Filosofía NX · Netinho Xperience</strong>
-          <span class="footer-nx-separator" aria-hidden="true"> — </span>
+          <span class="nx-separator"> — </span>
           Entender tu necesidad, cuidar cada detalle
           y acompañar cada compromiso.
         </p>
@@ -1060,11 +997,9 @@
             <a href="privacidad.html">
               Privacidad del Libro de Reclamaciones
             </a>
-
-            <a href="reclamaciones.html" aria-current="page">
+            <a href="reclamaciones.html">
               Libro de Reclamaciones · en preparación
             </a>
-
             <a
               href="https://yakar-abastecimiento.ernesto-malasquez.chatgpt.site"
               target="_blank"
@@ -1073,7 +1008,6 @@
               Acceso al sistema privado
             </a>
           </nav>
-
           <span>YAKAR · 2026</span>
         </div>
       </div>
@@ -1085,20 +1019,52 @@
 
     (() => {
       const form = document.getElementById("complaint-form");
+      const button = document.getElementById("complaint-submit");
+      const feedback = document.getElementById("form-feedback");
+      const token = document.getElementById("security-token");
+      const requestId = document.getElementById("request-id");
+      const securityStatus = document.getElementById("security-status");
+
       const documentType = document.getElementById("document-type");
       const documentNumber = document.getElementById("document-number");
       const documentHelp = document.getElementById("document-help");
-      const documentCounter = document.getElementById("document-counter");
       const documentError = document.getElementById("document-error");
+      const documentCounter = document.getElementById("document-counter");
+
       const responseChannel = document.getElementById("response-channel");
       const email = document.getElementById("consumer-email");
-      const emailLabel = document.getElementById("email-label");
       const minor = document.getElementById("is-minor");
       const guardian = document.getElementById("guardian-fields");
-      const feedback = document.getElementById("form-feedback");
-      const countedFields = [...form.querySelectorAll("[data-counted]")];
+      const confirmation = document.getElementById("confirmation");
+      const counted = [...form.querySelectorAll("[data-counted]")];
 
       let dirty = false;
+      let busy = false;
+      let submittedSnapshot = null;
+      let widgetId = null;
+      let retryTimer = null;
+
+      function uuid() {
+        if (!window.crypto || !window.crypto.getRandomValues) {
+          return "";
+        }
+
+        const bytes = window.crypto.getRandomValues(new Uint8Array(16));
+        bytes[6] = (bytes[6] & 15) | 64;
+        bytes[8] = (bytes[8] & 63) | 128;
+
+        const hex = [...bytes]
+          .map(value => value.toString(16).padStart(2, "0"))
+          .join("");
+
+        return (
+          hex.slice(0, 8) + "-" +
+          hex.slice(8, 12) + "-" +
+          hex.slice(12, 16) + "-" +
+          hex.slice(16, 20) + "-" +
+          hex.slice(20)
+        );
+      }
 
       function warnBeforeExit(event) {
         if (!dirty) return;
@@ -1107,95 +1073,81 @@
       }
 
       function setDirty(value) {
-        if (dirty === value) return;
         dirty = value;
+        window.removeEventListener("beforeunload", warnBeforeExit);
 
         if (dirty) {
           window.addEventListener("beforeunload", warnBeforeExit);
-        } else {
-          window.removeEventListener("beforeunload", warnBeforeExit);
         }
+      }
+
+      function updateButton() {
+        button.disabled = busy || !token.value || !requestId.value;
+
+        button.textContent = busy
+          ? "Envío en curso…"
+          : submittedSnapshot
+            ? "Reintentar el mismo envío"
+            : "Enviar prueba de conexión";
       }
 
       function updateCounter(field) {
         const counter = document.getElementById(field.id + "-counter");
-        const length = field.value.length;
-        const limit = field.maxLength;
 
-        counter.textContent = length + " / " + limit;
-        counter.classList.toggle("near-limit", length >= limit * 0.9);
-      }
-
-      function showDocumentError(message) {
-        documentError.textContent = message;
+        counter.textContent = field.value.length + " / " + field.maxLength;
+        counter.classList.toggle(
+          "near-limit",
+          field.value.length >= field.maxLength * .9
+        );
       }
 
       function updateDocument() {
-        const type = documentType.value;
         const value = documentNumber.value;
-        let error = "";
+        const dni = documentType.value === "DNI";
 
-        documentNumber.removeAttribute("pattern");
-        documentNumber.inputMode = "text";
-        documentNumber.maxLength = 30;
+        documentNumber.inputMode = dni ? "numeric" : "text";
+        documentNumber.maxLength = dni ? 8 : 30;
+        documentNumber.pattern = dni
+          ? "[0-9]{8}"
+          : "[A-Za-z0-9]{1,30}";
 
-        if (type === "DNI") {
-          documentNumber.inputMode = "numeric";
-          documentNumber.maxLength = 8;
-          documentNumber.pattern = "[0-9]{8}";
+        const labels = {
+          DNI: "Exactamente 8 números; conserva los ceros iniciales.",
+          CE: "Ingresa tu carné de extranjería: hasta 30 letras o números.",
+          PASSPORT: "Ingresa tu pasaporte: hasta 30 letras o números.",
+          OTHER: "Ingresa tu documento: hasta 30 letras o números."
+        };
 
-          documentHelp.textContent =
-            "Ingresa exactamente 8 números. Conserva los ceros iniciales.";
+        documentHelp.textContent =
+          labels[documentType.value] || "Selecciona el tipo de documento.";
 
-          documentCounter.textContent = value.length + " / 8";
+        documentCounter.textContent =
+          value.length + " / " + documentNumber.maxLength;
 
-          if (value && !/^[0-9]{8}$/.test(value)) {
-            error =
-              "El DNI debe contener exactamente 8 números, sin letras ni espacios.";
-          }
-        } else {
-          documentCounter.textContent = value.length + " / 30";
+        const valid = dni
+          ? /^[0-9]{8}$/.test(value)
+          : /^[A-Za-z0-9]{1,30}$/.test(value);
 
-          if (type === "PASSPORT" || type === "CE" || type === "OTHER") {
-            documentNumber.pattern = "[A-Za-z0-9]{1,30}";
-
-            const descriptions = {
-              PASSPORT:
-                "Ingresa las letras y números que aparecen en tu pasaporte. Máximo 30 caracteres.",
-              CE:
-                "Ingresa el identificador de tu carné de extranjería. Máximo 30 letras o números.",
-              OTHER:
-                "Ingresa el identificador de tu documento. Máximo 30 letras o números."
-            };
-
-            documentHelp.textContent = descriptions[type];
-
-            if (value && !/^[A-Za-z0-9]{1,30}$/.test(value)) {
-              error =
-                "Ingresa hasta 30 letras o números, sin espacios ni otros caracteres.";
-            }
-          } else {
-            documentHelp.textContent =
-              "Selecciona el tipo de documento para ver las indicaciones.";
-          }
-        }
+        const error = value && !valid
+          ? dni
+            ? "El DNI debe contener exactamente 8 números."
+            : "Ingresa hasta 30 letras o números, sin espacios."
+          : "";
 
         documentNumber.setCustomValidity(error);
+        documentError.textContent = error;
 
         if (error) {
           documentNumber.setAttribute("aria-invalid", "true");
         } else {
           documentNumber.removeAttribute("aria-invalid");
         }
-
-        showDocumentError(error);
       }
 
-      function updateResponseChannel() {
-        const requiresEmail = responseChannel.value === "EMAIL";
+      function updateEmail() {
+        email.required = responseChannel.value === "EMAIL";
 
-        email.required = requiresEmail;
-        emailLabel.textContent = requiresEmail
+        document.getElementById("email-label").textContent = email.required
           ? "Correo electrónico *"
           : "Correo electrónico";
       }
@@ -1203,163 +1155,281 @@
       function updateGuardian() {
         guardian.hidden = !minor.checked;
 
-        guardian.querySelectorAll("input").forEach((input) => {
+        guardian.querySelectorAll("input").forEach(input => {
           input.disabled = !minor.checked;
-          input.required = minor.checked && (
-            input.id === "guardian-name" ||
-            input.id === "guardian-address"
-          );
+          input.required =
+            minor.checked &&
+            ["guardian-name", "guardian-address"].includes(input.id);
         });
       }
 
+      function snapshot() {
+        return JSON.stringify(
+          [...new FormData(form).entries()]
+            .filter(([name]) => name !== "cf-turnstile-response")
+            .sort(([a], [b]) => a.localeCompare(b))
+        );
+      }
+
+      function resetSecurity() {
+        token.value = "";
+        securityStatus.textContent =
+          "Completa la verificación de seguridad.";
+
+        updateButton();
+
+        if (widgetId !== null && window.turnstile) {
+          window.turnstile.reset(widgetId);
+        }
+      }
+
       function resetDraft() {
+        if (retryTimer !== null) {
+          clearTimeout(retryTimer);
+        }
+
+        retryTimer = null;
         form.reset();
-        setDirty(false);
+        busy = false;
+        submittedSnapshot = null;
+        requestId.value = uuid();
         feedback.textContent = "";
 
-        countedFields.forEach((field) => {
+        form.querySelectorAll("fieldset").forEach(fieldset => {
+          fieldset.inert = false;
+        });
+
+        confirmation.removeAttribute("aria-disabled");
+
+        counted.forEach(field => {
           field.maxLength = 1000;
           updateCounter(field);
         });
 
-        form.querySelectorAll("[data-expand]").forEach((button) => {
-          button.hidden = false;
-        });
-
-        form.querySelectorAll("input, textarea").forEach((field) => {
-          field.setCustomValidity("");
+        form.querySelectorAll("[data-expand]").forEach(expandButton => {
+          expandButton.hidden = false;
         });
 
         updateDocument();
-        updateResponseChannel();
+        updateEmail();
         updateGuardian();
+        setDirty(false);
+        resetSecurity();
+
+        if (!requestId.value) {
+          feedback.textContent =
+            "El navegador no permite preparar el identificador. " +
+            "Utiliza un navegador actualizado o solicita asistencia a YAKAR.";
+        }
       }
+
+      window.yakarTurnstileLoaded = () => {
+        widgetId = window.turnstile.render("#turnstile-widget", {
+          sitekey: "0x4AAAAAAFNSktRJRTpQMCJu",
+          action: "reclamacion",
+          theme: "light",
+          size: "flexible",
+          language: "es",
+          "response-field": false,
+
+          callback: value => {
+            token.value = value;
+            securityStatus.textContent =
+              "Verificación completada. " +
+              "El servidor la comprobará al recibir el envío.";
+            updateButton();
+          },
+
+          "expired-callback": () => {
+            token.value = "";
+            securityStatus.textContent =
+              "La verificación venció. Pulsa Renovar verificación.";
+            updateButton();
+          },
+
+          "error-callback": () => {
+            token.value = "";
+            securityStatus.textContent =
+              "No se pudo completar la verificación. " +
+              "Renueva o solicita asistencia.";
+            updateButton();
+            return true;
+          }
+        });
+      };
+
+      window.yakarSecurityLoadFailed = () => {
+        token.value = "";
+        securityStatus.textContent =
+          "La verificación no pudo cargarse. " +
+          "Revisa tu conexión o solicita asistencia.";
+        updateButton();
+      };
 
       form.addEventListener("input", () => setDirty(true));
       form.addEventListener("change", () => setDirty(true));
 
       documentType.addEventListener("change", updateDocument);
       documentNumber.addEventListener("input", updateDocument);
-      responseChannel.addEventListener("change", updateResponseChannel);
+      responseChannel.addEventListener("change", updateEmail);
       minor.addEventListener("change", updateGuardian);
 
-      documentNumber.addEventListener("beforeinput", (event) => {
-        if (documentType.value !== "DNI") return;
-        if (event.isComposing || !event.cancelable) return;
+      confirmation.addEventListener("click", event => {
+        if (submittedSnapshot) {
+          event.preventDefault();
+        }
+      });
 
+      documentNumber.addEventListener("beforeinput", event => {
         if (
-          event.inputType.startsWith("insert") &&
-          event.data !== null &&
+          documentType.value === "DNI" &&
+          !event.isComposing &&
+          event.cancelable &&
+          event.data &&
           /[^0-9]/.test(event.data)
         ) {
           event.preventDefault();
-          showDocumentError("Para DNI, ingresa únicamente números.");
+          documentError.textContent =
+            "Para DNI, ingresa únicamente números.";
         }
       });
 
-      documentNumber.addEventListener("paste", (event) => {
-        if (documentType.value !== "DNI") return;
-        if (!event.clipboardData) return;
+      documentNumber.addEventListener("paste", event => {
+        if (
+          documentType.value !== "DNI" ||
+          !event.clipboardData
+        ) {
+          return;
+        }
 
         const pasted = event.clipboardData.getData("text");
-        const start = documentNumber.selectionStart ?? 0;
-        const end = documentNumber.selectionEnd ?? start;
+        const start = documentNumber.selectionStart || 0;
+        const end = documentNumber.selectionEnd || start;
 
-        const proposed =
-          documentNumber.value.slice(0, start) +
-          pasted +
-          documentNumber.value.slice(end);
-
-        if (/[^0-9]/.test(pasted) || proposed.length > 8) {
+        if (
+          /[^0-9]/.test(pasted) ||
+          documentNumber.value.length - (end - start) + pasted.length > 8
+        ) {
           event.preventDefault();
-          showDocumentError(
-            "El texto no se ha pegado. El DNI admite únicamente 8 números."
-          );
+          documentError.textContent =
+            "El DNI admite exactamente 8 números.";
         }
       });
 
-      countedFields.forEach((field) => {
+      counted.forEach(field => {
         field.addEventListener("input", () => updateCounter(field));
       });
 
-      form.querySelectorAll("[data-expand]").forEach((button) => {
-        button.addEventListener("click", () => {
-          const field = document.getElementById(button.dataset.expand);
+      form.querySelectorAll("[data-expand]").forEach(expandButton => {
+        expandButton.addEventListener("click", () => {
+          const field = document.getElementById(
+            expandButton.dataset.expand
+          );
 
           field.maxLength = 6000;
           updateCounter(field);
-          button.hidden = true;
+          expandButton.hidden = true;
           field.focus();
         });
       });
 
-      document.addEventListener("click", (event) => {
-        const link = event.target.closest("a[href]");
+      document.getElementById("renew-security").addEventListener(
+        "click",
+        () => {
+          if (busy) return;
 
-        if (!link || !dirty || event.defaultPrevented) return;
-        if (link.target === "_blank" || link.hasAttribute("download")) return;
+          if (widgetId === null) {
+            securityStatus.textContent =
+              "La protección aún no está disponible. " +
+              "Recarga la página si no has ingresado información.";
+            return;
+          }
 
-        if (
-          event.ctrlKey ||
-          event.metaKey ||
-          event.shiftKey ||
-          event.altKey
-        ) return;
+          resetSecurity();
+        }
+      );
 
-        const destination = new URL(link.href, window.location.href);
-
-        if (!["http:", "https:"].includes(destination.protocol)) return;
-
-        const samePage =
-          destination.origin === location.origin &&
-          destination.pathname === location.pathname &&
-          destination.search === location.search;
-
-        /*
-          También advertir si se pulsa el enlace de esta misma
-          página sin un fragmento, porque puede recargarla.
-        */
-        if (samePage && destination.hash) return;
-
-        const leave = window.confirm(
-          "Si sales, perderás la información que todavía no has enviado. ¿Deseas salir?"
+      document.getElementById("new-form").addEventListener("click", () => {
+        const confirmed = window.confirm(
+          "Se borrarán los campos y se preparará un identificador nuevo. " +
+          "Si el envío anterior tuvo constancia, conserva su código " +
+          "y evita repetir el mismo caso. ¿Deseas continuar?"
         );
 
-        if (!leave) {
+        if (!confirmed) return;
+
+        resetDraft();
+        document.getElementById("consumer-name").focus();
+      });
+
+      form.addEventListener("submit", event => {
+        updateDocument();
+
+        if (
+          busy ||
+          !form.reportValidity() ||
+          !token.value ||
+          !requestId.value
+        ) {
           event.preventDefault();
+          feedback.textContent =
+            "Revisa los campos y completa la verificación de seguridad.";
           return;
         }
 
-        resetDraft();
-      });
+        const current = snapshot();
 
-      form.addEventListener("submit", (event) => {
-        /*
-          Bloqueo explícito: este archivo no realiza envíos.
-          La conexión se incorporará después de revisar
-          el código vigente de Google Apps Script.
-        */
-        event.preventDefault();
+        if (
+          submittedSnapshot &&
+          submittedSnapshot !== current
+        ) {
+          event.preventDefault();
+          feedback.textContent =
+            "Los datos cambiaron después del intento. " +
+            "Revisa la constancia anterior antes de iniciar " +
+            "un formulario nuevo.";
+          return;
+        }
+
+        submittedSnapshot = current;
+
+        [...form.querySelectorAll("fieldset")]
+          .slice(0, 3)
+          .forEach(fieldset => {
+            fieldset.inert = true;
+          });
+
+        confirmation.setAttribute("aria-disabled", "true");
+        busy = true;
+        updateButton();
 
         feedback.textContent =
-          "La recepción virtual todavía no está habilitada. No se ha registrado ni enviado información.";
+          "Se abrirá la respuesta del servidor en otra pestaña. " +
+          "Esta página no puede confirmar el registro: " +
+          "comprueba allí si existe una constancia con código. " +
+          "Conserva esta pestaña para reintentar.";
+
+        retryTimer = setTimeout(() => {
+          busy = false;
+          resetSecurity();
+          retryTimer = null;
+        }, 1500);
+
+        // El navegador realiza el POST.
+        // La confirmación del registro corresponde al servidor.
       });
 
-      /*
-        No se guardan borradores en cookies, localStorage
-        ni sessionStorage.
-
-        Cambiar de pestaña no borra los campos.
-        Regresar después de abandonar la página reinicia el formulario.
-
-        La advertencia de salida depende del navegador.
-        En algunos dispositivos puede no mostrarse.
-      */
       window.addEventListener("pagehide", resetDraft);
       window.addEventListener("pageshow", resetDraft);
-
       resetDraft();
     })();
   </script>
+
+  <script
+    src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=yakarTurnstileLoaded&amp;render=explicit"
+    async
+    defer
+    onerror="yakarSecurityLoadFailed()"
+  ></script>
 </body>
 </html>
