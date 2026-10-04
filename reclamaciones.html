@@ -5,55 +5,75 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#1B3A6B">
   <meta name="robots" content="noindex, nofollow">
+
   <title>Libro de Reclamaciones | YAKAR</title>
   <meta name="description"
-        content="Queremos escucharte. Comparte tu experiencia con los productos y servicios de YAKAR.">
-
-  <link rel="stylesheet" href="css/styles.css">
+        content="Tu experiencia importa. Comparte tu experiencia con los productos y servicios de YAKAR.">
 
   <style>
     :root {
-      --book-navy: #1B3A6B;
-      --book-ink: #172033;
-      --book-muted: #596273;
-      --book-border: #DCE1E7;
-      --book-pale: #F4F6F8;
+      --navy: #1B3A6B;
+      --ink: #172033;
+      --muted: #596273;
+      --border: #DCE1E7;
+      --pale: #F4F6F8;
+      --error: #9C2C25;
     }
 
-    * { box-sizing: border-box; }
-    [hidden] { display: none !important; }
+    * {
+      box-sizing: border-box;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
 
     body {
       margin: 0;
       background: #fff;
-      color: var(--book-ink);
+      color: var(--ink);
       font: 16px/1.6 Arial, Helvetica, sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .book-wrap {
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    a {
+      color: var(--navy);
+      text-underline-offset: 3px;
+    }
+
+    .wrap {
       width: min(100% - 36px, 860px);
       margin-inline: auto;
     }
 
-    .book-skip {
+    .skip-link {
       position: absolute;
       z-index: 1000;
       top: 8px;
       left: 8px;
       padding: 10px 14px;
-      background: var(--book-navy);
+      background: var(--navy);
       color: #fff;
       transform: translateY(-160%);
     }
 
-    .book-skip:focus { transform: translateY(0); }
+    .skip-link:focus {
+      transform: translateY(0);
+    }
 
-    .book-header {
-      border-bottom: 1px solid var(--book-border);
+    .header {
+      border-bottom: 1px solid var(--border);
       background: #fff;
     }
 
-    .book-header-inner {
+    .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -61,257 +81,307 @@
       min-height: 76px;
     }
 
-    .book-brand {
-      color: var(--book-navy);
-      font-size: 1.45rem;
-      font-weight: 800;
-      letter-spacing: .08em;
-      text-decoration: none;
+    .brand {
+      display: block;
+      flex-shrink: 0;
     }
 
-    .book-back {
-      color: var(--book-navy);
+    .logo-crop {
+      display: block;
+      position: relative;
+      overflow: hidden;
+      width: 215.6px;
+      height: 60.48px;
+    }
+
+    .logo-crop img {
+      position: absolute;
+      width: 405.44px;
+      height: auto;
+      max-width: none;
+      left: -173.6px;
+      top: -41.72px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
       font-size: .85rem;
       font-weight: 700;
-      text-decoration: underline;
-      text-underline-offset: 4px;
+      white-space: nowrap;
     }
 
-    .book-main { padding-block: 42px 48px; }
+    main {
+      padding-block: 32px 36px;
+    }
 
-    .book-eyebrow {
+    .eyebrow {
       margin: 0 0 12px;
-      color: var(--book-muted);
+      color: var(--muted);
       font-size: .72rem;
       font-weight: 700;
       letter-spacing: .12em;
       text-transform: uppercase;
     }
 
-    .book-main h1 {
-      margin: 0 0 18px;
-      color: var(--book-navy);
-      font-size: clamp(2rem, 5vw, 3.15rem);
+    h1 {
+      margin: 0 0 14px;
+      color: var(--navy);
+      font-size: clamp(1.9rem, 4.5vw, 2.75rem);
       line-height: 1.12;
       letter-spacing: -.035em;
     }
 
-    .book-intro {
+    .intro {
       max-width: 680px;
-      margin: 0 0 24px;
-      color: var(--book-muted);
+      margin: 0 0 18px;
+      color: var(--muted);
     }
 
-    .book-status {
-      padding: 18px 20px;
-      margin-bottom: 24px;
-      background: var(--book-pale);
-      border-left: 3px solid var(--book-navy);
+    .status {
+      padding: 14px 18px;
+      margin-bottom: 18px;
+      background: var(--pale);
+      border-left: 3px solid var(--navy);
     }
 
-    .book-status strong {
+    .status strong {
       display: block;
       margin-bottom: 6px;
-      color: var(--book-navy);
+      color: var(--navy);
     }
 
-    .book-status p {
-      margin: 0 0 10px;
-      font-size: .9rem;
+    .status p {
+      margin: 0 0 8px;
+      font-size: .88rem;
     }
 
-    .book-status p:last-child { margin-bottom: 0; }
+    .status p:last-child {
+      margin-bottom: 0;
+    }
 
-    .book-status a,
-    .book-after a,
-    .book-footer a {
-      color: var(--book-navy);
-      text-decoration: underline;
-      text-underline-offset: 3px;
+    .status a {
       overflow-wrap: anywhere;
     }
 
-    .book-provider {
-      padding-bottom: 18px;
-      margin-bottom: 20px;
-      border-bottom: 1px solid var(--book-border);
+    .provider {
+      padding-bottom: 14px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border);
       font-size: .85rem;
     }
 
-    .book-provider p { margin: 0; }
-
-    .book-warning {
-      margin: 0 0 20px;
-      color: var(--book-muted);
-      font-size: .85rem;
+    .provider p {
+      margin: 0;
     }
 
-    .book-form fieldset {
+    .draft-warning {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: .83rem;
+    }
+
+    fieldset {
       min-width: 0;
-      padding: 22px;
-      margin: 0 0 22px;
-      border: 1px solid var(--book-border);
+      padding: 18px 22px;
+      margin: 0 0 18px;
+      border: 1px solid var(--border);
       border-radius: 4px;
     }
 
-    .book-form legend {
+    legend {
       padding-inline: 8px;
-      color: var(--book-navy);
+      color: var(--navy);
       font-size: 1rem;
       font-weight: 700;
     }
 
-    .book-grid {
+    .grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
     }
 
-    .book-field {
+    .field {
       min-width: 0;
       display: flex;
       flex-direction: column;
       gap: 6px;
     }
 
-    .book-full { grid-column: 1 / -1; }
+    .full {
+      grid-column: 1 / -1;
+    }
 
-    .book-field label {
+    .field label {
       font-size: .85rem;
       font-weight: 700;
     }
 
-    .book-field input,
-    .book-field select,
-    .book-field textarea {
+    .field input,
+    .field select,
+    .field textarea {
       width: 100%;
       min-width: 0;
       padding: 11px 12px;
       border: 1px solid #BCC6D2;
       border-radius: 3px;
       background: #fff;
-      color: var(--book-ink);
-      font: inherit;
+      color: var(--ink);
       font-size: .95rem;
     }
 
-    .book-field textarea {
+    .field textarea {
       resize: vertical;
       line-height: 1.6;
     }
 
-    .book-help {
+    .field input[aria-invalid="true"] {
+      border-color: var(--error);
+    }
+
+    .help {
       margin: 0;
-      color: var(--book-muted);
+      color: var(--muted);
       font-size: .78rem;
     }
 
-    .book-counter {
+    .counter {
       margin: 0;
-      color: var(--book-muted);
+      color: var(--muted);
       font-size: .75rem;
       text-align: right;
       font-variant-numeric: tabular-nums;
     }
 
-    .book-counter.near-limit {
+    .counter.near-limit {
       color: #8A4300;
       font-weight: 700;
     }
 
-    .book-expand {
+    .document-error {
+      margin: 2px 0 0;
+      color: var(--error);
+      font-size: .8rem;
+    }
+
+    .document-error:empty,
+    .feedback:empty {
+      display: none;
+    }
+
+    .expand-button {
       align-self: flex-start;
+      min-height: 32px;
       padding: 3px 0;
       border: 0;
       background: transparent;
-      color: var(--book-navy);
-      font: inherit;
+      color: var(--navy);
       font-size: .78rem;
       text-decoration: underline;
       text-underline-offset: 3px;
       cursor: pointer;
     }
 
-    .book-check,
-    .book-choice {
+    .check,
+    .choice {
       display: flex;
       align-items: flex-start;
       gap: 10px;
       font-size: .87rem;
     }
 
-    .book-check { margin-top: 20px; }
+    .check {
+      margin-top: 18px;
+    }
 
-    .book-check input,
-    .book-choice input {
+    .check input,
+    .choice input {
       flex: 0 0 auto;
       width: 18px;
       height: 18px;
-      margin-top: 4px;
+      margin: 4px 0 0;
+      accent-color: var(--navy);
     }
 
-    .book-choice strong,
-    .book-choice small { display: block; }
+    .choice strong,
+    .choice small {
+      display: block;
+    }
 
-    .book-choice small {
-      color: var(--book-muted);
+    .choice small {
+      color: var(--muted);
       font-size: .8rem;
     }
 
-    .book-choices {
+    .choices {
       display: grid;
       gap: 14px;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
 
-    .book-guardian { margin-top: 20px; }
+    .guardian {
+      margin-top: 18px;
+    }
 
-    .book-button {
+    .submit-button {
       width: 100%;
       min-height: 50px;
       padding: 12px 18px;
       margin-top: 18px;
       border: 0;
       border-radius: 4px;
-      background: var(--book-navy);
+      background: var(--navy);
       color: #fff;
-      font: inherit;
       font-size: .9rem;
       font-weight: 700;
+      cursor: pointer;
     }
 
-    .book-button:disabled {
+    .submit-button:disabled {
       background: #E5EAF0;
       color: #4A586B;
       cursor: not-allowed;
     }
 
-    .book-after {
-      padding-top: 4px;
-      color: var(--book-muted);
+    .registration-note {
+      margin-top: 10px;
+    }
+
+    .feedback {
+      margin: 12px 0 0;
+      color: var(--navy);
       font-size: .85rem;
     }
 
-    .book-after h2 {
+    .after {
+      padding-top: 4px;
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    .after h2 {
       margin: 0 0 8px;
-      color: var(--book-navy);
+      color: var(--navy);
       font-size: 1.15rem;
     }
 
-    .book-feedback {
-      min-height: 1.5em;
-      margin: 12px 0 0;
-      color: var(--book-navy);
-      font-size: .85rem;
+    .after p {
+      margin: 0 0 12px;
     }
 
-    .book-footer {
-      padding-block: 22px;
-      border-top: 1px solid var(--book-border);
-      background: var(--book-pale);
+    .after p:last-child {
+      margin-bottom: 0;
     }
 
-    .book-footer-inner {
+    .footer {
+      padding-block: 18px;
+      border-top: 1px solid var(--border);
+      background: var(--pale);
+    }
+
+    .footer-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -319,19 +389,27 @@
       gap: 12px 24px;
     }
 
-    .book-footer p {
+    .footer p {
       margin: 0;
-      color: var(--book-muted);
+      color: var(--muted);
       font-size: .76rem;
     }
 
-    .book-footer strong { color: var(--book-navy); }
+    .footer strong {
+      color: var(--navy);
+    }
 
-    .book-footer-links {
+    .footer-links {
       display: flex;
       flex-wrap: wrap;
       gap: 10px 18px;
-      font-size: .78rem;
+      font-size: .8rem;
+    }
+
+    .footer-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
     }
 
     :focus-visible {
@@ -340,91 +418,143 @@
     }
 
     @media (max-width: 600px) {
-      .book-main { padding-top: 30px; }
-      .book-grid { grid-template-columns: 1fr; }
-      .book-full { grid-column: auto; }
-      .book-form fieldset { padding: 18px; }
-      .book-header-inner { min-height: 68px; }
-      .book-footer-inner { align-items: flex-start; }
+      main {
+        padding-top: 26px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .full {
+        grid-column: auto;
+      }
+
+      fieldset {
+        padding: 16px;
+      }
+
+      .header-inner {
+        min-height: 68px;
+        gap: 10px;
+      }
+
+      .logo-crop {
+        width: 188.65px;
+        height: 52.92px;
+      }
+
+      .logo-crop img {
+        width: 354.76px;
+        left: -151.9px;
+        top: -36.505px;
+      }
+
+      .back-link {
+        font-size: .78rem;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+      }
+
+      .footer-links {
+        font-size: .85rem;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .header-inner {
+        flex-wrap: wrap;
+        padding-block: 8px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <a class="book-skip" href="#contenido">Ir al formulario</a>
+  <a class="skip-link" href="#contenido">Ir al formulario</a>
 
-  <header class="book-header">
-    <div class="book-wrap book-header-inner">
-      <a class="book-brand" href="index.html" aria-label="YAKAR, inicio">
-        YAKAR
+  <header class="header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html" aria-label="YAKAR, inicio">
+        <span class="logo-crop" aria-hidden="true">
+          <img src="assets/yakar-identidad.png"
+               width="1448" height="1086" alt="">
+        </span>
       </a>
-      <a class="book-back" href="index.html">Volver a YAKAR</a>
+
+      <a class="back-link" href="index.html">Volver a YAKAR</a>
     </div>
   </header>
 
-  <main id="contenido" class="book-wrap book-main">
-    <p class="book-eyebrow">Libro de Reclamaciones</p>
+  <main id="contenido" class="wrap">
+    <p class="eyebrow">Libro de Reclamaciones</p>
+
     <h1>Tu experiencia importa.<br>Queremos escucharte.</h1>
 
-    <p class="book-intro">
-      Si algo no salió como esperabas, cuéntanos qué ocurrió y qué
-      solución necesitas. Escucharte nos ayuda a atender tu caso
-      y mejorar.
+    <p class="intro">
+      Cuéntanos qué ocurrió y qué solución esperas.
+      Escucharte nos ayuda a atender tu caso y mejorar.
     </p>
 
-    <section class="book-status" aria-labelledby="channel-status">
+    <section class="status" aria-labelledby="channel-status">
       <strong id="channel-status">Canal virtual en preparación</strong>
       <p>
         Este formulario todavía no registra ni envía información.
         No ingreses datos personales reales durante esta etapa.
       </p>
       <p>
-        Puedes contactarnos en
+        Contáctanos en
         <a href="mailto:negocios.yakar@gmail.com">negocios.yakar@gmail.com</a>
         o al
         <a href="https://wa.me/51973669004"
-           target="_blank" rel="noopener noreferrer">+51 973 669 004</a>.
+           target="_blank"
+           rel="noopener noreferrer">+51 973 669 004</a>.
         Estos enlaces no generan una hoja de reclamación.
       </p>
     </section>
 
-    <section class="book-provider" aria-label="Datos de YAKAR">
+    <section class="provider" aria-label="Datos de YAKAR">
       <p><strong>Yakar Negocios E.I.R.L.</strong> · RUC 20612733261</p>
       <p>La Victoria, Lima, Perú</p>
+
       <!--
         Antes de activar la recepción, consignar la dirección completa
         y confirmada del establecimiento correspondiente al libro.
       -->
     </section>
 
-    <p id="draft-warning" class="book-warning">
+    <p id="draft-warning" class="draft-warning">
       <strong>Si sales antes de enviar, perderás la información ingresada.</strong>
       Los campos con * son obligatorios.
     </p>
 
     <noscript>
-      <div class="book-status">
+      <div class="status">
         Activa JavaScript para utilizar las validaciones y los contadores.
         La recepción virtual continúa pendiente de activación.
       </div>
     </noscript>
 
     <form id="complaint-form"
-          class="book-form"
           autocomplete="off"
           aria-describedby="channel-status draft-warning">
 
       <fieldset>
         <legend>1. Tus datos</legend>
 
-        <div class="book-grid">
-          <div class="book-field book-full">
+        <div class="grid">
+          <div class="field full">
             <label for="consumer-name">Nombres y apellidos *</label>
-            <input id="consumer-name" name="consumerName"
-                   type="text" maxlength="200" required>
+            <input id="consumer-name"
+                   name="consumerName"
+                   type="text"
+                   maxlength="200"
+                   required>
           </div>
 
-          <div class="book-field">
+          <div class="field">
             <label for="document-type">Tipo de documento *</label>
             <select id="document-type" name="documentType" required>
               <option value="">Selecciona una opción</option>
@@ -435,43 +565,64 @@
             </select>
           </div>
 
-          <div class="book-field">
+          <div class="field">
             <label for="document-number">Número de documento *</label>
-            <input id="document-number" name="documentNumber"
-                   type="text" maxlength="30" required
-                   aria-describedby="document-help document-counter">
-            <p id="document-help" class="book-help">
+            <input id="document-number"
+                   name="documentNumber"
+                   type="text"
+                   maxlength="30"
+                   spellcheck="false"
+                   required
+                   aria-describedby="document-help document-counter document-error">
+
+            <p id="document-help" class="help">
               Selecciona el tipo de documento para ver las indicaciones.
             </p>
-            <p id="document-counter" class="book-counter"
-               aria-live="off">0 caracteres</p>
+
+            <p id="document-counter" class="counter">0 / 30</p>
+
+            <p id="document-error"
+               class="document-error"
+               aria-live="polite"></p>
           </div>
 
-          <div class="book-field book-full">
+          <div class="field full">
             <label for="consumer-address">Domicilio *</label>
-            <input id="consumer-address" name="consumerAddress"
-                   type="text" maxlength="400" required
+            <input id="consumer-address"
+                   name="consumerAddress"
+                   type="text"
+                   maxlength="400"
+                   required
                    placeholder="Dirección, distrito, provincia y departamento">
           </div>
 
-          <div class="book-field">
-            <label for="consumer-email">Correo electrónico</label>
-            <input id="consumer-email" name="consumerEmail"
-                   type="email" maxlength="254"
+          <div class="field">
+            <label id="email-label" for="consumer-email">
+              Correo electrónico
+            </label>
+            <input id="consumer-email"
+                   name="consumerEmail"
+                   type="email"
+                   maxlength="254"
                    aria-describedby="email-help">
-            <p id="email-help" class="book-help">
+
+            <p id="email-help" class="help">
               Obligatorio si eliges recibir la respuesta por correo.
             </p>
           </div>
 
-          <div class="book-field">
+          <div class="field">
             <label for="consumer-phone">Teléfono de contacto</label>
-            <input id="consumer-phone" name="consumerPhone"
-                   type="tel" maxlength="30">
+            <input id="consumer-phone"
+                   name="consumerPhone"
+                   type="tel"
+                   maxlength="30">
           </div>
 
-          <div class="book-field book-full">
-            <label for="response-channel">¿Dónde deseas recibir la respuesta? *</label>
+          <div class="field full">
+            <label for="response-channel">
+              ¿Dónde deseas recibir la respuesta? *
+            </label>
             <select id="response-channel" name="responseChannel" required>
               <option value="">Selecciona una opción</option>
               <option value="EMAIL">En mi correo electrónico</option>
@@ -480,34 +631,48 @@
           </div>
         </div>
 
-        <label class="book-check">
+        <label class="check">
           <input id="is-minor" name="isMinor" type="checkbox">
           <span>El consumidor es menor de edad.</span>
         </label>
 
-        <div id="guardian-fields" class="book-grid book-guardian" hidden>
-          <div class="book-field book-full">
-            <label for="guardian-name">Nombre del padre, madre o representante *</label>
-            <input id="guardian-name" name="guardianName"
-                   type="text" maxlength="200" disabled>
+        <div id="guardian-fields" class="grid guardian" hidden>
+          <div class="field full">
+            <label for="guardian-name">
+              Nombre del padre, madre o representante *
+            </label>
+            <input id="guardian-name"
+                   name="guardianName"
+                   type="text"
+                   maxlength="200"
+                   disabled>
           </div>
 
-          <div class="book-field book-full">
+          <div class="field full">
             <label for="guardian-address">Domicilio del representante *</label>
-            <input id="guardian-address" name="guardianAddress"
-                   type="text" maxlength="400" disabled>
+            <input id="guardian-address"
+                   name="guardianAddress"
+                   type="text"
+                   maxlength="400"
+                   disabled>
           </div>
 
-          <div class="book-field">
+          <div class="field">
             <label for="guardian-phone">Teléfono del representante</label>
-            <input id="guardian-phone" name="guardianPhone"
-                   type="tel" maxlength="30" disabled>
+            <input id="guardian-phone"
+                   name="guardianPhone"
+                   type="tel"
+                   maxlength="30"
+                   disabled>
           </div>
 
-          <div class="book-field">
+          <div class="field">
             <label for="guardian-email">Correo del representante</label>
-            <input id="guardian-email" name="guardianEmail"
-                   type="email" maxlength="254" disabled>
+            <input id="guardian-email"
+                   name="guardianEmail"
+                   type="email"
+                   maxlength="254"
+                   disabled>
           </div>
         </div>
       </fieldset>
@@ -515,8 +680,8 @@
       <fieldset>
         <legend>2. Producto o servicio</legend>
 
-        <div class="book-grid">
-          <div class="book-field">
+        <div class="grid">
+          <div class="field">
             <label for="item-type">Tipo *</label>
             <select id="item-type" name="itemType" required>
               <option value="">Selecciona una opción</option>
@@ -525,20 +690,26 @@
             </select>
           </div>
 
-          <div class="book-field">
+          <div class="field">
             <label for="operation-reference">Referencia de la operación</label>
-            <input id="operation-reference" name="operationReference"
-                   type="text" maxlength="150"
+            <input id="operation-reference"
+                   name="operationReference"
+                   type="text"
+                   maxlength="150"
                    placeholder="Cotización, pedido, contrato o comprobante">
           </div>
 
-          <div class="book-field">
+          <div class="field">
             <label for="claimed-amount">Monto relacionado</label>
-            <input id="claimed-amount" name="claimedAmount"
-                   type="number" min="0" step="0.01" inputmode="decimal">
+            <input id="claimed-amount"
+                   name="claimedAmount"
+                   type="number"
+                   min="0"
+                   step="0.01"
+                   inputmode="decimal">
           </div>
 
-          <div class="book-field">
+          <div class="field">
             <label for="currency">Moneda</label>
             <select id="currency" name="currency">
               <option value="PEN">Soles — PEN</option>
@@ -546,14 +717,23 @@
             </select>
           </div>
 
-          <div class="book-field book-full">
-            <label for="item-description">Describe el producto o servicio *</label>
-            <textarea id="item-description" name="itemDescription"
-                      rows="3" maxlength="1000" required
+          <div class="field full">
+            <label for="item-description">
+              Describe el producto o servicio *
+            </label>
+
+            <textarea id="item-description"
+                      name="itemDescription"
+                      rows="3"
+                      maxlength="1000"
+                      required
                       data-counted
                       aria-describedby="item-description-counter"></textarea>
-            <p id="item-description-counter" class="book-counter">0 / 1000</p>
-            <button class="book-expand" type="button"
+
+            <p id="item-description-counter" class="counter">0 / 1000</p>
+
+            <button class="expand-button"
+                    type="button"
                     data-expand="item-description">
               Necesito más espacio
             </button>
@@ -564,47 +744,69 @@
       <fieldset>
         <legend>3. Cuéntanos qué ocurrió</legend>
 
-        <div class="book-choices">
-          <label class="book-choice">
+        <div class="choices">
+          <label class="choice">
             <input type="radio" name="caseType" value="RECLAMO" required>
             <span>
               <strong>Reclamo</strong>
-              <small>No estás conforme con el producto o servicio recibido.</small>
+              <small>
+                No estás conforme con el producto o servicio recibido.
+              </small>
             </span>
           </label>
 
-          <label class="book-choice">
+          <label class="choice">
             <input type="radio" name="caseType" value="QUEJA" required>
             <span>
               <strong>Queja</strong>
-              <small>Deseas expresar tu disconformidad con la atención recibida.</small>
+              <small>
+                Deseas expresar tu disconformidad con la atención recibida.
+              </small>
             </span>
           </label>
         </div>
 
-        <div class="book-grid">
-          <div class="book-field book-full">
+        <div class="grid">
+          <div class="field full">
             <label for="case-detail">¿Qué ocurrió? *</label>
-            <textarea id="case-detail" name="caseDetail"
-                      rows="5" maxlength="1000" required data-counted
+
+            <textarea id="case-detail"
+                      name="caseDetail"
+                      rows="5"
+                      maxlength="1000"
+                      required
+                      data-counted
                       aria-describedby="detail-help case-detail-counter"></textarea>
-            <p id="detail-help" class="book-help">
+
+            <p id="detail-help" class="help">
               Incluye fechas y detalles que nos ayuden a entender tu experiencia.
               Puedes escribir o pegar información que hayas preparado.
             </p>
-            <p id="case-detail-counter" class="book-counter">0 / 1000</p>
-            <button class="book-expand" type="button" data-expand="case-detail">
+
+            <p id="case-detail-counter" class="counter">0 / 1000</p>
+
+            <button class="expand-button"
+                    type="button"
+                    data-expand="case-detail">
               Necesito más espacio
             </button>
           </div>
 
-          <div class="book-field book-full">
+          <div class="field full">
             <label for="requested-action">¿Qué solución solicitas? *</label>
-            <textarea id="requested-action" name="requestedAction"
-                      rows="4" maxlength="1000" required data-counted
+
+            <textarea id="requested-action"
+                      name="requestedAction"
+                      rows="4"
+                      maxlength="1000"
+                      required
+                      data-counted
                       aria-describedby="requested-action-counter"></textarea>
-            <p id="requested-action-counter" class="book-counter">0 / 1000</p>
-            <button class="book-expand" type="button"
+
+            <p id="requested-action-counter" class="counter">0 / 1000</p>
+
+            <button class="expand-button"
+                    type="button"
                     data-expand="requested-action">
               Necesito más espacio
             </button>
@@ -615,33 +817,42 @@
       <fieldset>
         <legend>4. Revisa tu información</legend>
 
-        <p class="book-help">
+        <p class="help">
           Cuando se active este canal, tu registro tendrá un código
           correlativo y una constancia. Los datos se utilizarán para
           gestionar y responder tu caso.
         </p>
 
-        <label class="book-check">
-          <input id="confirmation" name="confirmation" type="checkbox" required>
-          <span>He revisado la información y confirmo que describe mi caso.</span>
+        <label class="check">
+          <input id="confirmation"
+                 name="confirmation"
+                 type="checkbox"
+                 required>
+          <span>
+            He revisado la información y confirmo que describe mi caso.
+          </span>
         </label>
 
-        <button id="complaint-submit" class="book-button"
-                type="submit" disabled>
+        <button id="complaint-submit"
+                class="submit-button"
+                type="submit"
+                disabled>
           Registro virtual aún no disponible
         </button>
 
-        <p class="book-help" style="margin-top: 12px">
+        <p class="help registration-note">
           No se ha generado un código ni se ha enviado información.
         </p>
 
-        <p id="form-feedback" class="book-feedback"
-           role="status" aria-live="polite"></p>
+        <p id="form-feedback"
+           class="feedback"
+           role="status"
+           aria-live="polite"></p>
       </fieldset>
     </form>
 
-    <section class="book-after" aria-labelledby="after-title">
-      <h2>Una atención con seguimiento</h2>
+    <section class="after" aria-labelledby="after-title">
+      <h2 id="after-title">Una atención con seguimiento</h2>
       <p>
         Una vez habilitado el registro, podrás conservar tu constancia
         y recibir una respuesta por el medio elegido. El plazo máximo
@@ -651,24 +862,25 @@
         Presentar una queja o reclamo no impide utilizar otros mecanismos
         de solución ni es un requisito previo para acudir a Indecopi.
         <a href="https://consumidor.gob.pe/libro-de-reclamaciones/"
-           target="_blank" rel="noopener noreferrer">
-          Consulta la información oficial
-        </a>.
+           target="_blank"
+           rel="noopener noreferrer">Consulta la información oficial</a>.
       </p>
     </section>
   </main>
 
-  <footer class="book-footer">
-    <div class="book-wrap book-footer-inner">
+  <footer class="footer">
+    <div class="wrap footer-inner">
       <p>
         <strong>Yakar Negocios E.I.R.L.</strong><br>
         RUC 20612733261 · La Victoria, Lima, Perú
       </p>
-      <nav class="book-footer-links" aria-label="Enlaces de contacto">
+
+      <nav class="footer-links" aria-label="Enlaces de contacto">
         <a href="index.html">Volver a YAKAR</a>
         <a href="mailto:negocios.yakar@gmail.com">Escríbenos</a>
         <a href="https://wa.me/51973669004"
-           target="_blank" rel="noopener noreferrer">WhatsApp</a>
+           target="_blank"
+           rel="noopener noreferrer">WhatsApp</a>
       </nav>
     </div>
   </footer>
@@ -682,8 +894,10 @@
       const documentNumber = document.getElementById("document-number");
       const documentHelp = document.getElementById("document-help");
       const documentCounter = document.getElementById("document-counter");
+      const documentError = document.getElementById("document-error");
       const responseChannel = document.getElementById("response-channel");
       const email = document.getElementById("consumer-email");
+      const emailLabel = document.getElementById("email-label");
       const minor = document.getElementById("is-minor");
       const guardian = document.getElementById("guardian-fields");
       const feedback = document.getElementById("form-feedback");
@@ -700,6 +914,7 @@
       function setDirty(value) {
         if (dirty === value) return;
         dirty = value;
+
         if (dirty) {
           window.addEventListener("beforeunload", warnBeforeExit);
         } else {
@@ -716,11 +931,15 @@
         counter.classList.toggle("near-limit", length >= limit * 0.9);
       }
 
+      function showDocumentError(message) {
+        documentError.textContent = message;
+      }
+
       function updateDocument() {
         const type = documentType.value;
         const value = documentNumber.value;
+        let error = "";
 
-        documentNumber.setCustomValidity("");
         documentNumber.removeAttribute("pattern");
         documentNumber.inputMode = "text";
         documentNumber.maxLength = 30;
@@ -729,39 +948,55 @@
           documentNumber.inputMode = "numeric";
           documentNumber.maxLength = 8;
           documentNumber.pattern = "[0-9]{8}";
-          documentHelp.textContent = "Ingresa exactamente 8 números, sin letras.";
+
+          documentHelp.textContent =
+            "Ingresa exactamente 8 números. Conserva los ceros iniciales.";
+
           documentCounter.textContent = value.length + " / 8";
 
           if (value && !/^[0-9]{8}$/.test(value)) {
-            documentNumber.setCustomValidity(
-              "El DNI debe contener exactamente 8 números, sin letras ni espacios."
-            );
-          }
-          return;
-        }
-
-        documentCounter.textContent = value.length + " caracteres";
-
-        if (type === "PASSPORT" || type === "CE") {
-          documentNumber.pattern = "[A-Za-z0-9]+";
-          documentHelp.textContent = type === "PASSPORT"
-            ? "Escribe las letras y números tal como aparecen en tu pasaporte."
-            : "Escribe el número tal como aparece en tu carné de extranjería.";
-
-          if (value && !/^[A-Za-z0-9]+$/.test(value)) {
-            documentNumber.setCustomValidity(
-              "Ingresa únicamente las letras y números del documento, sin espacios."
-            );
+            error =
+              "El DNI debe contener exactamente 8 números, sin letras ni espacios.";
           }
         } else {
-          documentHelp.textContent = type === "OTHER"
-            ? "Escribe el identificador tal como aparece en tu documento."
-            : "Selecciona el tipo de documento para ver las indicaciones.";
+          documentCounter.textContent = value.length + " / 30";
+
+          if (type === "PASSPORT" || type === "CE") {
+            documentNumber.pattern = "[A-Za-z0-9]+";
+
+            documentHelp.textContent = type === "PASSPORT"
+              ? "Ingresa las letras y números tal como aparecen en tu pasaporte."
+              : "Ingresa el identificador tal como aparece en tu carné de extranjería.";
+
+            if (value && !/^[A-Za-z0-9]+$/.test(value)) {
+              error =
+                "Ingresa letras y números, sin espacios ni otros caracteres.";
+            }
+          } else {
+            documentHelp.textContent = type === "OTHER"
+              ? "Ingresa el identificador tal como aparece en tu documento."
+              : "Selecciona el tipo de documento para ver las indicaciones.";
+          }
         }
+
+        documentNumber.setCustomValidity(error);
+
+        if (error) {
+          documentNumber.setAttribute("aria-invalid", "true");
+        } else {
+          documentNumber.removeAttribute("aria-invalid");
+        }
+
+        showDocumentError(error);
       }
 
       function updateResponseChannel() {
-        email.required = responseChannel.value === "EMAIL";
+        const requiresEmail = responseChannel.value === "EMAIL";
+
+        email.required = requiresEmail;
+        emailLabel.textContent = requiresEmail
+          ? "Correo electrónico *"
+          : "Correo electrónico";
       }
 
       function updateGuardian() {
@@ -807,16 +1042,54 @@
       responseChannel.addEventListener("change", updateResponseChannel);
       minor.addEventListener("change", updateGuardian);
 
+      /*
+       * Rechazar letras al escribir un DNI.
+       * Mantener la validación completa para otros métodos de entrada.
+       * No transformar la identidad al cambiar de tipo de documento.
+       */
+      documentNumber.addEventListener("beforeinput", (event) => {
+        if (documentType.value !== "DNI") return;
+        if (event.isComposing || !event.cancelable) return;
+
+        if (
+          event.inputType.startsWith("insert") &&
+          event.data !== null &&
+          /[^0-9]/.test(event.data)
+        ) {
+          event.preventDefault();
+          showDocumentError("Para DNI, ingresa únicamente números.");
+        }
+      });
+
+      documentNumber.addEventListener("paste", (event) => {
+        if (documentType.value !== "DNI") return;
+        if (!event.clipboardData) return;
+
+        const pasted = event.clipboardData.getData("text");
+        const start = documentNumber.selectionStart ?? 0;
+        const end = documentNumber.selectionEnd ?? start;
+
+        const proposed =
+          documentNumber.value.slice(0, start) +
+          pasted +
+          documentNumber.value.slice(end);
+
+        if (/[^0-9]/.test(pasted) || proposed.length > 8) {
+          event.preventDefault();
+          showDocumentError(
+            "El texto no se ha pegado. El DNI admite únicamente 8 números."
+          );
+        }
+      });
+
       countedFields.forEach((field) => {
-        field.addEventListener("input", () => {
-          field.setCustomValidity("");
-          updateCounter(field);
-        });
+        field.addEventListener("input", () => updateCounter(field));
       });
 
       form.querySelectorAll("[data-expand]").forEach((button) => {
         button.addEventListener("click", () => {
           const field = document.getElementById(button.dataset.expand);
+
           field.maxLength = 6000;
           updateCounter(field);
           button.hidden = true;
@@ -826,14 +1099,22 @@
 
       document.addEventListener("click", (event) => {
         const link = event.target.closest("a[href]");
+
         if (!link || !dirty || event.defaultPrevented) return;
         if (link.target === "_blank" || link.hasAttribute("download")) return;
-        if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+        if (
+          event.ctrlKey ||
+          event.metaKey ||
+          event.shiftKey ||
+          event.altKey
+        ) return;
 
         const destination = new URL(link.href, window.location.href);
+
         if (!["http:", "https:"].includes(destination.protocol)) return;
 
-        const samePage = destination.origin === location.origin &&
+        const samePage =
+          destination.origin === location.origin &&
           destination.pathname === location.pathname &&
           destination.search === location.search;
 
@@ -845,23 +1126,28 @@
 
         if (!leave) {
           event.preventDefault();
-        } else {
-          resetDraft();
+          return;
         }
+
+        resetDraft();
       });
 
       form.addEventListener("submit", (event) => {
         event.preventDefault();
+
         feedback.textContent =
           "La recepción virtual todavía no está habilitada. No se ha registrado ni enviado información.";
       });
 
       /*
-       * No se guardan borradores en localStorage, sessionStorage
-       * ni cookies. Cambiar de pestaña no borra lo escrito.
+       * No se guardan borradores en cookies, localStorage
+       * ni sessionStorage.
        *
-       * El navegador controla su propia advertencia de salida.
-       * Algunos dispositivos móviles pueden no mostrarla.
+       * Cambiar de pestaña no borra los campos.
+       * Abandonar la página o regresar a ella reinicia el formulario.
+       *
+       * El navegador controla su advertencia de salida;
+       * algunos dispositivos móviles pueden no mostrarla.
        */
       window.addEventListener("pagehide", resetDraft);
       window.addEventListener("pageshow", resetDraft);
@@ -869,16 +1155,17 @@
       resetDraft();
 
       /*
-       * PENDIENTE: conectar un servicio de recepción.
+       * RECEPCIÓN PENDIENTE DE IMPLEMENTACIÓN
        *
        * El servidor deberá:
-       * 1. Validar y guardar la hoja de reclamación.
-       * 2. Asignar un correlativo único sin duplicados.
-       * 3. Devolver una constancia imprimible.
-       * 4. Gestionar las copias al consumidor y a YAKAR.
-       * 5. Gestionar alertas internas y seguimiento.
+       * - Validar y guardar la hoja.
+       * - Asignar numeración correlativa única.
+       * - Evitar registros duplicados por reintentos.
+       * - Entregar una constancia imprimible.
+       * - Gestionar las copias al consumidor y a YAKAR.
+       * - Gestionar avisos internos y seguimiento.
        *
-       * No habilitar el botón hasta completar y verificar ese flujo.
+       * El botón debe continuar deshabilitado hasta verificar el flujo.
        * Nunca colocar claves de correo o Telegram en este archivo.
        */
     })();
