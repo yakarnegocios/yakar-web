@@ -1,415 +1,942 @@
-
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-PE">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1B3A6B">
 
-    <meta name="description" content="YAKAR convierte necesidades de suministro en requerimientos claros y operaciones coordinadas. Abastecimiento estratégico para empresas.">
-    <meta name="theme-color" content="#1B3A6B">
+  <title>Productos, servicios y proyectos para empresas | YAKAR</title>
 
-    <title>YAKAR | Abastecimiento estratégico</title>
+  <meta
+    name="description"
+    content="Productos y suministros, servicios y evaluación de proyectos para empresas en Perú. Uniformes industriales, tecnología y atención por requerimiento."
+  >
 
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="js/main.js" defer></script>
+  <link
+    rel="canonical"
+    href="https://yakarnegocios.github.io/yakar-web/"
+  >
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_PE">
+  <meta property="og:site_name" content="YAKAR">
+  <meta
+    property="og:title"
+    content="Productos, servicios y proyectos | YAKAR"
+  >
+  <meta
+    property="og:description"
+    content="Tu necesidad. Un compromiso bien gestionado. Alcance, condiciones y seguimiento acordados."
+  >
+  <meta
+    property="og:url"
+    content="https://yakarnegocios.github.io/yakar-web/"
+  >
+  <meta
+    property="og:image"
+    content="https://yakarnegocios.github.io/yakar-web/assets/textil-prendas.webp"
+  >
+  <meta
+    property="og:image:alt"
+    content="Composición ilustrativa de prendas industriales"
+  >
+
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
 </head>
 
 <body>
-    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <!--
+    YAKAR V3
+    Archivo 1: index.html
+    Integración en GitHub pendiente de confirmación.
+    Requiere los archivos coordinados CSS, JavaScript e imágenes.
+  -->
 
-    <header class="site-header">
-        <div class="container header-inner">
-            <a class="brand" href="#inicio" aria-label="YAKAR, inicio">
-                <span class="brand-name">YAKAR</span>
-                <span class="brand-descriptor">ABASTECIMIENTO ESTRATÉGICO</span>
-            </a>
+  <div class="commercial">
+    <a class="skip" href="#contenido">Saltar al contenido</a>
 
-            <nav class="main-nav" aria-label="Navegación principal">
-                <a href="#metodo">Método</a>
-                <a href="#categorias">Qué abastecemos</a>
-                <a href="#evidencia">Experiencia</a>
-                <a class="nav-cta" href="#requerimiento">Iniciar requerimiento</a>
-            </nav>
-        </div>
+    <header class="header">
+      <div class="wrap nav">
+        <a
+          class="brand-image"
+          href="index.html"
+          aria-label="YAKAR, inicio"
+        >
+          <span class="brand-crop" aria-hidden="true">
+            <img
+              src="assets/yakar-identidad.png"
+              width="1448"
+              height="1086"
+              alt=""
+            >
+          </span>
+        </a>
+
+        <button
+          class="menu-button"
+          type="button"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+          aria-controls="main-nav"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+
+        <nav id="main-nav" class="navlinks" aria-label="Principal">
+          <a href="#soluciones">Soluciones</a>
+          <a href="#metodo">Nuestro método</a>
+          <a href="#perspectiva">Perspectiva</a>
+          <a class="btn" href="#requerimiento">Iniciar requerimiento</a>
+        </nav>
+      </div>
     </header>
 
     <main id="contenido">
-        <!-- HERO -->
-        <section class="hero" id="inicio">
-            <div class="container hero-grid">
-                <div class="hero-content">
-                    <p class="eyebrow">ABASTECIMIENTO ESTRATÉGICO</p>
+      <section class="cover" aria-labelledby="cover-title">
+        <div class="wrap cover-grid">
+          <div class="cover-copy">
+            <p class="eyebrow">
+              Productos, servicios y proyectos para tu operación
+            </p>
 
-                    <h1>Abastecimiento estratégico para operaciones que necesitan cumplir.</h1>
+            <h1 id="cover-title">
+              Tu necesidad.<br>
+              Un compromiso<br>
+              <em>bien gestionado.</em>
+            </h1>
 
-                    <p class="hero-lead">
-                        Convertimos necesidades de suministro en
-                        requerimientos claros y operaciones coordinadas.
-                    </p>
+            <p class="lead">
+              Desde uniformes industriales y equipamiento hasta
+              requerimientos de servicios y proyectos. Definimos contigo
+              el alcance, las condiciones y el seguimiento de cada atención.
+            </p>
 
-                    <div class="hero-actions">
-                        <a class="button button-primary" href="#requerimiento">
-                            Iniciar requerimiento
-                        </a>
-                        <a class="button button-secondary" href="#metodo">
-                            Conocer el método
-                        </a>
-                    </div>
-
-                    <p class="hero-note">CUMPLIR ES PARTE DEL PRODUCTO.</p>
-                </div>
-
-                <aside class="hero-panel" aria-label="Principio YAKAR">
-                    <p class="panel-label">NUESTRO PRINCIPIO</p>
-                    <p class="hero-principle">
-                        Primero entendemos.<br>
-                        Después comprometemos.
-                    </p>
-                    <p class="panel-text">
-                        Cada requerimiento se evalúa antes de asumir
-                        un compromiso de suministro.
-                    </p>
-                </aside>
+            <div class="actions">
+              <a class="btn" href="#requerimiento">
+                Cuéntanos qué necesitas
+              </a>
+              <a class="quiet-link" href="#metodo">
+                Conoce cómo trabajamos
+              </a>
             </div>
-        </section>
 
-        <!-- MÉTODO -->
-        <section class="section" id="metodo">
-            <div class="container">
-                <div class="section-heading">
-                    <p class="eyebrow">EL SISTEMA YAKAR</p>
-                    <h2>La necesidad no termina cuando se encuentra un proveedor.</h2>
-                    <p>
-                        Estructuramos el abastecimiento desde la necesidad
-                        hasta la entrega y la respuesta.
-                    </p>
-                </div>
-
-                <ol class="method-flow" aria-label="Etapas del método YAKAR">
-                    <li><span>01</span><strong>Entender</strong></li>
-                    <li><span>02</span><strong>Especificar</strong></li>
-                    <li><span>03</span><strong>Validar</strong></li>
-                    <li><span>04</span><strong>Abastecer</strong></li>
-                    <li><span>05</span><strong>Controlar</strong></li>
-                    <li><span>06</span><strong>Entregar</strong></li>
-                    <li><span>07</span><strong>Responder</strong></li>
-                </ol>
+            <div class="cover-rule">
+              <span>PERÚ · ATENCIÓN A ORGANIZACIONES</span>
+              <p>Cumplir es parte del producto.</p>
             </div>
-        </section>
+          </div>
 
-        <!-- CATEGORÍAS -->
-        <section class="section section-dark" id="categorias">
-            <div class="container">
-                <div class="section-heading section-heading-light">
-                    <p class="eyebrow">QUÉ ABASTECEMOS</p>
-                    <h2>Suministros para las necesidades de tu operación.</h2>
-                </div>
+          <div class="cover-right">
+            <figure class="fabric-photo">
+              <img
+                src="assets/textil-prendas.webp"
+                width="1536"
+                height="1024"
+                alt="Composición ilustrativa de casaca, chaleco y pantalón industriales"
+                fetchpriority="high"
+                decoding="async"
+              >
+              <figcaption>
+                <span>PRODUCTOS Y SUMINISTROS</span>
+                <strong>Uniformes para tu operación.</strong>
+                <small>
+                  Imagen ilustrativa generada · configuración según requerimiento
+                </small>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
 
-                <div class="category-grid">
-                    <article class="category-card">
-                        <span class="category-number">01</span>
-                        <h3>Seguridad industrial</h3>
-                        <p>Protección personal y suministros de seguridad.</p>
-                    </article>
+      <div
+        class="wrap assurance"
+        aria-label="Cómo cuidamos tu requerimiento"
+      >
+        <div>
+          <span>
+            <strong>Alcance claro</strong>
+            <small>Entender antes de proponer.</small>
+          </span>
+        </div>
+        <div>
+          <span>
+            <strong>Condiciones acordadas</strong>
+            <small>Decidir con información.</small>
+          </span>
+        </div>
+        <div>
+          <span>
+            <strong>Seguimiento definido</strong>
+            <small>Responsables y próximos pasos.</small>
+          </span>
+        </div>
+      </div>
 
-                    <article class="category-card">
-                        <span class="category-number">02</span>
-                        <h3>Textil industrial</h3>
-                        <p>Uniformes, prendas corporativas y textiles personalizados.</p>
-                    </article>
+      <div class="wrap industry-band">
+        <p class="eyebrow">Soluciones para operaciones exigentes</p>
 
-                    <article class="category-card">
-                        <span class="category-number">03</span>
-                        <h3>Ferretería y suministros</h3>
-                        <p>Materiales, herramientas y suministros para operaciones.</p>
-                    </article>
+        <ul aria-label="Sectores de interés">
+          <li>Minería y servicios mineros</li>
+          <li>Petróleo y energía</li>
+          <li>Industria</li>
+          <li>Tecnología</li>
+          <li>Logística</li>
+          <li>Construcción</li>
+          <li>Metalmecánica</li>
+        </ul>
 
-                    <article class="category-card">
-                        <span class="category-number">04</span>
-                        <h3>Equipamiento</h3>
-                        <p>
-                            Requerimientos que podamos especificar,
-                            evaluar y abastecer responsablemente.
-                        </p>
-                    </article>
-                </div>
+        <p class="small">
+          Empresas privadas y entidades públicas.
+          Cada requerimiento se evalúa según su alcance
+          y condiciones aplicables.
+        </p>
+      </div>
 
-                <p class="section-footnote">
-                    Cada requerimiento se evalúa según sus especificaciones
-                    y condiciones.
+      <section
+        class="section"
+        id="soluciones"
+        aria-labelledby="solutions-title"
+      >
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Tres líneas. Un punto de contacto.</p>
+              <h2 id="solutions-title">
+                Lo que necesitas,<br>
+                con un alcance definido.
+              </h2>
+            </div>
+            <p>
+              Productos, servicios y proyectos. Precisamos qué incluye
+              la atención y qué falta confirmar antes de avanzar.
+            </p>
+          </div>
+
+          <div class="offering-grid">
+            <article class="textile-offer" id="productos">
+              <div>
+                <span class="label-tag">PRODUCTOS Y SUMINISTROS</span>
+                <h3>Equipar tu operación.</h3>
+                <p>
+                  Uniformes industriales, tecnología y suministros
+                  según uso, especificaciones y condiciones de entrega.
                 </p>
-            </div>
-        </section>
 
-        <!-- MODELO OPERATIVO -->
-        <section class="section" id="modelo">
-            <div class="container evidence-layout">
+                <ul class="offer-list">
+                  <li>
+                    Uniformes: materiales, tallas y personalización.
+                  </li>
+                  <li>
+                    PC y estaciones de trabajo: configuración según uso.
+                  </li>
+                  <li>
+                    Cámaras y equipos audiovisuales:
+                    características y compatibilidad.
+                  </li>
+                  <li>
+                    Seguridad, ferretería y suministros industriales.
+                  </li>
+                </ul>
+
+                <a
+                  class="btn"
+                  href="#requerimiento"
+                  data-request-family="Productos y suministros"
+                >
+                  Consultar productos
+                </a>
+              </div>
+
+              <div class="textile-detail">
+                <span class="detail-label">ANTES DE CONFIRMAR</span>
+                <p>Especificaciones.<br>Entrega y garantía.</p>
+                <span>El alcance se acuerda contigo.</span>
+              </div>
+            </article>
+
+            <div class="other-offers">
+              <article id="servicios">
+                <span class="offer-number" aria-hidden="true">02</span>
                 <div>
-                    <p class="eyebrow">MODELO OPERATIVO</p>
-                    <h2>Una operación bien gestionada va más allá de la compra.</h2>
-
-                    <p class="hero-lead">
-                        Trabajamos a partir de las necesidades del cliente,
-                        coordinando las etapas necesarias para atender
-                        cada requerimiento.
-                    </p>
-
-                    <p>
-                        El alcance se define según el producto, las
-                        especificaciones, las condiciones acordadas
-                        y lo que podamos ejecutar responsablemente.
-                    </p>
+                  <span class="category-status">
+                    SERVICIOS · POR REQUERIMIENTO
+                  </span>
+                  <h3>Cuidar y mejorar tu operación.</h3>
+                  <p>
+                    Evaluación de mantenimiento de equipos industriales
+                    y diagnóstico de procesos operativos.
+                    Definimos el alcance, los responsables
+                    y los entregables de la propuesta.
+                  </p>
+                  <a
+                    href="#requerimiento"
+                    data-request-family="Servicios"
+                  >
+                    Consultar un servicio
+                  </a>
                 </div>
+              </article>
 
-                <ol class="evidence-chain" aria-label="Flujo de abastecimiento">
-                    <li>Requerimiento</li>
-                    <li>Especificación</li>
-                    <li>Evaluación de alternativas</li>
-                    <li>Condiciones acordadas</li>
-                    <li>Coordinación y control</li>
-                    <li>Entrega</li>
-                    <li>Conformidad</li>
-                </ol>
-            </div>
-        </section>
-
-        <!-- CONTROL Y EVIDENCIA -->
-        <section class="section section-request" id="evidencia">
-            <div class="container">
-                <div class="section-heading">
-                    <p class="eyebrow">CONTROL Y EVIDENCIA</p>
-                    <h2>Lo que se promete debe poder demostrarse.</h2>
-                    <p>
-                        Buscamos que cada operación pueda reconstruirse
-                        a partir de sus acuerdos, registros, ejecución
-                        y resultados.
-                    </p>
-                </div>
-
-                <ol class="evidence-principles">
-                    <li>
-                        <span class="card-number">01 · PROMESA</span>
-                        <h3>Definir</h3>
-                        <p>Precisar cantidades, especificaciones, fechas y condiciones.</p>
-                    </li>
-                    <li>
-                        <span class="card-number">02 · REGISTRO</span>
-                        <h3>Registrar</h3>
-                        <p>Conservar la información relevante de la operación.</p>
-                    </li>
-                    <li>
-                        <span class="card-number">03 · EVIDENCIA</span>
-                        <h3>Respaldar</h3>
-                        <p>Documentar las etapas y los resultados que puedan comprobarse.</p>
-                    </li>
-                    <li>
-                        <span class="card-number">04 · MEJORA</span>
-                        <h3>Aprender</h3>
-                        <p>Usar resultados e incidencias para mejorar decisiones posteriores.</p>
-                    </li>
-                </ol>
-            </div>
-        </section>
-
-        <!-- EXPERIENCIA DOCUMENTADA -->
-        <section class="section" id="experiencia">
-            <div class="container experience-layout">
+              <article id="proyectos">
+                <span class="offer-number" aria-hidden="true">03</span>
                 <div>
-                    <p class="eyebrow">EXPERIENCIA DOCUMENTADA</p>
-                    <h2>Un suministro personalizado, gestionado para un cliente institucional.</h2>
-                    <p>
-                        En 2024, YAKAR realizó una operación de suministro
-                        de bolsas personalizadas de tocuyo.
-                    </p>
+                  <span class="category-status">
+                    PROYECTOS · EVALUACIÓN DE ALCANCE
+                  </span>
+                  <h3>Estructurar el siguiente paso.</h3>
+                  <p>
+                    Evaluamos requerimientos de estructuras metálicas,
+                    infraestructura vial y espacios públicos para precisar
+                    alcance, condiciones y viabilidad de atención.
+                  </p>
+                  <a
+                    href="#requerimiento"
+                    data-request-family="Proyectos"
+                  >
+                    Conversar sobre un proyecto
+                  </a>
                 </div>
-
-                <aside class="experience-card">
-                    <span class="experience-label">OPERACIÓN DOCUMENTADA</span>
-                    <strong class="experience-quantity">1.000 unidades</strong>
-                    <span>Bolsas personalizadas de tocuyo</span>
-                    <p>
-                        Caso presentado de forma anónima para proteger
-                        la información del cliente.
-                    </p>
-                </aside>
+              </article>
             </div>
-        </section>
+          </div>
 
-        <!-- RECEPCIÓN DIGITAL -->
-        <section class="section section-dark" id="requerimiento">
-            <div class="container">
-                <div class="section-heading section-heading-light">
-                    <p class="eyebrow">RECEPCIÓN DIGITAL YAKAR</p>
-                    <h2>¿Qué necesitas resolver?</h2>
-                    <p>
-                        Comencemos con lo esencial. Después podremos
-                        precisar los detalles contigo.
-                    </p>
-                </div>
+          <p class="small">
+            El suministro, la instalación, el mantenimiento y la ejecución
+            son alcances distintos. La propuesta identifica
+            lo incluido en cada caso.
+          </p>
+        </div>
+      </section>
 
-                <div class="request-options">
-                    <button
-                        class="request-option"
-                        type="button"
-                        data-request-route="defined"
-                        aria-pressed="false"
-                    >
-                        <span class="option-number">01</span>
-                        <span class="option-copy">
-                            <strong>Tengo una especificación definida</strong>
-                            <small>
-                                Ya conozco el producto o las características
-                                que necesito.
-                            </small>
-                        </span>
-                        <span class="option-arrow" aria-hidden="true">→</span>
-                    </button>
+      <section
+        class="section process-section"
+        id="metodo"
+        aria-labelledby="method-title"
+      >
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">El método YAKAR</p>
+              <h2 id="method-title">
+                Sabes qué se acuerda.<br>
+                Sabes qué sigue.
+              </h2>
+            </div>
+            <p>Cada hito deja un acuerdo, una acción o una evidencia.</p>
+          </div>
 
-                    <button
-                        class="request-option"
-                        type="button"
-                        data-request-route="help"
-                        aria-pressed="false"
-                    >
-                        <span class="option-number">02</span>
-                        <span class="option-copy">
-                            <strong>Necesito ayuda para estructurarla</strong>
-                            <small>
-                                Tengo una necesidad y necesito definir
-                                mejor el requerimiento.
-                            </small>
-                        </span>
-                        <span class="option-arrow" aria-hidden="true">→</span>
-                    </button>
-                </div>
+          <div class="roadmap">
+            <p class="roadmap-hint">
+              Recorre los hitos con el cursor, el teclado o un toque.
+            </p>
 
-                <div class="request-form-panel" id="request-form-panel" hidden>
-                    <h3 id="request-form-title">Iniciar requerimiento</h3>
-                    <p id="request-form-description">
-                        Comparte los datos esenciales para iniciar la conversación.
-                    </p>
+            <div class="route-map">
+              <svg
+                class="route-connector"
+                viewBox="0 0 1000 80"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <path
+                  class="route-base"
+                  d="M100 25 C180 25 220 47 300 47 S420 25 500 25 S620 47 700 47 S820 25 900 25"
+                ></path>
+                <path
+                  class="route-lit"
+                  pathLength="1000"
+                  stroke-dasharray="0 1000"
+                  d="M100 25 C180 25 220 47 300 47 S420 25 500 25 S620 47 700 47 S820 25 900 25"
+                ></path>
+              </svg>
 
-                    <form id="request-form">
-                        <input type="hidden" name="request_route" id="request-route">
+              <ol class="roadmap-track">
+                <li>
+                  <button
+                    class="active"
+                    type="button"
+                    aria-expanded="true"
+                    aria-controls="milestone-detail"
+                  >
+                    <span class="milestone-dot">01</span>
+                    <strong>Entendemos</strong>
+                    <small>Tu necesidad</small>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="milestone-detail"
+                  >
+                    <span class="milestone-dot">02</span>
+                    <strong>Proponemos</strong>
+                    <small>La solución</small>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="milestone-detail"
+                  >
+                    <span class="milestone-dot">03</span>
+                    <strong>Acordamos</strong>
+                    <small>El compromiso</small>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="milestone-detail"
+                  >
+                    <span class="milestone-dot">04</span>
+                    <strong>Coordinamos</strong>
+                    <small>El avance</small>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="milestone-detail"
+                  >
+                    <span class="milestone-dot">05</span>
+                    <strong>Respondemos</strong>
+                    <small>La conformidad</small>
+                  </button>
+                </li>
+              </ol>
+            </div>
 
-                        <div class="form-field">
-                            <label for="contact-name">Nombre y apellido</label>
-                            <input
-                                id="contact-name"
-                                name="contact_name"
-                                type="text"
-                                autocomplete="name"
-                                maxlength="120"
-                                required
-                            >
-                        </div>
+            <div class="milestone-panel" id="milestone-detail">
+              <span>Hito 01 / Entendemos</span>
+              <p>
+                Precisamos el uso, el alcance y la fecha deseada.
+                Puedes empezar con una idea o con una especificación.
+              </p>
+              <strong>Una necesidad definida contigo.</strong>
+            </div>
 
-                        <div class="form-field">
-                            <label for="company-name">Empresa</label>
-                            <input
-                                id="company-name"
-                                name="company_name"
-                                type="text"
-                                autocomplete="organization"
-                                maxlength="160"
-                                required
-                            >
-                        </div>
+            <a class="method-link" href="metodo.html">
+              Ver el proceso completo →
+            </a>
+          </div>
+        </div>
+      </section>
 
-                        <div class="form-field">
-                            <label for="contact-email">Correo de contacto</label>
-                            <input
-                                id="contact-email"
-                                name="contact_email"
-                                type="email"
-                                autocomplete="email"
-                                maxlength="254"
-                                required
-                            >
-                        </div>
+      <section
+        class="section"
+        id="experiencia"
+        aria-labelledby="experience-title"
+      >
+        <div class="wrap experience-grid">
+          <div>
+            <p class="eyebrow">Experiencia aplicada</p>
+            <h2 id="experience-title">
+              Criterio para definir.<br>
+              Gestión para avanzar.
+            </h2>
+            <p>
+              Partimos de antecedentes reales en textiles personalizados
+              y equipamiento técnico. Cada nueva atención se evalúa
+              por sus propios requisitos y condiciones.
+            </p>
+            <a class="quiet-link" href="#requerimiento">
+              Conversemos sobre tu necesidad
+            </a>
+          </div>
 
-                        <div class="form-field">
-                            <label for="request-summary">¿Qué necesitas abastecer?</label>
-                            <textarea
-                                id="request-summary"
-                                name="request_summary"
-                                rows="3"
-                                maxlength="1500"
-                                required
-                            ></textarea>
-                        </div>
+          <div class="experience-practice">
+            <span class="eyebrow">Antecedentes YAKAR</span>
+            <h3>Textiles personalizados.<br>Equipamiento técnico.</h3>
+            <p>
+              Suministro de bolsos personalizados y venta de un motor
+              eléctrico. Aplicamos lo aprendido
+              a las condiciones de cada nueva atención.
+            </p>
+          </div>
+        </div>
+      </section>
 
-                        <label class="privacy-consent">
-                            <input
-                                type="checkbox"
-                                name="privacy_acknowledgement"
-                                required
-                            >
-                            <span>
-                                He leído la información sobre el tratamiento
-                                de mis datos personales.
-                                <a href="privacidad.html">Consultar privacidad</a>.
-                            </span>
-                        </label>
+      <section
+        class="section perspective-section"
+        id="perspectiva"
+        aria-labelledby="perspective-title"
+      >
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Perspectiva YAKAR · lectura breve</p>
+              <h2 id="perspective-title">
+                Lo que cambia afuera.<br>
+                Lo que cuidamos aquí.
+              </h2>
+            </div>
+            <p>
+              Tres notas. Una lectura útil para tu decisión.<br>
+              <strong>
+                Edición:
+                <time datetime="2026-10-03">3 de octubre de 2026</time>
+              </strong>
+            </p>
+          </div>
 
-                        <p class="form-note">
-                            Estos datos son el inicio de la solicitud.
-                            YAKAR deberá confirmar la recepción y coordinar
-                            los siguientes pasos mediante el canal de contacto indicado.
-                        </p>
+          <div class="perspective-grid">
+            <article>
+              <span class="label-tag">PRODUCTOS · TEXTIL</span>
+              <h3>Comprar para usar, no para descartar.</h3>
+              <p>
+                Desde julio de 2026, la UE prohíbe a grandes empresas
+                destruir prendas y calzado sin vender, con excepciones.
+              </p>
+              <p>
+                <strong>Nuestra lectura:</strong>
+                Definir uso, cantidad y durabilidad ayuda a evitar compras
+                que pierden valor. Es una señal internacional, no una
+                obligación trasladada automáticamente a Perú.
+              </p>
+              <p class="perspective-action">
+                Para tu pedido: precisar el uso y la cantidad
+                antes de elegir la prenda.
+              </p>
+              <a
+                href="https://environment.ec.europa.eu/news/ban-destruction-unsold-clothes-and-shoes-enters-application-2026-07-17_en"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Fuente: Comisión Europea · 17 de julio de 2026
+              </a>
+            </article>
 
-                        <button class="button button-primary" type="submit">
-                            Enviar requerimiento
-                        </button>
+            <article>
+              <span class="label-tag">OPERACIÓN · CUIDADO DIGITAL</span>
+              <h3>Un correo conocido también se verifica.</h3>
+              <p>
+                El FBI advierte sobre correos que suplantan contactos
+                comerciales para desviar pagos.
+              </p>
+              <p>
+                <strong>Nuestra lectura:</strong>
+                Un cambio de cuenta o destinatario merece una confirmación
+                por un canal ya conocido.
+                La urgencia no reemplaza la verificación.
+              </p>
+              <p class="perspective-action">
+                Para tu compra: confirmar cambios de pago
+                por un canal previamente validado.
+              </p>
+              <a
+                href="https://www.fbi.gov/how-we-can-help-you/common-frauds-and-scams/business-email-compromise"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Fuente: FBI · consultada para esta edición
+              </a>
+            </article>
 
-                        <p
-                            class="form-feedback"
-                            id="form-feedback"
-                            role="status"
-                            aria-live="polite"
-                        ></p>
-                    </form>
-                </div>
+            <article>
+              <span class="label-tag">TECNOLOGÍA · CONTINUIDAD</span>
+              <h3>Un equipo también se compra por su vigencia.</h3>
+              <p>
+                Microsoft finalizó el soporte estándar de Windows 10
+                el 14 de octubre de 2025. Existen programas
+                de actualizaciones extendidas sujetos a condiciones.
+              </p>
+              <p>
+                <strong>Nuestra lectura:</strong>
+                Antes de renovar equipos, conviene revisar compatibilidad,
+                licencias y soporte. La potencia por sí sola
+                no asegura continuidad.
+              </p>
+              <p class="perspective-action">
+                Para tu requerimiento: indicar los programas
+                que usarás y el soporte que necesitas.
+              </p>
+              <a
+                href="https://support.microsoft.com/es-es/windows/deployment/updates-lifecycle/windows-10-support-has-ended-on-october-14-2025"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Fuente: Microsoft · consultada para esta edición
+              </a>
+            </article>
+          </div>
 
-                <p class="request-principle">
-                    Primero entendemos. Después comprometemos.
+          <p class="small">
+            Cada nota distingue el hecho de nuestra opinión.
+            La fecha visible identifica la última edición disponible.
+          </p>
+        </div>
+      </section>
+
+      <section
+        class="section request-section"
+        id="requerimiento"
+        aria-labelledby="request-title"
+      >
+        <div class="wrap request-grid">
+          <div class="request-intro">
+            <p class="eyebrow">Comencemos por tu necesidad</p>
+            <h2 id="request-title">
+              Un buen compromiso<br>
+              empieza con una<br>
+              buena conversación.
+            </h2>
+            <p>
+              Comparte lo que ya sabes. Podemos empezar con una
+              especificación o ayudarte a ordenar el requerimiento.
+            </p>
+
+            <div class="contact-actions" aria-label="Contacto comercial">
+              <a
+                href="https://wa.me/51973669004"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>
+                  <strong>Conversar por WhatsApp</strong>
+                  <small>+51 973 669 004</small>
+                </span>
+              </a>
+              <a href="mailto:negocios.yakar@gmail.com">
+                <span>
+                  <strong>Escribir por correo</strong>
+                  <small>negocios.yakar@gmail.com</small>
+                </span>
+              </a>
+            </div>
+
+            <div class="request-faq">
+              <details>
+                <summary>
+                  ¿Puedo consultar si aún no tengo todo definido?
+                </summary>
+                <p>
+                  Sí. Describe el resultado que buscas, el uso y las
+                  condiciones conocidas. Identificaremos qué información
+                  falta para evaluar una propuesta.
                 </p>
-            </div>
-        </section>
+              </details>
 
-        <!-- CIERRE -->
-        <section class="section contact-section" id="cierre">
-            <div class="container">
-                <div class="contact-box">
-                    <p class="eyebrow">YAKAR</p>
-                    <h2>Empecemos por tu requerimiento.</h2>
-                    <p>
-                        Cuéntanos qué necesitas abastecer y qué resultado
-                        buscas para tu operación.
-                    </p>
-                    <a class="button button-primary" href="#requerimiento">
-                        Iniciar requerimiento
-                    </a>
-                </div>
+              <details>
+                <summary>
+                  ¿Qué debe quedar claro antes de confirmar?
+                </summary>
+                <p>
+                  Alcance, especificaciones, responsables, entregables,
+                  precio, impuestos, plazos y condiciones. Instalación,
+                  garantía y soporte se detallan cuando forman parte
+                  de la atención.
+                </p>
+              </details>
+
+              <details>
+                <summary>
+                  ¿Cómo atienden requerimientos del Estado?
+                </summary>
+                <p>
+                  Evaluamos el requerimiento y preparamos la información
+                  comercial correspondiente. La participación y presentación
+                  formal se realizan por los canales oficiales aplicables.
+                </p>
+              </details>
             </div>
-        </section>
+          </div>
+
+          <section
+            class="request-card"
+            aria-label="Preparar requerimiento"
+            tabindex="0"
+          >
+            <div class="request-card-top">
+              <span>REQUERIMIENTO YAKAR</span>
+              <span id="request-step" aria-live="polite">PASO 1 DE 2</span>
+            </div>
+
+            <p class="panel-scroll-hint">
+              Desplázate dentro de este panel para continuar.
+              <button class="inline-button" type="button">
+                Ver formulario completo
+              </button>
+            </p>
+
+            <h3>Cuéntanos qué necesitas</h3>
+            <p class="small">Los campos con * son obligatorios.</p>
+
+            <noscript>
+              <p class="notice">
+                Para preparar un resumen, activa JavaScript.
+                También puedes escribirnos por correo o WhatsApp.
+              </p>
+            </noscript>
+
+            <form
+              id="request-form"
+              aria-label="Preparar requerimiento"
+              autocomplete="on"
+              hidden
+            >
+              <fieldset>
+                <legend>¿Desde dónde empezamos?</legend>
+                <div class="route-choices">
+                  <label class="route-choice">
+                    <input type="radio" name="route" value="defined">
+                    <span>
+                      <strong>Ya tengo una especificación</strong>
+                      <small>Conozco el alcance o sus características.</small>
+                    </span>
+                  </label>
+
+                  <label class="route-choice selected">
+                    <input type="radio" name="route" value="help" checked>
+                    <span>
+                      <strong>Necesito ayuda para definirlo</strong>
+                      <small>Puedo explicar el resultado que busco.</small>
+                    </span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <div class="formgrid">
+                <div class="field">
+                  <label for="family">Tipo de requerimiento *</label>
+                  <select
+                    class="select-trigger"
+                    id="family"
+                    name="family"
+                    required
+                  >
+                    <option value="">Selecciona una opción</option>
+                    <option>Productos y suministros</option>
+                    <option>Servicios</option>
+                    <option>Proyectos</option>
+                    <option>Necesito orientación</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="clientType">Tipo de organización *</label>
+                  <select
+                    class="select-trigger"
+                    id="clientType"
+                    name="clientType"
+                    required
+                  >
+                    <option value="">Selecciona una opción</option>
+                    <option>Empresa privada</option>
+                    <option>Entidad pública</option>
+                    <option>Otra organización</option>
+                  </select>
+                </div>
+
+                <div class="field full">
+                  <label for="need">¿Qué necesitas resolver? *</label>
+                  <textarea
+                    id="need"
+                    name="need"
+                    rows="4"
+                    maxlength="4000"
+                    aria-describedby="need-hint"
+                    required
+                  ></textarea>
+                  <small class="field-hint" id="need-hint">
+                    Indica el producto, servicio o proyecto; el resultado
+                    esperado y las condiciones que ya conoces.
+                    No necesitas completar todos los detalles técnicos
+                    para empezar.
+                  </small>
+                </div>
+
+                <div class="field">
+                  <label for="quantity">
+                    Cantidad o alcance aproximado (opcional)
+                  </label>
+                  <input
+                    id="quantity"
+                    name="quantity"
+                    type="text"
+                    maxlength="300"
+                    placeholder="Ej.: 200 prendas, 3 equipos o alcance inicial"
+                  >
+                </div>
+
+                <div class="field">
+                  <label for="neededBy">Fecha deseada (opcional)</label>
+                  <input
+                    id="neededBy"
+                    name="neededBy"
+                    type="date"
+                    aria-describedby="date-hint"
+                  >
+                  <small class="field-hint" id="date-hint">
+                    Se evalúa; no constituye un plazo confirmado.
+                  </small>
+                </div>
+
+                <div class="field">
+                  <label for="location">
+                    Ubicación o lugar de entrega (opcional)
+                  </label>
+                  <input
+                    id="location"
+                    name="location"
+                    type="text"
+                    maxlength="300"
+                    placeholder="Distrito, ciudad o región"
+                  >
+                </div>
+
+                <div class="field">
+                  <label for="company">Empresa u organización *</label>
+                  <input
+                    id="company"
+                    name="company"
+                    type="text"
+                    autocomplete="organization"
+                    maxlength="300"
+                    required
+                  >
+                </div>
+
+                <div class="field">
+                  <label for="contact">Tu nombre *</label>
+                  <input
+                    id="contact"
+                    name="contact"
+                    type="text"
+                    autocomplete="name"
+                    maxlength="300"
+                    required
+                  >
+                </div>
+
+                <div class="field">
+                  <label for="email">Correo *</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    maxlength="254"
+                    required
+                  >
+                </div>
+
+                <div class="field">
+                  <label for="phone">Teléfono (opcional)</label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    autocomplete="tel"
+                    maxlength="40"
+                  >
+                </div>
+              </div>
+
+              <div class="request-disclosure">
+                <strong>Primero revisa tu requerimiento.</strong>
+                <p>
+                  Este formulario prepara un resumen en tu navegador.
+                  No registra ni envía datos automáticamente.
+                  Tú eliges compartirlo por correo o WhatsApp.
+                  <a href="privacidad.html">
+                    Información sobre privacidad
+                  </a>.
+                </p>
+              </div>
+
+              <button class="btn submit-button" type="submit">
+                Revisar requerimiento
+              </button>
+            </form>
+          </section>
+        </div>
+      </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="container footer-inner">
-            <div class="footer-brand">
-                <strong>YAKAR</strong>
-                <span>ABASTECIMIENTO ESTRATÉGICO</span>
-            </div>
+    <footer class="commercial-footer footer-v4">
+      <div class="wrap">
+        <div class="footer-grid-v4">
+          <section aria-label="Identidad YAKAR">
+            <span class="footer-wordmark">YAKAR</span>
+            <p class="footer-motto">Cumplir es parte del producto.</p>
+            <p class="footer-identity">
+              <strong>Yakar Negocios E.I.R.L.</strong><br>
+              RUC 20612733261<br>
+              La Victoria, Lima, Perú
+            </p>
+          </section>
 
-            <p>Suministros industriales · Seguridad · Textil · Equipamiento</p>
-            <p>CUMPLIR ES PARTE DEL PRODUCTO.</p>
+          <nav aria-label="Explorar YAKAR">
+            <h2>Explorar</h2>
+            <a href="#productos">Productos y suministros</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#proyectos">Proyectos</a>
+            <a href="#metodo">Nuestro método</a>
+            <a href="#perspectiva">Perspectiva YAKAR</a>
+          </nav>
 
-            <nav class="footer-legal" aria-label="Información legal">
-                <a href="privacidad.html">Privacidad</a>
-                <a href="libro-reclamaciones.html">Libro de Reclamaciones</a>
-            </nav>
+          <section
+            class="footer-contact-v4"
+            aria-label="Contacto comercial"
+          >
+            <h2>Contacto comercial</h2>
+
+            <a
+              href="https://wa.me/51973669004"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>
+                <strong>WhatsApp</strong>
+                <span>+51 973 669 004</span>
+              </span>
+            </a>
+
+            <a href="mailto:negocios.yakar@gmail.com">
+              <span>
+                <strong>Correo</strong>
+                <span>negocios.yakar@gmail.com</span>
+              </span>
+            </a>
+
+            <!-- Incorporar solo redes oficiales confirmadas. -->
+          </section>
         </div>
+
+        <div class="footer-base-v4">
+          <nav aria-label="Información y acceso">
+            <a href="privacidad.html">
+              Privacidad · información provisional
+            </a>
+            <a href="reclamaciones.html">
+              Libro de Reclamaciones · en preparación
+            </a>
+            <a
+              href="https://yakar-abastecimiento.ernesto-malasquez.chatgpt.site"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Acceso al sistema privado
+            </a>
+          </nav>
+          <span>YAKAR · 2026</span>
+        </div>
+      </div>
     </footer>
+  </div>
 </body>
 </html>
