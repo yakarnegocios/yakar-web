@@ -1733,3 +1733,26 @@ p {
     animation: none !important;
   }
 }
+
+/* Footer: letras originales de YAKAR, sin isotipo ni subtítulo */
+.footer-v4 .footer-wordmark {
+  display: block;
+  width: 174px;
+  height: 34px;
+  margin-bottom: 18px;
+  overflow: hidden;
+
+  /* El texto sigue disponible para lectores de pantalla. */
+  font-size: 0;
+  line-height: 0;
+
+  /* Recorte visual de las letras del archivo original. */
+  background-image: url("../assets/yakar-identidad.png");
+  background-repeat: no-repeat;
+  background-size: 470.6px auto;
+  background-position: -272.8px -66.6px;
+
+  /* Letras blancas sobre el fondo oscuro del footer. */
+  filter: grayscale(1) invert(1) contrast(8);
+  mix-blend-mode: screen;
+}
