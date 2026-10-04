@@ -1,92 +1,24 @@
-/*
- * YAKAR Web V1
- * Selector de ruta y preparación local del resumen.
- * No transmite ni almacena datos: no hay backend conectado.
- */
-document.addEventListener("DOMContentLoaded", () => {
-  const buttons = [...document.querySelectorAll("[data-request-route]")];
-  const panel = document.getElementById("request-form-panel");
-  const title = document.getElementById("request-form-title");
-  const description = document.getElementById("request-form-description");
-  const route = document.getElementById("request-route");
-  const form = document.getElementById("request-form");
-  const feedback = document.getElementById("form-feedback");
-  const summaryPanel = document.getElementById("summary-panel");
-  const summary = document.getElementById("request-summary");
-  const copyButton = document.getElementById("copy-summary");
-  const copyFeedback = document.getElementById("copy-feedback");
+'use strict';
+const milestones=[{"title":"Entendemos","short":"Tu necesidad","description":"Precisamos el uso, la cantidad y la fecha deseada. Puedes empezar con una idea o con una especificación.","detail":"Identificamos lo que necesitas resolver, quién solicita, quién aprueba y dónde se recibirá. Distinguimos preferencias de requisitos indispensables.","result":"Una necesidad definida contigo."},{"title":"Proponemos","short":"La solución","description":"Revisamos características, viabilidad y condiciones. Recibes una propuesta con alcance, precio y plazo.","detail":"La propuesta recoge materiales o características técnicas, cantidades, personalización, impuestos, vigencia, entrega y condiciones de pago. Las diferencias y puntos por confirmar quedan visibles.","result":"Una propuesta que puedes evaluar."},{"title":"Acordamos","short":"El compromiso","description":"Confirmamos por escrito la solución y sus condiciones. Cuando corresponde, revisamos diseño o muestra.","detail":"Registramos la versión aprobada, los criterios de aceptación, la fecha acordada y el contacto responsable. En uniformes, precisaremos tallas, diseño, logotipo y elementos reflectivos según el uso.","result":"Un compromiso claro antes de ejecutar."},{"title":"Coordinamos","short":"El avance","description":"Damos seguimiento al pedido. Si surge un cambio, revisamos contigo su efecto antes de continuar.","detail":"Coordinamos hitos, verificaciones y entrega. Un cambio en cantidad, diseño, costo o fecha requiere revisar sus efectos y acordar la respuesta. Las incidencias tienen una acción y un responsable.","result":"Avances y cambios con seguimiento."},{"title":"Respondemos","short":"La entrega","description":"Coordinamos la recepción, revisamos la conformidad y atendemos las observaciones que queden pendientes.","detail":"La entrega se revisa contra lo acordado. Dejamos registro de recepción y observaciones, coordinamos su atención y conservamos aprendizajes para próximos requerimientos.","result":"Entrega revisada y atención posterior."}];
+document.addEventListener('DOMContentLoaded',()=>{
+ const menu=document.querySelector('.menu-button'),nav=document.querySelector('#main-nav');
+ if(menu&&nav){menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú');nav.classList.toggle('is-open',open)});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('is-open');menu.setAttribute('aria-expanded','false')}))}
+ const points=[...document.querySelectorAll('.roadmap-track button')],panel=document.querySelector('.milestone-panel');
+ function activate(i){points.forEach((b,j)=>{b.classList.toggle('active',i===j);b.setAttribute('aria-expanded',String(i===j))});if(panel){panel.querySelector('span').textContent=`Hito 0${i+1} / ${milestones[i].title}`;panel.querySelector('p').textContent=milestones[i].description;panel.querySelector('strong').textContent=milestones[i].result}document.querySelector('.route-lit')?.setAttribute('stroke-dasharray',`${i*250} 1000`)}
+ points.forEach((b,i)=>{b.addEventListener('pointerenter',event=>{if(event.pointerType==='mouse')activate(i)});b.addEventListener('focus',()=>activate(i));b.addEventListener('click',()=>activate(i))});
+ const card=document.querySelector('.request-card'),form=card?.querySelector('form');if(!card||!form)return;
+ document.querySelector('.inline-button')?.addEventListener('click',event=>{const full=card.classList.toggle('show-full-form');event.currentTarget.textContent=full?'Ver panel compacto':'Ver formulario completo'});
+ form.querySelectorAll('[name="route"]').forEach(r=>r.addEventListener('change',()=>{form.querySelectorAll('.route-choice').forEach(l=>l.classList.toggle('selected',l.querySelector('input').checked));document.querySelector('label[for="need"]').textContent=r.value==='defined'?'Producto y especificaciones *':'¿Qué necesitas resolver? *'}));
+ document.querySelectorAll('.other-offers article,.textile-offer').forEach(article=>{article.querySelector('a')?.addEventListener('click',()=>{const text=article.querySelector('h3')?.textContent||'';const select=form.elements.product;const option=[...select.options].find(o=>text.replace(/\s+/g,' ').includes(o.value)||o.value.startsWith('Uniformes')&&text.includes('Uniformes'));if(option)select.value=option.value})});
+ const review=document.createElement('section');review.className='local-review';review.hidden=true;
+ review.innerHTML='<h3 tabindex="-1">Revisa tu requerimiento</h3><p class="small">Resumen preparado. Todavía no se ha enviado ningún dato a YAKAR.</p><label for="summary-local">Puedes corregir el resumen antes de compartirlo.</label><textarea id="summary-local" class="summary-local"></textarea><div class="actions"><button type="button" class="btn" data-copy>Copiar resumen</button><a class="btn outline" data-email>Preparar correo</a><a class="btn outline" data-whatsapp target="_blank" rel="noopener noreferrer">Abrir WhatsApp</a><button type="button" class="btn text" data-back>Corregir formulario</button></div><p class="small" role="status" data-status></p><p class="small">La atención está sujeta a evaluación. Compartir este resumen no confirma precio, disponibilidad, plazo ni aceptación del pedido.</p>';
+ card.append(review);const area=review.querySelector('textarea'),status=review.querySelector('[data-status]');
+ function links(){review.querySelector('[data-email]').href='mailto:negocios.yakar@gmail.com?subject='+encodeURIComponent('Requerimiento para YAKAR')+'&body='+encodeURIComponent(area.value);review.querySelector('[data-whatsapp]').href='https://wa.me/51973669004?text='+encodeURIComponent(area.value)}
+ area.addEventListener('input',links);
+ form.addEventListener('submit',event=>{event.preventDefault();if(!form.reportValidity())return;const d=new FormData(form);const fields=[['Ruta',d.get('route')==='defined'?'Tengo una especificación definida':'Necesito ayuda para definirlo'],['Línea',d.get('product')],['Sector',d.get('sector')],['Empresa',d.get('company')],['Contacto',d.get('contact')],['Correo',d.get('email')],['Teléfono',d.get('phone')||'No indicado'],['Cantidad',d.get('quantity')||'Por definir'],['Fecha deseada',d.get('neededBy')||'Por definir'],['Contexto de fecha',d.get('timingContext')||'No indicado'],['Entrega',d.get('location')||'Por definir']];area.value='YAKAR — REQUERIMIENTO\n\n'+fields.map(([k,v])=>k+': '+v).join('\n')+'\n\nNecesidad y contexto:\n'+d.get('need')+'\n\nSolicitud sujeta a evaluación y propuesta comercial.';links();form.hidden=true;review.hidden=false;status.textContent='';review.querySelector('h3').focus();review.scrollIntoView({block:'nearest',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})});
+ review.querySelector('[data-back]').addEventListener('click',()=>{form.hidden=false;review.hidden=true;form.elements.need.focus()});
+ review.querySelector('[data-copy]').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(area.value);status.textContent='Resumen copiado.'}catch{area.focus();area.select();status.textContent='Selecciona Copiar en tu dispositivo, o usa Ctrl+C / Cmd+C.'}});
+});
 
-  if (!buttons.length || !panel || !form || !route) return;
-
-  const copy = {
-    defined: {
-      title: "Comparte tu especificación",
-      description: "Incluye las características, cantidades y condiciones que ya tengas definidas."
-    },
-    help: {
-      title: "Ayúdanos a entender tu necesidad",
-      description: "Describe el resultado que necesitas, el uso previsto y las condiciones conocidas. No hace falta tener todas las especificaciones resueltas."
-    }
-  };
-
-  buttons.forEach((button) => button.addEventListener("click", () => {
-    const selected = button.dataset.requestRoute;
-    if (!copy[selected]) return;
-    route.value = selected;
-    title.textContent = copy[selected].title;
-    description.textContent = copy[selected].description;
-    panel.hidden = false;
-    buttons.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
-    feedback.hidden = true;
-    summaryPanel.hidden = true;
-    copyFeedback.textContent = "";
-    panel.scrollIntoView({ behavior: "smooth", block: "start" });
-    document.getElementById("company")?.focus({ preventScroll: true });
-  }));
-
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    if (!form.reportValidity()) return;
-    const data = new FormData(form);
-    const routeLabel = route.value === "defined"
-      ? "Tengo una especificación definida"
-      : "Necesito ayuda para estructurarla";
-    const lines = [
-      "YAKAR — NUEVO REQUERIMIENTO", "",
-      `Tipo: ${routeLabel}`,
-      `Empresa / organización: ${data.get("company")}`,
-      `Contacto: ${data.get("contact_name")}`,
-      `Correo: ${data.get("email")}`,
-      `Teléfono: ${data.get("phone") || "No indicado"}`,
-      `Línea: ${data.get("category")}`,
-      `Cantidad estimada: ${data.get("quantity") || "No indicada"}`,
-      `Plazo: ${data.get("timing") || "No indicado"}`, "",
-      "Necesidad y contexto:", data.get("need"), "",
-      "Este resumen fue preparado en la web. No significa que el requerimiento haya sido enviado ni aceptado."
-    ];
-    summary.value = lines.join("\n");
-    summaryPanel.hidden = false;
-    feedback.textContent = "Resumen preparado. Aún no se ha enviado ningún dato a YAKAR. Copia el texto y compártelo por un canal comercial confirmado.";
-    feedback.hidden = false;
-    copyFeedback.textContent = "";
-    summaryPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
-  });
-
-  copyButton.addEventListener("click", async () => {
-    if (!summary.value) return;
-    try {
-      if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(summary.value);
-      } else {
-        summary.focus();
-        summary.select();
-        if (!document.execCommand("copy")) throw new Error("Copia manual requerida");
-      }
-      copyFeedback.textContent = "Resumen copiado.";
-    } catch {
-      summary.focus();
-      summary.select();
-      copyFeedback.textContent = "El texto está seleccionado. Usa Ctrl+C para copiarlo.";
-    }
   });
 });
