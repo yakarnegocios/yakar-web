@@ -3,13 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta name="description"
-        content="Información sobre el tratamiento de datos personales en el Libro de Reclamaciones de YAKAR.">
-  <meta name="robots" content="noindex,follow">
-  <meta name="theme-color" content="#1B3A6B">
 
   <title>Privacidad del Libro de Reclamaciones | YAKAR</title>
+
+  <meta
+    name="description"
+    content="Información sobre el tratamiento de datos personales en el Libro de Reclamaciones de Yakar Negocios E.I.R.L."
+  >
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#1B3A6B">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
 
   <style>
     :root {
@@ -21,31 +24,37 @@
       --width: 860px;
     }
 
-    * {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-padding-top: 24px;
     }
 
     body {
       margin: 0;
-      color: var(--ink);
       background: #fff;
+      color: var(--ink);
       font: 16px/1.65 Arial, Helvetica, sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
     a {
       color: var(--navy);
-      text-underline-offset: 3px;
-      overflow-wrap: anywhere;
+      text-underline-offset: 4px;
     }
 
     a:hover {
       text-decoration-thickness: 2px;
     }
 
-    :focus-visible {
+    a:focus-visible {
       outline: 3px solid #7194C7;
-      outline-offset: 4px;
+      outline-offset: 5px;
+      border-radius: 2px;
     }
 
     .container {
@@ -59,8 +68,8 @@
       left: 8px;
       z-index: 10;
       padding: 10px 14px;
-      color: #fff;
       background: var(--navy);
+      color: #fff;
       transform: translateY(-160%);
     }
 
@@ -70,6 +79,7 @@
 
     .site-header {
       border-bottom: 1px solid var(--border);
+      background: #fff;
     }
 
     .header-inner {
@@ -80,11 +90,16 @@
       gap: 24px;
     }
 
-    .logo-link {
-      display: block;
+    .brand {
+      display: inline-block;
       flex-shrink: 0;
+      text-decoration: none;
     }
 
+    /*
+      Recorte proporcional del archivo de identidad existente.
+      La imagen mantiene su proporción: no se estira.
+    */
     .logo-crop {
       position: relative;
       display: block;
@@ -102,8 +117,22 @@
       top: -41.72px;
     }
 
-    .header-back {
-      font-size: .86rem;
+    .header-nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+      font-size: 0.84rem;
+    }
+
+    .header-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+    }
+
+    .home-link {
       font-weight: 700;
     }
 
@@ -114,164 +143,194 @@
     .eyebrow {
       margin: 0 0 12px;
       color: var(--muted);
-      font-size: .73rem;
+      font-size: 0.72rem;
       font-weight: 700;
-      letter-spacing: .12em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
+    h1,
+    h2,
+    p {
+      margin-top: 0;
+    }
+
     h1 {
-      margin: 0 0 18px;
+      max-width: 720px;
+      margin-bottom: 18px;
       color: var(--navy);
-      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-size: clamp(2rem, 5vw, 3rem);
       line-height: 1.12;
-      letter-spacing: -.035em;
+      letter-spacing: -0.035em;
     }
 
     h2 {
-      margin: 0 0 12px;
+      margin-bottom: 14px;
       color: var(--navy);
-      font-size: 1.16rem;
+      font-size: 1.2rem;
       line-height: 1.35;
     }
 
     p {
-      margin: 0 0 14px;
+      margin-bottom: 14px;
     }
 
     .lead {
-      max-width: 710px;
+      max-width: 750px;
       color: var(--muted);
-      font-size: 1.04rem;
+      font-size: 1.08rem;
     }
 
-    .updated {
-      margin-bottom: 24px;
+    .version {
+      margin: 20px 0;
       color: var(--muted);
-      font-size: .8rem;
+      font-size: 0.78rem;
     }
 
     .overview {
-      margin-bottom: 28px;
+      margin-block: 24px;
       padding: 22px;
       background: var(--pale);
       border-left: 3px solid var(--navy);
+      border-radius: 3px;
     }
 
     .overview p:last-child {
       margin-bottom: 0;
     }
 
-    .quick-nav {
+    .section-nav {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px 20px;
-      margin-bottom: 30px;
-      font-size: .86rem;
+      gap: 8px 20px;
+      padding-block: 8px 24px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.85rem;
     }
 
-    section {
-      padding-block: 24px;
+    .section-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+    }
+
+    .policy-section {
+      padding-top: 30px;
+    }
+
+    .policy-section + .policy-section {
+      margin-top: 24px;
       border-top: 1px solid var(--border);
-      scroll-margin-top: 24px;
-    }
-
-    section > :last-child {
-      margin-bottom: 0;
     }
 
     ul {
-      padding-left: 22px;
       margin: 0 0 16px;
+      padding-left: 22px;
     }
 
-    li {
-      margin-bottom: 8px;
+    li + li {
+      margin-top: 8px;
     }
 
-    li:last-child {
-      margin-bottom: 0;
-    }
-
-    .identity {
-      margin: 0;
+    .company-details {
       display: grid;
-      grid-template-columns: 140px minmax(0, 1fr);
-      gap: 8px 18px;
-      font-size: .92rem;
+      grid-template-columns: 110px minmax(0, 1fr);
+      gap: 8px 16px;
+      margin: 0 0 18px;
     }
 
-    .identity dt {
-      font-weight: 700;
+    .company-details dt {
+      color: var(--muted);
+      font-size: 0.9rem;
     }
 
-    .identity dd {
+    .company-details dd {
       margin: 0;
       overflow-wrap: anywhere;
     }
 
     .note {
       color: var(--muted);
-      font-size: .88rem;
+      font-size: 0.88rem;
     }
 
-    .contact-card {
-      margin-top: 18px;
-      padding: 20px;
-      background: var(--pale);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-    }
-
-    .contact-card p:last-child {
-      margin-bottom: 0;
+    .service-links {
+      font-size: 0.88rem;
     }
 
     .actions {
       display: flex;
+      align-items: center;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
+      gap: 16px 24px;
+      margin-top: 36px;
+      padding-top: 26px;
+      border-top: 1px solid var(--border);
     }
 
     .button {
-      min-height: 46px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 18px;
-      color: #fff;
+      min-height: 48px;
+      padding: 12px 22px;
       background: var(--navy);
+      color: #fff;
       border: 1px solid var(--navy);
       border-radius: 4px;
-      font-size: .9rem;
+      font-size: 0.9rem;
       font-weight: 700;
-      text-align: center;
       text-decoration: none;
     }
 
-    .button.secondary {
-      color: var(--navy);
-      background: #fff;
+    .button:hover {
+      background: #142D54;
+      border-color: #142D54;
+    }
+
+    .book-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 0.9rem;
     }
 
     .site-footer {
-      padding-block: 24px;
+      padding-block: 22px;
       background: var(--pale);
       border-top: 1px solid var(--border);
     }
 
     .footer-inner {
       display: flex;
-      flex-wrap: wrap;
+      align-items: flex-start;
       justify-content: space-between;
-      gap: 12px 24px;
-      font-size: .8rem;
+      gap: 16px 28px;
     }
 
-    .footer-inner p {
+    .footer-company p {
       margin: 0;
+      font-size: 0.78rem;
       color: var(--muted);
+    }
+
+    .footer-company strong {
+      color: var(--ink);
+      font-size: 0.84rem;
+    }
+
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+      margin: 0;
+      font-style: normal;
+      font-size: 0.8rem;
+    }
+
+    .footer-contact a {
+      overflow-wrap: anywhere;
     }
 
     @media (max-width: 600px) {
@@ -281,7 +340,9 @@
 
       .header-inner {
         min-height: 88px;
-        gap: 12px;
+        padding-block: 12px;
+        flex-wrap: wrap;
+        gap: 6px 16px;
       }
 
       .logo-crop {
@@ -295,151 +356,189 @@
         top: -36.505px;
       }
 
-      .header-back {
-        max-width: 100px;
-        font-size: .78rem;
-        text-align: right;
+      .header-nav {
+        justify-content: flex-start;
+        gap: 6px 18px;
+        font-size: 0.8rem;
       }
 
       main {
-        padding-block: 34px 42px;
+        padding-block: 34px 40px;
       }
 
       .overview {
         padding: 18px;
       }
 
-      .identity {
+      .company-details {
         grid-template-columns: 1fr;
         gap: 3px;
       }
 
-      .identity dd {
-        margin-bottom: 12px;
-      }
-
-      .identity dd:last-child {
-        margin-bottom: 0;
+      .company-details dd {
+        margin-bottom: 10px;
       }
 
       .actions {
+        align-items: flex-start;
         flex-direction: column;
+        gap: 10px;
       }
 
-      .button {
-        width: 100%;
+      .footer-inner {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .footer-contact {
+        align-items: flex-start;
       }
     }
 
     @media print {
-      .skip-link,
-      .header-back,
-      .quick-nav,
-      .actions,
-      .site-footer {
-        display: none;
+      body {
+        font-size: 11pt;
+        color: #000;
       }
 
       .container {
         width: 100%;
+        max-width: none;
+      }
+
+      .site-header,
+      .site-footer,
+      .skip-link,
+      .section-nav,
+      .actions {
+        display: none;
       }
 
       main {
-        padding-block: 20px;
+        padding: 0;
       }
 
-      body {
-        font-size: 11pt;
-      }
-
-      h1 {
-        font-size: 22pt;
+      h1,
+      h2 {
+        color: #000;
       }
 
       h2 {
         break-after: avoid;
       }
 
-      .overview,
-      .contact-card {
-        background: #fff;
+      a {
+        color: #000;
+      }
+
+      .overview {
+        background: transparent;
+        border: 1px solid #777;
+      }
+
+      .policy-section {
+        padding-top: 18px;
       }
     }
   </style>
 </head>
 
 <body>
-  <a class="skip-link" href="#contenido">Ir al contenido</a>
+  <a class="skip-link" href="#contenido">
+    Ir al contenido
+  </a>
 
   <header class="site-header">
     <div class="container header-inner">
-      <a class="logo-link" href="./index.html"
-         aria-label="YAKAR, página principal">
-        <span class="logo-crop">
-          <img src="./assets/yakar-identidad.png"
-               alt="YAKAR — Abastecimiento estratégico"
-               width="1448"
-               height="1086">
+      <a
+        class="brand"
+        href="./index.html"
+        aria-label="YAKAR: ir a la página principal"
+      >
+        <span class="logo-crop" aria-hidden="true">
+          <img
+            src="./assets/yakar-identidad.png"
+            width="1448"
+            height="1086"
+            alt=""
+          >
         </span>
       </a>
 
-      <a class="header-back" href="./reclamaciones.html">
-        Volver al Libro
-      </a>
+      <nav class="header-nav" aria-label="Navegación principal">
+        <a class="home-link" href="./index.html">
+          Volver a YAKAR
+        </a>
+
+        <a href="./reclamaciones.html">
+          Libro de Reclamaciones
+        </a>
+      </nav>
     </div>
   </header>
 
   <main id="contenido" class="container">
-    <p class="eyebrow">Libro de Reclamaciones</p>
+    <p class="eyebrow">Libro de Reclamaciones · Privacidad</p>
 
     <h1>Tu información merece cuidado.</h1>
 
     <p class="lead">
-      Aquí explicamos cómo utilizamos tus datos para registrar,
-      atender y responder una queja o un reclamo.
+      Aquí explicamos quién trata tus datos, para qué los utiliza
+      y cómo puedes ejercer tus derechos al presentar una queja
+      o un reclamo ante YAKAR.
     </p>
 
-    <p class="updated">
-      Aviso de privacidad · Versión 1.0 ·
-      Actualizado el <time datetime="2026-10-04">4 de octubre de 2026</time>
+    <p class="version">
+      Versión 1.1 · Última actualización:
+      <time datetime="2026-10-04">4 de octubre de 2026</time>
     </p>
 
     <div class="overview">
       <p>
-        <strong>Lo esencial:</strong> utilizamos la información de tu
-        caso para atenderlo, dejar constancia y cumplir las obligaciones
-        que correspondan.
+        <strong>Lo esencial:</strong> utilizamos la información
+        de tu solicitud para registrarla, evaluar lo ocurrido,
+        responderte y cumplir las obligaciones relacionadas con
+        el Libro de Reclamaciones.
       </p>
+
       <p>
-        No vendemos estos datos ni los utilizamos para enviarte
-        publicidad. Los registros del Libro no se publican en la web.
+        Presentar una queja o un reclamo no te incorpora a una
+        lista publicitaria ni autoriza el envío de promociones.
+        Los registros del Libro no se publican en la web.
       </p>
+
       <p class="note">
-        Este aviso describe el tratamiento de datos del Libro de
-        Reclamaciones. Su publicación no significa que el registro
-        virtual ya esté habilitado; el formulario indica su estado.
+        Esta información corresponde al Libro de Reclamaciones.
+        Publicar esta página no significa que la recepción
+        automática del formulario ya esté habilitada.
       </p>
     </div>
 
-    <nav class="quick-nav" aria-label="Contenido del aviso">
-      <a href="#responsable">Quién los trata</a>
-      <a href="#datos">Qué datos usamos</a>
-      <a href="#servicios">Servicios tecnológicos</a>
+    <nav class="section-nav" aria-label="Contenido de privacidad">
+      <a href="#responsable">Responsable</a>
+      <a href="#datos">Datos y finalidad</a>
+      <a href="#servicios">Servicios utilizados</a>
       <a href="#derechos">Tus derechos</a>
     </nav>
 
-    <section id="responsable" aria-labelledby="responsable-titulo">
-      <h2 id="responsable-titulo">1. Quién es responsable</h2>
+    <section
+      id="responsable"
+      class="policy-section"
+      aria-labelledby="titulo-responsable"
+    >
+      <h2 id="titulo-responsable">
+        1. ¿Quién es responsable de tus datos?
+      </h2>
 
-      <dl class="identity">
-        <dt>Razón social</dt>
-        <dd>Yakar Negocios E.I.R.L.</dd>
+      <dl class="company-details">
+        <dt>Empresa</dt>
+        <dd><strong>Yakar Negocios E.I.R.L.</strong></dd>
 
         <dt>RUC</dt>
         <dd>20612733261</dd>
 
         <dt>Domicilio</dt>
-        <dd>Jr. San Cristóbal 1455, La Victoria, Lima, Perú</dd>
+        <dd>Jr. San Cristóbal 1455, La Victoria, Lima, Perú.</dd>
 
         <dt>Correo</dt>
         <dd>
@@ -450,282 +549,378 @@
 
         <dt>Teléfono</dt>
         <dd>
-          <a href="tel:+51973669004">+51 973 669 004</a>
+          <a href="tel:+51973669004">
+            +51 973 669 004
+          </a>
         </dd>
       </dl>
-    </section>
-
-    <section id="datos" aria-labelledby="datos-titulo">
-      <h2 id="datos-titulo">2. Qué información utilizamos</h2>
-
-      <ul>
-        <li>
-          Nombres y apellidos, tipo y número de documento,
-          domicilio y los datos de contacto que proporciones.
-        </li>
-        <li>
-          Medio elegido para recibir la respuesta.
-        </li>
-        <li>
-          Información del producto o servicio, referencia de la
-          operación y monto, cuando corresponda.
-        </li>
-        <li>
-          Descripción de lo ocurrido, solución solicitada y
-          comunicaciones necesarias para atender el caso.
-        </li>
-        <li>
-          Datos del padre, madre o representante cuando el consumidor
-          sea menor de edad.
-        </li>
-        <li>
-          Identificadores del registro, fecha, estado de atención,
-          constancias y evidencia de las actuaciones realizadas.
-        </li>
-      </ul>
 
       <p>
-        Los campos obligatorios están identificados en el formulario.
-        Si faltan, no podremos completar el registro por este canal.
-        El correo es necesario cuando eliges recibir allí la respuesta;
-        los demás campos opcionales pueden dejarse vacíos.
-      </p>
-
-      <p class="note">
-        Incluye únicamente información relacionada con tu caso.
-        Evita escribir contraseñas, datos completos de tarjetas o
-        información sensible que no resulte necesaria.
+        Yakar Negocios E.I.R.L. es responsable del tratamiento
+        de los datos personales que recibe para gestionar su
+        Libro de Reclamaciones.
       </p>
     </section>
 
-    <section aria-labelledby="finalidad-titulo">
-      <h2 id="finalidad-titulo">3. Para qué los utilizamos</h2>
+    <section
+      id="datos"
+      class="policy-section"
+      aria-labelledby="titulo-datos"
+    >
+      <h2 id="titulo-datos">
+        2. ¿Qué información recibimos y para qué?
+      </h2>
 
       <p>
-        Para registrar tu queja o reclamo, generar su identificación
-        y constancia, revisar lo ocurrido, coordinar las acciones
-        necesarias, responderte y conservar evidencia de la atención.
-      </p>
-
-      <p>
-        También podemos utilizar la información necesaria para atender
-        requerimientos de autoridades competentes y defender derechos
-        relacionados con el caso.
-      </p>
-
-      <p>
-        El tratamiento necesario para gestionar el Libro se realiza
-        en cumplimiento de las obligaciones aplicables de protección
-        al consumidor. Confirmar los datos del formulario no equivale
-        a autorizar publicidad ni usos ajenos a estas finalidades.
-      </p>
-
-      <p>
-        La revisión del caso y la respuesta corresponden a YAKAR.
-        Las automatizaciones apoyan el registro y las comunicaciones;
-        no deciden por sí solas si tu solicitud procede.
-      </p>
-    </section>
-
-    <section id="servicios" aria-labelledby="servicios-titulo">
-      <h2 id="servicios-titulo">4. Dónde se procesan y quién puede acceder</h2>
-
-      <p>
-        Los registros se gestionan en el archivo interno
-        <strong>«YAKAR — Libro de Reclamaciones — PRIVADO»</strong>,
-        mediante servicios de Google. El acceso interno se limita a
-        las personas autorizadas para atender y administrar los casos.
+        Según corresponda a tu caso, el formulario solicita:
       </p>
 
       <ul>
         <li>
-          <strong>Google:</strong> Apps Script procesa el envío;
-          Google Sheets almacena los registros y los servicios de
-          correo permiten enviar constancias y comunicaciones.
-          <a href="https://policies.google.com/privacy?hl=es"
-             target="_blank" rel="noopener noreferrer">
-            Información de privacidad de Google
-          </a>.
+          Nombre, tipo y número de documento de identidad,
+          domicilio y datos de contacto.
         </li>
+
         <li>
-          <strong>Cloudflare Turnstile:</strong> cuando está integrado
-          en el formulario, verifica señales técnicas, como la
-          dirección IP y características del navegador, para detectar
-          tráfico automatizado. La integración no le envía el relato
-          ni los datos de identidad escritos en el formulario.
-          <a href="https://www.cloudflare.com/turnstile-privacy-policy/"
-             target="_blank" rel="noopener noreferrer">
-            Información de privacidad de Turnstile
-          </a>.
+          El medio elegido para recibir la respuesta.
         </li>
+
         <li>
-          <strong>GitHub Pages:</strong> aloja las páginas públicas.
-          Los registros y las claves secretas del sistema no se
-          almacenan en el repositorio público. GitHub puede procesar
-          información técnica de las visitas.
-          <a href="https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement"
-             target="_blank" rel="noopener noreferrer">
-            Información de privacidad de GitHub
-          </a>.
+          Información del producto o servicio, referencias
+          de la operación y monto relacionado con el caso.
+        </li>
+
+        <li>
+          El detalle de la queja o del reclamo y tu pedido concreto.
+        </li>
+
+        <li>
+          Los datos de uno de los padres o del representante,
+          cuando el consumidor sea menor de edad.
+        </li>
+
+        <li>
+          Código de registro, fecha, comunicaciones y actuaciones
+          necesarias para la atención y el seguimiento.
         </li>
       </ul>
 
       <p>
-        Estos servicios pueden procesar información en infraestructura
-        ubicada fuera del Perú. Su utilización puede implicar
-        tratamiento y flujo transfronterizo de datos personales.
-        Las ubicaciones dependen del servicio y de su infraestructura.
+        Los campos obligatorios se identifican en el formulario.
+        Su omisión puede impedir completar el registro o
+        comunicar la respuesta por el medio elegido. Los campos
+        opcionales pueden dejarse en blanco. Si eliges recibir
+        la respuesta por correo electrónico, necesitamos una
+        dirección de correo válida.
       </p>
 
       <p>
-        Cuando sea necesario para resolver el caso, podremos comunicar
-        la información pertinente a asesores que intervengan en su
-        atención. También podremos entregarla a Indecopi u otras
-        autoridades cuando exista una obligación o requerimiento
-        legal. Limitaremos la información a la necesaria para esa
-        finalidad.
-      </p>
-    </section>
-
-    <section aria-labelledby="conservacion-titulo">
-      <h2 id="conservacion-titulo">5. Cuánto tiempo conservamos la información</h2>
-
-      <p>
-        Conservamos las hojas de reclamación y la evidencia de su
-        atención durante un mínimo de <strong>dos años desde la
-        presentación</strong> de la queja o reclamo.
+        Tratamos estos datos para registrar tu solicitud,
+        generar su constancia, investigar los hechos,
+        coordinar su atención y comunicarte la respuesta.
+        También permiten conservar evidencia y atender
+        requerimientos de las autoridades competentes.
       </p>
 
       <p>
-        Podremos conservar la información necesaria durante un plazo
-        mayor si existe otra obligación legal, un procedimiento
-        pendiente o una controversia que justifique su conservación.
-        Al concluir esos motivos, corresponderá su eliminación o
-        anonimización, según resulte aplicable.
+        El tratamiento necesario para cumplir estas obligaciones
+        se sustenta en la normativa aplicable al Libro de
+        Reclamaciones y en las excepciones al consentimiento
+        previstas en la legislación de protección de datos
+        personales, cuando correspondan. La confirmación del
+        formulario no constituye consentimiento para publicidad.
       </p>
 
       <p class="note">
-        La eliminación no se produce automáticamente al cumplirse
-        dos años: requiere revisar las obligaciones y los asuntos
-        pendientes de cada caso.
+        Incluye únicamente información pertinente para tu caso.
+        No ingreses contraseñas, números completos de tarjetas
+        ni datos sensibles que no sean necesarios. Evita
+        identificar a terceros si no resulta indispensable
+        para explicar lo ocurrido.
       </p>
     </section>
 
-    <section id="derechos" aria-labelledby="derechos-titulo">
-      <h2 id="derechos-titulo">6. Cómo ejercer tus derechos</h2>
+    <section
+      id="servicios"
+      class="policy-section"
+      aria-labelledby="titulo-servicios"
+    >
+      <h2 id="titulo-servicios">
+        3. ¿Dónde se procesa la información?
+      </h2>
 
       <p>
-        Puedes solicitar información sobre el tratamiento de tus
-        datos y ejercer los derechos de acceso, rectificación,
-        cancelación y oposición, según corresponda.
+        Los registros se gestionan en un archivo interno del
+        Libro de Reclamaciones. El acceso debe limitarse a las
+        personas autorizadas que necesiten intervenir en
+        la atención del caso.
       </p>
 
-      <div class="contact-card">
-        <p>
-          Escribe a
-          <a href="mailto:negocios.yakar@gmail.com?subject=Solicitud%20sobre%20datos%20personales">
-            negocios.yakar@gmail.com
-          </a>
-          con el asunto <strong>«Solicitud sobre datos personales»</strong>.
-        </p>
-        <p>
-          Indica tu nombre, el derecho que deseas ejercer, tu petición
-          y el código del caso, si lo tienes. También puedes presentar
-          tu solicitud por escrito en el domicilio indicado en este
-          aviso.
-        </p>
-        <p class="note">
-          Verificaremos tu identidad o representación mediante la
-          información necesaria para proteger tus datos. No envíes
-          fotografías de documentos ni información adicional hasta
-          que te indiquemos si hacen falta.
-        </p>
-      </div>
+      <ul>
+        <li>
+          <strong>Google:</strong> Apps Script procesa el
+          formulario; Google Sheets permite conservar el
+          registro y los servicios de correo permiten remitir
+          las comunicaciones correspondientes.
+        </li>
 
-      <p style="margin-top: 18px;">
-        Atenderemos la solicitud conforme a los plazos legales
-        aplicables. Si una obligación exige conservar parte del
-        expediente, te explicaremos el alcance de esa limitación.
+        <li>
+          <strong>Cloudflare Turnstile:</strong> cuando esté
+          habilitado en el formulario, ayuda a identificar
+          envíos automatizados. Procesa señales técnicas,
+          como la dirección IP y características del navegador.
+          El contenido de la queja o del reclamo no se incluye
+          en la solicitud de verificación enviada a Turnstile.
+          Cloudflare también describe en su aviso de privacidad
+          el uso de estas señales para mejorar su detección
+          de automatizaciones.
+        </li>
+
+        <li>
+          <strong>GitHub Pages:</strong> aloja las páginas
+          públicas de YAKAR y puede procesar información técnica
+          de las visitas. Los registros del Libro y las claves
+          privadas del sistema no deben alojarse en el
+          repositorio público.
+        </li>
+      </ul>
+
+      <p>
+        El uso de estos servicios puede implicar el tratamiento
+        o almacenamiento de información fuera del Perú,
+        incluidos los Estados Unidos y otros países donde
+        sus proveedores operan infraestructura. Se aplican
+        las obligaciones de protección de datos y de flujo
+        transfronterizo que correspondan.
       </p>
 
       <p>
-        Si consideras que tus derechos no han sido atendidos, puedes
-        acudir a la
-        <a href="https://www.gob.pe/anpd"
-           target="_blank" rel="noopener noreferrer">
+        Cuando resulte necesario para atender tu caso,
+        la información pertinente puede comunicarse a asesores
+        sujetos a obligaciones de confidencialidad. También
+        puede entregarse a una autoridad competente cuando
+        exista una obligación o un requerimiento legal.
+      </p>
+
+      <p class="service-links">
+        Puedes consultar los avisos de los servicios utilizados:
+        <a href="https://policies.google.com/privacy">
+          Google
+        </a>,
+        <a href="https://www.cloudflare.com/turnstile-privacy-policy/">
+          Cloudflare Turnstile
+        </a>
+        y
+        <a href="https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement">
+          GitHub
+        </a>.
+      </p>
+    </section>
+
+    <section
+      class="policy-section"
+      aria-labelledby="titulo-conservacion"
+    >
+      <h2 id="titulo-conservacion">
+        4. ¿Por cuánto tiempo se conserva?
+      </h2>
+
+      <p>
+        Las hojas de reclamación y la documentación
+        correspondiente se conservan durante un plazo mínimo
+        de dos años, contado desde la presentación de la queja
+        o del reclamo, conforme al Reglamento del Libro
+        de Reclamaciones.
+      </p>
+
+      <p>
+        La conservación puede extenderse si existe una
+        obligación legal adicional, un procedimiento pendiente
+        o la necesidad justificada de ejercer o defender
+        derechos. Concluidos esos motivos, corresponde eliminar
+        o anonimizar la información que ya no sea necesaria.
+      </p>
+
+      <p class="note">
+        El vencimiento de dos años no implica una eliminación
+        automática si todavía existe un motivo legal para
+        conservar la documentación.
+      </p>
+    </section>
+
+    <section
+      id="derechos"
+      class="policy-section"
+      aria-labelledby="titulo-derechos"
+    >
+      <h2 id="titulo-derechos">
+        5. ¿Cómo puedes ejercer tus derechos?
+      </h2>
+
+      <p>
+        Puedes solicitar información sobre el tratamiento
+        de tus datos y ejercer tus derechos de acceso,
+        rectificación, cancelación y oposición, así como
+        los demás derechos reconocidos por la normativa
+        vigente, cuando correspondan.
+      </p>
+
+      <p>
+        Escribe a
+        <a href="mailto:negocios.yakar@gmail.com">
+          negocios.yakar@gmail.com
+        </a>
+        con el asunto
+        <strong>“Solicitud sobre datos personales”</strong>.
+        También puedes presentar tu solicitud por escrito
+        en el domicilio indicado en esta página.
+      </p>
+
+      <p>Para identificar y atender tu solicitud, incluye:</p>
+
+      <ul>
+        <li>Tu nombre completo.</li>
+        <li>El derecho que deseas ejercer y tu pedido concreto.</li>
+        <li>Un medio para comunicarte la respuesta.</li>
+        <li>El código de tu registro, si lo tienes disponible.</li>
+      </ul>
+
+      <p>
+        Podremos solicitar la información mínima necesaria
+        para verificar tu identidad o la representación
+        invocada. No adjuntes una copia de tu documento de
+        identidad si todavía no se te ha solicitado.
+      </p>
+
+      <p>
+        Las solicitudes se atienden dentro de los plazos
+        establecidos por la legislación aplicable. La
+        cancelación u oposición puede estar limitada cuando
+        exista una obligación legal de conservar o tratar
+        determinada información; en ese caso, corresponde
+        explicar el motivo.
+      </p>
+
+      <p>
+        Si consideras que tus derechos no han sido atendidos,
+        puedes acudir a la
+        <a href="https://www.gob.pe/anpd">
           Autoridad Nacional de Protección de Datos Personales
         </a>.
       </p>
     </section>
 
-    <section aria-labelledby="navegacion-titulo">
-      <h2 id="navegacion-titulo">7. Información antes de enviar</h2>
+    <section
+      class="policy-section"
+      aria-labelledby="titulo-registro"
+    >
+      <h2 id="titulo-registro">
+        6. Sobre el formulario y su constancia
+      </h2>
 
       <p>
-        El formulario no guarda un borrador en el almacenamiento
-        local del navegador. Si sales o recargas antes de completar
-        el envío, puedes perder lo ingresado.
+        El formulario no guarda un borrador para recuperarlo
+        después. Si cierras la página, sales de ella o la
+        recargas antes de completar el registro, puedes perder
+        la información que hayas escrito.
       </p>
 
       <p>
-        Cuando el canal esté habilitado, el registro se confirma
-        mediante una constancia emitida por el servicio receptor.
-        Pulsar el botón de envío no acredita por sí solo que el caso
-        haya sido registrado.
+        Pulsar el botón de envío no confirma por sí solo el
+        registro. Cuando la recepción esté habilitada y el
+        sistema complete el registro, se mostrará una constancia
+        con su código de identificación. Consérvala para
+        consultar o dar seguimiento a tu caso.
       </p>
 
       <p>
-        Los enlaces al correo o al teléfono utilizan los servicios
-        que elijas para comunicarte. Abrir esos enlaces no genera
-        automáticamente una hoja de reclamación.
+        Si tienes dificultades para utilizar el Libro,
+        comunícate con YAKAR para recibir asistencia.
+        Un mensaje de consulta por correo o una llamada
+        no generan, por sí solos, una constancia del
+        formulario virtual.
+      </p>
+
+      <p>
+        Las automatizaciones pueden apoyar el registro,
+        la preparación de constancias y las comunicaciones.
+        La evaluación y la respuesta al caso requieren
+        la intervención de YAKAR.
       </p>
 
       <p class="note">
-        Esta página informativa no incorpora herramientas de
-        publicidad, medición de audiencia ni formularios de captura
-        de datos.
+        Esta página informativa no incorpora formularios,
+        herramientas publicitarias ni herramientas de análisis
+        de visitas añadidas por YAKAR. El servicio de alojamiento
+        puede procesar los datos técnicos necesarios para
+        entregar la página.
       </p>
     </section>
 
-    <section aria-labelledby="cambios-titulo">
-      <h2 id="cambios-titulo">8. Actualizaciones del aviso</h2>
+    <section
+      class="policy-section"
+      aria-labelledby="titulo-normativa"
+    >
+      <h2 id="titulo-normativa">
+        7. Normativa y actualizaciones
+      </h2>
 
       <p>
-        Actualizaremos este aviso cuando cambien los datos de
-        contacto, los servicios utilizados o las condiciones del
-        tratamiento. La fecha y versión estarán visibles al inicio.
-        Cualquier nueva finalidad que requiera autorización se
-        informará antes de aplicarla.
+        Esta información toma como referencia la Ley
+        N.° 29733, Ley de Protección de Datos Personales,
+        y su Reglamento aprobado por Decreto Supremo
+        N.° 016-2024-JUS.
+      </p>
+
+      <p>
+        Para la gestión del Libro se consideran la Ley
+        N.° 29571, Código de Protección y Defensa del Consumidor,
+        el Reglamento del Libro de Reclamaciones aprobado
+        por Decreto Supremo N.° 011-2011-PCM y sus
+        modificaciones vigentes.
+      </p>
+
+      <p>
+        Actualizaremos esta página cuando cambien los datos
+        de contacto, los servicios utilizados o las condiciones
+        de tratamiento. Si se plantea una finalidad adicional
+        que requiera tu consentimiento, deberá informarse y
+        obtenerse antes de utilizar tus datos para ella.
       </p>
 
       <p class="note">
-        Marco de referencia: Ley N.º 29733, su reglamento vigente
-        y las disposiciones aplicables al Libro de Reclamaciones.
-        Este aviso se limita a dicho canal.
+        La fecha y la versión publicadas permiten identificar
+        la actualización de este documento.
       </p>
     </section>
 
     <div class="actions">
-      <a class="button" href="./reclamaciones.html">
-        Volver al Libro de Reclamaciones
+      <a class="button" href="./index.html">
+        Volver a YAKAR
       </a>
 
-      <a class="button secondary" href="./index.html">
-        Volver a YAKAR
+      <a class="book-link" href="./reclamaciones.html">
+        Libro de Reclamaciones
       </a>
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>
-        <strong>Yakar Negocios E.I.R.L.</strong><br>
-        RUC 20612733261 · La Victoria, Lima, Perú
-      </p>
+      <div class="footer-company">
+        <p><strong>Yakar Negocios E.I.R.L.</strong></p>
+        <p>RUC 20612733261 · La Victoria, Lima, Perú.</p>
+      </div>
 
-      <a href="mailto:negocios.yakar@gmail.com">
-        negocios.yakar@gmail.com
-      </a>
+      <address class="footer-contact">
+        <a href="mailto:negocios.yakar@gmail.com">
+          negocios.yakar@gmail.com
+        </a>
+
+        <a href="tel:+51973669004">
+          +51 973 669 004
+        </a>
+      </address>
     </div>
   </footer>
 </body>
