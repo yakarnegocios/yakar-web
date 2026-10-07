@@ -829,6 +829,45 @@
               padding-block: 32px;
             }
           }
+                      /* Interacción sutil de las tarjetas de Perspectiva */
+          .perspective-editorial .perspective-grid > article {
+            transition:
+              background-color 180ms ease,
+              border-color 180ms ease,
+              box-shadow 180ms ease,
+              transform 180ms ease;
+          }
+
+          @media (hover: hover) and (pointer: fine) {
+            .perspective-editorial .perspective-grid > article:hover {
+              background-color: #F7FAFD;
+              border-color: #B8C7D9;
+              border-top-color: #1B3A6B;
+              box-shadow: 0 6px 18px rgba(27, 58, 107, 0.08);
+              transform: translateY(-3px);
+            }
+          }
+
+          .perspective-editorial .perspective-grid > article:focus-within {
+            background-color: #F7FAFD;
+            border-color: #B8C7D9;
+            border-top-color: #1B3A6B;
+            box-shadow: 0 6px 18px rgba(27, 58, 107, 0.08);
+          }
+
+          .perspective-editorial .perspective-grid a:focus-visible,
+          .perspective-editorial .perspective-grid summary:focus-visible {
+            outline: 2px solid #1B3A6B;
+            outline-offset: 4px;
+            border-radius: 2px;
+          }
+
+          @media (prefers-reduced-motion: reduce) {
+            .perspective-editorial .perspective-grid > article {
+              transition: none;
+              transform: none;
+            }
+          }
         </style>
         <div class="wrap">
           <div class="section-head">
