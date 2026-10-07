@@ -681,11 +681,112 @@
         </div>
       </section>
 
-      <section
-        class="section perspective-section"
+            <section
+        class="section perspective-section perspective-editorial"
         id="perspectiva"
         aria-labelledby="perspective-title"
       >
+        <style>
+          .perspective-editorial .perspective-intro {
+            max-width: 440px;
+          }
+
+          .perspective-editorial .perspective-edition {
+            display: block;
+            margin-top: 14px;
+            font-size: 0.85rem;
+          }
+
+          .perspective-editorial .perspective-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+            gap: 24px;
+            align-items: stretch;
+          }
+
+          .perspective-editorial .perspective-grid > article {
+            min-width: 0;
+            padding: 28px;
+          }
+
+          .perspective-editorial .perspective-feature {
+            grid-row: span 2;
+            border-top: 4px solid #1B3A6B;
+            display: flex;
+            flex-direction: column;
+          }
+
+          .perspective-editorial .perspective-feature h3 {
+            font-size: clamp(1.65rem, 2.5vw, 2.2rem);
+            line-height: 1.2;
+            margin-top: 24px;
+          }
+
+          .perspective-editorial .perspective-feature > p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+          }
+
+          .perspective-editorial .perspective-kicker {
+            display: block;
+            margin-bottom: 14px;
+            color: #1B3A6B;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+          }
+
+          .perspective-editorial .label-tag {
+            align-self: flex-start;
+            max-width: 100%;
+            white-space: normal;
+            line-height: 1.5;
+          }
+
+          .perspective-editorial .perspective-action {
+            padding: 16px 18px;
+            background: #EDF2F6;
+            border-left: 3px solid #1B3A6B;
+            border-top: 0;
+          }
+
+          .perspective-editorial .perspective-grid details {
+            margin: 16px 0;
+          }
+
+          .perspective-editorial .perspective-grid summary {
+            cursor: pointer;
+            line-height: 1.5;
+          }
+
+          .perspective-editorial .perspective-grid > article > a {
+            display: inline-block;
+            margin-top: 12px;
+            align-self: flex-start;
+          }
+
+          .perspective-editorial .perspective-note {
+            max-width: 820px;
+            margin-top: 24px;
+            line-height: 1.6;
+          }
+
+          @media (max-width: 760px) {
+            .perspective-editorial .perspective-grid {
+              grid-template-columns: minmax(0, 1fr);
+            }
+
+            .perspective-editorial .perspective-feature {
+              grid-row: auto;
+            }
+
+            .perspective-editorial .perspective-grid > article {
+              padding: 24px;
+            }
+          }
+        </style>
+
         <div class="wrap">
           <div class="section-head">
             <div>
@@ -696,9 +797,10 @@
               </h2>
             </div>
 
-            <p>
-              Ideas y consejos para cuidar tu operación y decidir con más claridad.<br>
-              <strong>
+            <p class="perspective-intro">
+              Información con contexto y recomendaciones prácticas para
+              evaluar mejor, cuidar tu operación y decidir con más claridad.
+              <strong class="perspective-edition">
                 Edición:
                 <time datetime="2026-10-04">domingo 4 de octubre de 2026</time>
               </strong>
@@ -706,7 +808,9 @@
           </div>
 
           <div class="perspective-grid">
-            <article>
+            <article class="perspective-feature">
+              <span class="perspective-kicker">La mirada de esta semana</span>
+
               <span class="label-tag">
                 UNIFORMES · COMPRAR CON CRITERIO
               </span>
@@ -820,13 +924,14 @@
             </article>
           </div>
 
-          <p class="small">
-            La mirada de YAKAR conecta información del entorno con decisiones
-            de tu día a día. Los enlaces permiten consultar las fuentes.
+          <p class="small perspective-note">
+            Nuestra mirada conecta información del entorno con decisiones
+            concretas de tu operación. Cada recomendación distingue el
+            contexto consultado del criterio de YAKAR.
           </p>
         </div>
       </section>
-
+      
       <section
         class="section request-section"
         id="requerimiento"
