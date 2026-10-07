@@ -142,7 +142,32 @@ function initializeRoadmap() {
 
   if (!title || !description || !result) return;
 
+  const compact = window.matchMedia('(max-width: 760px)');
+  const home = document.createComment(
+    'Ubicación del detalle en escritorio'
+  );
+
+  panel.before(home);
+  panel.setAttribute('role', 'region');
+
+  let selected = 0;
+
+  buttons.forEach((button, index) => {
+    if (!button.id) {
+      button.id = `milestone-button-${index + 1}`;
+    }
+  });
+
+  function placePanel() {
+    if (compact.matches) {
+      buttons[selected].after(panel);
+    } else {
+      home.after(panel);
+    }
+  }
+
   function activate(index) {
+    selected = index;
     const milestone = MILESTONES[index];
 
     buttons.forEach((button, position) => {
@@ -150,11 +175,19 @@ function initializeRoadmap() {
 
       button.classList.toggle('active', active);
       button.setAttribute('aria-expanded', String(active));
+
+      button.closest('li').classList.toggle(
+        'is-reached',
+        position < index
+      );
     });
 
     title.textContent = `Hito 0${index + 1} / ${milestone.title}`;
     description.textContent = milestone.description;
     result.textContent = milestone.result;
+
+    panel.setAttribute('aria-labelledby', buttons[index].id);
+    placePanel();
 
     progress?.setAttribute(
       'stroke-dasharray',
@@ -164,7 +197,9 @@ function initializeRoadmap() {
 
   buttons.forEach((button, index) => {
     button.addEventListener('pointerenter', event => {
-      if (event.pointerType === 'mouse') activate(index);
+      if (event.pointerType === 'mouse' && !compact.matches) {
+        activate(index);
+      }
     });
 
     button.addEventListener('focus', () => activate(index));
@@ -201,6 +236,7 @@ function initializeRoadmap() {
     });
   });
 
+  compact.addEventListener('change', placePanel);
   activate(0);
 }
 
