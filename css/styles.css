@@ -1760,3 +1760,72 @@ p {
 .footer-v4 .footer-grid-v4 > section:first-child > .small {
   color: #b8c4d5;
 }
+/* Método móvil: línea de avance y detalle junto al hito */
+@media (max-width: 760px) {
+  .process-section .route-connector {
+    display: none;
+  }
+
+  .process-section .roadmap-track {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .process-section .roadmap-track > li {
+    position: relative;
+    min-width: 0;
+    padding-top: 0;
+  }
+
+  .process-section .roadmap-track > li:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    top: 36px;
+    bottom: -36px;
+    left: 24px;
+    width: 2px;
+    background: #7890ad;
+    pointer-events: none;
+  }
+
+  .process-section .roadmap-track > li.is-reached::before {
+    width: 3px;
+    background: #d8e7ff;
+  }
+
+  .process-section .roadmap-track button {
+    position: relative;
+    display: grid;
+    grid-template-columns: 43px minmax(0, 1fr);
+    align-items: center;
+    gap: 0 14px;
+    min-height: 73px;
+    padding: 11px 4px;
+    border-bottom: 0;
+    text-align: left;
+  }
+
+  .process-section .milestone-dot {
+    grid-row: 1 / 3;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+  }
+
+  .process-section .roadmap-track small {
+    margin-top: 2px;
+  }
+
+  .process-section .roadmap-track .milestone-panel {
+    min-width: 0;
+    min-height: 0;
+    margin: 0 0 14px 61px;
+    padding: 14px 16px;
+    overflow-wrap: anywhere;
+  }
+
+  .process-section .milestone-panel > strong {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+}
