@@ -1443,5 +1443,449 @@
       layout();
     });
   </script>
+  <!-- INICIO: Calendario YAKAR 2026. Pegar una sola vez antes de </body>. -->
+<style>
+#yakar-calendar { margin-top: 22px; padding-top: 14px; border-top: 1px solid #dce3eb; color: #344458; font: inherit; }
+#yakar-calendar summary { cursor: pointer; padding: 8px 2px; font-size: .9rem; line-height: 1.6; }
+#yakar-calendar summary strong { color: #1b3a6b; font-weight: 600; }
+#yakar-calendar .yc-invitation { margin-left: .5em; color: #52647a; text-decoration: underline; text-underline-offset: 3px; }
+#yakar-calendar .yc-today { font-size: .9rem; line-height: 1.6; margin: 4px 0 10px; }
+#yakar-calendar .yc-controls { display: flex; flex-wrap: wrap; gap: 12px; margin: 14px 0; }
+#yakar-calendar label { display: grid; gap: 5px; font-size: .82rem; flex: 1 1 180px; }
+#yakar-calendar select { box-sizing: border-box; width: 100%; min-height: 44px; background: #fff; color: #344458; border: 1px solid #bcc8d6; border-radius: 6px; padding: 8px 10px; font: inherit; }
+#yakar-calendar .yc-list { list-style: none; padding: 0; margin: 0; }
+#yakar-calendar .yc-list li { border-top: 1px solid #e8edf2; padding: 12px 0; font-size: .88rem; line-height: 1.6; }
+#yakar-calendar .yc-list strong { color: #1b3a6b; }
+#yakar-calendar .yc-list p { margin: 4px 0; font-size: inherit; }
+#yakar-calendar .yc-meta, #yakar-calendar .yc-note { font-size: .78rem; color: #52647a; }
+#yakar-calendar a { color: #1b3a6b; text-decoration: underline; text-underline-offset: 3px; }
+#yakar-calendar :is(summary, select, a):focus-visible { outline: 2px solid #1b3a6b; outline-offset: 4px; }
+@media (hover: hover) and (pointer: fine) {
+  #yakar-calendar summary:hover { background: #f4f7fa; border-radius: 6px; }
+}
+</style>
+<script>
+(() => {
+  'use strict';
+  const EDITION = '2026';
+  // Fechas verificadas para esta edición; no se repiten automáticamente en otros años.
+  // Los saludos son textos originales de YAKAR. Las fuentes respaldan las fechas.
+  const EVENTS = [
+  {
+    "date": "2026-01-01",
+    "title": "Año Nuevo",
+    "message": "Que este año nos encuentre construyendo oportunidades y cuidando a quienes nos acompañan.",
+    "kind": "Feriado nacional",
+    "territories": [
+      "PE"
+    ],
+    "source": "https://target2.promperu.gob.pe/blog-viajero/nacional/feriados-2026-las-fechas-que-necesitas-para-planear-tus-viajes"
+  },
+  {
+    "date": "2026-01-13",
+    "title": "Día del Ingeniero Electricista",
+    "message": "A quienes hacen posible una energía segura y confiable: nuestro reconocimiento.",
+    "kind": "Reconocimiento profesional",
+    "territories": [
+      "PE"
+    ],
+    "source": "https://www.gob.pe/institucion/minem/noticias/893332-minem-saluda-a-los-ingenieros-electricistas-en-su-dia"
+  },
+  {
+    "date": "2026-01-14",
+    "title": "Día del Ingeniero de Minas",
+    "message": "Saludamos a quienes aportan conocimiento y responsabilidad al desarrollo de la minería.",
+    "kind": "Reconocimiento profesional",
+    "territories": [
+      "PE"
+    ],
+    "source": "https://www.cip.org.pe/semana-de-ingenieria-de-minas-ciplima/"
+  },
+  {
+    "date": "2026-01-22",
+    "title": "Día del Ingeniero Químico",
+    "message": "Reconocemos a quienes transforman conocimiento en procesos y productos útiles para nuestra vida.",
+    "kind": "Reconocimiento profesional",
+    "territories": [
+      "PE"
+    ],
+    "source": "https://www.gob.pe/institucion/unjbg/noticias/802280-dia-del-ingeniero-quimico"
+  },
+  {
+    "date": "2026-02-14",
+    "title": "Día del Licenciado en Administración",
+    "message": "A quienes conectan personas, decisiones y recursos para hacer avanzar una organización: un saludo de YAKAR.",
+    "kind": "Reconocimiento profesional",
+    "territories": [
+      "PE"
+    ],
+    "source": "https://www.gob.pe/institucion/regionica/normas-legales/4110520-005-2020-gore-ica"
+  },
+  {
+    "date": "2026-03-27",
+    "title": "Día del Hotelero en el Perú",
+    "message": "A quienes hacen de la bienvenida, el cuidado y los detalles una experiencia memorable: gracias por su hospitalidad.",
+    "kind": "Reconocimiento del sector",
+    "territories": [
+      "PE"
+    ],
+    "source": "https://es.linkedin.com/posts/belmond_palacio_nazarenas_theartofbelmond-cusco-activity-7311514313565822976-WIhn"
+  },
+  {
+    "date": "2026-04-02",
+    "title": "Jueves Santo",
+    "message": "Un saludo respetuoso a quienes encuentran en esta fecha un momento de reflexión.",
+    "kind": "Feriado nacional",
+    "territories": [
+      "PE"
+    ],
+    "source": "https://target2.promperu.gob.pe/blog-viajero/nacional/feriados-2026-las-fechas-que-necesitas-para-planear-tus-viajes"
+  },
+  {
+    "date": "2026-04-03",
+    "title": "Viernes Santo",
+    "message": "Acompañamos con respeto este tiempo de recogimiento y encuentro.",
+    "kind": "Feriado nacional",
+    "territories": [
+      "PE"
+    ],
+    "source": "https://target2.promperu.gob.pe/blog-viajero/nacional/feriados-2026-las-fechas-que-necesitas-para-planear-tus-viajes"
+  },
+  {
+    "date": "2026-04-30",
+    "title": "Día del Psicólogo Peruano",
+    "message": "Saludamos a quienes acompañan con escucha, conocimiento y respeto el bienestar de las personas.",
+    "kind": "Reconocimiento profesional",
+    "territories": [
+      "PE"
+    ],
+    "source": "https://www.gob.pe/institucion/hcllh/noticias/1391208-dia-del-psicologo"
+  },
+  {
+    "date": "2026-05-01",
+    "title": "Día del Trabajo",
+    "message": "Reconocemos el esfuerzo de quienes sostienen cada operación, en todos los oficios y profesiones.",
+    "kind": "Feriado nacional",
+    "territories": [
+      "PE"
+    ],
+    "source": "https://target2.promperu.gob.pe/blog-viajero/nacional/feriados-2026-las-fechas-que-necesitas-para-planear-tus-viajes"
+  },
+  {
+    "date": "2026-05-10",
+    "title": "Día de la Madre",
+    "message": "Un saludo con cariño a las madres y a quienes conservan su recuerdo.",
+    "kind": "Celebración",
+    "territories": [
+      "PE"
+    ],
+    "source": "https://www.gob.pe/institucion/munilima/noticias/1388652-municipalidad-de-lima-anuncia-programa-de-actividades-por-el-dia-de-la-madre"
+  },
+  {
+    "date": "2026-06-04",
+    "title": "Corpus Christi",
+    "message": "Saludamos a quienes mantienen viva esta tradición y comparten su sentido de comunidad.",
+    "kind": "Celebración local",
+    "territories": [
+      "CUS",
+      "CAJ"
+    ],
+    "source": "https://www.gob.pe/institucion/irtp/noticias/1370653-irtp-y-municipalidad-provincial-de-cajamarca-coordinan-acciones-para-la-transmision-del-corpus-christi"
+  },
+  {
+    "date": "2026-06-07",
+    "title": "Batalla de Arica y Día de la Bandera",
+    "message": "Recordamos nuestra historia y el compromiso de contribuir al Perú desde nuestro trabajo.",
+    "kind": "Feriado nacional",
+    "territories": [
+      "PE"
+    ],
+    "source": "https://target2.promperu.gob.pe/blog-viajero/nacional/feriados-2026-las-fechas-que-necesitas-para-planear-tus-viajes"
+  },
+  {
+    "date": "2026-06-08",
+    "title": "Día del Ingeniero Peruano",
+    "message": "A las ingenieras e ingenieros de todas las especialidades: reconocemos su aporte para resolver necesidades y mejorar nuestro entorno.",
+    "kind": "Reconocimiento profesional",
+    "territories": [
+      "PE"
+    ],
+    "source": "https://www.gob.pe/institucion/munichancay-lima/noticias/1404493-feliz-dia-del-ingeniero-peruano"
+  },
+  {
+    "date": "2026-06-29",
+    "title": "San Pedro y San Pablo",
+    "message": "Un saludo a las comunidades que mantienen viva esta tradición.",
+    "kind": "Feriado nacional",
+    "territories": [
+      "PE"
+    ],
+    "source": "https://target2.promperu.gob.pe/blog-viajero/nacional/feriados-2026-las-fechas-que-necesitas-para-planear-tus-viajes"
+  },
+  {
+    "date": "2026-07-23",
+    "title": "Día de la Fuerza Aérea del Perú",
+    "message": "Reconocemos la vocación de servicio de quienes integran la Fuerza Aérea del Perú.",
+    "kind": "Feriado nacional",
+    "territories": [
+      "PE"
+    ],
+    "source": "https://target2.promperu.gob.pe/blog-viajero/nacional/feriados-2026-las-fechas-que-necesitas-para-planear-tus-viajes"
+  },
+  {
+    "date": "2026-07-28",
+    "title": "Fiestas Patrias",
+    "message": "Celebramos al Perú y a las personas que lo construyen cada día.",
+    "kind": "Feriado nacional",
+    "territories": [
+      "PE"
+    ],
+    "source": "https://target2.promperu.gob.pe/blog-viajero/nacional/feriados-2026-las-fechas-que-necesitas-para-planear-tus-viajes"
+  },
+  {
+    "date": "2026-07-29",
+    "title": "Fiestas Patrias",
+    "message": "Que el respeto y el trabajo compartido nos acerquen como país.",
+    "kind": "Feriado nacional",
+    "territories": [
+      "PE"
+    ],
+    "source": "https://target2.promperu.gob.pe/blog-viajero/nacional/feriados-2026-las-fechas-que-necesitas-para-planear-tus-viajes"
+  },
+  {
+    "date": "2026-08-06",
+    "title": "Batalla de Junín",
+    "message": "Recordamos una fecha de nuestra historia que invita a valorar la independencia.",
+    "kind": "Feriado nacional",
+    "territories": [
+      "PE"
+    ],
+    "source": "https://target2.promperu.gob.pe/blog-viajero/nacional/feriados-2026-las-fechas-que-necesitas-para-planear-tus-viajes"
+  },
+  {
+    "date": "2026-08-30",
+    "title": "Santa Rosa de Lima",
+    "message": "Saludamos con respeto a quienes celebran esta tradición.",
+    "kind": "Feriado nacional",
+    "territories": [
+      "PE"
+    ],
+    "source": "https://target2.promperu.gob.pe/blog-viajero/nacional/feriados-2026-las-fechas-que-necesitas-para-planear-tus-viajes"
+  },
+  {
+    "date": "2026-08-30",
+    "title": "Día de la Enfermería Peruana",
+    "message": "A las enfermeras y enfermeros que unen conocimiento, atención y cuidado humano: nuestro reconocimiento.",
+    "kind": "Reconocimiento profesional",
+    "territories": [
+      "PE"
+    ],
+    "source": "https://www.hrdt.gob.pe/sighov2/modulos/configuracion/frmEfemerides.php"
+  },
+  {
+    "date": "2026-09-11",
+    "title": "Día del Contador Público",
+    "message": "Saludamos a quienes aportan claridad, responsabilidad y confianza a las decisiones de cada organización.",
+    "kind": "Reconocimiento profesional",
+    "territories": [
+      "PE"
+    ],
+    "source": "https://www.gob.pe/institucion/munilobitos/noticias/876681-hoy-se-recuerda-el-dia-del-contador-publico"
+  },
+  {
+    "date": "2026-10-05",
+    "title": "Día de la Medicina Peruana",
+    "message": "A las médicas y médicos que ponen su conocimiento al servicio de la vida: nuestro saludo y reconocimiento.",
+    "kind": "Reconocimiento profesional",
+    "territories": [
+      "PE"
+    ],
+    "source": "https://www.essalud.gob.pe/noticias/medicina_dia.pdf"
+  },
+  {
+    "date": "2026-10-08",
+    "title": "Combate de Angamos",
+    "message": "Recordamos a Miguel Grau y su legado de valor y humanidad.",
+    "kind": "Feriado nacional",
+    "territories": [
+      "PE"
+    ],
+    "source": "https://target2.promperu.gob.pe/blog-viajero/nacional/feriados-2026-las-fechas-que-necesitas-para-planear-tus-viajes"
+  },
+  {
+    "date": "2026-11-01",
+    "title": "Todos los Santos",
+    "message": "Un momento para recordar con cariño a quienes forman parte de nuestra historia.",
+    "kind": "Feriado nacional",
+    "territories": [
+      "PE"
+    ],
+    "source": "https://target2.promperu.gob.pe/blog-viajero/nacional/feriados-2026-las-fechas-que-necesitas-para-planear-tus-viajes"
+  },
+  {
+    "date": "2026-11-27",
+    "title": "Día del Ingeniero Civil",
+    "message": "A quienes convierten planes en espacios e infraestructura para nuestra vida cotidiana: un saludo de YAKAR.",
+    "kind": "Reconocimiento profesional",
+    "territories": [
+      "PE"
+    ],
+    "source": "https://ciplima.org.pe/comenzo-la-semana-de-la-ingenieria-civil-con-conferencias-magistrales-y-una-expoferia/"
+  },
+  {
+    "date": "2026-12-08",
+    "title": "Inmaculada Concepción",
+    "message": "Un saludo respetuoso a quienes comparten esta celebración.",
+    "kind": "Feriado nacional",
+    "territories": [
+      "PE"
+    ],
+    "source": "https://target2.promperu.gob.pe/blog-viajero/nacional/feriados-2026-las-fechas-que-necesitas-para-planear-tus-viajes"
+  },
+  {
+    "date": "2026-12-09",
+    "title": "Batalla de Ayacucho",
+    "message": "Recordamos nuestra historia y el valor de construir un futuro compartido.",
+    "kind": "Feriado nacional",
+    "territories": [
+      "PE"
+    ],
+    "source": "https://target2.promperu.gob.pe/blog-viajero/nacional/feriados-2026-las-fechas-que-necesitas-para-planear-tus-viajes"
+  },
+  {
+    "date": "2026-12-25",
+    "title": "Navidad",
+    "message": "Deseamos paz, compañía y momentos de afecto para cada hogar.",
+    "kind": "Feriado nacional",
+    "territories": [
+      "PE"
+    ],
+    "source": "https://target2.promperu.gob.pe/blog-viajero/nacional/feriados-2026-las-fechas-que-necesitas-para-planear-tus-viajes"
+  }
+];
+  const MONTHS = ['Enero','Febrero','Marzo','Abril','Mayo','Junio',
+    'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  const AREAS = {PE:'Perú', CUS:'Ciudad de Cusco', CAJ:'Ciudad de Cajamarca'};
+
+  function todayInLima() {
+    const parts = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'America/Lima', year: 'numeric', month: '2-digit', day: '2-digit'
+    }).formatToParts(new Date());
+    const get = type => parts.find(part => part.type === type).value;
+    return get('year') + '-' + get('month') + '-' + get('day');
+  }
+  function element(tag, text, className) {
+    const node = document.createElement(tag);
+    if (text) node.textContent = text;
+    if (className) node.className = className;
+    return node;
+  }
+  function start() {
+    const host = document.querySelector('#perspectiva .wrap');
+    if (!host || document.getElementById('yakar-calendar')) return;
+    const box = element('div');
+    box.id = 'yakar-calendar';
+    const details = element('details');
+    const summary = element('summary');
+    const heading = element('strong', 'Un saludo de YAKAR');
+    const invitation = element('span', 'Ver calendario', 'yc-invitation');
+    summary.append(heading, invitation);
+    const todayNote = element('p', '', 'yc-today');
+    const controls = element('div', '', 'yc-controls');
+    function selectControl(text, id, options) {
+      const label = element('label', text);
+      label.htmlFor = id;
+      const select = element('select');
+      select.id = id;
+      options.forEach(([value, name]) => {
+        const option = element('option', name);
+        option.value = value;
+        select.append(option);
+      });
+      label.append(select);
+      controls.append(label);
+      return select;
+    }
+    const area = selectControl('Lugar', 'yc-area', Object.entries(AREAS));
+    const month = selectControl('Mes · ' + EDITION, 'yc-month',
+      [['all','Todo el año'], ...MONTHS.map((name,i) => [String(i+1).padStart(2,'0'), name])]);
+    let currentDay = todayInLima();
+    month.value = currentDay.startsWith(EDITION + '-') ? currentDay.slice(5,7) : 'all';
+    const status = element('p', '', 'yc-note');
+    status.setAttribute('role', 'status');
+    const list = element('ul', '', 'yc-list');
+    const note = element('p',
+      'Selección de fechas de 2026. Los reconocimientos profesionales no son feriados. ' +
+      'Las fechas locales se muestran para el lugar elegido.', 'yc-note');
+    details.append(summary, controls, status, list, note);
+    box.append(todayNote, details);
+    host.append(box);
+
+    function matchesArea(event) {
+      return event.territories.includes('PE') || event.territories.includes(area.value);
+    }
+    function renderToday() {
+      const today = todayInLima();
+      const greetings = EVENTS.filter(event => event.date === today && matchesArea(event));
+      if (!today.startsWith(EDITION + '-')) {
+        todayNote.textContent = '';
+        todayNote.hidden = true;
+        heading.textContent = 'Calendario YAKAR · Archivo ' + EDITION;
+      } else {
+        heading.textContent = 'Un saludo de YAKAR';
+        todayNote.hidden = false;
+        todayNote.textContent = greetings.length
+          ? greetings.map(event => event.title + ': ' + event.message).join(' ')
+          : 'Reconocemos a las personas, los oficios y las tradiciones que nos acompañan.';
+      }
+      currentDay = today;
+    }
+    function renderList() {
+      const selected = EVENTS.filter(event => matchesArea(event) &&
+        (month.value === 'all' || event.date.slice(5,7) === month.value));
+      list.replaceChildren();
+      for (const event of selected) {
+        const item = element('li');
+        const title = element('strong', event.title);
+        const date = element('time',
+          Number(event.date.slice(8)) + ' de ' + MONTHS[Number(event.date.slice(5,7))-1].toLowerCase());
+        date.dateTime = event.date;
+        const metadata = element('p', '', 'yc-meta');
+        metadata.append(date, document.createTextNode(' · ' + event.kind + ' · ' +
+          (event.territories.includes('PE') ? 'Perú' : AREAS[area.value])));
+        const greeting = element('p', event.message);
+        const source = element('a', 'Consultar fuente');
+        source.href = event.source;
+        source.target = '_blank';
+        source.rel = 'noopener noreferrer';
+        source.setAttribute('aria-label', 'Consultar fuente: ' + event.title + ' (abre otra pestaña)');
+        item.append(title, metadata, greeting, source);
+        list.append(item);
+      }
+      status.textContent = selected.length
+        ? selected.length + ' fechas en esta selección.'
+        : 'No hay fechas incluidas en esta selección.';
+    }
+    area.addEventListener('change', () => { renderToday(); renderList(); });
+    month.addEventListener('change', renderList);
+    details.addEventListener('toggle', () => {
+      invitation.textContent = details.open ? 'Cerrar calendario' : 'Ver calendario';
+    });
+    // Actualiza el saludo al regresar a la página o cruzar la medianoche de Lima.
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) renderToday();
+    });
+    window.setInterval(() => {
+      if (!document.hidden && todayInLima() !== currentDay) renderToday();
+    }, 60000);
+    renderToday();
+    renderList();
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start, {once:true});
+  } else start();
+})();
+</script>
+<!-- FIN: Calendario YAKAR 2026 -->
 </body>
 </html>
