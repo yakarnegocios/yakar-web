@@ -349,6 +349,7 @@ function initializeRequest() {
     form.hidden = false;
     review.hidden = true;
     setStep(1);
+    card.scrollTop = 0;
   }
 
   function updateHint() {
@@ -510,6 +511,7 @@ function initializeRequest() {
 
     form.hidden = true;
     review.hidden = false;
+    card.scrollTop = 0;
     status.textContent = '';
 
     setStep(2);
@@ -527,7 +529,12 @@ function initializeRequest() {
       if (link.getAttribute('aria-disabled') === 'true') {
         event.preventDefault();
         status.textContent = 'Completa el resumen antes de compartirlo.';
+        return;
       }
+
+      status.textContent = link === emailLink
+        ? 'Revisa el correo y pulsa Enviar en tu aplicación. Si no se abre, copia el resumen y escríbenos a ' + YAKAR.email + '.'
+        : 'Revisa el mensaje y pulsa Enviar en WhatsApp. YAKAR podrá atenderlo cuando lo reciba.';
     });
   });
 
