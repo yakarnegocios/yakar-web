@@ -317,6 +317,62 @@
         }
       }
     }
+
+    /* YAKAR: interacción sutil de las tarjetas de oferta. */
+    .commercial .solution-card-v5 {
+      outline: 1px solid transparent;
+      outline-offset: -1px;
+      transition: background-color 180ms ease, outline-color 180ms ease,
+        box-shadow 180ms ease, transform 180ms ease;
+    }
+    .commercial .solution-card-v5 .btn {
+      min-height: 44px;
+      max-width: 100%;
+      display: inline-flex;
+      align-items: center;
+      transition: background-color 180ms ease, box-shadow 180ms ease;
+    }
+    .commercial .solution-card-v5:focus-within {
+      background: #f7fafd;
+      outline-color: #b8c7d9;
+      box-shadow: 0 6px 18px rgba(27, 58, 107, .08);
+    }
+    .commercial .solution-card-v5 .btn:focus-visible {
+      outline: 3px solid #1b3a6b;
+      outline-offset: 4px;
+    }
+    .commercial .solution-card-v5 .btn:active {
+      background: #112b51;
+      box-shadow: 0 0 0 3px rgba(27, 58, 107, .16);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .commercial .solution-card-v5:hover {
+        background: #f7fafd;
+        outline-color: #b8c7d9;
+        box-shadow: 0 6px 18px rgba(27, 58, 107, .08);
+        transform: translateY(-3px);
+      }
+      .commercial .solution-card-v5 .btn:hover {
+        background: #112b51;
+        box-shadow: 0 0 0 3px rgba(27, 58, 107, .14),
+          0 3px 10px rgba(27, 58, 107, .12);
+      }
+    }
+    @media (max-width: 760px) {
+      .commercial .solution-card-v5 { overflow-wrap: break-word; }
+    }
+    @media (max-width: 420px) {
+      .commercial .solution-card-v5 .btn {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .commercial .solution-card-v5,
+      .commercial .solution-card-v5 .btn { transition: none; }
+      .commercial .solution-card-v5:hover { transform: none; }
+    }
   </style>
 </head>
 
