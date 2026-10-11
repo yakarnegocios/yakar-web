@@ -1829,3 +1829,10 @@ p {
     font-weight: 600;
   }
 }
+
+/* Integridad: una referencia discreta y accesible. */
+.commercial .request-integrity{font-size:.8rem;line-height:1.65;color:#526279;margin:0 0 18px;max-width:65ch}
+.commercial .request-integrity a,.commercial .integrity-method a{color:#1b3a6b;text-decoration:underline;text-underline-offset:3px}
+.commercial .integrity-method{padding:36px 0;background:#f3f5f8;border-top:1px solid #dce2e9}
+.commercial .integrity-method h2{font-size:1.4rem;color:#1b3a6b;margin:0 0 10px}
+.commercial .integrity-method p{max-width:75ch;line-height:1.7}
