@@ -1836,3 +1836,13 @@ p {
 .commercial .integrity-method{padding:36px 0;background:#f3f5f8;border-top:1px solid #dce2e9}
 .commercial .integrity-method h2{font-size:1.4rem;color:#1b3a6b;margin:0 0 10px}
 .commercial .integrity-method p{max-width:75ch;line-height:1.7}
+
+/* Revisión UX/antropología y calidad: párrafos de integridad justificados. */
+.commercial .integrity-main p,
+.commercial .request-integrity,
+.commercial .integrity-method p {
+  text-align: justify;
+  text-align-last: start;
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
