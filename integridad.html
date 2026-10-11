@@ -58,7 +58,8 @@
 <section class="integrity-hero"><div class="wrap"><p class="eyebrow">Nuestra filosofía</p><h1>La integridad es parte de cumplir.</h1><p class="lead">La confianza empieza por una decisión: actuar con claridad, respetar la legalidad y cuidar el impacto de cada compromiso.</p></div></section>
 <div class="wrap"><section class="integrity-content" aria-labelledby="commitment-title"><h2 id="commitment-title">Integridad y operaciones responsables</h2>
 <p>En YAKAR entendemos el abastecimiento como un compromiso con las personas, las organizaciones y su entorno. Buscamos relaciones comerciales basadas en información veraz, acuerdos claros y un destino lícito de los productos, servicios y proyectos.</p>
-<div class="integrity-commitment"><p><strong>YAKAR atiende requerimientos destinados a actividades lícitas.</strong> No participamos en operaciones vinculadas con minería ilegal, tala ilegal, tráfico ilícito de drogas, lavado de activos u otras actividades delictivas.</p></div>
+<div class="integrity-commitment" id="integrity-commitment"><svg class="integrity-outline" viewBox="0 0 900 140" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect x="1" y="1" width="898" height="138" rx="7" pathLength="100"/></svg><p><strong>YAKAR atiende requerimientos destinados a actividades lícitas.</strong> No participamos en operaciones vinculadas con minería ilegal, tala ilegal, tráfico ilícito de drogas, lavado de activos u otras actividades delictivas.</p></div>
+<div class="integrity-motion-controls" hidden><button type="button" class="integrity-motion-toggle" aria-controls="integrity-commitment" aria-pressed="false">Pausar movimiento</button></div>
 <div class="integrity-principles"><article><h3>Información clara</h3><p>Identificar a las partes, comprender el requerimiento y precisar su destino permite construir acuerdos responsables.</p></article><article><h3>Acuerdos verificables</h3><p>Las condiciones, los responsables y los documentos de cada operación deben poder explicarse y relacionarse entre sí.</p></article><article><h3>Responsabilidad compartida</h3><p>Esperamos información veraz y un uso lícito de lo solicitado. Una declaración no sustituye la revisión que corresponda.</p></article></div>
 <h2>Cómo orienta nuestra atención</h2>
 <p>Según la naturaleza del requerimiento, podemos solicitar información sobre la organización, el destino de los bienes o servicios y las autorizaciones que correspondan. Si encontramos inconsistencias relevantes, solicitaremos aclaraciones antes de continuar. No atenderemos requerimientos cuyo destino ilícito sea conocido.</p>
@@ -145,4 +146,34 @@
         </div>
       </div>
     </footer>
-</div></body></html>
+</div><script>
+(() => {
+  const box = document.getElementById('integrity-commitment');
+  const svg = box?.querySelector('.integrity-outline');
+  const rect = svg?.querySelector('rect');
+  const controls = document.querySelector('.integrity-motion-controls');
+  const button = controls?.querySelector('button');
+  if (!box || !svg || !rect || !controls || !button) return;
+  const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let paused = false;
+  function update() {
+    controls.hidden = preference.matches;
+    box.dataset.motionPaused = String(paused || document.hidden || preference.matches);
+    button.setAttribute('aria-pressed', String(paused));
+    button.textContent = paused ? 'Reanudar movimiento' : 'Pausar movimiento';
+  }
+  function fit() {
+    const {width, height} = box.getBoundingClientRect();
+    svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+    rect.setAttribute('width', String(Math.max(0, width - 2)));
+    rect.setAttribute('height', String(Math.max(0, height - 2)));
+  }
+  button.addEventListener('click', () => { paused = !paused; update(); });
+  document.addEventListener('visibilitychange', update);
+  preference.addEventListener('change', update);
+  if ('ResizeObserver' in window) new ResizeObserver(fit).observe(box);
+  else window.addEventListener('resize', fit);
+  fit(); update();
+})();
+</script>
+</body></html>
