@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-21",
+  "mode": "antes",
+  "checks": [],
+  "layouts": [],
+  "accessibility": [],
+  "externalRequestsSent": 0,
+  "historyRestore": {
+    "name": "",
+    "sameAttempt": false
+  },
+  "required": [
+    "consumerName",
+    "documentType",
+    "documentNumber",
+    "consumerAddress",
+    "responseChannel",
+    "itemType",
+    "itemDescription",
+    "caseType",
+    "caseType",
+    "caseDetail",
+    "requestedAction",
+    "confirmation"
+  ],
+  "interceptedPosts": 0
+}
