@@ -277,12 +277,8 @@ p {
 }
 
 .brand-crop img {
-  position: absolute;
-  top: -52.15px;
-  left: -217px;
-  width: 506.8px;
+  width: 100%;
   height: auto;
-  max-width: none;
 }
 
 .navlinks {
@@ -1408,12 +1404,6 @@ p {
     height: 64px;
   }
 
-  .brand-crop img {
-    top: -44.3px;
-    left: -184.45px;
-    width: 430.78px;
-  }
-
   .menu-button {
     display: flex;
   }
@@ -1860,3 +1850,27 @@ p {
 @keyframes integrity-contour{to{stroke-dashoffset:-100}}
 @media(hover:hover) and (pointer:fine){.commercial .integrity-principles article:hover{transform:translateY(-2px);border-color:#b3c5db;box-shadow:0 5px 16px #1b3a6b0d}}
 @media(prefers-reduced-motion:reduce){.commercial .integrity-outline rect{animation:none;stroke-dasharray:none;stroke-opacity:.25}.commercial .integrity-motion-controls{display:none}.commercial .integrity-principles article{transition:none}.commercial .integrity-principles article:hover{transform:none;box-shadow:none}}
+
+
+/* Mobile baseline: readable forms and comfortable controls; print is unchanged. */
+@media screen and (max-width: 900px) {
+  .commercial .field :is(input, select, textarea),
+  #yakar-calendar .yc-controls :is(input, select) {
+    font-size: 16px;
+  }
+
+  .commercial summary,
+  .commercial .perspective-editorial .perspective-grid summary,
+  .commercial .book-main .expand-button {
+    box-sizing: border-box;
+    min-height: 44px;
+  }
+
+  .commercial .perspective-editorial .perspective-grid summary {
+    padding-block: 10px;
+  }
+
+  #yakar-calendar .yc-controls :is(input, select) {
+    min-height: 44px;
+  }
+}
