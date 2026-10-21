@@ -1,0 +1,165 @@
+{
+  "date": "2026-10-21",
+  "environment": "Chromium; sesiones ficticias; sin envío ni Supabase",
+  "checks": [
+    "HTML/CSS/JS pertenecen a las mismas versiones de contenido",
+    "Cinco anchos: acceso directo, cinco campos visibles y desplazamiento único",
+    "Errores agrupados, asociados y navegables, con foco",
+    "Consulta inicial sin correo ni empresa: teléfono suficiente y estado veraz",
+    "Destinatarios y resumen completos en ambos enlaces",
+    "Volver sin cambios conserva formulario y edición manual del resumen",
+    "Resumen vacío deshabilita compartir",
+    "Cambiar el formulario regenera un resumen coherente",
+    "Copia correcta y alternativa manual ante permiso denegado",
+    "Abrir canal no se presenta como recepción",
+    "Entrada contextual producto",
+    "Entrada contextual servicio",
+    "Entrada contextual proyecto",
+    "Servicio sin serie/modelo ni teléfono: correo suficiente",
+    "Correo mal escrito no pasa inadvertido aunque haya teléfono",
+    "Espacios y teléfono sin números reciben orientación",
+    "Proyecto conserva detalles opcionales y fecha solicitada",
+    "Texto largo, acentos, símbolos y HTML permanecen texto y viajan completos en el enlace",
+    "Giro horizontal conserva datos y reflujo",
+    "Escritura y preparación sin peticiones externas ni almacenamiento de datos",
+    "Entrada mediante teclado y orden hacia la necesidad",
+    "Sin JavaScript quedan contacto directo e instrucción visible",
+    "axe en formulario, errores y revisión: sin infracciones automáticas detectadas en el componente",
+    "Texto relativo al 200% sin desbordamiento horizontal a 390px",
+    "Página completa: axe sin infracciones detectadas y contraste de rótulos revisado por cálculo adicional"
+  ],
+  "layouts": [
+    {
+      "width": 320,
+      "overflow": false,
+      "nestedScroll": false,
+      "visibleFields": 5,
+      "formHeight": 1298,
+      "cardHeight": 1632,
+      "firstQuestionTop": 476,
+      "focused": "family",
+      "smallFields": 0
+    },
+    {
+      "width": 360,
+      "overflow": false,
+      "nestedScroll": false,
+      "visibleFields": 5,
+      "formHeight": 1218,
+      "cardHeight": 1552,
+      "firstQuestionTop": 475,
+      "focused": "family",
+      "smallFields": 0
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "nestedScroll": false,
+      "visibleFields": 5,
+      "formHeight": 1197,
+      "cardHeight": 1478,
+      "firstQuestionTop": 422,
+      "focused": "family",
+      "smallFields": 0
+    },
+    {
+      "width": 768,
+      "overflow": false,
+      "nestedScroll": false,
+      "visibleFields": 5,
+      "formHeight": 958,
+      "cardHeight": 1181,
+      "firstQuestionTop": 447,
+      "focused": "family",
+      "smallFields": 0
+    },
+    {
+      "width": 1280,
+      "overflow": false,
+      "nestedScroll": false,
+      "visibleFields": 5,
+      "formHeight": 943,
+      "cardHeight": 1198,
+      "firstQuestionTop": 474,
+      "focused": "family",
+      "smallFields": 5
+    }
+  ],
+  "accessibility": [
+    {
+      "state": "form",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "state": "errors",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "state": "review",
+      "violations": [],
+      "incomplete": []
+    }
+  ],
+  "wholePageAccessibility": {
+    "violations": [],
+    "manualReview": [
+      {
+        "id": "color-contrast",
+        "targets": [
+          [
+            "figcaption > span"
+          ],
+          [
+            "figcaption > strong"
+          ],
+          [
+            "figcaption > small"
+          ],
+          [
+            "#milestone-button-1 > .milestone-dot"
+          ]
+        ]
+      }
+    ]
+  },
+  "contrastReview": {
+    "captionAgainstWhiteWorstCase": [
+      {
+        "text": "SPAN",
+        "minimumRatio": 13.004000140568726
+      },
+      {
+        "text": "STRONG",
+        "minimumRatio": 13.004000140568726
+      },
+      {
+        "text": "SMALL",
+        "minimumRatio": 10.548503966300654
+      }
+    ],
+    "dots": [
+      {
+        "text": "01",
+        "ratio": 9.009099420807111
+      },
+      {
+        "text": "02",
+        "ratio": 9.088001841896821
+      },
+      {
+        "text": "03",
+        "ratio": 9.088001841896821
+      },
+      {
+        "text": "04",
+        "ratio": 9.088001841896821
+      },
+      {
+        "text": "05",
+        "ratio": 9.088001841896821
+      }
+    ]
+  }
+}
