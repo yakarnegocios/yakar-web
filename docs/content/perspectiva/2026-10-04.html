@@ -1,0 +1,332 @@
+<section
+        class="section perspective-section perspective-editorial"
+        id="perspectiva"
+        aria-labelledby="perspective-title"
+      >
+                <style>
+          .perspective-editorial {
+            padding-block: 44px;
+          }
+
+          .perspective-editorial .section-head {
+            gap: 24px;
+            align-items: center;
+            margin-bottom: 24px;
+          }
+
+          .perspective-editorial #perspective-title {
+            margin: 8px 0 0;
+            font-size: clamp(1.6rem, 2.2vw, 2rem);
+            line-height: 1.2;
+          }
+
+          .perspective-editorial .perspective-intro {
+            max-width: 440px;
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+          }
+
+          .perspective-editorial .perspective-edition {
+            display: block;
+            margin-top: 8px;
+            font-size: 0.8rem;
+            font-weight: 500;
+          }
+
+          .perspective-editorial .perspective-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+            align-items: stretch;
+          }
+
+          .perspective-editorial .perspective-grid > article {
+            display: flex;
+            flex-direction: column;
+            grid-row: auto;
+            min-width: 0;
+            padding: 22px;
+            background: #fff;
+            border: 1px solid #DCE3EB;
+            border-top: 2px solid #A7B7CA;
+            box-shadow: none;
+          }
+
+          .perspective-editorial .perspective-kicker {
+            display: none;
+          }
+
+          .perspective-editorial .label-tag {
+            display: block;
+            align-self: flex-start;
+            max-width: 100%;
+            padding: 0;
+            background: transparent;
+            color: #1B3A6B;
+            font-size: 0.7rem;
+            font-weight: 700;
+            line-height: 1.5;
+            letter-spacing: 0.03em;
+            white-space: normal;
+          }
+
+          .perspective-editorial .perspective-grid h3 {
+            margin: 14px 0 12px;
+            font-size: 1.2rem;
+            line-height: 1.35;
+          }
+
+          .perspective-editorial .perspective-grid > article > p {
+            margin: 0 0 14px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+          }
+
+          .perspective-editorial .perspective-grid .perspective-action {
+            padding: 12px 0 0;
+            background: transparent;
+            border: 0;
+            border-top: 1px solid #DCE3EB;
+            font-weight: 500;
+          }
+
+          .perspective-editorial .perspective-action strong {
+            font-weight: 700;
+          }
+
+          .perspective-editorial .perspective-grid details {
+            margin: 2px 0 12px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+          }
+
+          .perspective-editorial .perspective-grid summary {
+            cursor: pointer;
+            padding-block: 6px;
+          }
+
+          .perspective-editorial .perspective-grid details p {
+            margin: 10px 0 0;
+          }
+
+          .perspective-editorial .perspective-grid > article > a {
+            display: inline-block;
+            align-self: flex-start;
+            margin-top: 0;
+            padding-block: 6px;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            text-underline-offset: 3px;
+          }
+
+          .perspective-editorial .perspective-note {
+            max-width: 820px;
+            margin: 18px 0 0;
+            font-size: 0.8rem;
+            line-height: 1.6;
+          }
+
+          @media (max-width: 900px) {
+            .perspective-editorial .perspective-grid {
+              grid-template-columns: minmax(0, 1fr);
+              gap: 14px;
+            }
+
+            .perspective-editorial .section-head {
+              display: block;
+            }
+
+            .perspective-editorial .perspective-intro {
+              max-width: none;
+              margin-top: 14px;
+            }
+
+            .perspective-editorial {
+              padding-block: 32px;
+            }
+          }
+                      /* Interacción sutil de las tarjetas de Perspectiva */
+          .perspective-editorial .perspective-grid > article {
+            transition:
+              background-color 180ms ease,
+              border-color 180ms ease,
+              box-shadow 180ms ease,
+              transform 180ms ease;
+          }
+
+          @media (hover: hover) and (pointer: fine) {
+            .perspective-editorial .perspective-grid > article:hover {
+              background-color: #F7FAFD;
+              border-color: #B8C7D9;
+              border-top-color: #1B3A6B;
+              box-shadow: 0 6px 18px rgba(27, 58, 107, 0.08);
+              transform: translateY(-3px);
+            }
+          }
+
+          .perspective-editorial .perspective-grid > article:focus-within {
+            background-color: #F7FAFD;
+            border-color: #B8C7D9;
+            border-top-color: #1B3A6B;
+            box-shadow: 0 6px 18px rgba(27, 58, 107, 0.08);
+          }
+
+          .perspective-editorial .perspective-grid a:focus-visible,
+          .perspective-editorial .perspective-grid summary:focus-visible {
+            outline: 2px solid #1B3A6B;
+            outline-offset: 4px;
+            border-radius: 2px;
+          }
+
+          @media (prefers-reduced-motion: reduce) {
+            .perspective-editorial .perspective-grid > article {
+              transition: none;
+              transform: none;
+            }
+          }
+        </style>
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Perspectiva YAKAR</p>
+              <h2 id="perspective-title">
+                Una mirada<br>
+                que te acompaña.
+              </h2>
+            </div>
+
+            <p class="perspective-intro">
+              Información con contexto y recomendaciones prácticas para
+              evaluar mejor, cuidar tu operación y decidir con más claridad.
+              <strong class="perspective-edition">
+                Edición:
+                <time datetime="2026-10-04">domingo 4 de octubre de 2026</time>
+              </strong>
+            </p>
+          </div>
+
+          <div class="perspective-grid">
+            <article class="perspective-feature">
+              <span class="perspective-kicker">La mirada de esta semana</span>
+
+              <span class="label-tag">
+                UNIFORMES · COMPRAR CON CRITERIO
+              </span>
+
+              <h3>Piensa en quien lo usará.</h3>
+
+              <p>
+                Antes de elegir una prenda, conversemos sobre el clima, los
+                movimientos y la frecuencia de lavado. El logo importa; la
+                comodidad durante la jornada también.
+              </p>
+
+              <p class="perspective-action">
+                <strong>Nuestro consejo:</strong>
+                revisa una muestra y confirma las tallas antes de aprobar el lote.
+              </p>
+
+              <details>
+                <summary>Una señal del entorno</summary>
+                <p>
+                  Desde julio de 2026, la Unión Europea restringe la destrucción
+                  de prendas sin vender en grandes empresas, con excepciones.
+                  Para YAKAR, esta señal invita a comprar con propósito y evitar
+                  excedentes. Es una referencia internacional; no una obligación
+                  peruana.
+                </p>
+              </details>
+
+              <a
+                href="https://environment.ec.europa.eu/news/ban-destruction-unsold-clothes-and-shoes-enters-application-2026-07-17_en"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Contexto: Comisión Europea →
+              </a>
+            </article>
+
+            <article>
+              <span class="label-tag">
+                TECNOLOGÍA · ELEGIR PARA TU TRABAJO
+              </span>
+
+              <h3>La mejor PC empieza por tu trabajo.</h3>
+
+              <p>
+                Cuéntanos qué programas usas, qué tareas te toman más tiempo y
+                qué necesitas mejorar. Eso ayuda a elegir una configuración
+                que tenga sentido para tu operación.
+              </p>
+
+              <p class="perspective-action">
+                <strong>Nuestro consejo:</strong>
+                antes de comparar precios, confirma compatibilidad, licencias,
+                garantía y soporte.
+              </p>
+
+              <details>
+                <summary>Qué conviene tener presente</summary>
+                <p>
+                  El soporte estándar de Windows 10 terminó el 14 de octubre
+                  de 2025. Las actualizaciones extendidas tienen condiciones
+                  específicas. Nuestra lectura: al renovar, considera también
+                  la vigencia del sistema y de tus aplicaciones.
+                </p>
+              </details>
+
+              <a
+                href="https://support.microsoft.com/es-es/windows/deployment/updates-lifecycle/windows-10-support-has-ended-on-october-14-2025"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Contexto: Microsoft →
+              </a>
+            </article>
+
+            <article>
+              <span class="label-tag">
+                TU OPERACIÓN · CUIDAR CADA PAGO
+              </span>
+
+              <h3>Antes de transferir, una llamada.</h3>
+
+              <p>
+                Si te llega un cambio de cuenta bancaria, vale la pena
+                detenerte y confirmarlo con tu contacto habitual. Incluso
+                cuando el correo parece conocido.
+              </p>
+
+              <p class="perspective-action">
+                <strong>Nuestro consejo:</strong>
+                llama al número que ya tenías registrado, no al que aparece
+                en el mensaje del cambio.
+              </p>
+
+              <details>
+                <summary>Por qué lo recomendamos</summary>
+                <p>
+                  El FBI advierte sobre mensajes que suplantan contactos
+                  comerciales para desviar pagos. Recomienda verificar cambios
+                  de cuenta o instrucciones de pago por un canal independiente.
+                </p>
+              </details>
+
+              <a
+                href="https://www.fbi.gov/how-we-can-help-you/common-frauds-and-scams/business-email-compromise"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Contexto: FBI →
+              </a>
+            </article>
+          </div>
+
+          <p class="small perspective-note">
+            Nuestra mirada conecta información del entorno con decisiones
+            concretas de tu operación. Cada recomendación distingue el
+            contexto consultado del criterio de YAKAR.
+          </p>
+        </div>
+      </section>
