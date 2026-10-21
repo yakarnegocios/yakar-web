@@ -1,0 +1,40 @@
+[
+  {
+    "width": 390,
+    "required": [
+      "family",
+      "clientType",
+      "need",
+      "company",
+      "contact",
+      "email"
+    ],
+    "fields": 10,
+    "formHeight": 1707,
+    "cardHeight": 1876,
+    "nestedScroll": false,
+    "formTopAfterEntry": 948,
+    "firstQuestionTop": 948,
+    "submitTop": 2606,
+    "overflow": false
+  },
+  {
+    "width": 1280,
+    "required": [
+      "family",
+      "clientType",
+      "need",
+      "company",
+      "contact",
+      "email"
+    ],
+    "fields": 10,
+    "formHeight": 1153,
+    "cardHeight": 650,
+    "nestedScroll": true,
+    "formTopAfterEntry": 401,
+    "firstQuestionTop": 401,
+    "submitTop": 1506,
+    "overflow": false
+  }
+]

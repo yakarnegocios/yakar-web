@@ -34,8 +34,8 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
 
-  <link rel="stylesheet" href="css/styles.css?v=fdc51ccd57f4">
-  <script src="js/main.js" defer></script>
+  <link rel="stylesheet" href="css/styles.css?v=750de895bdae">
+  <script src="js/main.js?v=46fc1d4d985a" defer></script>
 
   <style>
     .commercial .assurance {
@@ -419,7 +419,7 @@
           <a href="#soluciones">Soluciones</a>
           <a href="#metodo">Nuestro método</a>
           <a href="#perspectiva">Perspectiva</a>
-          <a class="btn" href="#requerimiento">Iniciar requerimiento</a>
+          <a class="btn" href="#request-start">Iniciar requerimiento</a>
         </nav>
       </div>
     </header>
@@ -444,7 +444,7 @@
             </p>
 
             <div class="actions">
-              <a class="btn" href="#requerimiento">
+              <a class="btn" href="#request-start">
                 Cuéntanos qué necesitas
               </a>
               <a class="quiet-link" href="#metodo">
@@ -482,6 +482,7 @@
 
       <div
         class="wrap assurance"
+        role="region"
         aria-label="Cómo cuidamos tu requerimiento"
       >
         <div>
@@ -560,7 +561,7 @@
 
               <a
                 class="btn"
-                href="#requerimiento"
+                href="#request-start"
                 data-request-family="Productos y suministros"
               >
                 Consultar un requerimiento
@@ -583,7 +584,7 @@
 
               <a
                 class="btn"
-                href="#requerimiento"
+                href="#request-start"
                 data-request-family="Servicios"
               >
                 Consultar un requerimiento
@@ -607,7 +608,7 @@
 
               <a
                 class="btn"
-                href="#requerimiento"
+                href="#request-start"
                 data-request-family="Proyectos"
               >
                 Consultar un requerimiento
@@ -1020,7 +1021,7 @@
               o ayudarte a ordenar el requerimiento.
             </p>
 
-            <div class="contact-actions" aria-label="Contacto comercial">
+            <div class="contact-actions" role="group" aria-label="Contacto comercial">
               <a
                 href="https://wa.me/51973669004"
                 target="_blank"
@@ -1073,23 +1074,19 @@
 
           <section
             class="request-card"
+            id="request-start"
             aria-label="Preparar requerimiento"
-            tabindex="0"
           >
             <div class="request-card-top">
               <span>REQUERIMIENTO YAKAR</span>
               <span id="request-step" aria-live="polite">PASO 1 DE 2</span>
             </div>
 
-            <p class="panel-scroll-hint">
-              Desplázate dentro de este panel para continuar.
-              <button class="inline-button" type="button">
-                Ver formulario completo
-              </button>
-            </p>
-
-            <h3>Cuéntanos qué necesitas</h3>
-            <p class="small">Los campos con * son obligatorios.</p>
+            <div id="request-form-intro">
+              <h3>Cuéntanos qué necesitas</h3>
+              <p class="small">Para empezar: tipo de consulta, necesidad, tu nombre y un correo o teléfono. Los campos con * son obligatorios.</p>
+              <p class="small">Prepararás un resumen para compartir por WhatsApp o correo. No necesitas crear una cuenta.</p>
+            </div>
 
             <noscript>
               <p class="notice">
@@ -1104,37 +1101,10 @@
               autocomplete="on"
               hidden
             >
-              <fieldset>
-                <legend>¿Desde dónde empezamos?</legend>
-
-                <div class="route-choices">
-                  <label class="route-choice">
-                    <input type="radio" name="route" value="defined">
-                    <span>
-                      <strong>Ya tengo una especificación</strong>
-                      <small>Conozco el alcance o sus características.</small>
-                    </span>
-                  </label>
-
-                  <label class="route-choice selected">
-                    <input type="radio" name="route" value="help" checked>
-                    <span>
-                      <strong>Necesito ayuda para definirlo</strong>
-                      <small>Puedo explicar el resultado que busco.</small>
-                    </span>
-                  </label>
-                </div>
-              </fieldset>
-
               <div class="formgrid">
-                <div class="field">
+                <div class="field full">
                   <label for="family">Tipo de requerimiento *</label>
-                  <select
-                    class="select-trigger"
-                    id="family"
-                    name="family"
-                    required
-                  >
+                  <select class="select-trigger" id="family" name="family" required>
                     <option value="">Selecciona una opción</option>
                     <option>Productos y suministros</option>
                     <option>Servicios</option>
@@ -1143,124 +1113,56 @@
                   </select>
                 </div>
 
-                <div class="field">
-                  <label for="clientType">Tipo de organización *</label>
-                  <select
-                    class="select-trigger"
-                    id="clientType"
-                    name="clientType"
-                    required
-                  >
-                    <option value="">Selecciona una opción</option>
-                    <option>Empresa privada</option>
-                    <option>Entidad pública</option>
-                    <option>Otra organización</option>
-                  </select>
+                <div class="field full">
+                  <label for="need">¿Qué necesitas resolver? *</label>
+                  <textarea id="need" name="need" rows="4" maxlength="4000" aria-describedby="need-hint" required></textarea>
+                  <small class="field-hint" id="need-hint">Describe qué necesitas y para qué lo usarás. Si aún no conoces el detalle técnico, empieza con el resultado que buscas.</small>
                 </div>
 
                 <div class="field full">
-                  <label for="need">¿Qué necesitas resolver? *</label>
-                  <textarea
-                    id="need"
-                    name="need"
-                    rows="4"
-                    maxlength="4000"
-                    aria-describedby="need-hint"
-                    required
-                  ></textarea>
-                  <small class="field-hint" id="need-hint">
-                    Indica el producto, servicio o proyecto; el resultado esperado
-                    y las condiciones que ya conoces. No necesitas completar
-                    todos los detalles técnicos para empezar.
-                  </small>
-                </div>
-
-                <div class="field">
-                  <label for="quantity">
-                    Cantidad o alcance aproximado (opcional)
-                  </label>
-                  <input
-                    id="quantity"
-                    name="quantity"
-                    type="text"
-                    maxlength="300"
-                    placeholder="Ej.: 200 prendas, 3 equipos o alcance inicial"
-                  >
-                </div>
-
-                <div class="field">
-                  <label for="neededBy">Fecha deseada (opcional)</label>
-                  <input
-                    id="neededBy"
-                    name="neededBy"
-                    type="date"
-                    aria-describedby="date-hint"
-                  >
-                  <small class="field-hint" id="date-hint">
-                    Se evalúa; no constituye un plazo confirmado.
-                  </small>
-                </div>
-
-                <div class="field">
-                  <label for="location">
-                    Ubicación o lugar de entrega (opcional)
-                  </label>
-                  <input
-                    id="location"
-                    name="location"
-                    type="text"
-                    maxlength="300"
-                    placeholder="Distrito, ciudad o región"
-                  >
-                </div>
-
-                <div class="field">
-                  <label for="company">Empresa u organización *</label>
-                  <input
-                    id="company"
-                    name="company"
-                    type="text"
-                    autocomplete="organization"
-                    maxlength="300"
-                    required
-                  >
-                </div>
-
-                <div class="field">
                   <label for="contact">Tu nombre *</label>
-                  <input
-                    id="contact"
-                    name="contact"
-                    type="text"
-                    autocomplete="name"
-                    maxlength="300"
-                    required
-                  >
-                </div>
-
-                <div class="field">
-                  <label for="email">Correo *</label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    autocomplete="email"
-                    maxlength="254"
-                    required
-                  >
-                </div>
-
-                <div class="field">
-                  <label for="phone">Teléfono (opcional)</label>
-                  <input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    autocomplete="tel"
-                    maxlength="40"
-                  >
+                  <input id="contact" name="contact" type="text" autocomplete="name" maxlength="120" required>
                 </div>
               </div>
+
+              <fieldset class="request-contact">
+                <legend>¿Cómo podemos contactarte?</legend>
+                <p class="field-hint" id="contact-hint">Completa al menos uno: correo o teléfono. El otro es opcional.</p>
+                <div class="formgrid">
+                  <div class="field">
+                    <label for="email">Correo</label>
+                    <input id="email" name="email" type="email" autocomplete="email" maxlength="254" aria-describedby="contact-hint">
+                  </div>
+                  <div class="field">
+                    <label for="phone">Teléfono o WhatsApp</label>
+                    <input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="40" aria-describedby="contact-hint" placeholder="Ej.: +51 999 123 456">
+                  </div>
+                </div>
+              </fieldset>
+
+              <details class="request-more">
+                <summary>Agregar empresa, cantidad, fecha o lugar (opcional)</summary>
+                <p class="field-hint">Estos datos ayudan a evaluar tu consulta. Puedes completarlos ahora o conversarlos después.</p>
+                <div class="formgrid">
+                  <div class="field full">
+                    <label for="company">Empresa u organización (opcional)</label>
+                    <input id="company" name="company" type="text" autocomplete="organization" maxlength="300">
+                  </div>
+                  <div class="field">
+                    <label for="quantity">Cantidad o alcance aproximado (opcional)</label>
+                    <input id="quantity" name="quantity" type="text" maxlength="300" placeholder="Ej.: 50 camisas o revisar un equipo">
+                  </div>
+                  <div class="field">
+                    <label for="neededBy">Fecha deseada (opcional)</label>
+                    <input id="neededBy" name="neededBy" type="date" aria-describedby="date-hint">
+                    <small class="field-hint" id="date-hint">Revisaremos su viabilidad antes de confirmar el plazo.</small>
+                  </div>
+                  <div class="field full">
+                    <label for="location">Ubicación o lugar de entrega (opcional)</label>
+                    <input id="location" name="location" type="text" maxlength="300" placeholder="Distrito, ciudad o región">
+                  </div>
+                </div>
+              </details>
 
               <div class="request-disclosure">
                 <strong>Primero revisa tu requerimiento.</strong>
@@ -1268,14 +1170,17 @@
                   Este formulario prepara un resumen en tu navegador. No
                   registra ni envía datos automáticamente. Tú eliges compartirlo
                   por correo o WhatsApp.
-                  <a href="privacidad.html">Información sobre privacidad</a>.
                 </p>
+                <details class="request-privacy" id="privacidad-consulta">
+                  <summary>Cómo se comparte esta consulta</summary>
+                  <p>Preparar y corregir el resumen ocurre en esta página. No se guarda un borrador para recuperarlo después de cerrar. Al elegir correo o WhatsApp, el texto se abre en ese servicio y tú decides enviarlo; se aplican sus condiciones. Si la aplicación no abre, puedes copiar el resumen y usar los datos de contacto publicados.</p>
+                </details>
               </div>
 
               <p class="request-integrity">Atendemos requerimientos para actividades lícitas, con información clara y compromisos responsables. <a href="integridad.html">Nuestro compromiso de integridad</a>.</p>
 
               <button class="btn submit-button" type="submit">
-                Revisar requerimiento
+                Preparar resumen
               </button>
             </form>
           </section>

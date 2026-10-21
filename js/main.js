@@ -245,92 +245,50 @@ function initializeRoadmap() {
 function initializeRequest() {
   const form = document.getElementById('request-form');
   const card = document.querySelector('.request-card');
-
   if (!form || !card) return;
 
   const family = form.elements.namedItem('family');
   const need = form.elements.namedItem('need');
-  const needLabel = form.querySelector('label[for="need"]');
   const hint = document.getElementById('need-hint');
   const step = document.getElementById('request-step');
-  const expandButton = card.querySelector('.inline-button');
-
-  if (!family || !need || !needLabel || !hint) return;
-
+  const intro = document.getElementById('request-form-intro');
+  if (!family || !need || !hint) return;
   const initialHint = hint.textContent.trim();
+  let lastForm = '';
 
-  /*
-   * Solo se inserta marcado fijo.
-   * Los datos introducidos por el visitante se escriben
-   * en .value o .textContent, nunca como HTML.
-   */
+  // Fixed markup only. Visitor data is always written as text/value.
+  const errors = document.createElement('div');
+  errors.className = 'request-errors';
+  errors.hidden = true;
+  errors.tabIndex = -1;
+  errors.setAttribute('role', 'region');
+  errors.setAttribute('aria-labelledby', 'request-errors-title');
+  errors.innerHTML = '<h4 id="request-errors-title">Revisa estos datos para continuar</h4><ul></ul>';
+  form.prepend(errors);
+
   const review = document.createElement('section');
-
   review.className = 'local-review';
   review.hidden = true;
-
   review.innerHTML = `
-    <h3 tabindex="-1">Revisa tu requerimiento</h3>
-
-    <p class="small">
-      Resumen preparado. Todavía no se ha enviado
-      ningún dato a YAKAR.
-    </p>
-
-    <label for="summary-local">
-      Puedes corregir el resumen antes de compartirlo.
-    </label>
-
-    <textarea
-      id="summary-local"
-      class="summary-local"
-      rows="12"
-      spellcheck="true"
-    ></textarea>
-
+    <h3 tabindex="-1">Revisa y comparte tu resumen</h3>
+    <p class="notice"><strong>Resumen preparado; aún no enviado.</strong><br>Elige WhatsApp o correo y pulsa Enviar en esa aplicación.</p>
+    <label for="summary-local">Puedes corregir el texto antes de compartirlo.</label>
+    <textarea id="summary-local" class="summary-local" rows="10" spellcheck="true" aria-describedby="summary-hint"></textarea>
+    <p class="field-hint" id="summary-hint">Si vuelves y cambias el formulario, se preparará un nuevo resumen. Copia aquí cualquier detalle que quieras conservar.</p>
     <div class="actions">
-      <button type="button" class="btn" data-copy>
-        Copiar resumen
-      </button>
-
-      <a class="btn outline" data-email>
-        Preparar correo
-      </a>
-
-      <a
-        class="btn outline"
-        data-whatsapp
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Abrir WhatsApp
-      </a>
-
-      <button type="button" class="btn text" data-back>
-        Corregir formulario
-      </button>
+      <a class="btn" data-whatsapp target="_blank" rel="noopener noreferrer">Abrir WhatsApp para enviar</a>
+      <a class="btn outline" data-email>Abrir correo para enviar</a>
+      <button type="button" class="btn outline" data-copy>Copiar resumen</button>
+      <button type="button" class="btn text" data-back>Corregir formulario</button>
     </div>
-
-    <p
-      class="small"
-      role="status"
-      aria-live="polite"
-      data-status
-    ></p>
-
-    <p class="small">
-      Al abrir correo o WhatsApp utilizarás un servicio externo.
-      Revisa el mensaje y decide si deseas enviarlo.
-    </p>
-
-    <p class="small">
-      La solicitud está sujeta a evaluación. Compartirla no
-      confirma precio, disponibilidad, plazo ni aceptación.
-      Para entidades públicas, este resumen no constituye
-      una oferta presentada en una plataforma oficial.
-    </p>
+    <p class="small" role="status" aria-live="polite" data-status></p>
+    <div class="request-next">
+      <h4>¿Qué sigue?</h4>
+      <ol><li>Envía el resumen desde tu correo o WhatsApp. Allí puedes adjuntar fotos o fichas, si las tienes.</li><li>Al recibir tu consulta, revisaremos contigo los datos que falten y las condiciones para evaluar una propuesta.</li></ol>
+      <p class="small">Abrir una aplicación o copiar el texto no confirma recepción. Conserva una copia antes de cerrar esta página.</p>
+    </div>
+    <details class="request-conditions"><summary>Antes de acordar una atención</summary><p class="small">Compartir el resumen no confirma precio, disponibilidad, plazo ni aceptación. Cada requerimiento está sujeto a evaluación. Para entidades públicas, este resumen no constituye una oferta presentada en una plataforma oficial.</p></details>
   `;
-
   card.append(review);
 
   const summary = review.querySelector('textarea');
@@ -341,189 +299,137 @@ function initializeRequest() {
   const whatsappLink = review.querySelector('[data-whatsapp]');
   const backButton = review.querySelector('[data-back]');
 
-  function setStep(number) {
-    if (step) step.textContent = `PASO ${number} DE 2`;
-  }
-
   function showForm() {
     form.hidden = false;
     review.hidden = true;
-    setStep(1);
-    card.scrollTop = 0;
+    if (intro) intro.hidden = false;
+    if (step) step.textContent = 'PASO 1 DE 2';
   }
 
   function updateHint() {
     hint.textContent = REQUEST_HINTS[family.value] || initialHint;
   }
 
-  function updateRoute() {
-    const selected = form.querySelector(
-      'input[name="route"]:checked'
-    );
-
-    form.querySelectorAll('.route-choice').forEach(label => {
-      const radio = label.querySelector('input');
-      label.classList.toggle('selected', Boolean(radio?.checked));
-    });
-
-    needLabel.textContent = selected?.value === 'defined'
-      ? 'Producto, servicio o alcance requerido *'
-      : '¿Qué necesitas resolver? *';
-  }
-
   function updateShareLinks() {
     const value = summary.value.trim();
     const available = value.length > 0;
-
     copyButton.disabled = !available;
-
     [emailLink, whatsappLink].forEach(link => {
       link.setAttribute('aria-disabled', String(!available));
+      if (!available) link.removeAttribute('href');
     });
-
-    if (!available) {
-      emailLink.removeAttribute('href');
-      whatsappLink.removeAttribute('href');
-      return;
-    }
-
+    if (!available) return;
     const subject = encodeURIComponent('Requerimiento para YAKAR');
     const body = encodeURIComponent(value);
-
-    emailLink.href =
-      `mailto:${YAKAR.email}?subject=${subject}&body=${body}`;
-
-    whatsappLink.href =
-      `https://wa.me/${YAKAR.whatsapp}?text=${body}`;
+    emailLink.href = `mailto:${YAKAR.email}?subject=${subject}&body=${body}`;
+    whatsappLink.href = `https://wa.me/${YAKAR.whatsapp}?text=${body}`;
   }
 
-  function readValue(data, name, fallback = 'Por definir') {
-    const value = String(data.get(name) || '').trim();
-    return value || fallback;
-  }
-
-  function formatDate(value) {
-    if (!value) return 'Por definir';
-
-    const parts = value.split('-');
-
-    return parts.length === 3
-      ? `${parts[2]}/${parts[1]}/${parts[0]}`
-      : value;
-  }
-
-  function validateRequiredText() {
-    ['need', 'company', 'contact', 'email'].forEach(name => {
-      const field = form.elements.namedItem(name);
-
-      if (!field) return;
-
-      field.setCustomValidity(
-        field.value.trim()
-          ? ''
-          : 'Completa este campo con información válida.'
-      );
+  function clearErrors() {
+    errors.hidden = true;
+    errors.querySelector('ul').replaceChildren();
+    form.querySelectorAll('[aria-invalid]').forEach(field => field.removeAttribute('aria-invalid'));
+    form.querySelectorAll('[data-field-error]').forEach(message => {
+      const field = document.getElementById(message.dataset.fieldError);
+      const ids = (field?.getAttribute('aria-describedby') || '').split(' ').filter(id => id && id !== message.id);
+      if (field) {
+        if (ids.length) field.setAttribute('aria-describedby', ids.join(' '));
+        else field.removeAttribute('aria-describedby');
+      }
+      message.remove();
     });
-
-    return form.reportValidity();
   }
 
-  expandButton?.addEventListener('click', () => {
-    const full = card.classList.toggle('show-full-form');
-
-    expandButton.textContent = full
-      ? 'Ver panel compacto'
-      : 'Ver formulario completo';
-  });
+  function validate() {
+    clearErrors();
+    const issues = [];
+    function issue(name, text) { issues.push({field: form.elements.namedItem(name), text}); }
+    if (!family.value) issue('family', 'Elige el tipo de requerimiento. Si tienes dudas, selecciona Necesito orientación.');
+    if (!need.value.trim()) issue('need', 'Cuéntanos qué necesitas o qué resultado buscas.');
+    if (!form.elements.namedItem('contact').value.trim()) issue('contact', 'Indica tu nombre para dirigirnos a ti.');
+    const email = form.elements.namedItem('email');
+    const phone = form.elements.namedItem('phone');
+    email.value = email.value.trim();
+    phone.value = phone.value.trim();
+    if (!email.value && !phone.value) issue('email', 'Escribe un correo o un teléfono. Con uno de los dos basta.');
+    if (email.value && !email.validity.valid) issue('email', 'Revisa el correo. Ejemplo: nombre@empresa.pe.');
+    if (phone.value && !/[0-9]/.test(phone.value)) issue('phone', 'Revisa el teléfono e incluye sus números.');
+    if (!issues.length) return true;
+    for (const {field, text} of issues) {
+      field.setAttribute('aria-invalid', 'true');
+      const message = document.createElement('small');
+      message.id = `${field.id}-error`;
+      message.dataset.fieldError = field.id;
+      message.className = 'field-error';
+      message.textContent = text;
+      field.after(message);
+      field.setAttribute('aria-describedby', [field.getAttribute('aria-describedby'), message.id].filter(Boolean).join(' '));
+      const li = document.createElement('li');
+      const link = document.createElement('a');
+      link.href = '#' + field.id;
+      link.textContent = text;
+      link.addEventListener('click', event => { event.preventDefault(); field.focus(); });
+      li.append(link);
+      errors.querySelector('ul').append(li);
+    }
+    errors.hidden = false;
+    errors.focus({preventScroll: true});
+    scrollToElement(errors);
+    return false;
+  }
 
   family.addEventListener('change', updateHint);
-
-  form.querySelectorAll('input[name="route"]').forEach(radio => {
-    radio.addEventListener('change', updateRoute);
-  });
-
-  form.querySelectorAll('input, textarea').forEach(field => {
-    field.addEventListener('input', () => {
-      field.setCustomValidity('');
-    });
-  });
-
-  document.querySelectorAll('[data-request-family]').forEach(link => {
-    link.addEventListener('click', () => {
-      const value = link.dataset.requestFamily;
-
-      const exists = [...family.options].some(
-        option => option.value === value
-      );
-
-      if (!exists) return;
-
+  document.querySelectorAll('a[href="#request-start"]').forEach(link => {
+    link.addEventListener('click', event => {
+      event.preventDefault();
       showForm();
-      family.value = value;
+      const value = link.dataset.requestFamily;
+      if ([...family.options].some(option => option.value === value)) family.value = value;
       updateHint();
+      family.focus({preventScroll: true});
+      card.scrollIntoView({block: 'start', behavior: prefersReducedMotion() ? 'auto' : 'smooth'});
     });
   });
 
   form.addEventListener('submit', event => {
     event.preventDefault();
-
-    if (!validateRequiredText()) return;
-
+    if (!validate()) return;
     const data = new FormData(form);
-
-    const fields = [
-      [
-        'Punto de partida',
-        data.get('route') === 'defined'
-          ? 'Tengo una especificación o alcance definido'
-          : 'Necesito ayuda para definirlo'
-      ],
-      ['Tipo de requerimiento', readValue(data, 'family')],
-      ['Tipo de organización', readValue(data, 'clientType')],
-      ['Empresa u organización', readValue(data, 'company')],
-      ['Contacto', readValue(data, 'contact')],
-      ['Correo', readValue(data, 'email')],
-      ['Teléfono', readValue(data, 'phone', 'No indicado')],
-      ['Cantidad o alcance aproximado', readValue(data, 'quantity')],
-      [
-        'Fecha deseada',
-        formatDate(readValue(data, 'neededBy', ''))
-      ],
-      ['Ubicación o entrega', readValue(data, 'location')]
-    ];
-
-    const lines = [
-      'YAKAR — RESUMEN DE REQUERIMIENTO',
-      '',
-      ...fields.map(([label, value]) => `${label}: ${value}`),
-      '',
-      'NECESIDAD Y CONTEXTO',
-      readValue(data, 'need'),
-      '',
-      'Solicitud sujeta a evaluación y propuesta comercial.',
-      'La fecha deseada no constituye un plazo confirmado.',
-      'Este resumen no acredita envío, registro ni aceptación.'
-    ];
-
-    summary.value = lines.join('\n');
-
+    const signature = JSON.stringify([...data.entries()]);
+    if (signature !== lastForm || !summary.value.trim()) {
+      const value = name => String(data.get(name) || '').trim();
+      const date = value('neededBy').split('-');
+      const fields = [
+        ['Tipo de requerimiento', value('family')],
+        ['Contacto', value('contact')],
+        ['Correo', value('email')],
+        ['Teléfono', value('phone')],
+        ['Empresa u organización', value('company')],
+        ['Cantidad o alcance aproximado', value('quantity')],
+        ['Fecha deseada', value('neededBy') ? `${date[2]}/${date[1]}/${date[0]}` : ''],
+        ['Ubicación o entrega', value('location')]
+      ];
+      summary.value = [
+        'YAKAR — RESUMEN DE REQUERIMIENTO', '',
+        ...fields.filter(([, text]) => text).map(([label, text]) => `${label}: ${text}`),
+        '', 'NECESIDAD Y CONTEXTO', value('need'), '',
+        'Solicitud sujeta a evaluación y propuesta comercial.',
+        'La fecha deseada no constituye un plazo confirmado.',
+        'Este resumen no acredita envío, registro ni aceptación.'
+      ].join('\n');
+      lastForm = signature;
+    }
     updateShareLinks();
-
     form.hidden = true;
+    if (intro) intro.hidden = true;
     review.hidden = false;
-    card.scrollTop = 0;
     status.textContent = '';
-
-    setStep(2);
-    heading.focus({ preventScroll: true });
-    scrollToElement(review);
+    if (step) step.textContent = 'PASO 2 DE 2';
+    heading.focus({preventScroll: true});
+    card.scrollIntoView({block: 'start', behavior: prefersReducedMotion() ? 'auto' : 'smooth'});
   });
 
-  summary.addEventListener('input', () => {
-    updateShareLinks();
-    status.textContent = '';
-  });
-
+  summary.addEventListener('input', () => { updateShareLinks(); status.textContent = ''; });
   [emailLink, whatsappLink].forEach(link => {
     link.addEventListener('click', event => {
       if (link.getAttribute('aria-disabled') === 'true') {
@@ -531,44 +437,27 @@ function initializeRequest() {
         status.textContent = 'Completa el resumen antes de compartirlo.';
         return;
       }
-
       status.textContent = link === emailLink
-        ? 'Revisa el correo y pulsa Enviar en tu aplicación. Si no se abre, copia el resumen y escríbenos a ' + YAKAR.email + '.'
-        : 'Revisa el mensaje y pulsa Enviar en WhatsApp. YAKAR podrá atenderlo cuando lo reciba.';
+        ? 'Revisa el correo y pulsa Enviar en tu aplicación. Si no se abre o falta texto, copia el resumen y escríbenos a ' + YAKAR.email + '.'
+        : 'Revisa el mensaje y pulsa Enviar en WhatsApp. Si no se abre o falta texto, copia el resumen y escríbenos al +51 973 669 004.';
     });
   });
-
-  backButton.addEventListener('click', () => {
-    showForm();
-    need.focus();
-  });
-
+  backButton.addEventListener('click', () => { showForm(); need.focus(); });
   copyButton.addEventListener('click', async () => {
     if (!summary.value.trim()) return;
-
     try {
-      if (!navigator.clipboard || !window.isSecureContext) {
-        throw new Error('Copia manual requerida');
-      }
-
+      if (!navigator.clipboard || !window.isSecureContext) throw new Error('Copia manual requerida');
       await navigator.clipboard.writeText(summary.value);
-      status.textContent = 'Resumen copiado.';
+      status.textContent = 'Resumen copiado. Pégalo en tu correo o WhatsApp y envíalo desde allí.';
     } catch {
       summary.focus();
       summary.select();
-
-      status.textContent =
-        'El texto está seleccionado. Usa Ctrl+C / Cmd+C o la opción Copiar de tu dispositivo.';
+      status.textContent = 'El texto está seleccionado. Usa Ctrl+C / Cmd+C o la opción Copiar de tu dispositivo.';
     }
   });
 
+  form.noValidate = true;
   updateHint();
-  updateRoute();
-
-  /*
-   * Mostrar el formulario únicamente después de conectar
-   * su procesamiento local.
-   */
   showForm();
 }
 

@@ -85,6 +85,7 @@ h1,
 h2,
 h3 {
   color: var(--navy);
+  overflow-wrap: anywhere;
 }
 
 h1 {
@@ -403,6 +404,8 @@ p {
   right: 26px;
   bottom: 24px;
   left: 26px;
+  padding: 14px 16px;
+  background: rgba(14, 32, 57, 0.92);
   color: var(--white);
 }
 
@@ -1318,30 +1321,27 @@ p {
   background: var(--white);
 }
 
-/* Panel compacto en escritorio */
-
-@media (min-width: 901px) {
-  .request-card {
-    max-height: 650px;
-    overflow-y: auto;
-    scrollbar-gutter: stable;
-    scroll-padding-top: 65px;
-  }
-
-  .request-card-top {
-    position: sticky;
-    z-index: 2;
-    top: -1px;
-    margin-top: -8px;
-    padding-block: 12px;
-    background: var(--white);
-  }
-
-  .request-card.show-full-form {
-    max-height: none;
-    overflow: visible;
-  }
+/* El requerimiento usa el desplazamiento de la página, sin panel anidado. */
+.request-card { scroll-margin-top: 110px; }
+.request-more, .request-privacy, .request-conditions { margin: 18px 0; }
+.request-more summary, .request-privacy summary, .request-conditions summary {
+  display: list-item; min-height: 44px; padding-block: 10px;
+  color: var(--navy); font-size: .85rem; font-weight: 600; cursor: pointer;
 }
+.request-more > .formgrid { margin-top: 18px; }
+.request-contact > .field-hint { margin: 0 0 14px; }
+.request-errors { margin: 18px 0; padding: 18px; border-left: 3px solid #a12e2e; background: #fff5f4; scroll-margin-top: 110px; }
+.request-errors h4 { margin: 0 0 10px; color: #852626; }
+.request-errors ul { margin: 0; padding-left: 20px; }
+.request-errors a { display: inline-block; padding-block: 8px; color: #852626; font-size: .9rem; text-decoration: underline; }
+.field-error { color: #852626; font-size: .85rem; line-height: 1.5; }
+.field [aria-invalid="true"] { border: 2px solid #a12e2e; }
+.field :is(input, select, textarea) { scroll-margin-top: 130px; }
+.request-next { border-top: 1px solid var(--border); padding-top: 18px; margin-top: 20px; }
+.request-next h4 { margin: 0 0 10px; color: var(--navy); }
+.request-next ol { padding-left: 22px; font-size: .9rem; line-height: 1.65; }
+.request-next li + li { margin-top: 10px; }
+@media screen and (max-width: 900px) { .commercial .summary-local { font-size: 16px; } }
 
 /* Adaptación a tabletas */
 

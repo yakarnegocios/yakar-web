@@ -1,0 +1,22 @@
+{
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "nodes": [
+        [
+          "figcaption > span"
+        ],
+        [
+          "figcaption > strong"
+        ],
+        [
+          "figcaption > small"
+        ],
+        [
+          "#milestone-button-1 > .milestone-dot"
+        ]
+      ]
+    }
+  ]
+}

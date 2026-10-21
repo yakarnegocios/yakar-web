@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-21",
+  "method": "HEAD; sin enviar formularios ni abrir WhatsApp",
+  "results": [
+    {
+      "url": "https://busquedas.elperuano.pe/dispositivo/NL/1292707-7",
+      "status": 200,
+      "final_url": "https://busquedas.elperuano.pe/dispositivo/NL/1292707-7"
+    },
+    {
+      "url": "https://busquedas.elperuano.pe/dispositivo/NL/2478557-2",
+      "status": 200,
+      "final_url": "https://busquedas.elperuano.pe/dispositivo/NL/2478557-2"
+    },
+    {
+      "url": "https://consumidor.gob.pe/libro-de-reclamaciones/",
+      "status": 200,
+      "final_url": "https://consumidor.gob.pe/libro-de-reclamaciones/"
+    },
+    {
+      "url": "https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement",
+      "status": 200,
+      "final_url": "https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement"
+    },
+    {
+      "url": "https://policies.google.com/privacy",
+      "status": 200,
+      "final_url": "https://policies.google.com/privacy"
+    },
+    {
+      "url": "https://sigrid.cenepred.gob.pe/sigridv3/",
+      "status": 200,
+      "final_url": "https://sigrid.cenepred.gob.pe/sigridv3/"
+    },
+    {
+      "url": "https://www.cloudflare.com/turnstile-privacy-policy/",
+      "status": 200,
+      "final_url": "https://www.cloudflare.com/turnstile-privacy-policy/"
+    },
+    {
+      "url": "https://www.gob.pe/24121-trafico-ilicito-de-drogas-tid",
+      "status": 200,
+      "final_url": "https://www.gob.pe/24121-trafico-ilicito-de-drogas-tid"
+    },
+    {
+      "url": "https://www.gob.pe/anpd",
+      "status": 200,
+      "final_url": "https://www.gob.pe/anpd"
+    },
+    {
+      "url": "https://www.gob.pe/institucion/inacal/campa%C3%B1as/143601-jueves-de-normalizacion-julio-2026",
+      "status": 200,
+      "final_url": "https://www.gob.pe/institucion/inacal/campa%C3%B1as/143601-jueves-de-normalizacion-julio-2026"
+    },
+    {
+      "url": "https://www.gob.pe/institucion/minem/informes-publicaciones/4709408-sector-industrial",
+      "status": 200,
+      "final_url": "https://www.gob.pe/institucion/minem/informes-publicaciones/4709408-sector-industrial"
+    },
+    {
+      "url": "https://www.sbs.gob.pe/prevencion-de-lavado-activos/normas-de-aplicacion-general-en-materia-de-laft",
+      "status": 200,
+      "final_url": "https://www.sbs.gob.pe/prevencion-de-lavado-activos/normas-de-aplicacion-general-en-materia-de-laft"
+    },
+    {
+      "url": "https://yakar-sistema.negocios-yakar.workers.dev/ingreso",
+      "status": 200,
+      "final_url": "https://yakar-sistema.negocios-yakar.workers.dev/ingreso"
+    },
+    {
+      "url": "https://yakarnegocios.github.io/yakar-web/",
+      "status": 200,
+      "final_url": "https://yakarnegocios.github.io/yakar-web/"
+    },
+    {
+      "url": "https://yakarnegocios.github.io/yakar-web/integridad.html",
+      "status": 200,
+      "final_url": "https://yakarnegocios.github.io/yakar-web/integridad.html"
+    },
+    {
+      "url": "https://yakarnegocios.github.io/yakar-web/metodo.html",
+      "status": 200,
+      "final_url": "https://yakarnegocios.github.io/yakar-web/metodo.html"
+    }
+  ]
+}
