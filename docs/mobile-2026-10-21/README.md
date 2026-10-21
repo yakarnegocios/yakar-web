@@ -37,6 +37,7 @@ Regeneración: `python tools/optimize-images.py` con Pillow. El script se detien
 - Objetivo interno de 44 px de alto para controles principales. [WCAG 2.5.8](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum) establece 24 × 24 px o excepciones de espaciado; no se presenta 44 px como obligación general.
 - Menú existente: apertura, Escape y devolución del foco comprobados. Se mantiene el zoom del navegador.
 - Movimiento reducido comprobado; sin nuevos rastreadores, fuentes externas, librerías de interfaz ni peticiones recurrentes.
+- CSS versionado por hash de contenido para evitar mezclar imágenes nuevas con estilos antiguos en caché. Tras editar CSS: `python tools/version-styles.py`; la prueba móvil exige que la referencia coincida.
 - CSS compartido y ajustes delimitados a pantalla móvil; contenido y presentación de escritorio conservados. No se cambia ni oculta texto legal.
 - Fuentes y pruebas versionadas para detectar regresiones. La revisión visual no equivale a certificación de accesibilidad.
 

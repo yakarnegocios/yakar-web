@@ -1,6 +1,8 @@
 const assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path');
 const {pathToFileURL}=require('node:url');
+const crypto=require('node:crypto');
+const cssVersion=crypto.createHash('sha256').update(fs.readFileSync(path.resolve(__dirname,'..','css/styles.css'))).digest('hex').slice(0,12);
 const {chromium}=require(process.env.YAKAR_PLAYWRIGHT_PATH||'playwright');
 (async()=>{
  const browser=await chromium.launch({headless:true,args:['--no-sandbox'],...(process.env.YAKAR_CHROMIUM_EXECUTABLE?{executablePath:process.env.YAKAR_CHROMIUM_EXECUTABLE}:{})});
@@ -9,6 +11,7 @@ const {chromium}=require(process.env.YAKAR_PLAYWRIGHT_PATH||'playwright');
   const results=[];
   for(const file of ['index.html','metodo.html','integridad.html','privacidad.html','reclamaciones.html'])for(const width of [320,360,390,768,1280]){
    await page.setViewportSize({width,height:844});await page.goto(pathToFileURL(path.resolve(__dirname,'..',file)).href);
+   assert.equal(await page.locator('link[rel=stylesheet]').first().getAttribute('href'),'css/styles.css?v='+cssVersion,'Ejecuta python tools/version-styles.py después de editar CSS');
    const state=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth,smallInputs:[...document.querySelectorAll('input:not([type=checkbox]):not([type=radio]),select,textarea')].filter(e=>e.getClientRects().length&&parseFloat(getComputedStyle(e).fontSize)<16).length,smallControls:[...document.querySelectorAll('button,summary')].filter(e=>e.getClientRects().length&&e.getBoundingClientRect().height<43.9).length}));
    assert.equal(state.overflow,false,`${file} desborda a ${width}px`);
    if(width<=900){assert.equal(state.smallInputs,0,`${file} tiene campos pequeños`);assert.equal(state.smallControls,0,`${file} tiene botones/desplegables pequeños`);}
