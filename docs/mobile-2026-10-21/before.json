@@ -1,0 +1,545 @@
+[
+  {
+    "file": "index.html",
+    "width": 320,
+    "overflow": 0,
+    "smallInputs": [
+      {
+        "name": "yc-area",
+        "font": "13.12px"
+      },
+      {
+        "name": "yc-month",
+        "font": "13.12px"
+      },
+      {
+        "name": "family",
+        "font": "14.4px"
+      },
+      {
+        "name": "clientType",
+        "font": "14.4px"
+      },
+      {
+        "name": "need",
+        "font": "14.4px"
+      },
+      {
+        "name": "quantity",
+        "font": "14.4px"
+      },
+      {
+        "name": "neededBy",
+        "font": "14.4px"
+      },
+      {
+        "name": "location",
+        "font": "14.4px"
+      },
+      {
+        "name": "company",
+        "font": "14.4px"
+      },
+      {
+        "name": "contact",
+        "font": "14.4px"
+      },
+      {
+        "name": "email",
+        "font": "14.4px"
+      },
+      {
+        "name": "phone",
+        "font": "14.4px"
+      }
+    ],
+    "smallButtons": [
+      {
+        "text": "Contexto verificado",
+        "height": 35
+      },
+      {
+        "text": "Contexto verificado",
+        "height": 35
+      },
+      {
+        "text": "Contexto verificado",
+        "height": 35
+      }
+    ],
+    "offenders": []
+  },
+  {
+    "file": "index.html",
+    "width": 360,
+    "overflow": 0,
+    "smallInputs": [
+      {
+        "name": "yc-area",
+        "font": "13.12px"
+      },
+      {
+        "name": "yc-month",
+        "font": "13.12px"
+      },
+      {
+        "name": "family",
+        "font": "14.4px"
+      },
+      {
+        "name": "clientType",
+        "font": "14.4px"
+      },
+      {
+        "name": "need",
+        "font": "14.4px"
+      },
+      {
+        "name": "quantity",
+        "font": "14.4px"
+      },
+      {
+        "name": "neededBy",
+        "font": "14.4px"
+      },
+      {
+        "name": "location",
+        "font": "14.4px"
+      },
+      {
+        "name": "company",
+        "font": "14.4px"
+      },
+      {
+        "name": "contact",
+        "font": "14.4px"
+      },
+      {
+        "name": "email",
+        "font": "14.4px"
+      },
+      {
+        "name": "phone",
+        "font": "14.4px"
+      }
+    ],
+    "smallButtons": [
+      {
+        "text": "Contexto verificado",
+        "height": 35
+      },
+      {
+        "text": "Contexto verificado",
+        "height": 35
+      },
+      {
+        "text": "Contexto verificado",
+        "height": 35
+      },
+      {
+        "text": "Un saludo de YAKARVer calendario",
+        "height": 39
+      }
+    ],
+    "offenders": []
+  },
+  {
+    "file": "index.html",
+    "width": 390,
+    "overflow": 0,
+    "smallInputs": [
+      {
+        "name": "yc-area",
+        "font": "13.12px"
+      },
+      {
+        "name": "yc-month",
+        "font": "13.12px"
+      },
+      {
+        "name": "family",
+        "font": "14.4px"
+      },
+      {
+        "name": "clientType",
+        "font": "14.4px"
+      },
+      {
+        "name": "need",
+        "font": "14.4px"
+      },
+      {
+        "name": "quantity",
+        "font": "14.4px"
+      },
+      {
+        "name": "neededBy",
+        "font": "14.4px"
+      },
+      {
+        "name": "location",
+        "font": "14.4px"
+      },
+      {
+        "name": "company",
+        "font": "14.4px"
+      },
+      {
+        "name": "contact",
+        "font": "14.4px"
+      },
+      {
+        "name": "email",
+        "font": "14.4px"
+      },
+      {
+        "name": "phone",
+        "font": "14.4px"
+      }
+    ],
+    "smallButtons": [
+      {
+        "text": "Contexto verificado",
+        "height": 35
+      },
+      {
+        "text": "Contexto verificado",
+        "height": 35
+      },
+      {
+        "text": "Contexto verificado",
+        "height": 35
+      },
+      {
+        "text": "Un saludo de YAKARVer calendario",
+        "height": 39
+      }
+    ],
+    "offenders": []
+  },
+  {
+    "file": "index.html",
+    "width": 768,
+    "overflow": 0,
+    "smallInputs": [
+      {
+        "name": "yc-area",
+        "font": "13.12px"
+      },
+      {
+        "name": "yc-month",
+        "font": "13.12px"
+      },
+      {
+        "name": "family",
+        "font": "14.4px"
+      },
+      {
+        "name": "clientType",
+        "font": "14.4px"
+      },
+      {
+        "name": "need",
+        "font": "14.4px"
+      },
+      {
+        "name": "quantity",
+        "font": "14.4px"
+      },
+      {
+        "name": "neededBy",
+        "font": "14.4px"
+      },
+      {
+        "name": "location",
+        "font": "14.4px"
+      },
+      {
+        "name": "company",
+        "font": "14.4px"
+      },
+      {
+        "name": "contact",
+        "font": "14.4px"
+      },
+      {
+        "name": "email",
+        "font": "14.4px"
+      },
+      {
+        "name": "phone",
+        "font": "14.4px"
+      }
+    ],
+    "smallButtons": [
+      {
+        "text": "Contexto verificado",
+        "height": 35
+      },
+      {
+        "text": "Contexto verificado",
+        "height": 35
+      },
+      {
+        "text": "Contexto verificado",
+        "height": 35
+      },
+      {
+        "text": "Un saludo de YAKARVer calendario",
+        "height": 39
+      },
+      {
+        "text": "¿Puedo consultar si aún no tengo todo definid",
+        "height": 23
+      },
+      {
+        "text": "¿Qué debe quedar claro antes de confirmar?",
+        "height": 23
+      },
+      {
+        "text": "¿Cómo atienden requerimientos del Estado?",
+        "height": 23
+      }
+    ],
+    "offenders": []
+  },
+  {
+    "file": "metodo.html",
+    "width": 320,
+    "overflow": 0,
+    "smallInputs": [],
+    "smallButtons": [],
+    "offenders": []
+  },
+  {
+    "file": "metodo.html",
+    "width": 360,
+    "overflow": 0,
+    "smallInputs": [],
+    "smallButtons": [
+      {
+        "text": "¿Qué ocurre si cambia el alcance?",
+        "height": 26
+      }
+    ],
+    "offenders": []
+  },
+  {
+    "file": "metodo.html",
+    "width": 390,
+    "overflow": 0,
+    "smallInputs": [],
+    "smallButtons": [
+      {
+        "text": "¿Qué ocurre si cambia el alcance?",
+        "height": 26
+      }
+    ],
+    "offenders": []
+  },
+  {
+    "file": "metodo.html",
+    "width": 768,
+    "overflow": 0,
+    "smallInputs": [],
+    "smallButtons": [
+      {
+        "text": "¿Cada requerimiento necesita un contrato?",
+        "height": 26
+      },
+      {
+        "text": "¿Qué ocurre si cambia el alcance?",
+        "height": 26
+      },
+      {
+        "text": "¿Cómo se define que el trabajo está conforme?",
+        "height": 26
+      },
+      {
+        "text": "¿Cómo cuidamos la información que compartes?",
+        "height": 26
+      }
+    ],
+    "offenders": []
+  },
+  {
+    "file": "integridad.html",
+    "width": 320,
+    "overflow": 0,
+    "smallInputs": [],
+    "smallButtons": [],
+    "offenders": []
+  },
+  {
+    "file": "integridad.html",
+    "width": 360,
+    "overflow": 0,
+    "smallInputs": [],
+    "smallButtons": [],
+    "offenders": []
+  },
+  {
+    "file": "integridad.html",
+    "width": 390,
+    "overflow": 0,
+    "smallInputs": [],
+    "smallButtons": [],
+    "offenders": []
+  },
+  {
+    "file": "integridad.html",
+    "width": 768,
+    "overflow": 0,
+    "smallInputs": [],
+    "smallButtons": [],
+    "offenders": []
+  },
+  {
+    "file": "privacidad.html",
+    "width": 320,
+    "overflow": 0,
+    "smallInputs": [],
+    "smallButtons": [],
+    "offenders": []
+  },
+  {
+    "file": "privacidad.html",
+    "width": 360,
+    "overflow": 0,
+    "smallInputs": [],
+    "smallButtons": [],
+    "offenders": []
+  },
+  {
+    "file": "privacidad.html",
+    "width": 390,
+    "overflow": 0,
+    "smallInputs": [],
+    "smallButtons": [],
+    "offenders": []
+  },
+  {
+    "file": "privacidad.html",
+    "width": 768,
+    "overflow": 0,
+    "smallInputs": [],
+    "smallButtons": [],
+    "offenders": []
+  },
+  {
+    "file": "reclamaciones.html",
+    "width": 320,
+    "overflow": 0,
+    "smallInputs": [],
+    "smallButtons": [
+      {
+        "text": "Necesito más espacio",
+        "height": 36
+      },
+      {
+        "text": "Necesito más espacio",
+        "height": 36
+      },
+      {
+        "text": "Necesito más espacio",
+        "height": 36
+      },
+      {
+        "text": "Renovar verificación",
+        "height": 36
+      },
+      {
+        "text": "Limpiar e iniciar un formulario nuevo",
+        "height": 36
+      }
+    ],
+    "offenders": []
+  },
+  {
+    "file": "reclamaciones.html",
+    "width": 360,
+    "overflow": 0,
+    "smallInputs": [],
+    "smallButtons": [
+      {
+        "text": "Necesito más espacio",
+        "height": 36
+      },
+      {
+        "text": "Necesito más espacio",
+        "height": 36
+      },
+      {
+        "text": "Necesito más espacio",
+        "height": 36
+      },
+      {
+        "text": "Renovar verificación",
+        "height": 36
+      },
+      {
+        "text": "Limpiar e iniciar un formulario nuevo",
+        "height": 36
+      }
+    ],
+    "offenders": []
+  },
+  {
+    "file": "reclamaciones.html",
+    "width": 390,
+    "overflow": 0,
+    "smallInputs": [],
+    "smallButtons": [
+      {
+        "text": "Necesito más espacio",
+        "height": 36
+      },
+      {
+        "text": "Necesito más espacio",
+        "height": 36
+      },
+      {
+        "text": "Necesito más espacio",
+        "height": 36
+      },
+      {
+        "text": "Renovar verificación",
+        "height": 36
+      },
+      {
+        "text": "Limpiar e iniciar un formulario nuevo",
+        "height": 36
+      }
+    ],
+    "offenders": []
+  },
+  {
+    "file": "reclamaciones.html",
+    "width": 768,
+    "overflow": 0,
+    "smallInputs": [],
+    "smallButtons": [
+      {
+        "text": "Necesito más espacio",
+        "height": 36
+      },
+      {
+        "text": "Necesito más espacio",
+        "height": 36
+      },
+      {
+        "text": "Necesito más espacio",
+        "height": 36
+      },
+      {
+        "text": "Renovar verificación",
+        "height": 36
+      },
+      {
+        "text": "Limpiar e iniciar un formulario nuevo",
+        "height": 36
+      }
+    ],
+    "offenders": []
+  }
+]
