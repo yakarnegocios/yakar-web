@@ -156,7 +156,17 @@
       line-height:1.6;
     }
 
-    #complaint-form input[aria-invalid=true]{border-color:#9C2C25}
+    #complaint-form [aria-invalid=true]{border-color:#9C2C25}
+    .book-errors{padding:16px 18px;margin:0 0 24px;border-left:3px solid #9C2C25;background:#fff5f4;scroll-margin-top:140px}
+    .commercial .book-main .book-errors h2{font-size:1.1rem;letter-spacing:normal;margin:0 0 10px}
+    .book-errors ul{margin:0;padding-left:20px}
+    .book-errors a{display:inline-block;padding-block:8px;color:#852626;font-size:.9rem}
+    .commercial .book-main .book-field-error{margin:0;color:#852626;font-size:.85rem}
+    #complaint-form :is(input,select,textarea){scroll-margin-top:150px}
+    #book-draft{width:100%;min-height:220px;font:inherit;padding:12px;border:1px solid #BCC6D2}
+    .book-copy{padding:14px 16px;margin:18px 0;background:#f4f6f8;border-left:2px solid #aebed2}
+    .book-copy label{display:block;margin:10px 0}
+    .book-copy-status:empty{display:none}
 
     .commercial .book-main .help{
       font-size:.78rem;
@@ -543,9 +553,9 @@
 
       <p id="draft-warning" class="draft-warning">
         <strong>
-          Si sales antes de enviar, perderás la información ingresada.
+          Copia lo escrito antes de salir o recargar.
         </strong>
-        Los campos con * son obligatorios.
+        Esta página no guarda un borrador recuperable. Los campos con * son obligatorios.
       </p>
 
       <noscript>
@@ -824,6 +834,7 @@
               <input
                 type="radio"
                 name="caseType"
+                id="case-type-claim"
                 value="RECLAMO"
                 required
               >
@@ -839,6 +850,7 @@
               <input
                 type="radio"
                 name="caseType"
+                id="case-type-complaint"
                 value="QUEJA"
                 required
               >
@@ -920,6 +932,13 @@
             >información sobre privacidad</a>.
           </p>
 
+          <div class="book-copy">
+            <button id="copy-book-draft" class="expand-button" type="button">Copiar lo escrito</button>
+            <p class="help">Puedes conservar el texto antes de enviar o recargar. Copiarlo no registra el caso ni genera una constancia.</p>
+            <textarea id="book-draft" rows="8" readonly hidden aria-label="Copia de lo escrito; no es una constancia"></textarea>
+            <p id="book-copy-status" class="help book-copy-status" role="status" aria-live="polite"></p>
+          </div>
+
           <label class="check">
             <input
               id="confirmation"
@@ -954,7 +973,9 @@
 
           <p class="help registration-note">
             La respuesta se abrirá en otra pestaña.
-            Conserva esta página hasta comprobar el resultado.
+            Conserva esta página hasta comprobar el resultado. Si no aparece
+            otra pestaña, revisa si tu navegador la bloqueó. Sin constancia
+            con código, no des por confirmado el registro.
           </p>
 
           <p
@@ -1095,12 +1116,123 @@
       const guardian = document.getElementById("guardian-fields");
       const confirmation = document.getElementById("confirmation");
       const counted = [...form.querySelectorAll("[data-counted]")];
+      counted.forEach(field => { field.dataset.initialRows = String(field.rows); });
 
       let dirty = false;
       let busy = false;
       let submittedSnapshot = null;
       let widgetId = null;
       let retryTimer = null;
+
+      const errorSummary = document.createElement("section");
+      errorSummary.className = "book-errors";
+      errorSummary.hidden = true;
+      errorSummary.tabIndex = -1;
+      errorSummary.setAttribute("aria-labelledby", "book-errors-title");
+      errorSummary.innerHTML = '<h2 id="book-errors-title">Revisa estos datos para continuar</h2><ul></ul>';
+      form.prepend(errorSummary);
+
+      function clearFormErrors() {
+        errorSummary.hidden = true;
+        errorSummary.querySelector("ul").replaceChildren();
+        form.querySelectorAll("[data-book-invalid]").forEach(field => {
+          field.removeAttribute("aria-invalid");
+          field.removeAttribute("data-book-invalid");
+        });
+        form.querySelectorAll("[data-book-error]").forEach(message => {
+          const field = document.getElementById(message.dataset.bookError);
+          const ids = (field.getAttribute("aria-describedby") || "").split(" ").filter(id => id && id !== message.id);
+          if (ids.length) field.setAttribute("aria-describedby", ids.join(" "));
+          else field.removeAttribute("aria-describedby");
+          message.remove();
+        });
+      }
+
+      function validateForm() {
+        clearFormErrors();
+        updateDocument();
+        const labels = {
+          "consumer-name": "Indica tus nombres y apellidos.",
+          "document-type": "Selecciona el tipo de documento.",
+          "document-number": "Revisa el número de documento según las indicaciones.",
+          "consumer-address": "Indica tu domicilio.",
+          "consumer-email": "Revisa tu correo; es necesario si eliges responder por correo.",
+          "response-channel": "Elige dónde deseas recibir la respuesta.",
+          "guardian-name": "Indica el nombre del padre, madre o representante.",
+          "guardian-address": "Indica el domicilio del representante.",
+          "guardian-email": "Revisa el correo del representante.",
+          "item-type": "Selecciona producto o servicio.",
+          "claimed-amount": "Revisa el monto: usa un valor no negativo con hasta dos decimales.",
+          "item-description": "Describe el producto o servicio relacionado con tu caso.",
+          "case-type-claim": "Elige Reclamo o Queja según tu caso.",
+          "case-detail": "Cuéntanos qué ocurrió.",
+          "requested-action": "Indica qué solución solicitas.",
+          "confirmation": "Confirma que la información revisada describe tu caso."
+        };
+        const issues = [];
+        for (const field of form.elements) {
+          if (!field.willValidate || !field.id || field.type === "submit" || field.type === "button") continue;
+          if (field.type === "radio" && field.id !== "case-type-claim") continue;
+          const blank = field.required && ["text", "email", "textarea"].includes(field.type) && !field.value.trim();
+          if (!blank && field.validity.valid) continue;
+          issues.push({field, text: labels[field.id] || "Revisa este dato antes de continuar."});
+        }
+        if (!issues.length) return true;
+        for (const {field, text} of issues) {
+          field.setAttribute("aria-invalid", "true");
+          field.setAttribute("data-book-invalid", "true");
+          if (field.id !== "document-number") {
+            const message = document.createElement("p");
+            message.id = "book-error-" + field.id;
+            message.dataset.bookError = field.id;
+            message.className = "book-field-error";
+            message.textContent = text;
+            const label = field.closest("label");
+            if (label) label.after(message); else field.after(message);
+            field.setAttribute("aria-describedby", [field.getAttribute("aria-describedby"), message.id].filter(Boolean).join(" "));
+          }
+          const item = document.createElement("li");
+          const link = document.createElement("a");
+          link.href = "#" + field.id;
+          link.textContent = text;
+          link.addEventListener("click", event => { event.preventDefault(); field.focus(); });
+          item.append(link);
+          errorSummary.querySelector("ul").append(item);
+        }
+        errorSummary.hidden = false;
+        errorSummary.focus({preventScroll: true});
+        errorSummary.scrollIntoView({block: "start", behavior: "auto"});
+        return false;
+      }
+
+      document.getElementById("copy-book-draft").addEventListener("click", async () => {
+        const labels = {
+          consumerName: "Consumidor", documentType: "Tipo de documento", documentNumber: "Documento",
+          consumerAddress: "Domicilio", consumerEmail: "Correo", consumerPhone: "Teléfono",
+          responseChannel: "Medio de respuesta", guardianName: "Representante", guardianAddress: "Domicilio del representante",
+          guardianPhone: "Teléfono del representante", guardianEmail: "Correo del representante", itemType: "Producto o servicio",
+          operationReference: "Referencia", claimedAmount: "Monto relacionado", currency: "Moneda",
+          itemDescription: "Descripción", caseType: "Reclamo o queja", caseDetail: "Qué ocurrió", requestedAction: "Solución solicitada"
+        };
+        const lines = ["YAKAR — COPIA DE LO ESCRITO", "Esta copia no confirma envío ni registro y no es una constancia.", ""];
+        for (const [name, value] of new FormData(form)) {
+          if (labels[name] && String(value).trim()) lines.push(labels[name] + ": " + value);
+        }
+        const draft = document.getElementById("book-draft");
+        const status = document.getElementById("book-copy-status");
+        draft.value = lines.join("\n");
+        try {
+          if (!navigator.clipboard || !window.isSecureContext) throw new Error("Copia manual");
+          await navigator.clipboard.writeText(draft.value);
+          draft.hidden = true;
+          status.textContent = "Texto copiado. Consérvalo en un lugar de tu elección antes de salir. Esta copia no confirma el registro.";
+        } catch {
+          draft.hidden = false;
+          draft.focus();
+          draft.select();
+          status.textContent = "El texto está seleccionado. Usa Copiar en tu dispositivo o Ctrl+C / Cmd+C. Esta copia no confirma el registro.";
+        }
+      });
 
       function uuid() {
         if (!window.crypto || !window.crypto.getRandomValues) {
@@ -1257,6 +1389,10 @@
         retryTimer = null;
 
         form.reset();
+        clearFormErrors();
+        document.getElementById("book-draft").value = "";
+        document.getElementById("book-draft").hidden = true;
+        document.getElementById("book-copy-status").textContent = "";
 
         busy = false;
         submittedSnapshot = null;
@@ -1272,6 +1408,7 @@
 
         counted.forEach(field => {
           field.maxLength = 1000;
+          field.rows = Number(field.dataset.initialRows);
           updateCounter(field);
         });
 
@@ -1406,6 +1543,7 @@
           );
 
           field.maxLength = 6000;
+          field.rows = Math.max(field.rows, 8);
 
           updateCounter(field);
 
@@ -1422,7 +1560,8 @@
           if (widgetId === null) {
             securityStatus.textContent =
               "La protección aún no está disponible. " +
-              "Recarga la página si no has ingresado información.";
+              "Usa Copiar lo escrito antes de recargar. " +
+              "Si la dificultad continúa, solicita asistencia a YAKAR.";
 
             return;
           }
@@ -1452,7 +1591,7 @@
 
         if (
           busy ||
-          !form.reportValidity() ||
+          !validateForm() ||
           !token.value ||
           !requestId.value
         ) {
@@ -1508,8 +1647,16 @@
         // El registro se confirma únicamente en la respuesta del servidor.
       });
 
-      window.addEventListener("pagehide", resetDraft);
-      window.addEventListener("pageshow", resetDraft);
+      window.addEventListener("pageshow", event => {
+        if (!event.persisted) return;
+        // A history restoration preserves this in-memory draft and its attempt ID.
+        // Renew the security check; a restored page never proves registration.
+        busy = false;
+        if (retryTimer !== null) clearTimeout(retryTimer);
+        retryTimer = null;
+        resetSecurity();
+      });
+      form.noValidate = true;
 
       resetDraft();
     })();

@@ -1,0 +1,183 @@
+{
+  "results": [
+    {
+      "file": "index.html",
+      "width": 320,
+      "overflow": false,
+      "smallInputs": 0,
+      "smallControls": 0
+    },
+    {
+      "file": "index.html",
+      "width": 360,
+      "overflow": false,
+      "smallInputs": 0,
+      "smallControls": 0
+    },
+    {
+      "file": "index.html",
+      "width": 390,
+      "overflow": false,
+      "smallInputs": 0,
+      "smallControls": 0
+    },
+    {
+      "file": "index.html",
+      "width": 768,
+      "overflow": false,
+      "smallInputs": 0,
+      "smallControls": 0
+    },
+    {
+      "file": "index.html",
+      "width": 1280,
+      "overflow": false,
+      "smallInputs": 5,
+      "smallControls": 7
+    },
+    {
+      "file": "metodo.html",
+      "width": 320,
+      "overflow": false,
+      "smallInputs": 0,
+      "smallControls": 0
+    },
+    {
+      "file": "metodo.html",
+      "width": 360,
+      "overflow": false,
+      "smallInputs": 0,
+      "smallControls": 0
+    },
+    {
+      "file": "metodo.html",
+      "width": 390,
+      "overflow": false,
+      "smallInputs": 0,
+      "smallControls": 0
+    },
+    {
+      "file": "metodo.html",
+      "width": 768,
+      "overflow": false,
+      "smallInputs": 0,
+      "smallControls": 0
+    },
+    {
+      "file": "metodo.html",
+      "width": 1280,
+      "overflow": false,
+      "smallInputs": 0,
+      "smallControls": 4
+    },
+    {
+      "file": "integridad.html",
+      "width": 320,
+      "overflow": false,
+      "smallInputs": 0,
+      "smallControls": 0
+    },
+    {
+      "file": "integridad.html",
+      "width": 360,
+      "overflow": false,
+      "smallInputs": 0,
+      "smallControls": 0
+    },
+    {
+      "file": "integridad.html",
+      "width": 390,
+      "overflow": false,
+      "smallInputs": 0,
+      "smallControls": 0
+    },
+    {
+      "file": "integridad.html",
+      "width": 768,
+      "overflow": false,
+      "smallInputs": 0,
+      "smallControls": 0
+    },
+    {
+      "file": "integridad.html",
+      "width": 1280,
+      "overflow": false,
+      "smallInputs": 0,
+      "smallControls": 0
+    },
+    {
+      "file": "privacidad.html",
+      "width": 320,
+      "overflow": false,
+      "smallInputs": 0,
+      "smallControls": 0
+    },
+    {
+      "file": "privacidad.html",
+      "width": 360,
+      "overflow": false,
+      "smallInputs": 0,
+      "smallControls": 0
+    },
+    {
+      "file": "privacidad.html",
+      "width": 390,
+      "overflow": false,
+      "smallInputs": 0,
+      "smallControls": 0
+    },
+    {
+      "file": "privacidad.html",
+      "width": 768,
+      "overflow": false,
+      "smallInputs": 0,
+      "smallControls": 0
+    },
+    {
+      "file": "privacidad.html",
+      "width": 1280,
+      "overflow": false,
+      "smallInputs": 0,
+      "smallControls": 0
+    },
+    {
+      "file": "reclamaciones.html",
+      "width": 320,
+      "overflow": false,
+      "smallInputs": 0,
+      "smallControls": 0
+    },
+    {
+      "file": "reclamaciones.html",
+      "width": 360,
+      "overflow": false,
+      "smallInputs": 0,
+      "smallControls": 0
+    },
+    {
+      "file": "reclamaciones.html",
+      "width": 390,
+      "overflow": false,
+      "smallInputs": 0,
+      "smallControls": 0
+    },
+    {
+      "file": "reclamaciones.html",
+      "width": 768,
+      "overflow": false,
+      "smallInputs": 0,
+      "smallControls": 0
+    },
+    {
+      "file": "reclamaciones.html",
+      "width": 1280,
+      "overflow": false,
+      "smallInputs": 0,
+      "smallControls": 6
+    }
+  ],
+  "hero": {
+    "source": "operacion-yakar-1152.webp",
+    "complete": true
+  }
+}

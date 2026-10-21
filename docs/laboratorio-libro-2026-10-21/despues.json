@@ -1,0 +1,153 @@
+{
+  "date": "2026-10-21",
+  "mode": "despues",
+  "checks": [
+    "Restauración de historial conserva datos e intento; renueva seguridad",
+    "Errores completos, enlaces y foco sin POST inválido",
+    "Nombre compuesto solo por espacios no inicia envío",
+    "Correo obligatorio por canal y correo mal formado controlados",
+    "DNI conserva ceros, rechaza longitud inválida y admite documento extranjero según reglas actuales",
+    "Representante condicional: campos activos, requeridos y excluidos al desmarcar",
+    "Ampliación aumenta límite y espacio visible, conservando texto largo",
+    "Copia voluntaria conserva el texto sin tokens ni identificadores técnicos",
+    "Copia manual disponible si el portapapeles falla",
+    "Consultar privacidad en otra pestaña conserva el formulario",
+    "Verificación vencida o fallida mantiene el envío bloqueado",
+    "Monto inválido recibe error y no sale del navegador",
+    "POST interceptado contiene campos aun con interacción bloqueada; sin confirmación falsa",
+    "Reintento conserva identificador y datos; exige nueva verificación",
+    "Cancelar limpieza mantiene el intento y los datos",
+    "Limpieza confirmada crea nuevo intento y restablece campos, límites y confirmación",
+    "Falla de carga orienta a copiar antes de recargar",
+    "Libro y tres documentos asociados: 16 combinaciones de página/ancho sin desbordamiento",
+    "Datos personales sin almacenamiento persistente agregado"
+  ],
+  "layouts": [
+    {
+      "file": "reclamaciones.html",
+      "width": 320,
+      "overflow": false,
+      "smallControls": 0
+    },
+    {
+      "file": "reclamaciones.html",
+      "width": 390,
+      "overflow": false,
+      "smallControls": 0
+    },
+    {
+      "file": "reclamaciones.html",
+      "width": 768,
+      "overflow": false,
+      "smallControls": 0
+    },
+    {
+      "file": "reclamaciones.html",
+      "width": 1280,
+      "overflow": false,
+      "smallControls": 6
+    },
+    {
+      "file": "privacidad.html",
+      "width": 320,
+      "overflow": false,
+      "smallControls": 0
+    },
+    {
+      "file": "privacidad.html",
+      "width": 390,
+      "overflow": false,
+      "smallControls": 0
+    },
+    {
+      "file": "privacidad.html",
+      "width": 768,
+      "overflow": false,
+      "smallControls": 0
+    },
+    {
+      "file": "privacidad.html",
+      "width": 1280,
+      "overflow": false,
+      "smallControls": 0
+    },
+    {
+      "file": "integridad.html",
+      "width": 320,
+      "overflow": false,
+      "smallControls": 0
+    },
+    {
+      "file": "integridad.html",
+      "width": 390,
+      "overflow": false,
+      "smallControls": 0
+    },
+    {
+      "file": "integridad.html",
+      "width": 768,
+      "overflow": false,
+      "smallControls": 0
+    },
+    {
+      "file": "integridad.html",
+      "width": 1280,
+      "overflow": false,
+      "smallControls": 0
+    },
+    {
+      "file": "metodo.html",
+      "width": 320,
+      "overflow": false,
+      "smallControls": 0
+    },
+    {
+      "file": "metodo.html",
+      "width": 390,
+      "overflow": false,
+      "smallControls": 0
+    },
+    {
+      "file": "metodo.html",
+      "width": 768,
+      "overflow": false,
+      "smallControls": 0
+    },
+    {
+      "file": "metodo.html",
+      "width": 1280,
+      "overflow": false,
+      "smallControls": 4
+    }
+  ],
+  "accessibility": [
+    {
+      "file": "reclamaciones.html",
+      "violations": [],
+      "manual": []
+    },
+    {
+      "file": "privacidad.html",
+      "violations": [],
+      "manual": []
+    },
+    {
+      "file": "integridad.html",
+      "violations": [],
+      "manual": [
+        "color-contrast"
+      ]
+    },
+    {
+      "file": "metodo.html",
+      "violations": [],
+      "manual": []
+    }
+  ],
+  "externalRequestsSent": 0,
+  "historyRestore": {
+    "name": "Borrador en memoria",
+    "sameAttempt": true
+  },
+  "interceptedPosts": 2
+}
