@@ -275,6 +275,7 @@ function initializeRequest() {
     <label for="summary-local">Puedes corregir el texto antes de compartirlo.</label>
     <textarea id="summary-local" class="summary-local" rows="10" spellcheck="true" aria-describedby="summary-hint"></textarea>
     <p class="field-hint" id="summary-hint">Si vuelves y cambias el formulario, se preparará un nuevo resumen. Copia aquí cualquier detalle que quieras conservar.</p>
+    <p class="notice" data-long-summary hidden>Tu resumen es extenso. Para conservarlo completo, usa «Copiar resumen» y pégalo en tu correo o WhatsApp; comprueba el texto antes de enviarlo.</p>
     <div class="actions">
       <a class="btn" data-whatsapp target="_blank" rel="noopener noreferrer">Abrir WhatsApp para enviar</a>
       <a class="btn outline" data-email>Abrir correo para enviar</a>
@@ -298,6 +299,48 @@ function initializeRequest() {
   const emailLink = review.querySelector('[data-email]');
   const whatsappLink = review.querySelector('[data-whatsapp]');
   const backButton = review.querySelector('[data-back]');
+  const longSummary = review.querySelector('[data-long-summary]');
+  const draftTools = document.createElement('div');
+  draftTools.innerHTML = '<button type="button" class="btn outline" data-copy-draft>Copiar lo escrito</button><p class="field-hint" role="status" data-draft-status>Lo escrito se mantiene mientras esta página siga abierta. Copia tu consulta antes de cerrarla.</p><textarea aria-label="Copia de lo escrito, aún no enviado" rows="6" readonly hidden data-draft-copy></textarea>';
+  form.append(draftTools);
+  const draftStatus = draftTools.querySelector('[data-draft-status]');
+  const draftCopy = draftTools.querySelector('[data-draft-copy]');
+  const signature = () => JSON.stringify([...new FormData(form).entries()]) + summary.value;
+  let copiedSignature = signature();
+  window.addEventListener('beforeunload', event => {
+    const hasDraft = summary.value.trim() || [...new FormData(form).entries()].some(([name,value]) => name !== 'family' && String(value).trim());
+    if (!hasDraft) return;
+    if (signature() === copiedSignature) return;
+    event.preventDefault();
+    event.returnValue = '';
+  });
+  form.addEventListener('input', () => { draftCopy.hidden = true; });
+  const dateField = form.elements.namedItem('neededBy');
+  const dateHint = document.getElementById('date-hint');
+  const normalDateHint = dateHint?.textContent;
+  dateField?.addEventListener('change', () => {
+    const today = new Intl.DateTimeFormat('en-CA', {timeZone:'America/Lima', year:'numeric', month:'2-digit', day:'2-digit'}).format(new Date());
+    if (dateHint) dateHint.textContent = dateField.value && dateField.value < today
+      ? 'La fecha indicada ya pasó. Revísala o explica en tu necesidad si es una referencia histórica. No constituye un plazo confirmado.'
+      : normalDateHint;
+  });
+  draftTools.querySelector('[data-copy-draft]').addEventListener('click', async () => {
+    const text = 'YAKAR — BORRADOR AÚN NO ENVIADO\n\n' + [...new FormData(form).entries()].filter(([,value]) => String(value).trim()).map(([name,value]) => {
+      const field = form.elements.namedItem(name);
+      return (field?.labels?.[0]?.textContent.trim() || name) + ': ' + String(value).trim();
+    }).join('\n') + '\n\nEsta copia no acredita envío ni recepción.';
+    try {
+      await navigator.clipboard.writeText(text);
+      copiedSignature = signature();
+      draftStatus.textContent = 'Copia preparada. Pégala en un lugar que controles para conservarla; todavía no se ha enviado.';
+    } catch {
+      draftCopy.value = text;
+      draftCopy.hidden = false;
+      draftCopy.focus();
+      draftCopy.select();
+      draftStatus.textContent = 'Seleccionamos el texto. Usa la opción Copiar de tu dispositivo y consérvalo antes de cerrar.';
+    }
+  });
 
   function showForm() {
     form.hidden = false;
@@ -318,9 +361,10 @@ function initializeRequest() {
       link.setAttribute('aria-disabled', String(!available));
       if (!available) link.removeAttribute('href');
     });
-    if (!available) return;
+    if (!available) { longSummary.hidden = true; return; }
     const subject = encodeURIComponent('Requerimiento para YAKAR');
     const body = encodeURIComponent(value);
+    longSummary.hidden = body.length <= 1800;
     emailLink.href = `mailto:${YAKAR.email}?subject=${subject}&body=${body}`;
     whatsappLink.href = `https://wa.me/${YAKAR.whatsapp}?text=${body}`;
   }
@@ -353,7 +397,8 @@ function initializeRequest() {
     phone.value = phone.value.trim();
     if (!email.value && !phone.value) issue('email', 'Escribe un correo o un teléfono. Con uno de los dos basta.');
     if (email.value && !email.validity.valid) issue('email', 'Revisa el correo. Ejemplo: nombre@empresa.pe.');
-    if (phone.value && !/[0-9]/.test(phone.value)) issue('phone', 'Revisa el teléfono e incluye sus números.');
+    const digits = phone.value.replace(/\D/g, '');
+    if (phone.value && (!/^\+?[0-9() .-]+$/.test(phone.value) || digits.length < 7 || digits.length > 15 || /^(\d)\1+$/.test(digits))) issue('phone', 'Revisa el teléfono: incluye entre 7 y 15 dígitos y, si corresponde, el código de país.');
     if (!issues.length) return true;
     for (const {field, text} of issues) {
       field.setAttribute('aria-invalid', 'true');
@@ -448,6 +493,7 @@ function initializeRequest() {
     try {
       if (!navigator.clipboard || !window.isSecureContext) throw new Error('Copia manual requerida');
       await navigator.clipboard.writeText(summary.value);
+      copiedSignature = signature();
       status.textContent = 'Resumen copiado. Pégalo en tu correo o WhatsApp y envíalo desde allí.';
     } catch {
       summary.focus();
