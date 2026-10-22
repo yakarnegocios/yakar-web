@@ -12,6 +12,7 @@ const root=path.resolve(__dirname,'..');
  async function page(options={}){
   const p=await browser.newPage({viewport:{width:390,height:900},locale:'es-PE',reducedMotion:'reduce',...options});
   const unwanted=[];
+  p.on('dialog', dialog => dialog.accept()); // Deliberate resets between independent scenarios.
   p.on('request',r=>{if(new URL(r.url()).origin!=='https://lab.yakar.test')unwanted.push(r.url())});
   await p.route('**/*',route=>{
    const url=new URL(route.request().url());
@@ -68,7 +69,7 @@ const root=path.resolve(__dirname,'..');
   }
   await p.reload();await enter(p,'Servicios','');await p.locator('#email').fill('mantenimiento@example.test');await p.locator('.submit-button').click();assert.equal(await p.locator('.local-review').isVisible(),true);check('Servicio sin serie/modelo ni teléfono: correo suficiente');
   await p.locator('[data-back]').click();await p.locator('#email').fill('correo-invalido');await p.locator('#phone').fill('999123456');await p.locator('.submit-button').click();assert.equal(await p.locator('.local-review').isHidden(),true);assert.match(await p.locator('.request-errors').innerText(),/Revisa el correo/);check('Correo mal escrito no pasa inadvertido aunque haya teléfono');
-  await p.locator('#email').fill('');await p.locator('#phone').fill('solo letras');await p.locator('.submit-button').click();assert.match(await p.locator('.request-errors').innerText(),/incluye sus números/);
+  await p.locator('#email').fill('');await p.locator('#phone').fill('solo letras');await p.locator('.submit-button').click();assert.match(await p.locator('.request-errors').innerText(),/entre 7 y 15/);
   await p.locator('#need').fill('   ');await p.locator('#contact').fill('  ');await p.locator('#phone').fill('   ');await p.locator('.submit-button').click();assert.equal(await p.locator('.request-errors a').count(),3);check('Espacios y teléfono sin números reciben orientación');
   await p.reload();await enter(p,'Proyectos');await p.locator('.request-more summary').click();await p.locator('#company').fill('Empresa ficticia de laboratorio');await p.locator('#quantity').fill('Alcance por evaluar');await p.locator('#neededBy').fill('2026-11-20');await p.locator('#location').fill('Lima');await p.locator('.submit-button').click();value=await p.locator('#summary-local').inputValue();assert.match(value,/20\/11\/2026/);assert.match(value,/Empresa ficticia de laboratorio/);check('Proyecto conserva detalles opcionales y fecha solicitada');
   await p.locator('[data-back]').click();const malicious='<img src=x onerror="window.__injected=true"> & Ñ / + 🛠️';await p.locator('#need').fill(malicious+'\n'+'Necesidad extensa áéíóú & + '.repeat(110));await p.locator('.submit-button').click();assert.equal(await p.evaluate(()=>window.__injected),undefined);value=await p.locator('#summary-local').inputValue();whatsapp=new URL(await p.locator('[data-whatsapp]').getAttribute('href'));assert.equal(whatsapp.searchParams.get('text'),value);assert.match(value,/<img/);check('Texto largo, acentos, símbolos y HTML permanecen texto y viajan completos en el enlace');
