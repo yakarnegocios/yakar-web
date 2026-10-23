@@ -309,3 +309,17 @@ No priorizar una funcionalidad solo porque resulte visualmente atractiva o técn
 ---
 
 **Principio de gobierno:** ninguna decisión estratégica se cambia silenciosamente; ninguna capacidad se promete sin fundamento; ninguna funcionalidad se declara operativa sin verificación.
+
+
+## DEC-021 — Prioridad comercial y claridad para compradores
+
+**Fecha:** 23 de octubre de 2026. **Estado:** APROBADA por instrucción expresa del usuario.
+
+**Decisión:** ordenar el enfoque público como minería, contratistas y sector industrial. La atención a entidades del Gobierno peruano no se anuncia como segmento comercial. Esta prioridad concreta DEC-002 y DEC-005 sin cambiar el modelo bajo requerimiento de DEC-004.
+
+**Implementación:** portada y metadatos especializados; guía para compras, operaciones y contratistas; datos técnicos progresivos sin ampliar los campos obligatorios. No se atribuyen homologaciones, certificaciones, clientes, experiencia ni capacidad no verificada. Se conserva el diseño, accesibilidad y movimiento reducido existentes.
+
+**Responsable:** Ernesto Malásquez, Gerente Operativo, en su función de coordinación comercial. **Evidencia:** instrucción del usuario y revisión de requisitos públicos de proveedores de Antamina y Anglo American; no constituyen acreditación de YAKAR. **Revisión:** contrastar consultas pertinentes y cotizaciones con evidencia antes de ampliar categorías.
+
+**Recuperación:** la edición anterior permanece en main a partir del commit `8d89d4af8754b63b98d0be14be61fe3aa2f2cc81`; revertir el incremento editorial si la verificación pública falla.
+
