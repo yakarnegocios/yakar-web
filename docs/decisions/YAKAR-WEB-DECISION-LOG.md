@@ -323,3 +323,14 @@ No priorizar una funcionalidad solo porque resulte visualmente atractiva o técn
 
 **Recuperación:** la edición anterior permanece en main a partir del commit `8d89d4af8754b63b98d0be14be61fe3aa2f2cc81`; revertir el incremento editorial si la verificación pública falla.
 
+
+
+## DEC-022 — Enfoque comercial interno y comunicación abierta
+
+**Fecha:** 2026-10-23.
+
+**Origen:** corrección expresa del usuario sobre la percepción de exclusión que produce anunciar sectores prioritarios.
+
+**Decisión:** la priorización comercial se gestiona internamente. Esta decisión sustituye la exposición pública del orden sectorial de DEC-021. No se anuncian jerarquías de clientes ni siglas de marcos de gestión; la calidad debe percibirse mediante claridad, alcance, responsables, seguimiento y evidencia, sin atribuir certificaciones.
+
+**Implementación:** portada, metadatos, párrafo de industrias y pregunta frecuente neutrales. Se conservan los ejemplos de industrias y la guía útil para compradores, el diseño y los controles existentes. La edición anterior permanece en el historial de GitHub.
