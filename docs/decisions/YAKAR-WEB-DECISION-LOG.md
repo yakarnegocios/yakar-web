@@ -334,3 +334,16 @@ No priorizar una funcionalidad solo porque resulte visualmente atractiva o técn
 **Decisión:** la priorización comercial se gestiona internamente. Esta decisión sustituye la exposición pública del orden sectorial de DEC-021. No se anuncian jerarquías de clientes ni siglas de marcos de gestión; la calidad debe percibirse mediante claridad, alcance, responsables, seguimiento y evidencia, sin atribuir certificaciones.
 
 **Implementación:** portada, metadatos, párrafo de industrias y pregunta frecuente neutrales. Se conservan los ejemplos de industrias y la guía útil para compradores, el diseño y los controles existentes. La edición anterior permanece en el historial de GitHub.
+
+
+## DEC-023 — Solicitud de cotización directa y archivos existentes
+
+**Fecha:** 2026-10-23.
+
+**Decisión autorizada:** expresar la intención de compra con «Solicitar cotización», facilitar el envío de requerimientos ya preparados y centrar el pie en YAKAR.
+
+**Implementación:** CTA de cabecera, portada y tres líneas de oferta; guía para adjuntar lista, ficha o plano en correo/WhatsApp; acceso directo al correo sin completar el formulario; «El compromiso YAKAR» conserva el mensaje humano del pie. El formulario continúa preparando un resumen local, sin acreditar envío ni recibir archivos.
+
+**Evidencia comercial:** no se incorporan casos, clientes, fotos de trabajos ni certificaciones sin procedencia y autorización verificadas. Los recursos y decisiones revisados no acreditan nuevo material de esa naturaleza. La escena ilustrativa mantiene su identificación.
+
+**Control:** sin cambios de diseño, campos obligatorios, destinos comerciales o sistema interno. Historial anterior preservado en GitHub.
