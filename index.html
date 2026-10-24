@@ -34,8 +34,8 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
 
-  <link rel="stylesheet" href="css/styles.css?v=750de895bdae">
-  <script src="js/main.js?v=1d069ee158f7" defer></script>
+  <link rel="stylesheet" href="css/styles.css?v=102586635e81">
+  <script src="js/main.js?v=2a3017116c20" defer></script>
 
   <style>
     .commercial .assurance {
@@ -1026,6 +1026,29 @@
               <a href="https://sigrid.cenepred.gob.pe/sigridv3/" target="_blank" rel="noopener noreferrer">Fuente: CENEPRED · SIGRID →</a>
             </article>
           </div>
+
+          <section class="return-review" id="mi-revision" aria-labelledby="review-title" hidden>
+            <h3 id="review-title">Convierte esta lectura en una mejor decisión</h3>
+            <p>Revisa tres puntos antes de preparar tu próxima compra. Puedes volver y retomar tu lista en este navegador.</p>
+            <p data-review-edition></p>
+            <details>
+              <summary>Mi revisión de esta edición</summary>
+              <fieldset>
+                <legend>Marca solo lo que ya revisaste</legend>
+                <label><input type="checkbox" data-review-task="spec"> Contrasté el uso y las especificaciones que necesito.</label>
+                <label><input type="checkbox" data-review-task="result"> Definí qué resultado o conformidad debo comprobar.</label>
+                <label><input type="checkbox" data-review-task="context"> Revisé lugar, plazos y condiciones pendientes.</label>
+              </fieldset>
+              <progress max="3" value="0" aria-label="Puntos marcados en mi revisión"></progress>
+              <p role="status" data-review-progress></p>
+              <label><input type="checkbox" data-review-remember> Recordar mi revisión en este navegador</label>
+              <p class="small">Opcional. Guarda únicamente estas marcas y la edición, sin nombre, contacto ni requerimiento. No se sincroniza entre dispositivos ni se envía a YAKAR. <a href="privacidad.html#revision-local">Cómo funciona</a>.</p>
+              <p role="status" data-review-storage></p>
+              <button type="button" class="btn outline" data-review-clear>Borrar mi revisión</button>
+              <p class="small">Esta lista es una ayuda personal: no acredita una evaluación técnica ni una aprobación de compra.</p>
+              <a class="btn" href="#request-start">Preparar mi cotización</a>
+            </details>
+          </section>
 
           <p class="small perspective-note">
             Nuestra mirada conecta información del entorno con decisiones

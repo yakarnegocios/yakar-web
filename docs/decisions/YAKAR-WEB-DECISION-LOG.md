@@ -347,3 +347,20 @@ No priorizar una funcionalidad solo porque resulte visualmente atractiva o técn
 **Evidencia comercial:** no se incorporan casos, clientes, fotos de trabajos ni certificaciones sin procedencia y autorización verificadas. Los recursos y decisiones revisados no acreditan nuevo material de esa naturaleza. La escena ilustrativa mantiene su identificación.
 
 **Control:** sin cambios de diseño, campos obligatorios, destinos comerciales o sistema interno. Historial anterior preservado en GitHub.
+
+
+## DEC-024 — Retorno útil y revisión personal de Perspectiva
+
+**Fecha:** 2026-10-24.
+
+**Origen:** solicitud del usuario de elementos que favorezcan recurrencia sin presentarlos como juego.
+
+**Decisión:** lista de tres comprobaciones aplicables a la próxima compra, progreso visible y conservación local voluntaria. No se usan rachas, premios ficticios, urgencia ni pérdida de puntos. No se promete incremento de recurrencia sin medición.
+
+**Implementación:** panel en Perspectiva, sin bloquear acceso a cotización. La opción de recordar guarda únicamente fecha de edición y tres booleanos en `yakar.perspectiva.review.v1`; sin activarla, no se escribe almacenamiento. No hay identidad ni datos de requerimientos, transmisión ni sincronización. Cambio del atributo datetime de la edición muestra aviso y lista nueva; el guardado posterior reemplaza la preferencia anterior. No es una notificación fuera de la web. Reinicio y desactivación permiten borrar la preferencia. La privacidad describe este comportamiento.
+
+**Operación editorial:** actualizar la fecha real de Perspectiva al cambiar la edición y revisar la utilidad de la lista. No cambiar la fecha para aparentar novedades. Las marcas son personales y no acreditan conformidad técnica ni aprobación comercial.
+
+**Validación:** pruebas de opt-in, recarga, edición distinta, borrado, almacenamiento corrupto/bloqueado, ausencia de peticiones externas; 320/390/1280 y axe sin infracciones detectadas. HTML de cinco páginas, regresión móvil de 25 combinaciones y protección del formulario aprobadas.
+
+**Recuperación:** revertir frontend no elimina datos comerciales; esta función no los almacena. No se añadieron dependencias, cuentas ni permisos. Historial anterior conservado en GitHub.
