@@ -9,7 +9,7 @@
  * No registra solicitudes en una base de datos.
  * No envía mensajes automáticamente.
  * No genera un código oficial de expediente.
- * No utiliza almacenamiento local.
+ * Solo la revisión personal de Perspectiva usa almacenamiento local opcional.
  */
 
 'use strict';
@@ -513,4 +513,28 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeMenu();
   initializeRoadmap();
   initializeRequest();
+  initializeReturnReview();
 });
+
+/* Preferencia local y voluntaria; nunca se persisten datos del requerimiento. */
+function initializeReturnReview() {
+  const panel=document.querySelector('.return-review');
+  const edition=document.querySelector('.perspective-edition time')?.getAttribute('datetime');
+  if(!panel||!edition)return;
+  const key='yakar.perspectiva.review.v1';
+  const tasks=[...panel.querySelectorAll('[data-review-task]')];
+  const remember=panel.querySelector('[data-review-remember]');
+  const status=panel.querySelector('[data-review-progress]');
+  const storage=panel.querySelector('[data-review-storage]');
+  const editionStatus=panel.querySelector('[data-review-edition]');
+  let saved=null;
+  try {const raw=localStorage.getItem(key);if(raw&&raw.length<500){const v=JSON.parse(raw);if(v&&typeof v.edition==='string'&&/^20\d{2}-\d{2}-\d{2}$/.test(v.edition)&&Array.isArray(v.done)&&v.done.length===3&&v.done.every(x=>typeof x==='boolean'))saved=v;}}catch{/* Sin almacenamiento: la lista sigue disponible en esta página. */}
+  if(saved){remember.checked=true;if(saved.edition===edition)tasks.forEach((t,i)=>{t.checked=saved.done[i];});}
+  editionStatus.textContent=saved&&saved.edition!==edition?'Hay una edición distinta a tu última revisión. Esta lista comienza sin marcas para que revises el contenido actual.':saved?'Tu revisión guardada está lista para continuar.':'Una revisión breve para aplicar lo que leíste.';
+  function render(){const n=tasks.filter(t=>t.checked).length;panel.querySelector('progress').value=n;status.textContent=n+' de 3 puntos marcados. '+(n===3?'Lista revisada. Confirma los detalles pendientes antes de solicitar una propuesta.':'Avanza a tu ritmo; marca únicamente lo que comprobaste.');}
+  function persist(){if(!remember.checked)return;try{localStorage.setItem(key,JSON.stringify({edition,done:tasks.map(t=>t.checked)}));storage.textContent='Revisión guardada en este navegador.';}catch{storage.textContent='Este navegador no permitió guardar. Puedes usar la lista mientras esta página siga abierta.';}}
+  tasks.forEach(t=>t.addEventListener('change',()=>{render();persist();}));
+  remember.addEventListener('change',()=>{if(remember.checked)persist();else{try{localStorage.removeItem(key);storage.textContent='Recordatorio local desactivado. Las marcas actuales solo permanecen en esta página.';}catch{storage.textContent='No pudimos borrar el dato local. Puedes eliminarlo desde los datos de este sitio en tu navegador.';}}});
+  panel.querySelector('[data-review-clear]').addEventListener('click',()=>{tasks.forEach(t=>{t.checked=false;});remember.checked=false;render();try{localStorage.removeItem(key);storage.textContent='Revisión borrada de este navegador.';}catch{storage.textContent='La lista se reinició, pero no pudimos borrar el dato local. Revisa los datos de este sitio en tu navegador.';}});
+  render();panel.hidden=false;
+}
