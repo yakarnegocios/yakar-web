@@ -364,3 +364,14 @@ No priorizar una funcionalidad solo porque resulte visualmente atractiva o técn
 **Validación:** pruebas de opt-in, recarga, edición distinta, borrado, almacenamiento corrupto/bloqueado, ausencia de peticiones externas; 320/390/1280 y axe sin infracciones detectadas. HTML de cinco páginas, regresión móvil de 25 combinaciones y protección del formulario aprobadas.
 
 **Recuperación:** revertir frontend no elimina datos comerciales; esta función no los almacena. No se añadieron dependencias, cuentas ni permisos. Historial anterior conservado en GitHub.
+
+
+## DEC-025 — Retorno declarado sin rastreo
+
+**Fecha:** 2026-10-25.
+
+**Implementación:** pregunta opcional en detalles del requerimiento sobre primera visita, visita anterior o recuerdo incierto. Valor inicial sin respuesta; no altera campos obligatorios ni atención. El resumen incluye la respuesta únicamente cuando se selecciona; el visitante puede revisarla antes de enviarla. No registra visitas, no transmite automáticamente y no conserva la respuesta en almacenamiento local. Privacidad explica su uso.
+
+**Medición:** solo permite contar consultas recibidas con retorno declarado; no estima todos los visitantes, personas únicas, tasa general de retorno ni efecto causal de la revisión personal. Los denominadores y respuestas desconocidas deben informarse. Sin datos recibidos, resultado pendiente, no cero.
+
+**Corrección técnica:** auditoría detectó main.js sin versión en Método e Integridad. Se corrigen esas páginas y el versionador para mantener coherencia en futuras publicaciones.

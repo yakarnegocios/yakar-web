@@ -452,7 +452,8 @@ function initializeRequest() {
         ['Empresa u organización', value('company')],
         ['Cantidad o alcance aproximado', value('quantity')],
         ['Fecha deseada', value('neededBy') ? `${date[2]}/${date[1]}/${date[0]}` : ''],
-        ['Ubicación o entrega', value('location')]
+        ['Ubicación o entrega', value('location')],
+        ['Visita a la web (declarada)', ({first:'Primera visita',return:'Ya había visitado la web',unsure:'No lo recuerda'})[value('visit')] || '']
       ];
       summary.value = [
         'YAKAR — RESUMEN DE REQUERIMIENTO', '',
