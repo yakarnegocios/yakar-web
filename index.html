@@ -35,7 +35,7 @@
   <meta property="og:image:height" content="630">
 
   <link rel="stylesheet" href="css/styles.css?v=102586635e81">
-  <script src="js/main.js?v=2a3017116c20" defer></script>
+  <script src="js/main.js?v=37e481398ce3" defer></script>
 
   <style>
     .commercial .assurance {
@@ -1221,6 +1221,16 @@
                   <div class="field full">
                     <label for="location">Ubicación o lugar de entrega (opcional)</label>
                     <input id="location" name="location" type="text" maxlength="300" placeholder="Distrito, ciudad o región">
+                  </div>
+                  <div class="field full">
+                    <label for="visit">¿Ya habías visitado nuestra web? (opcional)</label>
+                    <select id="visit" name="visit" aria-describedby="visit-hint">
+                      <option value="">Prefiero no responder</option>
+                      <option value="first">Es mi primera visita</option>
+                      <option value="return">Ya la había visitado</option>
+                      <option value="unsure">No lo recuerdo</option>
+                    </select>
+                    <small class="field-hint" id="visit-hint">Nos ayuda a conocer cómo se usa la web. Solo se comparte si decides enviar tu resumen; no afecta la atención.</small>
                   </div>
                 </div>
               </details>
