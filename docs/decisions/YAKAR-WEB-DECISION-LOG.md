@@ -375,3 +375,16 @@ No priorizar una funcionalidad solo porque resulte visualmente atractiva o técn
 **Medición:** solo permite contar consultas recibidas con retorno declarado; no estima todos los visitantes, personas únicas, tasa general de retorno ni efecto causal de la revisión personal. Los denominadores y respuestas desconocidas deben informarse. Sin datos recibidos, resultado pendiente, no cero.
 
 **Corrección técnica:** auditoría detectó main.js sin versión en Método e Integridad. Se corrigen esas páginas y el versionador para mantener coherencia en futuras publicaciones.
+
+
+## DEC-026 — Atribución permanente de origen NX
+
+**Fecha:** 2026-10-27. **Origen:** instrucción expresa del titular: cada solución creada por NX debe reconocer su origen de manera discreta y clara.
+
+**Decisión:** mostrar “YAKAR, una iniciativa de NX.” en el pie de las cinco páginas públicas. Conservar el mensaje humano existente, diseño y razón social. No añadir enlace sin destino oficial verificado, ni atribuir a NX titularidad legal o responsabilidad comercial.
+
+**Corrección de trazabilidad:** el commit `b406605148a9b30a76468900d53a263f9f51795b` del 23 de octubre sustituyó “Filosofía NX · Netinho Xperience” por “El compromiso YAKAR” en index.html. DEC-023 describió “centrar el pie en YAKAR” como autorizado, pero la búsqueda realizada no recuperó una solicitud expresa del usuario de eliminar NX. Esta decisión corrige esa interpretación; no borra el registro histórico. Las páginas secundarias aún conservaban NX.
+
+**Protección:** instrucción permanente en AGENTS.md, marcador semántico en HTML y comprobación automatizada en pull requests y main. Sin campos operativos editables y sin modificar permisos. La comprobación no es un control obligatorio de rama mientras no se configure como tal; no se afirma inmutabilidad frente a administradores. La legibilidad exige revisión visual. Cambios futuros al crédito requieren autorización expresa del titular.
+
+**Alcance:** web pública YAKAR. Adopción en el sistema u otras soluciones se revisará por separado, sin mezclar cambios internos pendientes ni publicar otros proyectos por inferencia.
