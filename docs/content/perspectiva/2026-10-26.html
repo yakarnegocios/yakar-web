@@ -1,0 +1,272 @@
+<section
+        class="section perspective-section perspective-editorial"
+        id="perspectiva"
+        aria-labelledby="perspective-title"
+      >
+                <style>
+          .perspective-editorial {
+            padding-block: 44px;
+          }
+
+          .perspective-editorial .section-head {
+            gap: 24px;
+            align-items: center;
+            margin-bottom: 24px;
+          }
+
+          .perspective-editorial #perspective-title {
+            margin: 8px 0 0;
+            font-size: clamp(1.6rem, 2.2vw, 2rem);
+            line-height: 1.2;
+          }
+
+          .perspective-editorial .perspective-intro {
+            max-width: 440px;
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+          }
+
+          .perspective-editorial .perspective-edition {
+            display: block;
+            margin-top: 8px;
+            font-size: 0.8rem;
+            font-weight: 500;
+          }
+
+          .perspective-editorial .perspective-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+            align-items: stretch;
+          }
+
+          .perspective-editorial .perspective-grid > article {
+            display: flex;
+            flex-direction: column;
+            grid-row: auto;
+            min-width: 0;
+            padding: 22px;
+            background: #fff;
+            border: 1px solid #DCE3EB;
+            border-top: 2px solid #A7B7CA;
+            box-shadow: none;
+          }
+
+          .perspective-editorial .perspective-kicker {
+            display: none;
+          }
+
+          .perspective-editorial .label-tag {
+            display: block;
+            align-self: flex-start;
+            max-width: 100%;
+            padding: 0;
+            background: transparent;
+            color: #1B3A6B;
+            font-size: 0.7rem;
+            font-weight: 700;
+            line-height: 1.5;
+            letter-spacing: normal;
+            white-space: normal;
+          }
+
+          .perspective-editorial .perspective-grid h3 {
+            margin: 14px 0 12px;
+            font-size: 1.2rem;
+            line-height: 1.35;
+          }
+
+          .perspective-editorial .perspective-grid > article > p {
+            margin: 0 0 14px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+          }
+
+          .perspective-editorial p {
+            text-align: justify;
+            text-align-last: start;
+            hyphens: auto;
+            overflow-wrap: break-word;
+          }
+
+          .perspective-editorial .perspective-grid .perspective-action {
+            padding: 12px 0 0;
+            background: transparent;
+            border: 0;
+            border-top: 1px solid #DCE3EB;
+            font-weight: 500;
+          }
+
+          .perspective-editorial .perspective-action strong {
+            font-weight: 700;
+          }
+
+          .perspective-editorial .perspective-grid details {
+            margin: 2px 0 12px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+          }
+
+          .perspective-editorial .perspective-grid summary {
+            cursor: pointer;
+            padding-block: 6px;
+          }
+
+          .perspective-editorial .perspective-grid details p {
+            margin: 10px 0 0;
+          }
+
+          .perspective-editorial .perspective-grid > article > a {
+            display: inline-block;
+            align-self: flex-start;
+            margin-top: 0;
+            padding-block: 6px;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            text-underline-offset: 3px;
+          }
+
+          .perspective-editorial .perspective-note {
+            max-width: 820px;
+            margin: 18px 0 0;
+            font-size: 0.8rem;
+            line-height: 1.6;
+          }
+
+          @media (max-width: 900px) {
+            .perspective-editorial .perspective-grid {
+              grid-template-columns: minmax(0, 1fr);
+              gap: 14px;
+            }
+
+            .perspective-editorial .section-head {
+              display: block;
+            }
+
+            .perspective-editorial .perspective-intro {
+              max-width: none;
+              margin-top: 14px;
+            }
+
+            .perspective-editorial {
+              padding-block: 32px;
+            }
+          }
+                      /* Interacción sutil de las tarjetas de Perspectiva */
+          .perspective-editorial .perspective-grid > article {
+            transition:
+              background-color 180ms ease,
+              border-color 180ms ease,
+              box-shadow 180ms ease,
+              transform 180ms ease;
+          }
+
+          @media (hover: hover) and (pointer: fine) {
+            .perspective-editorial .perspective-grid > article:hover {
+              background-color: #F7FAFD;
+              border-color: #B8C7D9;
+              border-top-color: #1B3A6B;
+              box-shadow: 0 6px 18px rgba(27, 58, 107, 0.08);
+              transform: translateY(-3px);
+            }
+          }
+
+          .perspective-editorial .perspective-grid > article:focus-within {
+            background-color: #F7FAFD;
+            border-color: #B8C7D9;
+            border-top-color: #1B3A6B;
+            box-shadow: 0 6px 18px rgba(27, 58, 107, 0.08);
+          }
+
+          .perspective-editorial .perspective-grid a:focus-visible,
+          .perspective-editorial .perspective-grid summary:focus-visible {
+            outline: 2px solid #1B3A6B;
+            outline-offset: 4px;
+            border-radius: 2px;
+          }
+
+          @media (prefers-reduced-motion: reduce) {
+            .perspective-editorial .perspective-grid > article {
+              transition: none;
+              transform: none;
+            }
+          }
+        </style>
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Perspectiva YAKAR</p>
+              <h2 id="perspective-title">
+                Una mirada<br>
+                que te acompaña.
+              </h2>
+            </div>
+
+            <p class="perspective-intro">
+              Prepararnos ante las lluvias es una forma de cuidarnos.
+              Tres ideas para proteger a las personas y coordinar mejor nuestra operación.
+              <strong class="perspective-edition">
+                Edición:
+                <time datetime="2026-10-26">lunes 26 de octubre de 2026</time>
+              </strong>
+            </p>
+          </div>
+
+          <div class="perspective-grid">
+            <article>
+              <span class="label-tag">PRODUCTOS Y SUMINISTROS · PREPARACIÓN</span>
+              <h3>Preparar también es cuidar.</h3>
+              <p>Antes de comprar más, revisa qué suministros de emergencia tienen disponibles en tu centro de trabajo y quién puede acceder a ellos. Una lista útil responde al lugar y a las personas que necesitan protección.</p>
+              <p class="perspective-action"><strong>Nuestro consejo:</strong> revisa con el responsable de seguridad el estado y la disponibilidad de los suministros previstos en su plan; identifica faltantes y acuerda su reposición.</p>
+              <details><summary>Contexto verificado</summary><p>El Instituto Nacional de Defensa Civil (INDECI) recomienda preparar una mochila de emergencia con agua, alimentos no perecibles, abrigo, linterna, radio y botiquín ante lluvias intensas. Nuestra recomendación para las organizaciones es revisar su preparación con el responsable competente, sin suponer que una lista doméstica cubre todos los riesgos del trabajo.</p></details>
+              <a href="https://portal.indeci.gob.pe/wp-content/uploads/2018/09/RECOMENDACIONES-PELIGROS-LLUVIA-INTENSA.pdf" target="_blank" rel="noopener noreferrer">Fuente: INDECI · preparación ante lluvias (PDF) →</a>
+            </article>
+            <article>
+              <span class="label-tag">SERVICIOS INDUSTRIALES · PREVENCIÓN</span>
+              <h3>Revisar a tiempo evita improvisar.</h3>
+              <p>La preparación del lugar de trabajo comienza antes de la lluvia. Identifica con personal competente qué revisión necesitan las cubiertas y los drenajes, y qué condiciones impedirían intervenir con seguridad.</p>
+              <p class="perspective-action"><strong>Nuestro consejo:</strong> acuerda una revisión preventiva, sus hallazgos y el siguiente paso. No expongas al equipo a trabajar en altura o cerca de instalaciones eléctricas sin la evaluación y los controles correspondientes.</p>
+              <details><summary>Contexto verificado</summary><p>INDECI recomienda revisar techos y bajadas de agua, evitar obstrucciones en drenajes y mantenerse alejado de cables eléctricos ante lluvias intensas. Nuestra lectura: en una operación, esas necesidades deben evaluarse por personal competente; esta nota no autoriza una intervención ni sustituye su evaluación de seguridad.</p></details>
+              <a href="https://portal.indeci.gob.pe/wp-content/uploads/2018/09/RECOMENDACIONES-PELIGROS-LLUVIA-INTENSA.pdf" target="_blank" rel="noopener noreferrer">Fuente: INDECI · recomendaciones ante lluvias (PDF) →</a>
+            </article>
+            <article>
+              <span class="label-tag">PROYECTOS · PERSONAS Y CONTINUIDAD</span>
+              <h3>La seguridad también define el siguiente paso.</h3>
+              <p>Ante lluvias o cambios en los accesos, un cronograma necesita alternativas. Antes de movilizar personas o materiales, confirma las condiciones del destino y quién decidirá si corresponde reprogramar.</p>
+              <p class="perspective-action"><strong>Nuestro consejo:</strong> revisa la información oficial de tu zona y acuerda con cliente y transportista un contacto y una alternativa. Sigue las indicaciones de las autoridades; cumplir una fecha no justifica exponerse a un peligro.</p>
+              <details><summary>Contexto verificado</summary><p>ENFEN, la comisión que estudia El Niño en el Perú, mantiene en su comunicado del 16 de octubre de 2026 la alerta de El Niño Costero y pide considerar escenarios de riesgo y avisos oficiales. Nuestra recomendación es preparar decisiones por localidad y tarea, sin asumir impactos iguales en todo el país. Fuentes revisadas el 26 de octubre de 2026.</p></details>
+              <a href="https://enfen.imarpe.gob.pe/download/comunicado-oficial-enfen-n-18-2026/" target="_blank" rel="noopener noreferrer">Fuente: ENFEN · comunicado del 16 de octubre →</a>
+            </article>
+          </div>
+
+          <section class="return-review" id="mi-revision" aria-labelledby="review-title" hidden>
+            <h3 id="review-title">Convierte esta lectura en una mejor decisión</h3>
+            <p>Revisa tres puntos antes de preparar tu próxima compra. Puedes volver y retomar tu lista en este navegador.</p>
+            <p data-review-edition></p>
+            <details>
+              <summary>Mi revisión de esta edición</summary>
+              <fieldset>
+                <legend>Marca solo lo que ya revisaste</legend>
+                <label><input type="checkbox" data-review-task="spec"> Contrasté el uso y las especificaciones que necesito.</label>
+                <label><input type="checkbox" data-review-task="result"> Definí qué resultado o conformidad debo comprobar.</label>
+                <label><input type="checkbox" data-review-task="context"> Revisé lugar, plazos y condiciones pendientes.</label>
+              </fieldset>
+              <progress max="3" value="0" aria-label="Puntos marcados en mi revisión"></progress>
+              <p role="status" data-review-progress></p>
+              <label><input type="checkbox" data-review-remember> Recordar mi revisión en este navegador</label>
+              <p class="small">Opcional. Guarda únicamente estas marcas y la edición, sin nombre, contacto ni requerimiento. No se sincroniza entre dispositivos ni se envía a YAKAR. <a href="privacidad.html#revision-local">Cómo funciona</a>.</p>
+              <p role="status" data-review-storage></p>
+              <button type="button" class="btn outline" data-review-clear>Borrar mi revisión</button>
+              <p class="small">Esta lista es una ayuda personal: no acredita una evaluación técnica ni una aprobación de compra.</p>
+              <a class="btn" href="#request-start">Preparar mi cotización</a>
+            </details>
+          </section>
+
+          <p class="small perspective-note">
+            Nuestra mirada conecta información del entorno con decisiones
+            concretas de tu operación. Cada recomendación distingue el
+            contexto consultado del criterio de YAKAR.
+          </p>
+        </div>
+      </section>
