@@ -34,8 +34,8 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
 
-  <link rel="stylesheet" href="css/styles.css?v=102586635e81">
-  <script src="js/main.js?v=37e481398ce3" defer></script>
+  <link rel="stylesheet" href="css/styles.css?v=10837b2a9605">
+  <script src="js/main.js?v=10841e9ca730" defer></script>
 
   <style>
     .commercial .assurance {
@@ -373,6 +373,7 @@
       .commercial .solution-card-v5 .btn { transition: none; }
       .commercial .solution-card-v5:hover { transform: none; }
     }
+    .decision-assist {background:#edf2f6;border-left:4px solid #1b3a6b;padding:18px;margin:20px 0}.decision-assist h4{margin:0 0 8px}.decision-assist p{margin:8px 0}
   </style>
 </head>
 
@@ -419,7 +420,7 @@
           <a href="#soluciones">Soluciones</a>
           <a href="#metodo">Nuestro método</a>
           <a href="#perspectiva">Perspectiva</a>
-          <a class="btn" href="#request-start">Solicitar cotización</a>
+          <a class="btn" href="#request-start">Preparar mi consulta</a>
         </nav>
       </div>
     </header>
@@ -433,25 +434,22 @@
             </p>
 
               <h1 id="cover-title">
-              Tu necesidad.<br>
-              <em>Nuestro compromiso.</em>
+              Tu operación necesita avanzar.<br>
+              <em>Empecemos por lo que necesitas resolver.</em>
               </h1>
 
              <p class="lead">
-              Suministros y coordinación de servicios para tu operación.
-              Evaluamos tu requerimiento,
-              definimos el alcance y acordamos las condiciones de entrega.
+              Suministros y coordinación de servicios para organizaciones. Comparte tu especificación o cuéntanos el problema: evaluamos el requerimiento antes de proponer alcance, precio y plazo.
             </p>
 
             <div class="actions">
               <a class="btn" href="#request-start">
-                Solicitar cotización
+                Tengo un requerimiento
               </a>
-              <a class="quiet-link" href="#metodo">
-                Conoce cómo trabajamos
-              </a>
+              <a class="quiet-link" href="#request-start" data-request-route="help">Necesito ayuda para definirlo</a>
             </div>
 
+            <p class="small">No necesitas conocer todos los detalles técnicos para empezar. Lo que falte se identifica como pendiente.</p>
             <div class="cover-rule">
               <span>PERÚ · ATENCIÓN A ORGANIZACIONES</span>
               <p>Cumplir es parte del producto.</p>
@@ -564,7 +562,7 @@
                 href="#request-start"
                 data-request-family="Productos y suministros"
               >
-                Solicitar cotización
+                Tengo un requerimiento
               </a>
             </article>
 
@@ -587,7 +585,7 @@
                 href="#request-start"
                 data-request-family="Servicios"
               >
-                Solicitar cotización
+                Tengo un requerimiento
               </a>
             </article>
 
@@ -611,7 +609,7 @@
                 href="#request-start"
                 data-request-family="Proyectos"
               >
-                Solicitar cotización
+                Tengo un requerimiento
               </a>
             </article>
           </div>
@@ -1099,7 +1097,7 @@
 
             <div id="request-form-intro">
               <h3>Cuéntanos qué necesitas</h3>
-              <p class="small">Para empezar: tipo de consulta, necesidad, tu nombre y un correo o teléfono. Los campos con * son obligatorios.</p>
+              <p class="small">Para empezar: elige una ruta y una categoría, describe tu necesidad e indica tu nombre y un correo o teléfono. Los campos con * son obligatorios.</p>
               <p class="small">Prepararás un resumen para compartir por WhatsApp o correo. No necesitas crear una cuenta.</p>
               <p class="small">Si ya tienes el requerimiento en un archivo, puedes <a href="mailto:negocios.yakar@gmail.com">enviarlo por correo</a> sin completar este formulario. Los archivos se adjuntan en tu correo o WhatsApp; esta página no los carga ni los envía.</p>
             </div>
@@ -1117,15 +1115,22 @@
               autocomplete="on"
               hidden
             >
+              <fieldset class="request-routes" aria-describedby="route-hint">
+                <legend>¿En qué punto estás? *</legend>
+                <label class="request-route" for="route-defined"><input id="route-defined" type="radio" name="definition" value="Tengo una especificación definida" required><span>Tengo una especificación definida<small>Conozco el producto o alcance y sus características.</small></span></label>
+                <label class="request-route" for="route-help"><input id="route-help" type="radio" name="definition" value="Necesito ayuda para estructurarla" required><span>Necesito ayuda para estructurarla<small>Conozco la necesidad, pero aún faltan detalles.</small></span></label>
+                <p class="field-hint" id="route-hint" aria-live="polite">Elige una ruta. Puedes cambiarla sin borrar lo escrito.</p>
+              </fieldset>
+              <aside class="decision-assist" aria-labelledby="decision-assist-title"><h4 id="decision-assist-title">Empecemos por lo importante para ti</h4><p id="decision-question" aria-live="polite">Cuéntanos qué necesitas resolver. No hace falta redactar una ficha técnica.</p><p class="small">Comparte solo la información necesaria. No incluyas contraseñas, datos bancarios ni documentos personales sensibles.</p></aside>
               <div class="formgrid">
                 <div class="field full">
-                  <label for="family">Tipo de requerimiento *</label>
+                  <label for="family">Categoría del requerimiento *</label>
                   <select class="select-trigger" id="family" name="family" required>
                     <option value="">Selecciona una opción</option>
                     <option>Productos y suministros</option>
                     <option>Servicios</option>
                     <option>Proyectos</option>
-                    <option>Necesito orientación</option>
+                    <option>Por definir</option>
                   </select>
                 </div>
 
@@ -1156,6 +1161,14 @@
                 </div>
               </fieldset>
 
+              <details class="request-more decision-details">
+                <summary>Ayúdanos a entender qué sería una buena solución (opcional)</summary>
+                <p class="field-hint">Puedes dejarlo pendiente. Estas respuestas orientan la evaluación; no son condiciones aceptadas por YAKAR.</p>
+                <div class="formgrid">
+                  <div class="field full"><label for="successCriteria">¿Qué tendría que cumplirse para que la solución te sirva?</label><textarea id="successCriteria" name="successCriteria" maxlength="600" rows="3" placeholder="Ej.: que el equipo sea compatible con nuestra instalación y permita atender 20 pedidos al día."></textarea></div>
+                  <div class="field full"><label for="criticalConstraint">¿Hay algo que no podamos pasar por alto?</label><textarea id="criticalConstraint" name="criticalConstraint" maxlength="600" rows="3" placeholder="Ej.: acceso limitado al local, una fecha crítica o una condición de seguridad."></textarea></div>
+                </div>
+              </details>
               <details class="request-more">
                 <summary>Agregar empresa, cantidad, fecha o lugar (opcional)</summary>
                 <p class="field-hint">Estos datos ayudan a evaluar tu consulta. Puedes completarlos ahora o conversarlos después.</p>
@@ -1363,7 +1376,7 @@
       layout();
     });
   </script>
-  <!-- INICIO: Calendario YAKAR 2026. Pegar una sola vez antes de </body>. -->
+  <!-- INICIO: Calendario YAKAR 2026. -->
 <style>
 #yakar-calendar { margin-top: 22px; padding-top: 14px; border-top: 1px solid #dce3eb; color: #344458; font: inherit; }
 #yakar-calendar summary { cursor: pointer; padding: 8px 2px; font-size: .9rem; line-height: 1.6; }

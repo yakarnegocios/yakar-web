@@ -301,7 +301,7 @@ function initializeRequest() {
   const backButton = review.querySelector('[data-back]');
   const longSummary = review.querySelector('[data-long-summary]');
   const draftTools = document.createElement('div');
-  draftTools.innerHTML = '<button type="button" class="btn outline" data-copy-draft>Copiar lo escrito</button><p class="field-hint" role="status" data-draft-status>Lo escrito se mantiene mientras esta página siga abierta. Copia tu consulta antes de cerrarla.</p><textarea aria-label="Copia de lo escrito, aún no enviado" rows="6" readonly hidden data-draft-copy></textarea>';
+  draftTools.innerHTML = '<button type="button" class="btn outline" data-copy-draft>Copiar lo escrito</button><p class="field-hint" role="status" data-draft-status>Lo escrito no se guarda de forma permanente. Recargar o cerrar esta página puede borrar tu consulta. Usa «Copiar lo escrito» para conservarla.</p><textarea aria-label="Copia de lo escrito, aún no enviado" rows="6" readonly hidden data-draft-copy></textarea>';
   form.append(draftTools);
   const draftStatus = draftTools.querySelector('[data-draft-status]');
   const draftCopy = draftTools.querySelector('[data-draft-copy]');
@@ -350,7 +350,18 @@ function initializeRequest() {
   }
 
   function updateHint() {
-    hint.textContent = REQUEST_HINTS[family.value] || initialHint;
+    const route = form.querySelector('input[name="definition"]:checked')?.value;
+    const help = route === 'Necesito ayuda para estructurarla';
+    hint.textContent = help
+      ? 'Describe el uso, el problema y el resultado que necesitas. No inventes especificaciones; indica qué falta por definir.'
+      : route ? 'Comparte las características y referencias que ya conoces. Puedes adjuntar la ficha en tu correo o WhatsApp al enviar; no es necesario transcribirla completa.' : (REQUEST_HINTS[family.value] || initialHint);
+    const question = document.getElementById('decision-question');
+    if (question) question.textContent = help
+      ? '¿Qué ocurre hoy y qué necesitas que cambie? Describe la situación con tus palabras; deja los detalles desconocidos como pendientes.'
+      : ({'Productos y suministros':'¿Para qué se usará y con qué debe ser compatible? Comparte las referencias que ya tengas.', 'Servicios':'¿Qué situación debe atenderse y en qué lugar? Indica restricciones de acceso o seguridad si las conoces.', 'Proyectos':'¿Qué resultado debe quedar entregado y quién lo revisará? Los hitos y condiciones se definirán durante la evaluación.'}[family.value] || '¿Qué necesitas resolver y qué resultado esperas? Puedes empezar sin una categoría definida.');
+    document.getElementById('route-hint').textContent = help
+      ? 'Puedes dejar la categoría como «Por definir». Los datos opcionales vacíos quedarán como pendientes.'
+      : route ? 'Conservaremos tus datos si cambias de ruta. La especificación y las condiciones se evaluarán antes de asumir compromisos.' : 'Elige una ruta. Puedes cambiarla sin borrar lo escrito.';
   }
 
   function updateShareLinks() {
@@ -359,9 +370,10 @@ function initializeRequest() {
     copyButton.disabled = !available;
     [emailLink, whatsappLink].forEach(link => {
       link.setAttribute('aria-disabled', String(!available));
+      link.tabIndex = available ? 0 : -1;
       if (!available) link.removeAttribute('href');
     });
-    if (!available) { longSummary.hidden = true; return; }
+    if (!available) { longSummary.hidden = true; status.textContent = 'El resumen está vacío. Escribe tu consulta o vuelve a corregir el formulario para habilitar las opciones.'; return; }
     const subject = encodeURIComponent('Requerimiento para YAKAR');
     const body = encodeURIComponent(value);
     longSummary.hidden = body.length <= 1800;
@@ -388,7 +400,8 @@ function initializeRequest() {
     clearErrors();
     const issues = [];
     function issue(name, text) { issues.push({field: form.elements.namedItem(name), text}); }
-    if (!family.value) issue('family', 'Elige el tipo de requerimiento. Si tienes dudas, selecciona Necesito orientación.');
+    if (!form.querySelector('input[name="definition"]:checked')) issues.push({field: document.getElementById('route-defined'), text: 'Elige si tienes una especificación o necesitas ayuda para estructurarla.'});
+    if (!family.value) issue('family', 'Elige una categoría. Si aún no la conoces, selecciona Por definir.');
     if (!need.value.trim()) issue('need', 'Cuéntanos qué necesitas o qué resultado buscas.');
     if (!form.elements.namedItem('contact').value.trim()) issue('contact', 'Indica tu nombre para dirigirnos a ti.');
     const email = form.elements.namedItem('email');
@@ -424,14 +437,19 @@ function initializeRequest() {
   }
 
   family.addEventListener('change', updateHint);
+  form.querySelectorAll('input[name="definition"]').forEach(input => input.addEventListener('change', updateHint));
   document.querySelectorAll('a[href="#request-start"]').forEach(link => {
     link.addEventListener('click', event => {
       event.preventDefault();
       showForm();
+      if (link.dataset.requestRoute === 'help') {
+        document.getElementById('route-help').checked = true;
+        if (!family.value) family.value = 'Por definir';
+      }
       const value = link.dataset.requestFamily;
       if ([...family.options].some(option => option.value === value)) family.value = value;
       updateHint();
-      family.focus({preventScroll: true});
+      (link.dataset.requestRoute === 'help' ? need : family).focus({preventScroll: true});
       card.scrollIntoView({block: 'start', behavior: prefersReducedMotion() ? 'auto' : 'smooth'});
     });
   });
@@ -445,6 +463,7 @@ function initializeRequest() {
       const value = name => String(data.get(name) || '').trim();
       const date = value('neededBy').split('-');
       const fields = [
+        ['Punto de partida', value('definition')],
         ['Tipo de requerimiento', value('family')],
         ['Contacto', value('contact')],
         ['Correo', value('email')],
@@ -457,8 +476,13 @@ function initializeRequest() {
       ];
       summary.value = [
         'YAKAR — RESUMEN DE REQUERIMIENTO', '',
-        ...fields.filter(([, text]) => text).map(([label, text]) => `${label}: ${text}`),
+        ...fields.filter(([label, text]) => text || ['Empresa u organización', 'Cantidad o alcance aproximado', 'Fecha deseada', 'Ubicación o entrega'].includes(label)).map(([label, text]) => `${label}: ${text || 'Pendiente de definir'}`),
         '', 'NECESIDAD Y CONTEXTO', value('need'), '',
+        'PARA EVALUAR LA SOLUCIÓN — INFORMACIÓN DEL SOLICITANTE',
+        'Resultado o criterio esperado: ' + (value('successCriteria') || 'Pendiente de conversar'),
+        'Condición crítica: ' + (value('criticalConstraint') || 'No indicada; confirmar durante la evaluación'),
+        '', 'ANTES DE ACORDAR',
+        'Por evaluar con YAKAR: viabilidad, alcance y exclusiones, precio, plazo y criterios de aceptación.', '',
         'Solicitud sujeta a evaluación y propuesta comercial.',
         'La fecha deseada no constituye un plazo confirmado.',
         'Este resumen no acredita envío, registro ni aceptación.'
@@ -475,7 +499,7 @@ function initializeRequest() {
     card.scrollIntoView({block: 'start', behavior: prefersReducedMotion() ? 'auto' : 'smooth'});
   });
 
-  summary.addEventListener('input', () => { updateShareLinks(); status.textContent = ''; });
+  summary.addEventListener('input', () => { status.textContent = ''; updateShareLinks(); });
   [emailLink, whatsappLink].forEach(link => {
     link.addEventListener('click', event => {
       if (link.getAttribute('aria-disabled') === 'true') {
