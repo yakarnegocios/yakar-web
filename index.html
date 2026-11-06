@@ -36,7 +36,7 @@
   <meta property="og:image:height" content="630">
 
   <link rel="stylesheet" href="css/styles.css?v=10837b2a9605">
-  <script src="js/main.js?v=guias-industriales-1" defer></script>
+  <script src="js/main.js?v=referencia-consulta-1" defer></script>
 
   <style>
     .commercial .assurance {
@@ -1193,6 +1193,19 @@
                   <div class="field full">
                     <label for="location">Ubicación o lugar de entrega (opcional)</label>
                     <input id="location" name="location" type="text" maxlength="300" placeholder="Distrito, ciudad o región">
+                  </div>
+                  <div class="field full">
+                    <label for="discoverySource">¿Cómo nos encontraste? (opcional)</label>
+                    <select id="discoverySource" name="discoverySource" aria-describedby="discovery-hint">
+                      <option value="">Prefiero no responder</option>
+                      <option value="google">Búsqueda en Google</option>
+                      <option value="linkedin">LinkedIn</option>
+                      <option value="instagram">Instagram</option>
+                      <option value="recommendation">Recomendación</option>
+                      <option value="existing">Ya conocía YAKAR</option>
+                      <option value="other">Otro medio</option>
+                    </select>
+                    <small class="field-hint" id="discovery-hint">Tu respuesta solo se comparte si decides enviar el resumen. Nos ayuda a conocer qué medios acercan clientes a YAKAR.</small>
                   </div>
                   <div class="field full">
                     <label for="visit">¿Ya habías visitado nuestra web? (opcional)</label>

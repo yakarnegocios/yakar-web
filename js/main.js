@@ -255,6 +255,23 @@ function initializeRequest() {
   if (!family || !need || !hint) return;
   const initialHint = hint.textContent.trim();
   let lastForm = '';
+  // Reference for this page's consultation, created only after valid input.
+  // It is not a receipt or the ID of an operation registered in YAKAR.
+  let consultationReference = '';
+  const discoveryLabels = Object.freeze({
+    google: 'Búsqueda en Google', linkedin: 'LinkedIn', instagram: 'Instagram',
+    recommendation: 'Recomendación', existing: 'Ya conocía YAKAR', other: 'Otro medio'
+  });
+  function ensureConsultationReference() {
+    if (consultationReference) return;
+    try {
+      const bytes = new Uint8Array(12);
+      window.crypto.getRandomValues(bytes);
+      consultationReference = 'YW-' + Array.from(bytes, byte => byte.toString(16).padStart(2, '0')).join('').toUpperCase();
+    } catch {
+      // Preparing or sharing a consultation must work without crypto support.
+    }
+  }
 
   // Fixed markup only. Visitor data is always written as text/value.
   const errors = document.createElement('div');
@@ -374,7 +391,7 @@ function initializeRequest() {
       if (!available) link.removeAttribute('href');
     });
     if (!available) { longSummary.hidden = true; status.textContent = 'El resumen está vacío. Escribe tu consulta o vuelve a corregir el formulario para habilitar las opciones.'; return; }
-    const subject = encodeURIComponent('Requerimiento para YAKAR');
+    const subject = encodeURIComponent('Requerimiento para YAKAR' + (consultationReference ? ' · ' + consultationReference : ''));
     const body = encodeURIComponent(value);
     longSummary.hidden = body.length <= 1800;
     emailLink.href = `mailto:${YAKAR.email}?subject=${subject}&body=${body}`;
@@ -457,6 +474,7 @@ function initializeRequest() {
   form.addEventListener('submit', event => {
     event.preventDefault();
     if (!validate()) return;
+    ensureConsultationReference();
     const data = new FormData(form);
     const signature = JSON.stringify([...data.entries()]);
     if (signature !== lastForm || !summary.value.trim()) {
@@ -464,6 +482,7 @@ function initializeRequest() {
       const date = value('neededBy').split('-');
       const fields = [
         ['Punto de partida', value('definition')],
+        ['Cómo nos encontró (declarado)', discoveryLabels[value('discoverySource')] || ''],
         ['Tipo de requerimiento', value('family')],
         ['Contacto', value('contact')],
         ['Correo', value('email')],
@@ -476,6 +495,7 @@ function initializeRequest() {
       ];
       summary.value = [
         'YAKAR — RESUMEN DE REQUERIMIENTO', '',
+        ...(consultationReference ? ['Referencia de consulta web: ' + consultationReference, 'Esta referencia no acredita envío ni registro en YAKAR.', ''] : []),
         ...(new FormData(form).get('guideLine') ? ['Guía consultada: ' + new FormData(form).get('guideLine')] : []),
         ...fields.filter(([label, text]) => text || ['Empresa u organización', 'Cantidad o alcance aproximado', 'Fecha deseada', 'Ubicación o entrega'].includes(label)).map(([label, text]) => `${label}: ${text || 'Pendiente de definir'}`),
         '', 'NECESIDAD Y CONTEXTO', value('need'), '',
