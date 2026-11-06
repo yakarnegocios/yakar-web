@@ -476,6 +476,7 @@ function initializeRequest() {
       ];
       summary.value = [
         'YAKAR — RESUMEN DE REQUERIMIENTO', '',
+        ...(new FormData(form).get('guideLine') ? ['Guía consultada: ' + new FormData(form).get('guideLine')] : []),
         ...fields.filter(([label, text]) => text || ['Empresa u organización', 'Cantidad o alcance aproximado', 'Fecha deseada', 'Ubicación o entrega'].includes(label)).map(([label, text]) => `${label}: ${text || 'Pendiente de definir'}`),
         '', 'NECESIDAD Y CONTEXTO', value('need'), '',
         'PARA EVALUAR LA SOLUCIÓN — INFORMACIÓN DEL SOLICITANTE',

@@ -35,7 +35,7 @@
   <meta property="og:image:height" content="630">
 
   <link rel="stylesheet" href="css/styles.css?v=10837b2a9605">
-  <script src="js/main.js?v=10841e9ca730" defer></script>
+  <script src="js/main.js?v=guias-industriales-1" defer></script>
 
   <style>
     .commercial .assurance {
@@ -1825,7 +1825,7 @@
 })();
 </script>
 <!-- FIN: Calendario YAKAR 2026 -->
-<script>document.addEventListener('DOMContentLoaded',()=>{const lines={"seguridad-industrial":"Seguridad industrial y EPP","textil-industrial":"Uniformes y textil industrial","ferreteria-industrial":"Ferretería y suministros industriales","equipamiento-industrial":"Equipamiento industrial bajo requerimiento"};const line=new URLSearchParams(location.search).get('linea');if(!Object.hasOwn(lines,line))return;const family=document.querySelector('#family');if(!family)return;family.value='Productos y suministros';family.dispatchEvent(new Event('change',{bubbles:true}));const need=document.querySelector('#need');if(need)need.placeholder=lines[line]+': describe tu necesidad';});</script>
+<script>document.addEventListener('DOMContentLoaded',()=>{const lines={"seguridad-industrial":"Seguridad industrial y EPP","textil-industrial":"Uniformes y textil industrial","ferreteria-industrial":"Ferretería y suministros industriales","equipamiento-industrial":"Equipamiento industrial bajo requerimiento"};const line=new URLSearchParams(location.search).get('linea');if(!Object.hasOwn(lines,line))return;const family=document.querySelector('#family');if(!family)return;family.value='Productos y suministros';family.dispatchEvent(new Event('change',{bubbles:true}));const need=document.querySelector('#need');if(need)need.placeholder=lines[line]+': describe tu necesidad';const label=document.createElement('label');const choice=document.createElement('input');choice.type='checkbox';choice.name='guideLine';choice.value=lines[line];choice.checked=true;label.append(choice,document.createTextNode(' Incluir en mi resumen la guía consultada: '+lines[line]));family.insertAdjacentElement('afterend',label);});</script>
 </body>
 </html>
 
