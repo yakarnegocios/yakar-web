@@ -13,10 +13,13 @@
     '/yakar-web/textil-industrial.html': 'Textil industrial | YAKAR',
     '/yakar-web/ferreteria-industrial.html': 'Suministros industriales | YAKAR',
     '/yakar-web/equipamiento-industrial.html': 'Equipamiento industrial | YAKAR',
+    '/yakar-web/perspectiva/': 'Perspectiva YAKAR',
+    '/yakar-web/perspectiva/index.html': 'Perspectiva YAKAR',
+    '/yakar-web/perspectiva/2026-11-01.html': 'Perspectiva YAKAR · 1 de noviembre de 2026',
     '/yakar-web/privacidad.html': 'Privacidad | YAKAR'
   });
   if (location.hostname !== 'yakarnegocios.github.io' || !Object.hasOwn(TITLES, location.pathname)) return;
-  const path = location.pathname === '/yakar-web/index.html' ? '/yakar-web/' : location.pathname;
+  const path = location.pathname === '/yakar-web/index.html' ? '/yakar-web/' : location.pathname === '/yakar-web/perspectiva/index.html' ? '/yakar-web/perspectiva/' : location.pathname;
   const safeUrl = location.origin + path;
   let choice = null;
   let initialized = false;
@@ -116,7 +119,7 @@
     banner = document.createElement('section');
     banner.className = 'yakar-measurement';
     banner.setAttribute('aria-labelledby', 'measurement-title');
-    banner.innerHTML = '<h2 id="measurement-title" tabindex="-1">Tu privacidad, tu decisión</h2><p>Con tu permiso, usamos Google Analytics y cookies para entender cómo se utiliza esta web y mejorarla.</p><p>Tu requerimiento y tus datos de contacto no se envían a Analytics. Puedes navegar sin aceptar. <a href="privacidad.html#medicion-web">Ver política de privacidad</a>.</p><div class="yakar-measurement-actions"><button type="button" data-accept>Aceptar</button><button type="button" data-reject>Continuar sin aceptar</button></div>';
+    banner.innerHTML = '<h2 id="measurement-title" tabindex="-1">Tu privacidad, tu decisión</h2><p>Con tu permiso, usamos Google Analytics y cookies para entender cómo se utiliza esta web y mejorarla.</p><p>Tu requerimiento y tus datos de contacto no se envían a Analytics. Puedes navegar sin aceptar. <a href="/yakar-web/privacidad.html#medicion-web">Ver política de privacidad</a>.</p><div class="yakar-measurement-actions"><button type="button" data-accept>Aceptar</button><button type="button" data-reject>Continuar sin aceptar</button></div>';
     banner.hidden = !!choice;
     const main = document.querySelector('main');
     if (main) main.before(banner); else document.body.prepend(banner);
