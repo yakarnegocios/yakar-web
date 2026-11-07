@@ -380,10 +380,21 @@ No priorizar una funcionalidad solo porque resulte visualmente atractiva o técn
 
 **Fecha:** 2026-11-07.
 
-**Decisión:** priorizar mineras, contratas y subcontratas mineras y empresas industriales. Mantener las rutas de productos y suministros, coordinación de servicios y abastecimiento para proyectos.
+**Estado:** sustituida por DEC-027 en lo relativo a la oferta pública. Se mantiene el público prioritario de minería e industria.
 
 **Criterio comercial:** usar el objeto social inscrito para delimitar las actividades que podemos evaluar. Confirmar para cada caso la especificación, la fuente de suministro, el responsable técnico cuando corresponda y la evidencia que respalda el compromiso. Las referencias a productos describen tipos de consulta bajo pedido.
 
-**Gestión del requerimiento:** definir alcance, riesgos, responsables y criterios de conformidad. Registrar hitos, cambios aprobados, evidencias y aprendizajes con un nivel de detalle proporcional al pedido. Se toman como referencia prácticas del PMI y principios de gestión de calidad de ISO.
+**Gestión del requerimiento:** definir alcance, riesgos, responsables y criterios de conformidad. Registrar hitos, cambios aprobados, evidencias y aprendizajes con un nivel de detalle proporcional al pedido.
 
 **Publicación:** comunicar las responsabilidades de YAKAR, el cliente y los especialistas dentro del alcance acordado. Mantener reservada la documentación registral y comercial de respaldo.
+
+
+## DEC-027 — Oferta pública de productos bajo pedido
+
+**Fecha:** 2026-11-07.
+
+**Decisión:** limitar la oferta web al suministro de productos para mineras, contratas, subcontratas mineras y empresas industriales. Usar cuatro líneas en la portada y el formulario. Las antiguas guías de servicios y proyectos llevan a productos y salen del sitemap.
+
+**Método:** mostrar cómo se valida el alcance, se acuerdan responsables, se aprueban cambios y se verifica la conformidad. Describirlo en lenguaje directo y con un nivel de control proporcional al pedido.
+
+**Perspectiva:** mantener el archivo editorial y enlazar desde las nuevas ediciones solo a las líneas vigentes de productos.

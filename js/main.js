@@ -36,7 +36,7 @@ const MILESTONES = [
     title: 'Acordamos',
     description:
       'Confirmamos por escrito el alcance, las condiciones y los responsables. Cuando corresponde, revisamos diseño, muestra o documentación técnica.',
-    result: 'Un compromiso claro antes de ejecutar.'
+    result: 'Un compromiso claro antes de confirmar el pedido.'
   },
   {
     title: 'Coordinamos',
@@ -53,17 +53,11 @@ const MILESTONES = [
 ];
 
 const REQUEST_HINTS = {
-  'Productos y suministros':
-    'Indica qué producto necesitas, para qué lo usarás y en qué cantidad. Incluye tallas, medidas, modelo o compatibilidad cuando corresponda.',
-
-  Servicios:
-    'Describe el equipo o proceso, su situación actual y el resultado que buscas. Indica dónde se requiere la intervención y qué condiciones de acceso o seguridad conoces.',
-
-  Proyectos:
-    'Indica el objetivo, la ubicación y qué suministros o servicios necesitas coordinar. Menciona entregables y fechas que condicionen el avance.',
-
-  'Necesito orientación':
-    'Describe qué necesitas resolver y las condiciones que conoces. Podemos ayudarte a identificar la información que falta.'
+  'Seguridad industrial y EPP': 'Indica el tipo de protección, el uso, las cantidades por talla y la documentación que requiere tu operación.',
+  'Uniformes y textil industrial': 'Indica prendas, cantidades por talla, materiales y personalización.',
+  'Suministros industriales': 'Indica las referencias, medidas, materiales, unidades y compatibilidades.',
+  'Equipamiento industrial': 'Indica la aplicación, capacidad, configuración y condiciones de operación.',
+  'Por definir': 'Describe para qué necesitas el producto y qué condiciones debe cumplir.'
 };
 
 function prefersReducedMotion() {
@@ -256,18 +250,16 @@ function initializeRequest() {
   const initialHint = hint.textContent.trim();
   const guide = document.getElementById('request-guide');
   const guideOptions = {
-    'seguridad-industrial': ['Seguridad industrial y EPP', 'Productos y suministros'],
-    'textil-industrial': ['Uniformes y textil industrial', 'Productos y suministros'],
-    'ferreteria-industrial': ['Suministros industriales', 'Productos y suministros'],
-    'equipamiento-industrial': ['Equipamiento industrial bajo requerimiento', 'Productos y suministros'],
-    'servicios-industriales': ['Servicios industriales', 'Servicios'],
-    'proyectos-industriales': ['Proyectos', 'Proyectos']
+    'seguridad-industrial': 'Seguridad industrial y EPP',
+    'textil-industrial': 'Uniformes y textil industrial',
+    'ferreteria-industrial': 'Suministros industriales',
+    'equipamiento-industrial': 'Equipamiento industrial'
   };
   const guideKey = new URLSearchParams(location.search).get('linea');
   if (guide && Object.hasOwn(guideOptions, guideKey)) {
-    const [guideName, guideFamily] = guideOptions[guideKey];
+    const guideName = guideOptions[guideKey];
     const choice = form.elements.namedItem('guideLine');
-    family.value = guideFamily;
+    family.value = guideName;
     need.placeholder = guideName + ': describe tu necesidad';
     guide.querySelector('[data-guide-name]').textContent = guideName;
     choice.value = guideName;
@@ -396,9 +388,9 @@ function initializeRequest() {
     const question = document.getElementById('decision-question');
     if (question) question.textContent = help
       ? '¿Qué ocurre hoy y qué necesitas que cambie? Describe la situación con tus palabras; deja los detalles desconocidos como pendientes.'
-      : ({'Productos y suministros':'¿Para qué se usará y con qué debe ser compatible? Comparte las referencias que ya tengas.', 'Servicios':'¿Qué situación debe atenderse y en qué lugar? Indica restricciones de acceso o seguridad si las conoces.', 'Proyectos':'¿Qué resultado debe quedar entregado y quién lo revisará? Los hitos y condiciones se definirán durante la evaluación.'}[family.value] || '¿Qué necesitas resolver y qué resultado esperas? Puedes empezar sin una categoría definida.');
+      : (REQUEST_HINTS[family.value] || '¿Para qué necesitas el producto y qué debe cumplir? Puedes empezar sin una línea definida.');
     document.getElementById('route-hint').textContent = help
-      ? 'Puedes dejar la categoría como «Por definir». Los datos opcionales vacíos quedarán como pendientes.'
+      ? 'Puedes dejar la línea de producto como «Por definir». Los datos opcionales vacíos quedarán como pendientes.'
       : route ? 'Conservaremos tus datos si cambias de ruta. La especificación y las condiciones se evaluarán antes de asumir compromisos.' : 'Elige una ruta. Puedes cambiarla sin borrar lo escrito.';
   }
 
@@ -439,7 +431,7 @@ function initializeRequest() {
     const issues = [];
     function issue(name, text) { issues.push({field: form.elements.namedItem(name), text}); }
     if (!form.querySelector('input[name="definition"]:checked')) issues.push({field: document.getElementById('route-defined'), text: 'Elige si tienes una especificación o necesitas ayuda para estructurarla.'});
-    if (!family.value) issue('family', 'Elige una categoría. Si aún no la conoces, selecciona Por definir.');
+    if (!family.value) issue('family', 'Elige una línea de producto. Si aún no la conoces, selecciona Por definir.');
     if (!need.value.trim()) issue('need', 'Cuéntanos qué necesitas o qué resultado buscas.');
     if (!form.elements.namedItem('contact').value.trim()) issue('contact', 'Indica tu nombre para dirigirnos a ti.');
     const email = form.elements.namedItem('email');

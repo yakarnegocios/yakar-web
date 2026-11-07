@@ -16,8 +16,6 @@
     '/yakar-web/perspectiva/': 'Perspectiva YAKAR',
     '/yakar-web/perspectiva/index.html': 'Perspectiva YAKAR',
     '/yakar-web/perspectiva/2026-11-01.html': 'Perspectiva YAKAR · 1 de noviembre de 2026',
-    '/yakar-web/servicios-industriales.html': 'Servicios industriales | YAKAR',
-    '/yakar-web/proyectos-industriales.html': 'Proyectos por requerimiento | YAKAR',
     '/yakar-web/privacidad.html': 'Privacidad | YAKAR'
   });
   if (location.hostname !== 'yakarnegocios.github.io' || !Object.hasOwn(TITLES, location.pathname)) return;
