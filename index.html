@@ -377,7 +377,7 @@
     .decision-assist {background:#edf2f6;border-left:4px solid #1b3a6b;padding:18px;margin:20px 0}.decision-assist h4{margin:0 0 8px}.decision-assist p{margin:8px 0}
   </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"YAKAR","legalName":"Yakar Negocios E.I.R.L.","url":"https://yakarnegocios.github.io/yakar-web/","logo":"https://yakarnegocios.github.io/yakar-web/assets/yakar-logo-web.webp","sameAs":["https://www.instagram.com/yakarnegocios/","https://www.linkedin.com/company/yakar-negocios/"]}</script>
-<script src="js/analytics-consent.js?v=mobile-stable-1" defer></script>
+<script src="js/analytics-consent.js?v=guides-services-1" defer></script>
 <link rel="stylesheet" href="css/perspectiva-share.css?v=1"><script src="js/perspectiva-share.js?v=1" defer></script>
 </head>
 
@@ -584,6 +584,8 @@
                 los responsables y las condiciones del trabajo.
               </p>
 
+              <p><a href="servicios-industriales.html">Cómo preparar un requerimiento de servicio →</a></p>
+
               <a
                 class="btn"
                 href="#request-start"
@@ -607,6 +609,8 @@
                 y servicios necesarios, con entregables, etapas
                 y responsables acordados.
               </p>
+
+              <p><a href="proyectos-industriales.html">Cómo definir el alcance de tu proyecto →</a></p>
 
               <a
                 class="btn"
@@ -1815,7 +1819,8 @@
 })();
 </script>
 <!-- FIN: Calendario YAKAR 2026 -->
-<script>document.addEventListener('DOMContentLoaded',()=>{const lines={"seguridad-industrial":"Seguridad industrial y EPP","textil-industrial":"Uniformes y textil industrial","ferreteria-industrial":"Suministros industriales","equipamiento-industrial":"Equipamiento industrial bajo requerimiento"};const line=new URLSearchParams(location.search).get('linea');if(!Object.hasOwn(lines,line))return;const family=document.querySelector('#family');if(!family)return;family.value='Productos y suministros';family.dispatchEvent(new Event('change',{bubbles:true}));const need=document.querySelector('#need');if(need)need.placeholder=lines[line]+': describe tu necesidad';const label=document.createElement('label');const choice=document.createElement('input');choice.type='checkbox';choice.name='guideLine';choice.value=lines[line];choice.checked=true;label.append(choice,document.createTextNode(' Incluir en mi resumen la guía consultada: '+lines[line]));family.insertAdjacentElement('afterend',label);});</script>
+<script>document.addEventListener('DOMContentLoaded',()=>{const lines={"seguridad-industrial":"Seguridad industrial y EPP","textil-industrial":"Uniformes y textil industrial","ferreteria-industrial":"Suministros industriales","equipamiento-industrial":"Equipamiento industrial bajo requerimiento","servicios-industriales":"Servicios industriales","proyectos-industriales":"Proyectos"};const line=new URLSearchParams(location.search).get('linea');if(!Object.hasOwn(lines,line))return;const family=document.querySelector('#family');if(!family)return;family.value=({'servicios-industriales':'Servicios','proyectos-industriales':'Proyectos'}[line]||'Productos y suministros');family.dispatchEvent(new Event('change',{bubbles:true}));const need=document.querySelector('#need');if(need)need.placeholder=lines[line]+': describe tu necesidad';const label=document.createElement('label');const choice=document.createElement('input');choice.type='checkbox';choice.name='guideLine';choice.value=lines[line];choice.checked=true;label.append(choice,document.createTextNode(' Incluir en mi resumen la guía consultada: '+lines[line]));family.insertAdjacentElement('afterend',label);});</script>
 </body>
 </html>
+
 

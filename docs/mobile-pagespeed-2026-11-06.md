@@ -27,9 +27,10 @@ El informe atribuye el desplazamiento a main#contenido y muestra enlaces de cont
 - Versiones de scripts actualizadas en las páginas públicas para recibir los cambios.
 
 ## Comprobación
-Pruebas locales satisfactorias: validación del formulario, referencia estable, contenido compartido y editado, consentimiento, retirada y eventos del embudo sin datos de contacto ni falsas conversiones. Repetir PageSpeed sobre la publicación terminada para confirmar CLS y enlaces. No declarar los valores posteriores hasta medirlos.
+Pruebas locales satisfactorias: validación del formulario, referencia estable, contenido compartido y editado, consentimiento, retirada y eventos del embudo sin datos de contacto ni falsas conversiones. Nueva medición sobre la publicación terminada: https://pagespeed.web.dev/analysis/https-yakarnegocios-github-io-yakar-web/jehxl8oyij?form_factor=mobile . Rendimiento 100, accesibilidad automática 100, buenas prácticas 100 y SEO técnico básico 100. FCP y LCP 1.0 s; TBT 0 ms; CLS 0; Speed Index 2.4 s. Es una prueba móvil simulada, no evidencia de posición en Google ni de resultados de todos los visitantes. El informe no muestra datos de campo. La corrección eliminó el desplazamiento en esta medición y la observación sobre enlaces incompletos.
 
 ## Pendientes separados
 El informe también señala peso de imágenes y caché; no se han alterado los activos de marca ni se promete una reducción medida. GitHub Pages administra los encabezados de caché: cualquier cambio de alojamiento requiere evaluación propia.
 
 Search Console: sitemap pendiente sin fecha de lectura confirmada. La guía de seguridad industrial sigue desconocida para Google en la inspección del 6 de noviembre de 2026. No confundir accesibilidad técnica de una URL con indexación.
+
