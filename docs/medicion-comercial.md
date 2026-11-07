@@ -1,43 +1,44 @@
 # Medición comercial de la web YAKAR
 
-Implementación: 6 de noviembre de 2026. Esta guía describe el estado real y cómo registrar evidencia; no declara activa una integración con Analytics ni con el sistema privado.
+Configuración del 6 de noviembre de 2026: GA4 `G-QJM564HFVY`, flujo «YAKAR Web pública», ID de flujo 16289911388. El titular creó el flujo, seleccionó Perú y desactivó la medición mejorada. La recepción de eventos en la propiedad requiere confirmación en Analytics; publicar el código o ver un script cargado no lo acredita.
 
-## Qué se puede comprobar hoy
+## Separación de evidencia
 
-- Search Console está conectado y permite consultar búsquedas, impresiones, clics e indexación. Sus datos no equivalen a visitantes de todos los canales y tienen retraso.
-- La web prepara el resumen en el navegador. No hay un servidor que cuente los resúmenes preparados o las aperturas de canales.
-- Cada resumen válido incorpora una referencia aleatoria `YW-` cuando el navegador dispone de generación segura. La misma referencia se conserva al corregir el formulario en la página abierta. Al recargar se puede generar otra. No es una constancia ni el ID del expediente YOC.
-- La procedencia es una respuesta opcional del solicitante. La guía solo se incorpora si la persona mantiene la casilla seleccionada. Son evidencias declaradas, no atribución automática de campañas.
-- El correo lleva la referencia en el asunto y el resumen la contiene en su cuerpo. WhatsApp lleva el texto revisado. Abrir cualquiera de ellos no confirma envío o recepción.
+| Hito | Evidencia y medición |
+| --- | --- |
+| Aparición y clic de búsqueda | Search Console, con su periodo y retraso de datos |
+| Visita de página | `page_view`, solo con aceptación de medición |
+| Resumen preparado | `yakar_summary_prepared`, solo al generar un resumen válido nuevo y con aceptación; no acredita envío |
+| Canal abierto | `yakar_channel_opened`, parámetro fijo `channel`: email o whatsapp; acredita clic, no apertura efectiva, envío ni recepción |
+| Resumen copiado | `yakar_summary_copied`, después de copiar correctamente; no acredita envío |
+| Mensaje recibido | Mensaje verificable en el buzón o WhatsApp de YAKAR; lo registra el responsable comercial |
+| Necesidad registrada | ID persistente y evidencia en el sistema YAKAR |
+| Necesidad evaluada / oportunidad viable | Decisión, responsable, fecha y motivo en el expediente |
+| Cotización emitida | Documento y versión, fecha y destinatario |
+| Compra confirmada | Aceptación verificable y condiciones acordadas |
 
-## Registro cuando llegue un mensaje
+No se emiten `generate_lead` ni `purchase` desde el formulario local. Estas acciones no prueban recepción ni venta.
 
-El responsable comercial verifica el mensaje en el buzón o WhatsApp de YAKAR. Conserva su fecha, canal y evidencia en el expediente autorizado. Registra la referencia web y la procedencia declarada en las observaciones del requerimiento existente. Si la misma consulta llegó por dos canales, la vincula al mismo expediente después de revisar contenido y contacto; no crea una segunda oportunidad solo por recibir una copia.
+## Consentimiento y datos
 
-La ausencia de referencia u origen nunca impide atender. Una referencia puede haberse editado o copiado: sirve para relacionar consultas, no para autenticar al cliente. No se deben recopilar mensajes o datos personales en repositorios de código.
+La etiqueta no se carga ni se encolan eventos antes de aceptar o después de rechazar. La elección se guarda localmente durante 180 días como máximo y se puede cambiar en «Preferencias de medición». Si falla el almacenamiento, la decisión solo se aplica a esa página. La retirada desactiva la recogida posterior, borra las cookies `_ga` accesibles creadas en la ruta del sitio y se propaga a otras pestañas mediante el evento de almacenamiento. No elimina los datos ya procesados por Google.
 
-## Hitos y evidencia
+Cookies configuradas con dominio del host, ruta `/yakar-web/`, duración máxima de 180 días sin renovación automática y atributos Secure/SameSite=Lax. Se desactivan Google Signals y personalización publicitaria. No se instala la integración en reclamaciones ni en el sistema privado.
 
-| Hito | Evidencia válida | Situación de medición |
-| --- | --- | --- |
-| Visita a una página | Medición de visitas de una herramienta instalada y comprobada | Pendiente conectar/configurar Analytics y verificar su etiqueta |
-| Resumen preparado | Acción local de preparación | No se cuenta centralmente |
-| Canal abierto | Acción sobre el enlace | No acredita mensaje enviado; no se cuenta centralmente |
-| Mensaje recibido | Mensaje verificable en un canal de YAKAR | Registro del responsable comercial |
-| Necesidad registrada | ID y registro persistente en el sistema | Evidencia del expediente, no del navegador |
-| Necesidad evaluada | Responsable, evaluación y fecha | Evidencia del expediente |
-| Oportunidad viable | Decisión documentada y motivo | Evidencia del expediente |
-| Cotización emitida | Versión, destinatario, fecha y documento | Evidencia del expediente |
-| Compra confirmada | Aceptación y condiciones acordadas | Evidencia del expediente; un clic no es una venta |
+Los eventos tienen un vocabulario cerrado. Se usan títulos y rutas de página conocidos; no se envían parámetros o fragmentos de URL, campos de formularios, texto del resumen, referencia YW, nombre, correo, teléfono ni URL de enlaces de WhatsApp/correo. El referente solo se comunica como origen de una fuente reconocida o como ruta interna conocida, sin búsqueda ni parámetros. No se transmiten campañas UTM arbitrarias. Google recibe datos técnicos de conexión y navegación después de aceptar: no debe describirse esta medición como anónima.
 
-## Indicadores y sus límites
+## Referencia y origen de consultas recibidas
 
-Comparar mensajes recibidos únicos por origen declarado y por guía con las oportunidades viables, cotizaciones y compras del mismo conjunto de expedientes. Indicar siempre periodo, denominador, datos faltantes y responsable. Para conversión web-visita es necesaria la medición de visitas y una regla documentada de vinculación; hoy no se calcula esa tasa. No dividir clics de Search Console entre consultas de todos los canales como si compartieran el mismo universo.
+El resumen válido incluye una referencia aleatoria `YW-` si hay generación segura disponible. Se conserva al corregir en la página abierta; puede cambiar al recargar. No es constancia ni ID de expediente YOC. La procedencia es una respuesta voluntaria del solicitante; no es atribución automática. La guía se comparte solo si se mantiene la casilla seleccionada.
 
-## Próximo acceso necesario
+Al recibir un mensaje real, el responsable conserva canal, fecha y evidencia en el expediente autorizado y registra referencia y origen declarado en sus observaciones. Compara contacto y contenido para vincular copias del mismo pedido al mismo expediente. La ausencia de referencia u origen nunca impide atender. No se deben copiar mensajes o datos personales a repositorios de código.
 
-La conexión actual a GSC Wizard no tiene permiso de Google Analytics. Se debe conectar la cuenta de Analytics, comprobar si ya existe una propiedad para la web y su flujo, y obtener el identificador real antes de instalar una etiqueta. Si no existe propiedad, su creación y las condiciones de cuenta se completan con el titular. Después se verifica consentimiento aplicable, exclusión de datos personales, eventos y tráfico de prueba. Nunca se inventa un identificador ni se declara activa una medición sin verificar recepción de eventos.
+## Lectura de resultados
 
-## Verificación realizada
+Los eventos GA4 cubren solo visitas que aceptaron y que no fueron bloqueadas por el navegador o la red. No equivalen al total de visitantes ni al total de mensajes recibidos. Comparar periodos, cohortes y denominadores compatibles; informar datos faltantes. No dividir clics de búsqueda entre consultas de todos los canales. Todavía no hay vinculación automática entre eventos y expedientes, y no se calcula una tasa de venta atribuida a cada visitante.
 
-Prueba funcional con datos ficticios: validación de campos, origen opcional, exclusión de valores no admitidos, casilla de guía, referencia estable al corregir, texto compartido completo, edición manual del resumen y funcionamiento cuando no hay generación segura disponible. La función no añade cookies ni almacenamiento persistente de procedencia.
+## Comprobaciones y accesos pendientes
+
+Pruebas locales: bloqueo antes de consentimiento y al rechazar, carga única, caducidad de elección, retirada, cookies, sincronización entre pestañas, almacenamiento restringido, URLs con datos ficticios, exclusión de reclamaciones e integración con el formulario. También validación, referencia estable, origen opcional y conservación de texto editado.
+
+Verificación final: visita consentida de prueba y comprobación de eventos en Analytics «Tiempo real» o DebugView. No dar por recibidos eventos solo por su cola local. La conexión de GSC Wizard todavía requiere autorización de Google Analytics y vinculación a la propiedad real para consultar informes desde el asistente. El titular debe revisar en Analytics la retención de eventos, accesos y ajustes de uso compartido según las decisiones de YAKAR.

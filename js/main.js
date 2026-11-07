@@ -508,6 +508,7 @@ function initializeRequest() {
         'La fecha deseada no constituye un plazo confirmado.',
         'Este resumen no acredita envío, registro ni aceptación.'
       ].join('\n');
+      window.yakarMeasure?.('summary_prepared');
       lastForm = signature;
     }
     updateShareLinks();
@@ -528,6 +529,7 @@ function initializeRequest() {
         status.textContent = 'Completa el resumen antes de compartirlo.';
         return;
       }
+      window.yakarMeasure?.(link === emailLink ? 'email_opened' : 'whatsapp_opened');
       status.textContent = link === emailLink
         ? 'Revisa el correo y pulsa Enviar en tu aplicación. Si no se abre o falta texto, copia el resumen y escríbenos a ' + YAKAR.email + '.'
         : 'Revisa el mensaje y pulsa Enviar en WhatsApp. Si no se abre o falta texto, copia el resumen y escríbenos al +51 973 669 004.';
@@ -540,6 +542,7 @@ function initializeRequest() {
       if (!navigator.clipboard || !window.isSecureContext) throw new Error('Copia manual requerida');
       await navigator.clipboard.writeText(summary.value);
       copiedSignature = signature();
+      window.yakarMeasure?.('summary_copied');
       status.textContent = 'Resumen copiado. Pégalo en tu correo o WhatsApp y envíalo desde allí.';
     } catch {
       summary.focus();
