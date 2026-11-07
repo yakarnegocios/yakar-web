@@ -36,7 +36,7 @@
   <meta property="og:image:height" content="630">
 
   <link rel="stylesheet" href="css/styles.css?v=guia-consulta-1">
-  <script src="js/main.js?v=productos-20261107" defer></script>
+  <script src="js/main.js?v=recorrido-20261107" defer></script>
 
   <style>
     .commercial .assurance {
@@ -85,6 +85,10 @@
 
     .commercial #productos > span {
       display: block;
+    }
+
+    .commercial .request-route {
+      scroll-margin-top: 130px;
     }
 
     .commercial .solutions-grid-v5 {
@@ -432,7 +436,7 @@
         </button>
 
         <nav id="main-nav" class="navlinks" aria-label="Principal">
-          <a href="#soluciones">Soluciones</a>
+          <a href="#soluciones">Productos</a>
           <a href="#metodo">Nuestro método</a>
           <a href="#perspectiva">Perspectiva</a>
           <a class="btn" href="#request-start">Preparar mi consulta</a>
@@ -453,17 +457,15 @@
               </h1>
 
              <p class="lead">
-              Abastecimiento bajo pedido para mineras, contratas, subcontratas mineras y empresas industriales. Comparte tu especificación o cuéntanos qué necesitas resolver. Evaluamos cada caso antes de cotizar.
+              EPP, uniformes, suministros y equipos bajo pedido para mineras, contratas, subcontratas mineras y empresas industriales.
             </p>
 
             <div class="actions">
-              <a class="btn" href="#request-start">
-                Tengo un requerimiento
-              </a>
-              <a class="quiet-link" href="#request-start" data-request-route="help">Necesito ayuda para definirlo</a>
+              <a class="btn" href="#request-start">Preparar mi consulta</a>
+              <a class="quiet-link" href="#soluciones">Ver líneas de producto</a>
             </div>
 
-            <p class="small">No necesitas conocer todos los detalles técnicos para empezar. Lo que falte se identifica como pendiente.</p>
+            <p class="small">Si aún estás definiendo qué comprar, <a href="#request-start" data-request-route="help">te ayudamos a estructurarlo</a>.</p>
             <div class="cover-rule">
               <span>PERÚ · ATENCIÓN A ORGANIZACIONES</span>
               <p>Cumplir es parte del producto.</p>
@@ -1052,6 +1054,7 @@
             class="request-card"
             id="request-start"
             aria-label="Preparar requerimiento"
+            tabindex="-1"
           >
             <div class="request-card-top">
               <span>REQUERIMIENTO YAKAR</span>
@@ -1060,9 +1063,8 @@
 
             <div id="request-form-intro">
               <h3>Cuéntanos qué necesitas</h3>
-              <p class="small">Para empezar: elige una ruta y una categoría, describe tu necesidad e indica tu nombre y un correo o teléfono. Los campos con * son obligatorios.</p>
-              <p class="small">Prepararás un resumen para compartir por WhatsApp o correo. No necesitas crear una cuenta.</p>
-              <p class="small">Si ya tienes el requerimiento en un archivo, puedes <a href="mailto:negocios.yakar@gmail.com">enviarlo por correo</a> sin completar este formulario. Los archivos se adjuntan en tu correo o WhatsApp; esta página no los carga ni los envía.</p>
+              <p class="small">Elige cómo quieres empezar. Podrás revisar tu resumen antes de compartirlo por WhatsApp o correo.</p>
+              <p class="small">Si ya tienes un archivo, puedes <a href="mailto:negocios.yakar@gmail.com">adjuntarlo en un correo</a> sin completar el formulario. Los campos con * son obligatorios.</p>
             </div>
 
             <noscript>

@@ -479,8 +479,14 @@ function initializeRequest() {
       const value = link.dataset.requestFamily;
       if ([...family.options].some(option => option.value === value)) family.value = value;
       updateHint();
-      (link.dataset.requestRoute === 'help' ? need : family).focus({preventScroll: true});
-      card.scrollIntoView({block: 'start', behavior: prefersReducedMotion() ? 'auto' : 'smooth'});
+      if (link.dataset.requestRoute === 'help') {
+        need.focus({preventScroll: true});
+        scrollToElement(need);
+      } else {
+        const route = form.querySelector('input[name="definition"]:checked') || form.elements.namedItem('route-defined');
+        route.focus({preventScroll: true});
+        scrollToElement(route.labels[0]);
+      }
     });
   });
 
