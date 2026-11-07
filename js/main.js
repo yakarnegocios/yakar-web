@@ -338,7 +338,7 @@ function initializeRequest() {
   const signature = () => JSON.stringify([...new FormData(form).entries()]) + summary.value;
   let copiedSignature = signature();
   window.addEventListener('beforeunload', event => {
-    const hasDraft = summary.value.trim() || [...new FormData(form).entries()].some(([name,value]) => name !== 'family' && name !== 'guideLine' && String(value).trim());
+    const hasDraft = summary.value.trim() || [...new FormData(form).entries()].some(([name,value]) => name !== 'definition' && name !== 'family' && name !== 'guideLine' && String(value).trim());
     if (!hasDraft) return;
     if (signature() === copiedSignature) return;
     event.preventDefault();
@@ -470,7 +470,9 @@ function initializeRequest() {
   form.querySelectorAll('input[name="definition"]').forEach(input => input.addEventListener('change', updateHint));
   document.querySelectorAll('a[href="#request-start"]').forEach(link => {
     link.addEventListener('click', event => {
+      if (event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
       event.preventDefault();
+      if (location.hash !== link.hash) history.pushState(null, '', link.hash);
       showForm();
       if (link.dataset.requestRoute === 'help') {
         document.getElementById('route-help').checked = true;
