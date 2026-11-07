@@ -82,12 +82,15 @@
       summary_prepared:['yakar_summary_prepared', null],
       whatsapp_opened:['yakar_channel_opened', 'whatsapp'],
       email_opened:['yakar_channel_opened', 'email'],
-      summary_copied:['yakar_summary_copied', null]
+      summary_copied:['yakar_summary_copied', null],
+      brochure_mobile_selected:['yakar_brochure_selected', null, 'mobile'],
+      brochure_a4_selected:['yakar_brochure_selected', null, 'a4']
     };
     if (!Object.hasOwn(events, action)) return;
-    const [name, channel] = events[action];
+    const [name, channel, format] = events[action];
     const parameters = {send_to:ID, page_location:safeUrl, page_referrer:safeReferrer(), page_title:TITLES[location.pathname]};
     if (channel) parameters.channel = channel;
+    if (format) parameters.brochure_format = format;
     gtag('event', name, parameters);
   };
   function clearAnalyticsCookies() {
@@ -131,6 +134,12 @@
     settings.addEventListener('click', () => { banner.hidden = false; banner.querySelector('h2').focus(); banner.scrollIntoView({block:'center'}); });
     banner.querySelector('[data-accept]').addEventListener('click', () => saveChoice('accepted'));
     banner.querySelector('[data-reject]').addEventListener('click', () => saveChoice('rejected'));
+    for (const link of document.querySelectorAll('a[data-brochure-format]')) {
+      const format = link.dataset.brochureFormat;
+      if (format === 'mobile' || format === 'a4') {
+        link.addEventListener('click', () => window.yakarMeasure('brochure_' + format + '_selected'));
+      }
+    }
     activate();
   }
   window.addEventListener('storage', event => {
