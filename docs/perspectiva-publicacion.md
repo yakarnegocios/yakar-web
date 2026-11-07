@@ -10,7 +10,7 @@
 ## Cada nueva edición
 1. Leer el head remoto y preservar cambios ajenos. Verificar fuentes primarias y fecha; diferenciar contexto del criterio YAKAR.
 2. Crear la nueva página fechada siguiendo la edición actual. Revisar title, descripción, H1, canonical propio, Open Graph y Article/BreadcrumbList JSON-LD. Usar fechas reales; no actualizar la fecha de artículos antiguos para aparentar novedades.
-3. Conservar las ediciones anteriores, enlazar la nueva desde el archivo y actualizar resúmenes, fecha y checklist del inicio para que correspondan a la nueva edición.
+3. Conservar las ediciones anteriores. Enlazar la nueva desde el archivo y actualizar resúmenes, fecha y checklist del inicio. Asignar a los artículos los identificadores `suministros`, `servicios` y `proyectos` y enlazar cada tarjeta del inicio directamente a su artículo. Vincular cada artículo con la guía práctica correspondiente. Mantener las referencias desde las guías hacia las ediciones históricas cuando sigan siendo pertinentes.
 4. Actualizar todos los destinos de compartir, incluidos `data-perspective-share` y los enlaces WhatsApp/LinkedIn. Comprobar los destinos codificados: solo la URL pública sin datos de personas.
 5. Añadir la nueva ruta exacta a TITLES en `js/analytics-consent.js`. Esta lista protege la privacidad; no sustituir por rutas arbitrarias ni títulos extraídos de campos del visitante. Conservar el bloqueo previo al consentimiento.
 6. Incorporar la URL canonical de la nueva edición al sitemap sin eliminar ediciones previas. Actualizar las versiones de recursos solo cuando cambien.
