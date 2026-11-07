@@ -35,8 +35,8 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
 
-  <link rel="stylesheet" href="css/styles.css?v=10837b2a9605">
-  <script src="js/main.js?v=mobile-stable-1" defer></script>
+  <link rel="stylesheet" href="css/styles.css?v=guia-consulta-1">
+  <script src="js/main.js?v=guia-consulta-1" defer></script>
 
   <style>
     .commercial .assurance {
@@ -1118,6 +1118,10 @@
                     <option>Proyectos</option>
                     <option>Por definir</option>
                   </select>
+                  <label class="request-guide" id="request-guide" hidden>
+                    <input type="checkbox" name="guideLine" disabled>
+                    <span><strong data-guide-name></strong><br><small>Incluir esta guía en mi resumen</small></span>
+                  </label>
                 </div>
 
                 <div class="field full">
@@ -1821,7 +1825,6 @@
 })();
 </script>
 <!-- FIN: Calendario YAKAR 2026 -->
-<script>document.addEventListener('DOMContentLoaded',()=>{const lines={"seguridad-industrial":"Seguridad industrial y EPP","textil-industrial":"Uniformes y textil industrial","ferreteria-industrial":"Suministros industriales","equipamiento-industrial":"Equipamiento industrial bajo requerimiento","servicios-industriales":"Servicios industriales","proyectos-industriales":"Proyectos"};const line=new URLSearchParams(location.search).get('linea');if(!Object.hasOwn(lines,line))return;const family=document.querySelector('#family');if(!family)return;family.value=({'servicios-industriales':'Servicios','proyectos-industriales':'Proyectos'}[line]||'Productos y suministros');family.dispatchEvent(new Event('change',{bubbles:true}));const need=document.querySelector('#need');if(need)need.placeholder=lines[line]+': describe tu necesidad';const label=document.createElement('label');const choice=document.createElement('input');choice.type='checkbox';choice.name='guideLine';choice.value=lines[line];choice.checked=true;label.append(choice,document.createTextNode(' Incluir en mi resumen la guía consultada: '+lines[line]));family.insertAdjacentElement('afterend',label);});</script>
 </body>
 </html>
 

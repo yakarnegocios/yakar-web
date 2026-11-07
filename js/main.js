@@ -254,6 +254,27 @@ function initializeRequest() {
   const intro = document.getElementById('request-form-intro');
   if (!family || !need || !hint) return;
   const initialHint = hint.textContent.trim();
+  const guide = document.getElementById('request-guide');
+  const guideOptions = {
+    'seguridad-industrial': ['Seguridad industrial y EPP', 'Productos y suministros'],
+    'textil-industrial': ['Uniformes y textil industrial', 'Productos y suministros'],
+    'ferreteria-industrial': ['Suministros industriales', 'Productos y suministros'],
+    'equipamiento-industrial': ['Equipamiento industrial bajo requerimiento', 'Productos y suministros'],
+    'servicios-industriales': ['Servicios industriales', 'Servicios'],
+    'proyectos-industriales': ['Proyectos', 'Proyectos']
+  };
+  const guideKey = new URLSearchParams(location.search).get('linea');
+  if (guide && Object.hasOwn(guideOptions, guideKey)) {
+    const [guideName, guideFamily] = guideOptions[guideKey];
+    const choice = form.elements.namedItem('guideLine');
+    family.value = guideFamily;
+    need.placeholder = guideName + ': describe tu necesidad';
+    guide.querySelector('[data-guide-name]').textContent = guideName;
+    choice.value = guideName;
+    choice.disabled = false;
+    choice.checked = true;
+    guide.hidden = false;
+  }
   let lastForm = '';
   // Reference for this page's consultation, created only after valid input.
   // It is not a receipt or the ID of an operation registered in YAKAR.
@@ -325,7 +346,7 @@ function initializeRequest() {
   const signature = () => JSON.stringify([...new FormData(form).entries()]) + summary.value;
   let copiedSignature = signature();
   window.addEventListener('beforeunload', event => {
-    const hasDraft = summary.value.trim() || [...new FormData(form).entries()].some(([name,value]) => name !== 'family' && String(value).trim());
+    const hasDraft = summary.value.trim() || [...new FormData(form).entries()].some(([name,value]) => name !== 'family' && name !== 'guideLine' && String(value).trim());
     if (!hasDraft) return;
     if (signature() === copiedSignature) return;
     event.preventDefault();
@@ -496,7 +517,7 @@ function initializeRequest() {
       summary.value = [
         'YAKAR — RESUMEN DE REQUERIMIENTO', '',
         ...(consultationReference ? ['Referencia de consulta web: ' + consultationReference, 'Esta referencia no acredita envío ni registro en YAKAR.', ''] : []),
-        ...(new FormData(form).get('guideLine') ? ['Guía consultada: ' + new FormData(form).get('guideLine')] : []),
+        ...(value('guideLine') ? ['Guía consultada: ' + value('guideLine')] : []),
         ...fields.filter(([label, text]) => text || ['Empresa u organización', 'Cantidad o alcance aproximado', 'Fecha deseada', 'Ubicación o entrega'].includes(label)).map(([label, text]) => `${label}: ${text || 'Pendiente de definir'}`),
         '', 'NECESIDAD Y CONTEXTO', value('need'), '',
         'PARA EVALUAR LA SOLUCIÓN — INFORMACIÓN DEL SOLICITANTE',

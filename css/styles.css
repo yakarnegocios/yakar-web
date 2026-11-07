@@ -1890,3 +1890,22 @@ p {
 .request-route:focus-within {outline:3px solid #3674bc;outline-offset:3px}
 .local-review a.btn[aria-disabled="true"], .local-review a.btn[aria-disabled="true"]:hover {background:#e7ebf0;color:#536174;border:1px solid #8A8D8F;cursor:not-allowed;box-shadow:none;transform:none}
 .request-card button:disabled {cursor:not-allowed}
+
+.field label.request-guide {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-height: 44px;
+  padding: 8px 0;
+  cursor: pointer;
+}
+
+.field .request-guide input {
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  min-height: 0;
+  padding: 0;
+  margin: 2px 0 0;
+  accent-color: #1B3A6B;
+}
