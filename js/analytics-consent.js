@@ -114,15 +114,14 @@
   }
   function render() {
     const style = document.createElement('style');
-    style.textContent = '.yakar-measurement{box-sizing:border-box;max-width:1200px;margin:16px auto;padding:18px 22px;border:1px solid #c5d2e5;border-radius:6px;background:#f4f7fb;color:#20354f;font:15px/1.6 system-ui}.yakar-measurement h2{margin:0 0 8px;font-size:18px;color:#1b3a6b}.yakar-measurement p{margin:0 0 12px;max-width:78ch}.yakar-measurement a{color:#1b3a6b;text-decoration:underline}.yakar-measurement-actions{display:flex;gap:12px;flex-wrap:wrap}.yakar-measurement button,.yakar-measurement-settings{font:inherit;cursor:pointer;padding:10px 16px;min-height:44px;border:1px solid #1b3a6b;border-radius:4px;background:white;color:#1b3a6b}.yakar-measurement button:focus-visible,.yakar-measurement-settings:focus-visible{outline:3px solid #3674bc;outline-offset:3px}.yakar-measurement-tools{max-width:1200px;margin:12px auto;padding:12px 20px;font:13px/1.5 system-ui;color:#536174}.yakar-measurement-tools p{margin:6px 0}.yakar-measurement[hidden]{display:none}@media(max-width:650px){.yakar-measurement{margin:12px;padding:16px}}';
+    style.textContent = '.yakar-measurement{position:fixed;right:16px;bottom:16px;z-index:1000;box-sizing:border-box;width:calc(100% - 32px);max-width:580px;max-height:calc(100vh - 32px);overflow:auto;margin:0;padding:18px 22px;box-shadow:0 8px 30px #1b3a6b26;border:1px solid #c5d2e5;border-radius:6px;background:#f4f7fb;color:#20354f;font:15px/1.6 system-ui}.yakar-measurement h2{margin:0 0 8px;font-size:18px;color:#1b3a6b}.yakar-measurement p{margin:0 0 12px;max-width:78ch}.yakar-measurement a{color:#1b3a6b;text-decoration:underline}.yakar-measurement-actions{display:flex;gap:12px;flex-wrap:wrap}.yakar-measurement button,.yakar-measurement-settings{font:inherit;cursor:pointer;padding:10px 16px;min-height:44px;border:1px solid #1b3a6b;border-radius:4px;background:white;color:#1b3a6b}.yakar-measurement button:focus-visible,.yakar-measurement-settings:focus-visible{outline:3px solid #3674bc;outline-offset:3px}.yakar-measurement-tools{max-width:1200px;margin:12px auto;padding:12px 20px;font:13px/1.5 system-ui;color:#536174}.yakar-measurement-tools p{margin:6px 0}.yakar-measurement[hidden]{display:none}@media(max-width:650px){.yakar-measurement{right:12px;bottom:12px;width:calc(100% - 24px);max-height:55dvh;margin:0;padding:16px}}';
     document.head.append(style);
     banner = document.createElement('section');
     banner.className = 'yakar-measurement';
     banner.setAttribute('aria-labelledby', 'measurement-title');
     banner.innerHTML = '<h2 id="measurement-title" tabindex="-1">Tu privacidad, tu decisión</h2><p>Con tu permiso, usamos Google Analytics y cookies para entender cómo se utiliza esta web y mejorarla.</p><p>Tu requerimiento y tus datos de contacto no se envían a Analytics. Puedes navegar sin aceptar. <a href="/yakar-web/privacidad.html#medicion-web">Ver política de privacidad</a>.</p><div class="yakar-measurement-actions"><button type="button" data-accept>Aceptar</button><button type="button" data-reject>Continuar sin aceptar</button></div>';
     banner.hidden = !!choice;
-    const main = document.querySelector('main');
-    if (main) main.before(banner); else document.body.prepend(banner);
+    document.body.append(banner);
     const tools = document.createElement('div');
     tools.className = 'yakar-measurement-tools';
     const settings = document.createElement('button');
@@ -144,3 +143,4 @@
   choice = readChoice();
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', render, {once:true}); else render();
 })();
+

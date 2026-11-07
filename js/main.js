@@ -294,8 +294,8 @@ function initializeRequest() {
     <p class="field-hint" id="summary-hint">Si vuelves y cambias el formulario, se preparará un nuevo resumen. Copia aquí cualquier detalle que quieras conservar.</p>
     <p class="notice" data-long-summary hidden>Tu resumen es extenso. Para conservarlo completo, usa «Copiar resumen» y pégalo en tu correo o WhatsApp; comprueba el texto antes de enviarlo.</p>
     <div class="actions">
-      <a class="btn" data-whatsapp target="_blank" rel="noopener noreferrer">Abrir WhatsApp para enviar</a>
-      <a class="btn outline" data-email>Abrir correo para enviar</a>
+      <a class="btn" data-whatsapp href="https://wa.me/51973669004" aria-disabled="true" tabindex="-1" target="_blank" rel="noopener noreferrer">Abrir WhatsApp para enviar</a>
+      <a class="btn outline" data-email href="mailto:negocios.yakar@gmail.com" aria-disabled="true" tabindex="-1">Abrir correo para enviar</a>
       <button type="button" class="btn outline" data-copy>Copiar resumen</button>
       <button type="button" class="btn text" data-back>Corregir formulario</button>
     </div>
@@ -388,7 +388,7 @@ function initializeRequest() {
     [emailLink, whatsappLink].forEach(link => {
       link.setAttribute('aria-disabled', String(!available));
       link.tabIndex = available ? 0 : -1;
-      if (!available) link.removeAttribute('href');
+      if (!available) link.href = link === emailLink ? `mailto:${YAKAR.email}` : `https://wa.me/${YAKAR.whatsapp}`;
     });
     if (!available) { longSummary.hidden = true; status.textContent = 'El resumen está vacío. Escribe tu consulta o vuelve a corregir el formulario para habilitar las opciones.'; return; }
     const subject = encodeURIComponent('Requerimiento para YAKAR' + (consultationReference ? ' · ' + consultationReference : ''));
@@ -553,6 +553,7 @@ function initializeRequest() {
 
   form.noValidate = true;
   updateHint();
+  updateShareLinks();
   showForm();
 }
 
@@ -587,3 +588,4 @@ function initializeReturnReview() {
   panel.querySelector('[data-review-clear]').addEventListener('click',()=>{tasks.forEach(t=>{t.checked=false;});remember.checked=false;render();try{localStorage.removeItem(key);storage.textContent='Revisión borrada de este navegador.';}catch{storage.textContent='La lista se reinició, pero no pudimos borrar el dato local. Revisa los datos de este sitio en tu navegador.';}});
   render();panel.hidden=false;
 }
+
