@@ -375,3 +375,15 @@ No priorizar una funcionalidad solo porque resulte visualmente atractiva o técn
 **Medición:** solo permite contar consultas recibidas con retorno declarado; no estima todos los visitantes, personas únicas, tasa general de retorno ni efecto causal de la revisión personal. Los denominadores y respuestas desconocidas deben informarse. Sin datos recibidos, resultado pendiente, no cero.
 
 **Corrección técnica:** auditoría detectó main.js sin versión en Método e Integridad. Se corrigen esas páginas y el versionador para mantener coherencia en futuras publicaciones.
+
+## DEC-026 — Alcance comercial y gestión de cada requerimiento
+
+**Fecha:** 2026-11-07.
+
+**Decisión:** priorizar mineras, contratas y subcontratas mineras y empresas industriales. Mantener las rutas de productos y suministros, coordinación de servicios y abastecimiento para proyectos.
+
+**Criterio comercial:** usar el objeto social inscrito para delimitar las actividades que podemos evaluar. Confirmar para cada caso la especificación, la fuente de suministro, el responsable técnico cuando corresponda y la evidencia que respalda el compromiso. Las referencias a productos describen tipos de consulta bajo pedido.
+
+**Gestión del requerimiento:** definir alcance, riesgos, responsables y criterios de conformidad. Registrar hitos, cambios aprobados, evidencias y aprendizajes con un nivel de detalle proporcional al pedido. Se toman como referencia prácticas del PMI y principios de gestión de calidad de ISO.
+
+**Publicación:** comunicar las responsabilidades de YAKAR, el cliente y los especialistas dentro del alcance acordado. Mantener reservada la documentación registral y comercial de respaldo.

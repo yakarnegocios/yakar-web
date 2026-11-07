@@ -29,7 +29,7 @@ const MILESTONES = [
   {
     title: 'Proponemos',
     description:
-      'Evaluamos las características, la viabilidad y las condiciones. La propuesta identifica alcance, entregables, precio y plazo.',
+      'Verificamos la fuente de suministro, la documentación y los riesgos. Si el alcance es viable, la propuesta precisa entregables, responsables, precio y plazo.',
     result: 'Una propuesta que puedes evaluar.'
   },
   {
@@ -54,13 +54,13 @@ const MILESTONES = [
 
 const REQUEST_HINTS = {
   'Productos y suministros':
-    'Indica el producto, uso y cantidad. Para uniformes: prendas, materiales, tallas y personalización. Para tecnología: programas, configuración o compatibilidad necesaria.',
+    'Indica qué producto necesitas, para qué lo usarás y en qué cantidad. Incluye tallas, medidas, modelo o compatibilidad cuando corresponda.',
 
   Servicios:
-    'Describe el equipo o proceso, su situación actual y el resultado que buscas. Para motores: modelo, serie y horas de funcionamiento, si los conoces.',
+    'Describe el equipo o proceso, su situación actual y el resultado que buscas. Indica dónde se requiere la intervención y qué condiciones de acceso o seguridad conoces.',
 
   Proyectos:
-    'Indica el objetivo, la ubicación y el alcance conocido. Menciona si cuentas con planos, expediente técnico, presupuesto o una fecha de referencia.',
+    'Indica el objetivo, la ubicación y qué suministros o servicios necesitas coordinar. Menciona entregables y fechas que condicionen el avance.',
 
   'Necesito orientación':
     'Describe qué necesitas resolver y las condiciones que conoces. Podemos ayudarte a identificar la información que falta.'
