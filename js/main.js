@@ -53,10 +53,11 @@ const MILESTONES = [
 ];
 
 const REQUEST_HINTS = {
+  'Señalización y visibilidad': 'Indica si buscas cinta para un vehículo, lámina, señal terminada o placa con braille. Comparte el uso, medida, cantidad y referencia si la tienes.',
   'Seguridad industrial y EPP': 'Indica el tipo de protección, el uso, las cantidades por talla y la documentación que requiere tu operación.',
-  'Uniformes y textil industrial': 'Indica prendas, cantidades por talla, materiales y personalización.',
-  'Suministros industriales': 'Indica las referencias, medidas, materiales, unidades y compatibilidades.',
-  'Equipamiento industrial': 'Indica la aplicación, capacidad, configuración y condiciones de operación.',
+  'Uniformes y textil industrial': 'Indica la prenda, cantidades por talla, tela y personalización. Si hay una muestra de referencia, puedes compartirla al enviar.',
+  'Suministros industriales': 'Indica marca, modelo o medida y cantidad. Para herramientas inalámbricas, aclara si necesitas el equipo solo o con batería y cargador.',
+  'Equipamiento industrial': 'Para un grupo electrógeno, indica uso, potencia, voltaje, altitud y destino. Si desconoces la potencia, enumera qué necesitas alimentar.',
   'Por definir': 'Describe para qué necesitas el producto y qué condiciones debe cumplir.'
 };
 
@@ -250,6 +251,7 @@ function initializeRequest() {
   const initialHint = hint.textContent.trim();
   const guide = document.getElementById('request-guide');
   const guideOptions = {
+    'senalizacion-visibilidad': 'Señalización y visibilidad',
     'seguridad-industrial': 'Seguridad industrial y EPP',
     'textil-industrial': 'Uniformes y textil industrial',
     'ferreteria-industrial': 'Suministros industriales',
@@ -302,7 +304,7 @@ function initializeRequest() {
   review.innerHTML = `
     <h3 tabindex="-1">Revisa y comparte tu resumen</h3>
     <p class="notice"><strong>Resumen preparado; aún no enviado.</strong><br>Elige WhatsApp o correo y pulsa Enviar en esa aplicación.</p>
-    <label for="summary-local">Puedes corregir el texto antes de compartirlo.</label>
+    <label for="summary-local">Puedes corregir el texto o copiarlo para revisarlo con tu equipo.</label>
     <textarea id="summary-local" class="summary-local" rows="10" spellcheck="true" aria-describedby="summary-hint"></textarea>
     <p class="field-hint" id="summary-hint">Si vuelves y cambias el formulario, se preparará un nuevo resumen. Copia aquí cualquier detalle que quieras conservar.</p>
     <p class="notice" data-long-summary hidden>Tu resumen es extenso. Para conservarlo completo, usa «Copiar resumen» y pégalo en tu correo o WhatsApp; comprueba el texto antes de enviarlo.</p>
@@ -383,8 +385,8 @@ function initializeRequest() {
     const route = form.querySelector('input[name="definition"]:checked')?.value;
     const help = route === 'Necesito ayuda para estructurarla';
     hint.textContent = help
-      ? 'Describe el uso, el problema y el resultado que necesitas. No inventes especificaciones; indica qué falta por definir.'
-      : route ? 'Comparte las características y referencias que ya conoces. Puedes adjuntar la ficha en tu correo o WhatsApp al enviar; no es necesario transcribirla completa.' : (REQUEST_HINTS[family.value] || initialHint);
+      ? 'Cuenta qué te pidieron y qué falta por definir. ' + (family.value && family.value !== 'Por definir' ? 'Comparte estos datos si los conoces. ' + REQUEST_HINTS[family.value] : 'Si recibiste una lista, foto o ficha, adjúntala en WhatsApp o correo al enviar.')
+      : route ? 'Comparte las características y referencias que ya conoces. Puedes adjuntar la ficha en tu correo o WhatsApp al enviar.' : (REQUEST_HINTS[family.value] || initialHint);
     const question = document.getElementById('decision-question');
     if (question) question.textContent = help
       ? '¿Qué ocurre hoy y qué necesitas que cambie? Describe la situación con tus palabras; deja los detalles desconocidos como pendientes.'

@@ -9,6 +9,7 @@
     '/yakar-web/index.html': 'YAKAR · Abastecimiento estratégico',
     '/yakar-web/metodo.html': 'Nuestro método | YAKAR',
     '/yakar-web/integridad.html': 'Integridad comercial | YAKAR',
+    '/yakar-web/senalizacion-visibilidad.html': 'Señalización y visibilidad | YAKAR',
     '/yakar-web/seguridad-industrial.html': 'Seguridad industrial y EPP | YAKAR',
     '/yakar-web/textil-industrial.html': 'Textil industrial | YAKAR',
     '/yakar-web/ferreteria-industrial.html': 'Suministros industriales | YAKAR',
