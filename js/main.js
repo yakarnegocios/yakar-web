@@ -58,6 +58,8 @@ const REQUEST_HINTS = {
   'Uniformes y textil industrial': 'Indica la prenda, cantidades por talla, tela y personalización. Si hay una muestra de referencia, puedes compartirla al enviar.',
   'Suministros industriales': 'Indica marca, modelo o medida y cantidad. Para herramientas inalámbricas, aclara si necesitas el equipo solo o con batería y cargador.',
   'Equipamiento industrial': 'Para un grupo electrógeno, indica uso, potencia, voltaje, altitud y destino. Si desconoces la potencia, enumera qué necesitas alimentar.',
+  'Izaje y sujeción': 'Indica el uso para cargas, capacidad requerida, longitud, dimensiones, referencia y cantidad. Puedes adjuntar la especificación al enviar.',
+  'Varias líneas u otros productos': 'Comparte tu lista o describe los productos, cantidades y destino. Si ya tienes un archivo, adjúntalo en WhatsApp o correo al enviar.',
   'Por definir': 'Describe para qué necesitas el producto y qué condiciones debe cumplir.'
 };
 
