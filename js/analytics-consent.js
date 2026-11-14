@@ -132,7 +132,8 @@
     const settings = document.createElement('button');
     settings.type = 'button'; settings.className = 'yakar-measurement-settings'; settings.textContent = 'Preferencias de medición';
     status = document.createElement('p');status.setAttribute('role', 'status');status.setAttribute('aria-live', 'polite');
-    tools.append(settings, status);document.body.append(tools);
+    tools.append(settings, status);
+    (document.querySelector('[data-measurement-placement]') ?? document.body).append(tools);
     settings.addEventListener('click', () => { banner.hidden = false; banner.querySelector('h2').focus(); banner.scrollIntoView({block:'center'}); });
     banner.querySelector('[data-accept]').addEventListener('click', () => saveChoice('accepted'));
     banner.querySelector('[data-reject]').addEventListener('click', () => saveChoice('rejected'));
