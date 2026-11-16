@@ -514,15 +514,16 @@ function initializeRequest() {
         ['Teléfono', value('phone')],
         ['Empresa u organización', value('company')],
         ['Cantidad o alcance aproximado', value('quantity')],
-        ['Fecha deseada', value('neededBy') ? `${date[2]}/${date[1]}/${date[0]}` : ''],
+        ['Fecha requerida', value('neededBy') ? `${date[2]}/${date[1]}/${date[0]}` : ''],
         ['Ubicación o entrega', value('location')],
+        ['Condiciones de recepción', value('deliveryConditions')],
         ['Visita a la web (declarada)', ({first:'Primera visita',return:'Ya había visitado la web',unsure:'No lo recuerda'})[value('visit')] || '']
       ];
       summary.value = [
         'YAKAR — RESUMEN DE REQUERIMIENTO', '',
         ...(consultationReference ? ['Referencia de consulta web: ' + consultationReference, 'Esta referencia no acredita envío ni registro en YAKAR.', ''] : []),
         ...(value('guideLine') ? ['Guía consultada: ' + value('guideLine')] : []),
-        ...fields.filter(([label, text]) => text || ['Empresa u organización', 'Cantidad o alcance aproximado', 'Fecha deseada', 'Ubicación o entrega'].includes(label)).map(([label, text]) => `${label}: ${text || 'Pendiente de definir'}`),
+        ...fields.filter(([label, text]) => text || ['Empresa u organización', 'Cantidad o alcance aproximado', 'Fecha requerida', 'Ubicación o entrega'].includes(label)).map(([label, text]) => `${label}: ${text || 'Pendiente de definir'}`),
         '', 'NECESIDAD Y CONTEXTO', value('need'), '',
         'PARA EVALUAR LA SOLUCIÓN — INFORMACIÓN DEL SOLICITANTE',
         'Resultado o criterio esperado: ' + (value('successCriteria') || 'Pendiente de conversar'),
@@ -530,7 +531,7 @@ function initializeRequest() {
         '', 'ANTES DE ACORDAR',
         'Por evaluar con YAKAR: viabilidad, alcance y exclusiones, precio, plazo y criterios de aceptación.', '',
         'Solicitud sujeta a evaluación y propuesta comercial.',
-        'La fecha deseada no constituye un plazo confirmado.',
+        'La fecha requerida queda sujeta a confirmación.',
         'Este resumen no acredita envío, registro ni aceptación.'
       ].join('\n');
       window.yakarMeasure?.('summary_prepared');
