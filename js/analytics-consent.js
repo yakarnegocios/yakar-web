@@ -1,3 +1,12 @@
+/* El aviso operativo se carga aunque la medición esté desactivada. */
+(() => {
+  const src = document.currentScript?.src;
+  if (!src) return;
+  const notice = document.createElement("script");
+  notice.src = new URL("aviso-mantenimiento.js", src).href;
+  document.head.append(notice);
+})();
+
 /* YAKAR: basic opt-in analytics. Never read or transmit form values or share URLs. */
 (() => {
   'use strict';
