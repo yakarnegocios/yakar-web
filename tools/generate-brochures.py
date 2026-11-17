@@ -28,73 +28,157 @@ with Image.open(ROOT / 'assets/yakar-logo-web-540.webp') as original:
     logo_stream.seek(0)
     PDF_LOGO = ImageReader(logo_stream)
 
-FAMILIES=[
-('Señalización y visibilidad','Cintas y láminas retrorreflectivas, señales, tachas, tachones, adhesivos y placas con braille.','linea-senalizacion'),
-('Uniformes y textil industrial','Prendas de trabajo, uniformes personalizados y artículos textiles. Tallas, materiales y muestra cuando corresponda.','linea-uniformes'),
-('Herramientas y suministros','Herramientas, fijaciones, repuestos, componentes y consumibles según modelo o especificación.','linea-herramientas'),
-('Equipamiento industrial','Grupos electrógenos y otros equipos según aplicación, potencia, condiciones de operación y destino.','linea-equipamiento'),
-('Seguridad y protección','EPP, protección contra caídas, bloqueador solar, linternas, pértigas y cuñas para vehículos y maquinaria.','linea-seguridad'),
-('Izaje y sujeción','Eslingas y accesorios para cargas según capacidad, aplicación y dimensiones requeridas.','linea-izaje')]
+REQUEST = SITE + '#request-start'
+EMAIL = 'mailto:negocios.yakar@gmail.com'
+FAMILIES = [
+    ('Señalización y visibilidad', 'Señales, cintas, láminas, tachas y placas. Indica uso, medidas y referencia o plano.', 'senalizacion-visibilidad.html'),
+    ('Uniformes y textil industrial', 'Ropa de trabajo y prendas personalizadas. Indica tallas, tela y si requiere muestra.', 'textil-industrial.html'),
+    ('Herramientas y suministros', 'Herramientas, repuestos y consumibles. Indica modelo, presentación o compatibilidad.', 'ferreteria-industrial.html'),
+    ('Equipamiento industrial', 'Grupos electrógenos y otros equipos bajo evaluación. Indica aplicación y condiciones de operación.', 'equipamiento-industrial.html'),
+    ('Seguridad y protección', 'EPP y protección para personas y vehículos. Comparte la referencia y documentación que exige tu operación.', 'seguridad-industrial.html'),
+    ('Izaje y sujeción', 'Eslingas, grilletes y accesorios. Comparte la especificación validada, cantidades y documentación requerida.', 'izaje-sujecion.html'),
+]
+CHECKS = [
+    ('Área usuaria', 'Especificación', 'Compara lo solicitado con lo ofrecido. Identifica diferencias y quién debe aprobarlas.'),
+    ('Compras', 'Costo y plazo', 'Compara el costo total, lo incluido y el punto que activa el plazo. Confirma qué queda fuera.'),
+    ('Logística o Almacén', 'Recepción', 'Confirma el punto de entrega y qué documentación, cantidad y estado se revisarán al recibir.'),
+]
+
+
 class Layout:
- def __init__(self,path,size):
-  self.w,self.h=size;self.c=canvas.Canvas(str(path),pagesize=size,pageCompression=1)
-  self.c.setTitle('YAKAR | Productos, equipos y suministros para minería e industria');self.c.setAuthor('Yakar Negocios E.I.R.L.')
-  self.c.setSubject('Seis líneas de productos y consultas según requerimiento')
- def txt(self,s,x,y,w,size=11,color=INK,bold=False):
-  p=Paragraph(s,ParagraphStyle('p',fontName='Bold' if bold else 'Regular',fontSize=size,leading=size*1.35,textColor=color))
-  _,h=p.wrap(w,self.h);assert y+h<self.h-18,(s,y,h);p.drawOn(self.c,x,self.h-y-h);return h
- def box(self,x,y,w,h,color=PALE):self.c.setFillColor(color);self.c.rect(x,self.h-y-h,w,h,stroke=0,fill=1)
- def logo(self,x,y,w=170):
-  image=PDF_LOGO;iw,ih=image.getSize();self.c.drawImage(image,x,self.h-y-w*ih/iw,w,w*ih/iw,mask='auto')
- def link(self,title,x,y,w=210,url=CONTACT):
-  self.box(x,y,w,38,NAVY);self.txt(title,x+12,y+10,w-24,11,white,True);self.c.linkURL(url,(x,self.h-y-38,x+w,self.h-y),relative=0)
- def footer(self,page):
-  self.txt('Yakar Negocios E.I.R.L. · RUC 20612733261 · Perú',32,self.h-35,self.w-100,8,MUTED);self.txt(page,self.w-65,self.h-35,40,8,MUTED)
- def card(self,i,x,y,w,h):
-  title,body,anchor=FAMILIES[i];self.box(x,y,w,h);self.txt(f'{i+1:02}',x+14,y+11,w-28,10,NAVY,True)
-  th=self.txt(title,x+14,y+30,w-28,13,NAVY,True);self.txt(body,x+14,y+38+th,w-28,10.4)
-  self.c.linkURL(SITE+'#'+anchor,(x,self.h-y-h,x+w,self.h-y),relative=0)
- def qr(self,x,y,size=62):
-  q=QrCodeWidget(SITE);a,b,c,d=q.getBounds();dr=Drawing(size,size,transform=[size/(c-a),0,0,size/(d-b),0,0]);dr.add(q);renderPDF.draw(dr,self.c,x,self.h-y-size)
+    def __init__(self, path, size):
+        self.w, self.h = size
+        self.c = canvas.Canvas(str(path), pagesize=size, pageCompression=1, invariant=1)
+        self.c.setTitle('YAKAR | Portafolio y guía de compra industrial')
+        self.c.setAuthor('Yakar Negocios E.I.R.L.')
+        self.c.setSubject('Líneas de abastecimiento y criterios para preparar y comparar una compra B2B')
+
+    def txt(self, text, x, y, width, size=11, color=INK, bold=False):
+        style = ParagraphStyle('p', fontName='Bold' if bold else 'Regular',
+                               fontSize=size, leading=size * 1.35, textColor=color)
+        paragraph = Paragraph(text, style)
+        _, height = paragraph.wrap(width, self.h)
+        assert y + height < self.h - 18, (text, y, height)
+        paragraph.drawOn(self.c, x, self.h - y - height)
+        return height
+
+    def box(self, x, y, width, height, color=PALE):
+        self.c.setFillColor(color)
+        self.c.rect(x, self.h - y - height, width, height, stroke=0, fill=1)
+
+    def logo(self, x, y, width=170):
+        iw, ih = PDF_LOGO.getSize()
+        self.c.drawImage(PDF_LOGO, x, self.h - y - width * ih / iw, width, width * ih / iw, mask='auto')
+
+    def annotation(self, url, x, y, width, height):
+        self.c.linkURL(url, (x, self.h - y - height, x + width, self.h - y), relative=0)
+
+    def link(self, title, x, y, w=210, url=CONTACT):
+        self.box(x, y, w, 38, NAVY)
+        height = self.txt(title, x + 12, y + 10, w - 24, 11, white, True)
+        assert height <= 18, title
+        self.annotation(url, x, y, w, 38)
+
+    def footer(self, page, code=None):
+        self.box(32, self.h - 46, self.w - 64, 0.6, RULE)
+        self.txt('Yakar Negocios E.I.R.L. · RUC 20612733261 · Perú', 32, self.h - 35, self.w - (145 if code else 100), 8, MUTED)
+        if code:
+            self.txt(f'{code} · {page}', self.w - 117, self.h - 35, 89, 8, MUTED)
+        else:
+            self.txt(page, self.w - 67, self.h - 35, 40, 8, MUTED)
+
+    def card(self, i, x, y, w, h):
+        title, body, page = FAMILIES[i]
+        self.box(x, y, w, h)
+        self.box(x, y, 3, h, NAVY)
+        title_height = self.txt(title, x + 14, y + 12, w - 28, 12, NAVY, True)
+        body_y = y + 17 + title_height
+        body_height = self.txt(body, x + 14, body_y, w - 28, 10)
+        assert body_y + body_height < y + h - 24, (title, body_y, body_height, y, h)
+        self.txt('Ver guía de compra', x + 14, y + h - 22, w - 28, 8.5, NAVY, True)
+        self.annotation(SITE + page, x, y, w, h)
+
+    def qr(self, x, y, size=62, url=REQUEST):
+        code = QrCodeWidget(url)
+        left, bottom, right, top = code.getBounds()
+        drawing = Drawing(size, size, transform=[size / (right - left), 0, 0, size / (top - bottom), 0, 0])
+        drawing.add(code)
+        renderPDF.draw(drawing, self.c, x, self.h - y - size)
+
 
 def a4():
- l=Layout(ROOT/'documentos/yakar-brochure-a4.pdf',A4);w=l.w-64;l.logo(32,28)
- l.txt('ABASTECIMIENTO ESTRATÉGICO',32,94,w,9,NAVY,True)
- l.txt('Productos, equipos y suministros<br/>para minería e industria',32,116,w,25,NAVY,True)
- l.txt('Para empresas mineras, contratas, subcontratas y operaciones industriales. Comparte qué necesitas, las cantidades y el destino de entrega.',32,198,w,11)
- cw=(w-16)/2
- for i in range(6):l.card(i,32+(i%2)*(cw+16),260+(i//2)*151,cw,139)
- l.txt('Puedes consultar productos de varias líneas o incluir otros que no aparezcan aquí.',32,728,w,10.5)
- l.link('Conversemos sobre tu requerimiento',32,766,285);l.footer('1 / 2');l.c.showPage()
- l.logo(32,28);l.txt('CUMPLIR ES PARTE DEL PRODUCTO.',32,104,w,10,NAVY,True)
- l.txt('Una propuesta que tu<br/>equipo puede revisar.',32,130,w,28,NAVY,True)
- y=226
- for title,body in [
- ('01 · Comparte tu necesidad','Una lista, ficha técnica, fotografía o referencia es suficiente para empezar. Si faltan detalles, los precisamos contigo.'),
- ('02 · Revisa las condiciones','Producto, especificaciones, cantidad, precio y plazo. Cuando corresponde, se detallan ficha técnica, muestra, garantía y criterios de conformidad.'),
- ('03 · Coordina la recepción','Indica localidad, punto de entrega y fecha requerida. Revisamos el traslado, los accesos y la documentación para recibir el pedido.')]:
-  l.box(32,y,w,94);l.txt(title,48,y+14,w-32,13,NAVY,True);l.txt(body,48,y+39,w-32,11);y+=110
- l.txt('Tu operación puede estar en otra región.',32,566,w,17,NAVY,True)
- l.txt('El destino forma parte de la propuesta. La disponibilidad, el plazo y las condiciones de entrega se confirman para cada requerimiento.',32,596,w,11)
- l.link('Consultar por WhatsApp',32,654,220);l.txt('+51 973 669 004',32,703,w-100,12,NAVY,True)
- l.txt('negocios.yakar@gmail.com',32,730,w-100,11);l.c.linkURL('mailto:negocios.yakar@gmail.com',(32,l.h-750,270,l.h-730),relative=0)
- l.txt('Visita nuestro portafolio en la web',32,760,w-100,10,NAVY);l.c.linkURL(SITE,(32,l.h-780,300,l.h-755),relative=0);l.qr(l.w-112,690,74);l.footer('2 / 2');l.c.save()
+    layout = Layout(ROOT / 'documentos/yakar-brochure-a4.pdf', A4)
+    width = layout.w - 64
+    layout.logo(32, 27)
+    layout.txt('PORTAFOLIO Y GUÍA DE COMPRA', 32, 93, width, 9.5, NAVY, True)
+    layout.txt('Abastecimiento para<br/>minería e industria', 32, 112, width, 29, NAVY, True)
+    layout.txt('Productos, equipos y suministros bajo pedido para empresas mineras, contratistas y operaciones industriales en Perú.', 32, 206, width, 12)
+    layout.box(32, 260, width, 86, NAVY)
+    layout.txt('Qué compartir para empezar', 48, 273, width - 32, 13, white, True)
+    layout.txt('Envía tu lista o ficha, cantidades, lugar y fecha requerida. Si falta algún dato, indica qué debe resolver la compra y qué falta validar.', 48, 302, width - 32, 11, white)
+    layout.txt('Elige la línea que corresponde a tu requerimiento', 32, 370, width, 14, NAVY, True)
+    column = (width - 14) / 2
+    for i in range(len(FAMILIES)):
+        layout.card(i, 32 + (i % 2) * (column + 14), 395 + (i // 2) * 108, column, 101)
+    layout.link('Preparar mi requerimiento', 32, 730, 224, REQUEST)
+    layout.txt('Puedes reunir varias líneas en un solo pedido.', 271, 739, width - 239, 10, MUTED)
+    layout.footer('1 / 2', 'BC-01 · v2.0')
+    layout.c.showPage()
+
+    layout.logo(32, 27)
+    layout.txt('GUÍA PARA TU EQUIPO', 32, 93, width, 9.5, NAVY, True)
+    layout.txt('Cómo comparar propuestas<br/>antes de decidir', 32, 112, width, 26, NAVY, True)
+    layout.txt('Reúne a quien define la necesidad, a quien compra y a quien recibe. Cada persona puede revisar un aspecto distinto de la misma propuesta.', 32, 196, width, 11.5)
+    for index, (role, criterion, detail) in enumerate(CHECKS):
+        y = 253 + index * 72
+        layout.box(32, y, width, 62)
+        layout.txt(role, 46, y + 11, 150, 9, MUTED, True)
+        layout.txt(criterion, 46, y + 29, 150, 12, NAVY, True)
+        layout.txt(detail, 205, y + 12, width - 187, 10.5)
+    layout.box(32, 483, width, 134, NAVY)
+    layout.txt('Ejemplo ilustrativo · 40 señales para un almacén', 48, 497, width - 32, 12, white, True)
+    layout.txt('Una propuesta incluye el despacho al almacén de ciudad. Otra indica entrega en unidad. Para compararlas, confirma quién cubre el traslado final, cuándo empieza el plazo y qué se revisará contra la ficha o el diseño aprobado.', 48, 526, width - 32, 10.5, white)
+    layout.txt('Pide que el costo y el punto de entrega se indiquen por escrito.', 48, 586, width - 32, 10, white, True)
+    layout.txt('Comparte lo que ya tienes', 32, 642, width - 102, 15, NAVY, True)
+    layout.link('Abrir formulario de consulta', 32, 674, 242, REQUEST)
+    layout.txt('WhatsApp +51 973 669 004', 32, 724, width - 105, 10, NAVY, True)
+    layout.annotation(CONTACT, 32, 723, 198, 16)
+    layout.txt('negocios.yakar@gmail.com', 32, 746, width - 105, 10)
+    layout.annotation(EMAIL, 32, 745, 198, 16)
+    layout.qr(layout.w - 113, 671, 74)
+    layout.footer('2 / 2', 'BC-01 · v2.0')
+    layout.c.save()
+
 
 def mobile():
- l=Layout(ROOT/'documentos/yakar-brochure-movil.pdf',(400,1720));w=344;l.logo(28,26,175)
- l.txt('PRODUCTOS BAJO REQUERIMIENTO · PERÚ',28,91,w,9,NAVY,True)
- l.txt('Productos, equipos<br/>y suministros para<br/>minería e industria',28,118,w,27,NAVY,True)
- l.txt('Para empresas mineras, contratas, subcontratas y operaciones industriales.',28,242,w,12)
- l.link('Consultar por WhatsApp',28,297,244)
- for i in range(6):l.card(i,28,362+i*140,w,128)
- l.txt('¿Tu compra reúne varios productos?',28,1214,w,19,NAVY,True)
- l.txt('Comparte tu lista, ficha técnica o fotografía. Puedes incluir distintas líneas y otros productos que necesite tu operación.',28,1274,w,12)
- l.txt('Indica dónde lo necesitas',28,1352,w,16,NAVY,True)
- l.txt('Localidad, punto de recepción y fecha requerida. Confirmamos disponibilidad, precio, plazo y condiciones de entrega en la propuesta.',28,1385,w,12)
- l.link('Cuéntanos qué necesitas',28,1478,244)
- l.txt('+51 973 669 004',28,1536,w,13,NAVY,True);l.txt('negocios.yakar@gmail.com',28,1566,w,11)
- l.c.linkURL('mailto:negocios.yakar@gmail.com',(28,l.h-1585,300,l.h-1566),relative=0)
- l.txt('Cumplir es parte del producto.',28,1621,w,15,NAVY,True);l.footer('1 / 1');l.c.save()
+    layout = Layout(ROOT / 'documentos/yakar-brochure-movil.pdf', (400, 1600))
+    width = 344
+    layout.logo(28, 24, 170)
+    layout.txt('PORTAFOLIO Y GUÍA DE COMPRA', 28, 87, width, 9.5, NAVY, True)
+    layout.txt('Abastecimiento para<br/>minería e industria', 28, 112, width, 26, NAVY, True)
+    layout.txt('Productos, equipos y suministros para empresas en Perú. Evaluamos cada solicitud bajo pedido.', 28, 195, width, 12)
+    layout.link('Preparar mi requerimiento', 28, 253, 242, REQUEST)
+    layout.txt('Qué compartir para cotizar', 28, 318, width, 16, NAVY, True)
+    layout.txt('Tu lista o ficha, cantidades, lugar y fecha requerida. Si algo falta, indícanos qué necesita resolver tu equipo.', 28, 353, width, 11)
+    layout.txt('Explora las seis líneas', 28, 412, width, 16, NAVY, True)
+    for i in range(len(FAMILIES)):
+        layout.card(i, 28, 448 + i * 104, width, 94)
+    layout.txt('Tres revisiones antes de decidir', 28, 1096, width, 17, NAVY, True)
+    for index, (_, criterion, detail) in enumerate(CHECKS):
+        y = 1133 + index * 83
+        layout.box(28, y, width, 72)
+        layout.txt(criterion, 40, y + 8, width - 24, 11.5, NAVY, True)
+        layout.txt(detail, 40, y + 29, width - 24, 10)
+    layout.link('Consultar por WhatsApp', 28, 1390, 225)
+    layout.txt('+51 973 669 004', 28, 1444, width, 11, NAVY, True)
+    layout.annotation(CONTACT, 28, 1443, 200, 17)
+    layout.txt('negocios.yakar@gmail.com', 28, 1466, width, 11)
+    layout.annotation(EMAIL, 28, 1465, 210, 17)
+    layout.txt('Cumplir es parte del producto.', 28, 1504, width, 13, NAVY, True)
+    layout.footer('1 / 1', 'BC-01 · v2.0')
+    layout.c.save()
+
+
 def proposal_example():
     layout = Layout(ROOT / 'documentos/yakar-ejemplo-propuesta.pdf', A4)
     layout.c.setTitle('YAKAR | Ejemplo ilustrativo de propuesta')

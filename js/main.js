@@ -257,7 +257,8 @@ function initializeRequest() {
     'seguridad-industrial': 'Seguridad industrial y EPP',
     'textil-industrial': 'Uniformes y textil industrial',
     'ferreteria-industrial': 'Suministros industriales',
-    'equipamiento-industrial': 'Equipamiento industrial'
+    'equipamiento-industrial': 'Equipamiento industrial',
+    'izaje-sujecion': 'Izaje y sujeción'
   };
   const guideKey = new URLSearchParams(location.search).get('linea');
   if (guide && Object.hasOwn(guideOptions, guideKey)) {
