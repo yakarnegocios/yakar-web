@@ -14,6 +14,7 @@
     '/yakar-web/textil-industrial.html': 'Textil industrial | YAKAR',
     '/yakar-web/ferreteria-industrial.html': 'Suministros industriales | YAKAR',
     '/yakar-web/equipamiento-industrial.html': 'Equipamiento industrial | YAKAR',
+    '/yakar-web/izaje-sujecion.html': 'Eslingas y accesorios de izaje | YAKAR',
     '/yakar-web/perspectiva/': 'Perspectiva YAKAR',
     '/yakar-web/perspectiva/index.html': 'Perspectiva YAKAR',
     '/yakar-web/perspectiva/2026-11-01.html': 'Perspectiva YAKAR · 1 de noviembre de 2026',
@@ -125,7 +126,7 @@
     banner = document.createElement('section');
     banner.className = 'yakar-measurement';
     banner.setAttribute('aria-labelledby', 'measurement-title');
-    banner.innerHTML = '<h2 id="measurement-title" tabindex="-1">Tu privacidad, tu decisión</h2><p>Con tu permiso, usamos Google Analytics y cookies para entender cómo se utiliza esta web y mejorarla.</p><p>Tu requerimiento y tus datos de contacto no se envían a Analytics. Puedes navegar sin aceptar. <a href="/yakar-web/privacidad.html#medicion-web">Ver política de privacidad</a>.</p><div class="yakar-measurement-actions"><button type="button" data-accept>Aceptar</button><button type="button" data-reject>Continuar sin aceptar</button></div>';
+    banner.innerHTML = '<h2 id="measurement-title" tabindex="-1">Medición opcional</h2><p>Si aceptas, usamos Google Analytics con cookies para mejorar la web. El texto de tu consulta y tus datos de contacto quedan fuera de esta medición. <a href="/yakar-web/privacidad.html#medicion-web">Privacidad</a>.</p><div class="yakar-measurement-actions"><button type="button" data-accept>Aceptar</button><button type="button" data-reject>Seguir sin aceptar</button></div>';
     banner.hidden = !!choice;
     document.body.append(banner);
     const tools = document.createElement('div');
