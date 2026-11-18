@@ -70,10 +70,11 @@ function prefersReducedMotion() {
 }
 
 function scrollToElement(element) {
-  element.scrollIntoView({
-    block: 'nearest',
-    behavior: prefersReducedMotion() ? 'auto' : 'smooth'
-  });
+  const top = (document.querySelector('.header')?.getBoundingClientRect().height || 0) + 12;
+  const bounds = element.getBoundingClientRect();
+  if (bounds.top < top || bounds.bottom > window.innerHeight - 12) {
+    window.scrollTo({top: Math.max(0, window.scrollY + bounds.top - top), behavior: prefersReducedMotion() ? 'auto' : 'smooth'});
+  }
 }
 
 /* Menú */
@@ -249,7 +250,8 @@ function initializeRequest() {
   const hint = document.getElementById('need-hint');
   const step = document.getElementById('request-step');
   const intro = document.getElementById('request-form-intro');
-  if (!family || !need || !hint) return;
+  const helpRoute = document.getElementById('route-help');
+  if (!family || !need || !hint || !helpRoute) return;
   const initialHint = hint.textContent.trim();
   const guide = document.getElementById('request-guide');
   const guideOptions = {
@@ -310,7 +312,7 @@ function initializeRequest() {
     <label for="summary-local">Puedes corregir el texto o copiarlo para revisarlo con tu equipo.</label>
     <textarea id="summary-local" class="summary-local" rows="10" spellcheck="true" aria-describedby="summary-hint"></textarea>
     <p class="field-hint" id="summary-hint">Si vuelves y cambias el formulario, se preparará un nuevo resumen. Copia aquí cualquier detalle que quieras conservar.</p>
-    <p class="notice" data-long-summary hidden>Tu resumen es extenso. Para conservarlo completo, usa «Copiar resumen» y pégalo en tu correo o WhatsApp; comprueba el texto antes de enviarlo.</p>
+    <p class="notice" data-long-summary hidden>Para conservar el texto completo, copia el resumen y pégalo al abrir WhatsApp o correo. Como es extenso, estas aplicaciones se abrirán sin el texto.</p>
     <div class="actions">
       <a class="btn" data-whatsapp href="https://wa.me/51973669004" aria-disabled="true" tabindex="-1" target="_blank" rel="noopener noreferrer">Abrir WhatsApp para enviar</a>
       <a class="btn outline" data-email href="mailto:negocios.yakar@gmail.com" aria-disabled="true" tabindex="-1">Abrir correo para enviar</a>
@@ -321,7 +323,7 @@ function initializeRequest() {
     <div class="request-next">
       <h4>¿Qué sigue?</h4>
       <ol><li>Envía el resumen desde tu correo o WhatsApp. Allí puedes adjuntar fotos o fichas, si las tienes.</li><li>Al recibir tu consulta, revisaremos contigo los datos que falten y las condiciones para evaluar una propuesta.</li></ol>
-      <p class="small">Abrir una aplicación o copiar el texto no confirma recepción. Conserva una copia antes de cerrar esta página.</p>
+      <p class="small">Conserva una copia antes de cerrar esta página.</p>
     </div>
     <details class="request-conditions"><summary>Antes de acordar una atención</summary><p class="small">Compartir el resumen no confirma precio, disponibilidad, plazo ni aceptación. Cada requerimiento está sujeto a evaluación. Para entidades públicas, este resumen no constituye una oferta presentada en una plataforma oficial.</p></details>
   `;
@@ -335,6 +337,7 @@ function initializeRequest() {
   const whatsappLink = review.querySelector('[data-whatsapp]');
   const backButton = review.querySelector('[data-back]');
   const longSummary = review.querySelector('[data-long-summary]');
+  const actions = review.querySelector('.actions');
   const draftTools = document.createElement('div');
   draftTools.innerHTML = '<button type="button" class="btn outline" data-copy-draft>Copiar lo escrito</button><p class="field-hint" role="status" data-draft-status>Lo escrito no se guarda de forma permanente. Recargar o cerrar esta página puede borrar tu consulta. Usa «Copiar lo escrito» para conservarla.</p><textarea aria-label="Copia de lo escrito, aún no enviado" rows="6" readonly hidden data-draft-copy></textarea>';
   form.append(draftTools);
@@ -350,23 +353,30 @@ function initializeRequest() {
     event.returnValue = '';
   });
   form.addEventListener('input', () => { draftCopy.hidden = true; });
-  const dateField = form.elements.namedItem('neededBy');
-  const dateHint = document.getElementById('date-hint');
-  const normalDateHint = dateHint?.textContent;
-  dateField?.addEventListener('change', () => {
-    const today = new Intl.DateTimeFormat('en-CA', {timeZone:'America/Lima', year:'numeric', month:'2-digit', day:'2-digit'}).format(new Date());
-    if (dateHint) dateHint.textContent = dateField.value && dateField.value < today
-      ? 'La fecha indicada ya pasó. Revísala o explica en tu necesidad si es una referencia histórica. No constituye un plazo confirmado.'
-      : normalDateHint;
+  const limaDate = new Intl.DateTimeFormat('en-CA', {timeZone:'America/Lima', year:'numeric', month:'2-digit', day:'2-digit'});
+  ['neededBy', 'quoteDeadline'].forEach(name => {
+    const dateField = form.elements.namedItem(name);
+    const hintId = dateField?.getAttribute('aria-describedby')?.split(' ')[0];
+    const dateHint = hintId && document.getElementById(hintId);
+    if (!dateHint) return;
+    const normalDateHint = dateHint.textContent;
+    dateField.addEventListener('change', () => {
+      const parts = Object.fromEntries(limaDate.formatToParts(new Date()).map(({type, value}) => [type, value]));
+      const today = `${parts.year}-${parts.month}-${parts.day}`;
+      dateHint.textContent = dateField.value && dateField.value < today
+        ? 'La fecha indicada ya pasó. Revísala o aclara en tu consulta si es una referencia histórica.'
+        : normalDateHint;
+    });
   });
   draftTools.querySelector('[data-copy-draft]').addEventListener('click', async () => {
     const text = 'YAKAR — BORRADOR AÚN NO ENVIADO\n\n' + [...new FormData(form).entries()].filter(([,value]) => String(value).trim()).map(([name,value]) => {
       const field = form.elements.namedItem(name);
       return (field?.labels?.[0]?.textContent.trim() || name) + ': ' + String(value).trim();
     }).join('\n') + '\n\nEsta copia no acredita envío ni recepción.';
+    const draftSignature = signature();
     try {
       await navigator.clipboard.writeText(text);
-      copiedSignature = signature();
+      copiedSignature = draftSignature;
       draftStatus.textContent = 'Copia preparada. Pégala en un lugar que controles para conservarla; todavía no se ha enviado.';
     } catch {
       draftCopy.value = text;
@@ -386,17 +396,17 @@ function initializeRequest() {
 
   function updateHint() {
     const route = form.querySelector('input[name="definition"]:checked')?.value;
-    const help = route === 'Necesito ayuda para estructurarla';
+    const help = helpRoute.checked;
     hint.textContent = help
-      ? 'Cuenta qué te pidieron y qué falta por definir. ' + (family.value && family.value !== 'Por definir' ? 'Comparte estos datos si los conoces. ' + REQUEST_HINTS[family.value] : 'Si recibiste una lista, foto o ficha, adjúntala en WhatsApp o correo al enviar.')
+      ? (family.value && family.value !== 'Por definir' ? REQUEST_HINTS[family.value] : 'Si tienes una lista, foto o ficha, puedes adjuntarla al enviar por WhatsApp o correo.')
       : route ? 'Comparte las características y referencias que ya conoces. Puedes adjuntar la ficha en tu correo o WhatsApp al enviar.' : (REQUEST_HINTS[family.value] || initialHint);
     const question = document.getElementById('decision-question');
     if (question) question.textContent = help
       ? '¿Qué ocurre hoy y qué necesitas que cambie? Describe la situación con tus palabras; deja los detalles desconocidos como pendientes.'
       : (REQUEST_HINTS[family.value] || '¿Para qué necesitas el producto y qué debe cumplir? Puedes empezar sin una línea definida.');
     document.getElementById('route-hint').textContent = help
-      ? 'Puedes dejar la línea de producto como «Por definir». Los datos opcionales vacíos quedarán como pendientes.'
-      : route ? 'Conservaremos tus datos si cambias de ruta. La especificación y las condiciones se evaluarán antes de asumir compromisos.' : 'Elige una ruta. Puedes cambiarla sin borrar lo escrito.';
+      ? 'Puedes dejar la línea de producto como «Por definir».'
+      : 'Puedes cambiar de ruta sin borrar lo escrito.';
   }
 
   function updateShareLinks() {
@@ -406,14 +416,29 @@ function initializeRequest() {
     [emailLink, whatsappLink].forEach(link => {
       link.setAttribute('aria-disabled', String(!available));
       link.tabIndex = available ? 0 : -1;
-      if (!available) link.href = link === emailLink ? `mailto:${YAKAR.email}` : `https://wa.me/${YAKAR.whatsapp}`;
+      if (!available) link.removeAttribute('href');
     });
-    if (!available) { longSummary.hidden = true; status.textContent = 'El resumen está vacío. Escribe tu consulta o vuelve a corregir el formulario para habilitar las opciones.'; return; }
+    const body = encodeURIComponent(value.replace(/\p{Surrogate}/gu, '\uFFFD'));
+    const email = `mailto:${YAKAR.email}`;
+    const chat = `https://wa.me/${YAKAR.whatsapp}`;
     const subject = encodeURIComponent('Requerimiento para YAKAR' + (consultationReference ? ' · ' + consultationReference : ''));
-    const body = encodeURIComponent(value);
-    longSummary.hidden = body.length <= 1800;
-    emailLink.href = `mailto:${YAKAR.email}?subject=${subject}&body=${body}`;
-    whatsappLink.href = `https://wa.me/${YAKAR.whatsapp}?text=${body}`;
+    const emailWithBody = `${email}?subject=${subject}&body=${body}`;
+    const chatWithBody = `${chat}?text=${body}`;
+    // Keep full links short for webviews and local clients with tighter URL limits.
+    const needsPaste = Math.max(emailWithBody.length, chatWithBody.length) > 1800;
+    longSummary.hidden = !needsPaste;
+    copyButton.classList.toggle('outline', !needsPaste);
+    whatsappLink.classList.toggle('outline', needsPaste);
+    if (needsPaste && actions.firstElementChild !== copyButton) actions.prepend(copyButton);
+    if (!needsPaste && actions.firstElementChild !== whatsappLink) emailLink.after(copyButton);
+    emailLink.textContent = needsPaste ? 'Abrir correo' : 'Abrir correo para enviar';
+    whatsappLink.textContent = needsPaste ? 'Abrir WhatsApp' : 'Abrir WhatsApp para enviar';
+    if (available) {
+      emailLink.href = needsPaste ? `${email}?subject=${subject}` : emailWithBody;
+      whatsappLink.href = needsPaste ? chat : chatWithBody;
+    } else {
+      status.textContent = 'El resumen está vacío. Escribe tu consulta o vuelve al formulario.';
+    }
   }
 
   function clearErrors() {
@@ -436,6 +461,7 @@ function initializeRequest() {
     const issues = [];
     function issue(name, text) { issues.push({field: form.elements.namedItem(name), text}); }
     if (!form.querySelector('input[name="definition"]:checked')) issues.push({field: document.getElementById('route-defined'), text: 'Elige si tienes una especificación o necesitas ayuda para estructurarla.'});
+    if (!family.value && helpRoute.checked) family.value = 'Por definir';
     if (!family.value) issue('family', 'Elige una línea de producto. Si aún no la conoces, selecciona Por definir.');
     if (!need.value.trim()) issue('need', 'Cuéntanos qué necesitas o qué resultado buscas.');
     if (!form.elements.namedItem('contact').value.trim()) issue('contact', 'Indica tu nombre para dirigirnos a ti.');
@@ -461,7 +487,11 @@ function initializeRequest() {
       const link = document.createElement('a');
       link.href = '#' + field.id;
       link.textContent = text;
-      link.addEventListener('click', event => { event.preventDefault(); field.focus(); });
+      link.addEventListener('click', event => {
+        event.preventDefault();
+        field.focus({preventScroll: true});
+        scrollToElement(field);
+      });
       li.append(link);
       errors.querySelector('ul').append(li);
     }
@@ -472,7 +502,10 @@ function initializeRequest() {
   }
 
   family.addEventListener('change', updateHint);
-  form.querySelectorAll('input[name="definition"]').forEach(input => input.addEventListener('change', updateHint));
+  form.querySelectorAll('input[name="definition"]').forEach(input => input.addEventListener('change', () => {
+    if (helpRoute.checked && !family.value) family.value = 'Por definir';
+    updateHint();
+  }));
   document.querySelectorAll('a[href="#request-start"]').forEach(link => {
     link.addEventListener('click', event => {
       if (event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
@@ -480,7 +513,7 @@ function initializeRequest() {
       if (location.hash !== link.hash) history.pushState(null, '', link.hash);
       showForm();
       if (link.dataset.requestRoute === 'help') {
-        document.getElementById('route-help').checked = true;
+        helpRoute.checked = true;
         if (!family.value) family.value = 'Por definir';
       }
       const value = link.dataset.requestFamily;
@@ -505,7 +538,11 @@ function initializeRequest() {
     const signature = JSON.stringify([...data.entries()]);
     if (signature !== lastForm || !summary.value.trim()) {
       const value = name => String(data.get(name) || '').trim();
-      const date = value('neededBy').split('-');
+      function dateFor(name) {
+        if (!value(name)) return '';
+        const [year, month, day] = value(name).split('-');
+        return `${day}/${month}/${year}`;
+      }
       const fields = [
         ['Punto de partida', value('definition')],
         ['Cómo nos encontró (declarado)', discoveryLabels[value('discoverySource')] || ''],
@@ -515,25 +552,22 @@ function initializeRequest() {
         ['Teléfono', value('phone')],
         ['Empresa u organización', value('company')],
         ['Cantidad o alcance aproximado', value('quantity')],
-        ['Fecha requerida', value('neededBy') ? `${date[2]}/${date[1]}/${date[0]}` : ''],
+        ['Referencia de compra', value('purchaseReference')],
+        ['Fecha límite para recibir cotizaciones', dateFor('quoteDeadline')],
+        ['Fecha requerida de entrega', dateFor('neededBy')],
         ['Ubicación o entrega', value('location')],
         ['Condiciones de recepción', value('deliveryConditions')],
+        ['Resultado o criterio esperado', value('successCriteria')],
+        ['Condición crítica', value('criticalConstraint')],
         ['Visita a la web (declarada)', ({first:'Primera visita',return:'Ya había visitado la web',unsure:'No lo recuerda'})[value('visit')] || '']
       ];
       summary.value = [
         'YAKAR — RESUMEN DE REQUERIMIENTO', '',
-        ...(consultationReference ? ['Referencia de consulta web: ' + consultationReference, 'Esta referencia no acredita envío ni registro en YAKAR.', ''] : []),
+        ...(consultationReference ? ['Referencia de consulta web: ' + consultationReference, ''] : []),
         ...(value('guideLine') ? ['Guía consultada: ' + value('guideLine')] : []),
-        ...fields.filter(([label, text]) => text || ['Empresa u organización', 'Cantidad o alcance aproximado', 'Fecha requerida', 'Ubicación o entrega'].includes(label)).map(([label, text]) => `${label}: ${text || 'Pendiente de definir'}`),
+        ...fields.filter(([, text]) => text).map(([label, text]) => `${label}: ${text}`),
         '', 'NECESIDAD Y CONTEXTO', value('need'), '',
-        'PARA EVALUAR LA SOLUCIÓN — INFORMACIÓN DEL SOLICITANTE',
-        'Resultado o criterio esperado: ' + (value('successCriteria') || 'Pendiente de conversar'),
-        'Condición crítica: ' + (value('criticalConstraint') || 'No indicada; confirmar durante la evaluación'),
-        '', 'ANTES DE ACORDAR',
-        'Por evaluar con YAKAR: viabilidad, alcance y exclusiones, precio, plazo y criterios de aceptación.', '',
-        'Solicitud sujeta a evaluación y propuesta comercial.',
-        'La fecha requerida queda sujeta a confirmación.',
-        'Este resumen no acredita envío, registro ni aceptación.'
+        'Disponibilidad, precio y plazo se confirman en la propuesta.'
       ].join('\n');
       window.yakarMeasure?.('summary_prepared');
       lastForm = signature;
@@ -557,18 +591,25 @@ function initializeRequest() {
         return;
       }
       window.yakarMeasure?.(link === emailLink ? 'email_opened' : 'whatsapp_opened');
-      status.textContent = link === emailLink
+      status.textContent = !longSummary.hidden
+        ? 'Copia el resumen si aún no lo hiciste, pégalo en la aplicación y pulsa Enviar.'
+        : link === emailLink
         ? 'Revisa el correo y pulsa Enviar en tu aplicación. Si no se abre o falta texto, copia el resumen y escríbenos a ' + YAKAR.email + '.'
         : 'Revisa el mensaje y pulsa Enviar en WhatsApp. Si no se abre o falta texto, copia el resumen y escríbenos al +51 973 669 004.';
     });
   });
-  backButton.addEventListener('click', () => { showForm(); need.focus(); });
+  backButton.addEventListener('click', () => {
+    showForm();
+    need.focus({preventScroll: true});
+    scrollToElement(need);
+  });
   copyButton.addEventListener('click', async () => {
     if (!summary.value.trim()) return;
+    const summarySignature = signature();
     try {
       if (!navigator.clipboard || !window.isSecureContext) throw new Error('Copia manual requerida');
       await navigator.clipboard.writeText(summary.value);
-      copiedSignature = signature();
+      copiedSignature = summarySignature;
       window.yakarMeasure?.('summary_copied');
       status.textContent = 'Resumen copiado. Pégalo en tu correo o WhatsApp y envíalo desde allí.';
     } catch {
