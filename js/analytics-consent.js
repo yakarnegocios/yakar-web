@@ -14,6 +14,7 @@
     '/yakar-web/textil-industrial.html': 'Textil industrial | YAKAR',
     '/yakar-web/ferreteria-industrial.html': 'Suministros industriales | YAKAR',
     '/yakar-web/equipamiento-industrial.html': 'Equipamiento industrial | YAKAR',
+    '/yakar-web/izaje-sujecion.html': 'Eslingas, grilletes y tecles | YAKAR',
     '/yakar-web/perspectiva/': 'Perspectiva YAKAR',
     '/yakar-web/perspectiva/index.html': 'Perspectiva YAKAR',
     '/yakar-web/perspectiva/2026-11-01.html': 'Perspectiva YAKAR · 1 de noviembre de 2026',
@@ -27,6 +28,7 @@
   let choice = null;
   let initialized = false;
   let banner, status;
+  let settingsOpener = null;
   window['ga-disable-' + ID] = true;
 
   function readChoice() {
@@ -105,6 +107,16 @@
       }
     }
   }
+  function closeBanner() {
+    const restoreFocus = banner.contains(document.activeElement);
+    banner.hidden = true;
+    if (restoreFocus) {
+      const target = settingsOpener ?? document.querySelector('main');
+      if (target && !settingsOpener && !target.hasAttribute('tabindex')) target.tabIndex = -1;
+      target?.focus({preventScroll:true});
+    }
+    settingsOpener = null;
+  }
   function saveChoice(next) {
     choice = next;
     try { localStorage.setItem(KEY, JSON.stringify({choice:next, at:Date.now()})); } catch { /* Choice remains valid for this page. */ }
@@ -114,20 +126,32 @@
       window['ga-disable-' + ID] = true;
       clearAnalyticsCookies();
     }
-    banner.hidden = true;
-    document.querySelector('.yakar-measurement-settings')?.focus({preventScroll:true});
+    closeBanner();
     status.textContent = next === 'accepted' ? 'Medición aceptada. Puedes cambiar tu elección en Preferencias de medición.' : 'Medición rechazada. Puedes usar toda la web y cambiar tu elección en Preferencias de medición.';
   }
   function render() {
     const style = document.createElement('style');
-    style.textContent = '.yakar-measurement{position:fixed;right:16px;bottom:16px;z-index:1000;box-sizing:border-box;width:calc(100% - 32px);max-width:580px;max-height:calc(100vh - 32px);overflow:auto;margin:0;padding:18px 22px;box-shadow:0 8px 30px #1b3a6b26;border:1px solid #c5d2e5;border-radius:6px;background:#f4f7fb;color:#20354f;font:15px/1.6 system-ui}.yakar-measurement h2{margin:0 0 8px;font-size:18px;color:#1b3a6b}.yakar-measurement p{margin:0 0 12px;max-width:78ch}.yakar-measurement a{color:#1b3a6b;text-decoration:underline}.yakar-measurement-actions{display:flex;gap:12px;flex-wrap:wrap}.yakar-measurement button,.yakar-measurement-settings{font:inherit;cursor:pointer;padding:10px 16px;min-height:44px;border:1px solid #1b3a6b;border-radius:4px;background:white;color:#1b3a6b}.yakar-measurement button:focus-visible,.yakar-measurement-settings:focus-visible{outline:3px solid #3674bc;outline-offset:3px}.yakar-measurement-tools{max-width:1200px;margin:12px auto;padding:12px 20px;font:13px/1.5 system-ui;color:#536174}.yakar-measurement-tools p{margin:6px 0}.yakar-measurement[hidden]{display:none}@media(max-width:650px){.yakar-measurement{right:12px;bottom:12px;width:calc(100% - 24px);max-height:55dvh;margin:0;padding:16px}}';
+    style.textContent = `
+      .yakar-measurement{box-sizing:border-box;width:calc(100% - 32px);max-width:760px;margin:12px auto;padding:16px 20px;border:1px solid #c5d2e5;border-radius:6px;background:#f4f7fb;color:#20354f;font:15px/1.6 system-ui}
+      .yakar-measurement h2{margin:0 0 8px;font-size:18px;color:#1b3a6b}
+      .yakar-measurement p{margin:0 0 12px;max-width:78ch}
+      .yakar-measurement a{color:#1b3a6b;text-decoration:underline}
+      .yakar-measurement-actions{display:flex;gap:12px;flex-wrap:wrap}
+      .yakar-measurement button,.yakar-measurement-settings{font:inherit;cursor:pointer;padding:10px 16px;min-height:44px;border:1px solid #1b3a6b;border-radius:4px;background:white;color:#1b3a6b}
+      .yakar-measurement button:focus-visible,.yakar-measurement-settings:focus-visible{outline:3px solid #3674bc;outline-offset:3px}
+      .yakar-measurement-tools{max-width:1200px;margin:12px auto;padding:12px 20px;font:13px/1.5 system-ui;color:#536174}
+      .yakar-measurement-tools p{margin:6px 0}
+      .yakar-measurement[hidden]{display:none}
+    `;
     document.head.append(style);
     banner = document.createElement('section');
     banner.className = 'yakar-measurement';
     banner.setAttribute('aria-labelledby', 'measurement-title');
-    banner.innerHTML = '<h2 id="measurement-title" tabindex="-1">Tu privacidad, tu decisión</h2><p>Con tu permiso, usamos Google Analytics y cookies para entender cómo se utiliza esta web y mejorarla.</p><p>Tu requerimiento y tus datos de contacto no se envían a Analytics. Puedes navegar sin aceptar. <a href="/yakar-web/privacidad.html#medicion-web">Ver política de privacidad</a>.</p><div class="yakar-measurement-actions"><button type="button" data-accept>Aceptar</button><button type="button" data-reject>Continuar sin aceptar</button></div>';
+    banner.innerHTML = '<h2 id="measurement-title" tabindex="-1">Medición opcional</h2><p>Si aceptas, usamos Google Analytics con cookies para mejorar la web. El texto de tu consulta y tus datos de contacto quedan fuera de esta medición. <a href="/yakar-web/privacidad.html#medicion-web">Privacidad</a>.</p><div class="yakar-measurement-actions"><button type="button" data-accept>Aceptar</button><button type="button" data-reject>Seguir sin aceptar</button></div>';
     banner.hidden = !!choice;
-    document.body.append(banner);
+    const main = document.querySelector('main');
+    if (main) main.before(banner);
+    else document.body.append(banner);
     const tools = document.createElement('div');
     tools.className = 'yakar-measurement-tools';
     const settings = document.createElement('button');
@@ -135,7 +159,12 @@
     status = document.createElement('p');status.setAttribute('role', 'status');status.setAttribute('aria-live', 'polite');
     tools.append(settings, status);
     (document.querySelector('[data-measurement-placement]') ?? document.body).append(tools);
-    settings.addEventListener('click', () => { banner.hidden = false; banner.querySelector('h2').focus(); banner.scrollIntoView({block:'center'}); });
+    settings.addEventListener('click', () => {
+      settingsOpener = settings;
+      tools.before(banner);
+      banner.hidden = false;
+      banner.querySelector('h2').focus();
+    });
     banner.querySelector('[data-accept]').addEventListener('click', () => saveChoice('accepted'));
     banner.querySelector('[data-reject]').addEventListener('click', () => saveChoice('rejected'));
     for (const link of document.querySelectorAll('a[data-brochure-format]')) {
@@ -151,7 +180,10 @@
     choice = readChoice();
     if (choice === 'accepted') activate();
     else { window['ga-disable-' + ID] = true; clearAnalyticsCookies(); }
-    if (banner) banner.hidden = !!choice;
+    if (banner) {
+      if (choice) closeBanner();
+      else banner.hidden = false;
+    }
   });
   choice = readChoice();
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', render, {once:true}); else render();
