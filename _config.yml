@@ -1,0 +1,11 @@
+# GitHub Pages publishes the root through Jekyll. Keep working material out
+# of the generated site. Sensitive material belongs in a private repository.
+exclude:
+  - AGENTS.md
+  - README.md
+  - docs/
+  - scripts/
+  - tests/
+  - tools/
+  - documentos/yakar-ejemplo-propuesta.pdf
+  - documentos/yakar-ficha-proveedor.pdf
