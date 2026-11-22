@@ -121,6 +121,34 @@
       text-decoration: none;
     }
 
+
+    .commercial #soluciones .cover-families a { box-sizing: border-box; gap: 8px; }
+    .portfolio-icon {
+      display: inline-block;
+      flex: 0 0 24px;
+      width: 24px;
+      height: 24px;
+      background: url("assets/portafolio-lineas-v1.png") no-repeat;
+      background-size: 144px 24px;
+    }
+    .portfolio-icon-0 { background-position: 0px 0; }
+    .portfolio-icon-1 { background-position: -24px 0; }
+    .portfolio-icon-2 { background-position: -48px 0; }
+    .portfolio-icon-3 { background-position: -72px 0; }
+    .portfolio-icon-4 { background-position: -96px 0; }
+    .portfolio-icon-5 { background-position: -120px 0; }
+    @media (max-width: 1024px) {
+      .commercial #soluciones .cover-families { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+      .commercial #soluciones .cover-families a { min-width: 0; min-height: 48px; padding: 8px 10px; }
+      .commercial #soluciones .cover-families a > span:last-child { overflow-wrap: anywhere; }
+    }
+    @media (max-width: 599px) {
+      .commercial #soluciones .cover-families { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 359px) {
+      .commercial #soluciones .cover-families { grid-template-columns: minmax(0, 1fr); }
+    }
+
     .commercial .cover-families a:hover { background: #e4ecf5; }
     .commercial .cover-families a:focus-visible { outline: 3px solid #1b3a6b; outline-offset: 3px; }
 
@@ -467,13 +495,13 @@
           </div>
 
             <p id="portfolio-navigation">Ir a una línea de producto</p>
-            <nav aria-labelledby="portfolio-navigation" class="cover-families" aria-label="Explorar las seis líneas del portafolio">
-              <a href="#linea-senalizacion">Señalización</a>
-              <a href="#linea-uniformes">Uniformes</a>
-              <a href="#linea-herramientas">Herramientas</a>
-              <a href="#linea-equipamiento">Equipamiento</a>
-              <a href="#linea-seguridad">Seguridad</a>
-              <a href="#linea-izaje">Izaje</a>
+            <nav aria-labelledby="portfolio-navigation" class="cover-families">
+              <a href="#linea-senalizacion"><span class="portfolio-icon portfolio-icon-0" aria-hidden="true"></span><span>Señalización</span></a>
+              <a href="#linea-uniformes"><span class="portfolio-icon portfolio-icon-1" aria-hidden="true"></span><span>Uniformes</span></a>
+              <a href="#linea-herramientas"><span class="portfolio-icon portfolio-icon-2" aria-hidden="true"></span><span>Herramientas</span></a>
+              <a href="#linea-equipamiento"><span class="portfolio-icon portfolio-icon-3" aria-hidden="true"></span><span>Equipamiento</span></a>
+              <a href="#linea-seguridad"><span class="portfolio-icon portfolio-icon-4" aria-hidden="true"></span><span>Seguridad</span></a>
+              <a href="#linea-izaje"><span class="portfolio-icon portfolio-icon-5" aria-hidden="true"></span><span>Izaje</span></a>
             </nav>
 
           <div id="productos">
