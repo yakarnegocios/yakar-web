@@ -40,6 +40,15 @@
   <script src="js/main.js?v=ca6e4ccc1b5c" defer></script>
 
   <style>
+    .commercial #metodo .method-visual-intro { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,480px); align-items:center; gap:clamp(20px,4vw,48px); }
+    .method-visual-intro > div > p:last-child { max-width:36rem; margin-bottom:0; }
+    .method-visual { margin:0; min-width:0; }
+    .method-visual img { display:block; width:100%; height:auto; border-radius:12px; }
+    .method-visual figcaption { color:#415a73; font-size:.8125rem; line-height:1.45; margin-top:8px; }
+    @media(max-width:760px) {
+      .commercial #metodo .method-visual-intro { grid-template-columns:minmax(0,1fr); }
+      .method-visual { width:min(100%,480px); }
+    }
     .commercial .assurance {
       background: #1B3A6B;
       color: #fff;
@@ -622,15 +631,23 @@
         aria-labelledby="method-title"
       >
         <div class="wrap">
-          <div class="section-head">
+          <div class="section-head method-visual-intro">
             <div>
               <p class="eyebrow">El método YAKAR</p>
               <h2 id="method-title">
                 Sabes qué se acuerda.<br>
                 Sabes qué sigue.
               </h2>
+              <p>Gestionamos cada requerimiento según su alcance y riesgo. Acordamos qué se entrega, quién valida los cambios y cómo se comprueba la conformidad.</p>
             </div>
-            <p>Gestionamos cada requerimiento según su alcance y riesgo. Acordamos qué se entrega, quién valida los cambios y cómo se comprueba la conformidad.</p>
+            <figure class="method-visual">
+              <img src="assets/revision-requerimiento-480.webp"
+                srcset="assets/revision-requerimiento-480.webp 480w, assets/revision-requerimiento-900.webp 900w"
+                sizes="(max-width: 520px) calc(100vw - 32px), (max-width: 760px) 480px, min(43vw, 480px)"
+                width="900" height="600" loading="lazy" decoding="async"
+                alt="Manos que comparan una muestra de tela con la ficha de un uniforme.">
+              <figcaption>Ejemplo ilustrativo generado con IA · revisión de una especificación antes de cotizar.</figcaption>
+            </figure>
           </div>
 
           <div class="roadmap">
