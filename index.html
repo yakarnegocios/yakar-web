@@ -41,10 +41,14 @@
 
   <style>
     .commercial #metodo .method-visual-intro { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,480px); align-items:center; gap:clamp(20px,4vw,48px); }
-    .method-visual-intro > div > p:last-child { max-width:36rem; margin-bottom:0; }
+    .commercial #metodo .method-summary { max-width:36rem; margin:12px 0 0; color:#eef3fa; }
     .method-visual { margin:0; min-width:0; }
     .method-visual img { display:block; width:100%; height:auto; border-radius:12px; }
-    .method-visual figcaption { color:#415a73; font-size:.8125rem; line-height:1.45; margin-top:8px; }
+    .commercial #metodo .method-visual figcaption { color:#d5dfed; font-size:.8125rem; line-height:1.45; margin-top:8px; }
+    .method-actions { display:flex; flex-wrap:wrap; align-items:center; gap:12px 24px; margin-top:24px; }
+    .commercial #metodo .method-actions .btn { background:#fff; color:#1b3a6b; border-color:#fff; }
+    .commercial #metodo .method-actions .method-link { margin:0; padding-block:12px; }
+    .commercial #metodo :is(button, a):focus-visible { outline:2px solid #fff; outline-offset:4px; }
     @media(max-width:760px) {
       .commercial #metodo .method-visual-intro { grid-template-columns:minmax(0,1fr); }
       .method-visual { width:min(100%,480px); }
@@ -647,10 +651,9 @@
             <div>
               <p class="eyebrow">El método YAKAR</p>
               <h2 id="method-title">
-                Sabes qué se acuerda.<br>
-                Sabes qué sigue.
+                Qué puedes esperar al comprar con YAKAR
               </h2>
-              <p>Gestionamos cada requerimiento según su alcance y riesgo. Acordamos qué se entrega, quién valida los cambios y cómo se comprueba la conformidad.</p>
+              <p class="method-summary">Puedes empezar con una lista o contarnos qué necesitas. Si podemos atender el pedido, te indicamos qué incluye la cotización, el precio y el plazo propuesto. Antes de confirmar, acordamos cómo revisar la entrega.</p>
             </div>
             <figure class="method-visual">
               <img src="assets/revision-requerimiento-480.webp"
@@ -658,13 +661,13 @@
                 sizes="(max-width: 520px) calc(100vw - 32px), (max-width: 760px) 480px, min(43vw, 480px)"
                 width="900" height="600" loading="lazy" decoding="async"
                 alt="Manos que comparan una muestra de tela con la ficha de un uniforme.">
-              <figcaption>Ejemplo ilustrativo generado con IA · revisión de una especificación antes de cotizar.</figcaption>
+              <figcaption>Revisión de una ficha de uniforme antes de cotizar (imagen generada con IA).</figcaption>
             </figure>
           </div>
 
           <div class="roadmap">
             <p class="roadmap-hint">
-              Recorre los hitos con el cursor, el teclado o un toque.
+              Selecciona una etapa para ver qué sucede.
             </p>
 
             <div class="route-map">
@@ -755,9 +758,10 @@
               <strong>Una necesidad definida contigo.</strong>
             </div>
 
-            <a class="method-link" href="metodo.html">
-              Ver el proceso completo →
-            </a>
+            <div class="method-actions">
+              <a class="btn" href="#request-start">Consultar un producto</a>
+              <a class="method-link" href="metodo.html">Ver el proceso completo</a>
+            </div>
           </div>
         </div>
       </section>
