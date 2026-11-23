@@ -40,6 +40,15 @@
   <script src="js/main.js?v=ca6e4ccc1b5c" defer></script>
 
   <style>
+    .commercial #metodo .method-visual-intro { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,480px); align-items:center; gap:clamp(20px,4vw,48px); }
+    .method-visual-intro > div > p:last-child { max-width:36rem; margin-bottom:0; }
+    .method-visual { margin:0; min-width:0; }
+    .method-visual img { display:block; width:100%; height:auto; border-radius:12px; }
+    .method-visual figcaption { color:#415a73; font-size:.8125rem; line-height:1.45; margin-top:8px; }
+    @media(max-width:760px) {
+      .commercial #metodo .method-visual-intro { grid-template-columns:minmax(0,1fr); }
+      .method-visual { width:min(100%,480px); }
+    }
     .commercial .assurance {
       background: #1B3A6B;
       color: #fff;
@@ -119,6 +128,34 @@
       border-radius: 8px;
       background: #f3f6fa;
       text-decoration: none;
+    }
+
+
+    .commercial #soluciones .cover-families a { box-sizing: border-box; gap: 8px; }
+    .portfolio-icon {
+      display: inline-block;
+      flex: 0 0 24px;
+      width: 24px;
+      height: 24px;
+      background: url("assets/portafolio-lineas-v1.png") no-repeat;
+      background-size: 144px 24px;
+    }
+    .portfolio-icon-0 { background-position: 0px 0; }
+    .portfolio-icon-1 { background-position: -24px 0; }
+    .portfolio-icon-2 { background-position: -48px 0; }
+    .portfolio-icon-3 { background-position: -72px 0; }
+    .portfolio-icon-4 { background-position: -96px 0; }
+    .portfolio-icon-5 { background-position: -120px 0; }
+    @media (max-width: 1024px) {
+      .commercial #soluciones .cover-families { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+      .commercial #soluciones .cover-families a { min-width: 0; min-height: 48px; padding: 8px 10px; }
+      .commercial #soluciones .cover-families a > span:last-child { overflow-wrap: anywhere; }
+    }
+    @media (max-width: 599px) {
+      .commercial #soluciones .cover-families { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 359px) {
+      .commercial #soluciones .cover-families { grid-template-columns: minmax(0, 1fr); }
     }
 
     .commercial .cover-families a:hover { background: #e4ecf5; }
@@ -314,6 +351,18 @@
       .commercial .solution-card-v5:hover { transform: none; }
     }
     .decision-assist {background:#edf2f6;border-left:4px solid #1b3a6b;padding:18px;margin:20px 0}.decision-assist h4{margin:0 0 8px}.decision-assist p{margin:8px 0}
+    /* Tarjetas compactas del portafolio. */
+    .commercial .solution-card-v5 { padding-block: 16px; }
+    .commercial .solution-top-v5 { margin-bottom: 14px; }
+    .commercial .solution-card-v5 h3 { min-height: 0; margin-bottom: 12px; }
+    .commercial .solution-description-v5 { margin-bottom: 10px; }
+    .commercial .solution-card-v5 > p:not(.solution-description-v5) {
+      margin-top: 0; margin-bottom: 12px;
+    }
+    @media (max-width: 760px) {
+      .commercial .solution-card-v5 { padding-block: 18px; }
+      .commercial .solution-top-v5 { margin-bottom: 12px; }
+    }
   </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"YAKAR","legalName":"Yakar Negocios E.I.R.L.","url":"https://yakarnegocios.github.io/yakar-web/","logo":"https://yakarnegocios.github.io/yakar-web/assets/yakar-logo-web.webp","sameAs":["https://www.instagram.com/yakarnegocios/","https://www.linkedin.com/company/yakar-negocios/"]}</script>
 <script src="js/analytics-consent.js?v=cce8eff1daa0" defer></script>
@@ -322,6 +371,7 @@
 </head>
 
 <body>
+  <p id="aviso-publicacion" role="status" style="margin:0;padding:10px 16px;text-align:center;background:#eef2f7;color:#1b3a6b">Estamos verificando una actualización de la web de YAKAR.</p>
   <!-- El formulario prepara un resumen local; no envía datos automáticamente. -->
 
   <div class="commercial">
@@ -366,7 +416,7 @@
           <a href="#soluciones">Productos</a>
           <a href="#metodo">Nuestro método</a>
           <a href="#perspectiva">Perspectiva</a>
-          <a class="btn" href="#request-start">Preparar mi consulta</a>
+          <a class="btn" href="#request-start">Consultar un producto</a>
         </nav>
       </div>
     </header>
@@ -388,7 +438,7 @@
             </p>
 
             <div class="actions">
-              <a class="btn" href="#request-start">Preparar mi consulta</a>
+              <a class="btn" href="#request-start">Consultar un producto</a>
               <a class="quiet-link" href="mailto:negocios.yakar@gmail.com?subject=YAKAR%20%7C%20Solicitud%20de%20cotizaci%C3%B3n&amp;body=Hola%2C%20equipo%20YAKAR%3A%0D%0A%0D%0AAdjunto%20mi%20lista%20o%20ficha%20para%20cotizar.%0D%0AEmpresa%3A%0D%0AReferencia%20de%20compra%20%28si%20aplica%29%3A%0D%0APunto%20de%20recepci%C3%B3n%3A%0D%0AFecha%20requerida%20de%20entrega%3A%0D%0AFecha%20l%C3%ADmite%20para%20recibir%20la%20cotizaci%C3%B3n%20%28si%20aplica%29%3A%0D%0A%0D%0AGracias." data-rfq-email>Abrir correo para adjuntar mi lista</a>
             </div>
 
@@ -467,13 +517,13 @@
           </div>
 
             <p id="portfolio-navigation">Ir a una línea de producto</p>
-            <nav aria-labelledby="portfolio-navigation" class="cover-families" aria-label="Explorar las seis líneas del portafolio">
-              <a href="#linea-senalizacion">Señalización</a>
-              <a href="#linea-uniformes">Uniformes</a>
-              <a href="#linea-herramientas">Herramientas</a>
-              <a href="#linea-equipamiento">Equipamiento</a>
-              <a href="#linea-seguridad">Seguridad</a>
-              <a href="#linea-izaje">Izaje</a>
+            <nav aria-labelledby="portfolio-navigation" class="cover-families">
+              <a href="#linea-senalizacion"><span class="portfolio-icon portfolio-icon-0" aria-hidden="true"></span><span>Señalización</span></a>
+              <a href="#linea-uniformes"><span class="portfolio-icon portfolio-icon-1" aria-hidden="true"></span><span>Uniformes</span></a>
+              <a href="#linea-herramientas"><span class="portfolio-icon portfolio-icon-2" aria-hidden="true"></span><span>Herramientas</span></a>
+              <a href="#linea-equipamiento"><span class="portfolio-icon portfolio-icon-3" aria-hidden="true"></span><span>Equipamiento</span></a>
+              <a href="#linea-seguridad"><span class="portfolio-icon portfolio-icon-4" aria-hidden="true"></span><span>Seguridad</span></a>
+              <a href="#linea-izaje"><span class="portfolio-icon portfolio-icon-5" aria-hidden="true"></span><span>Izaje</span></a>
             </nav>
 
           <div id="productos">
@@ -486,7 +536,7 @@
                   <p>Para operaciones, vías y flotas</p>
                 </div>
                 <h3>Señalización y visibilidad</h3>
-                <p class="solution-description-v5">Cintas y láminas retrorreflectivas, señales viales e industriales, tachas, tachones, adhesivos y placas con braille. Precisamos uso, medidas, cantidades y documentación requerida.</p>
+                <p class="solution-description-v5">Productos bajo pedido para delimitar zonas, ordenar el tránsito y mejorar la visibilidad. Consulta por delineadores, cachacos, barriles delimitadores, cintas, señales y otros productos según tu operación.</p>
                 <p><a href="senalizacion-visibilidad.html">Ver guía de señalización y visibilidad →</a></p>
                 <a class="btn" href="#request-start" data-request-family="Señalización y visibilidad">Consultar señalización</a>
               </article>
@@ -519,7 +569,7 @@
                   <p>Equipos bajo pedido</p>
                 </div>
                 <h3>Equipamiento industrial</h3>
-                <p class="solution-description-v5">Grupos electrógenos según potencia, tensión, altitud y condiciones de operación. Evaluamos otros equipos industriales según el requerimiento.</p>
+                <p class="solution-description-v5">Grupos electrógenos, hidrolavadoras y otros equipos industriales bajo pedido. Evaluamos el equipo según el uso y las condiciones de tu operación.</p>
                 <p><a href="equipamiento-industrial.html">Ver guía de equipamiento industrial →</a></p>
                 <a class="btn" href="#request-start" data-request-family="Equipamiento industrial">Consultar equipamiento</a>
               </article>
@@ -594,15 +644,23 @@
         aria-labelledby="method-title"
       >
         <div class="wrap">
-          <div class="section-head">
+          <div class="section-head method-visual-intro">
             <div>
               <p class="eyebrow">El método YAKAR</p>
               <h2 id="method-title">
                 Sabes qué se acuerda.<br>
                 Sabes qué sigue.
               </h2>
+              <p>Gestionamos cada requerimiento según su alcance y riesgo. Acordamos qué se entrega, quién valida los cambios y cómo se comprueba la conformidad.</p>
             </div>
-            <p>Gestionamos cada requerimiento según su alcance y riesgo. Acordamos qué se entrega, quién valida los cambios y cómo se comprueba la conformidad.</p>
+            <figure class="method-visual">
+              <img src="assets/revision-requerimiento-480.webp"
+                srcset="assets/revision-requerimiento-480.webp 480w, assets/revision-requerimiento-900.webp 900w"
+                sizes="(max-width: 520px) calc(100vw - 32px), (max-width: 760px) 480px, min(43vw, 480px)"
+                width="900" height="600" loading="lazy" decoding="async"
+                alt="Manos que comparan una muestra de tela con la ficha de un uniforme.">
+              <figcaption>Ejemplo ilustrativo generado con IA · revisión de una especificación antes de cotizar.</figcaption>
+            </figure>
           </div>
 
           <div class="roadmap">
@@ -946,7 +1004,7 @@
               <p role="status" data-review-storage></p>
               <button type="button" class="btn outline" data-review-clear>Borrar mi revisión</button>
               <p class="small">Esta lista es una ayuda personal: no acredita una evaluación técnica, una autorización de trabajo ni una aprobación de compra.</p>
-              <a class="btn" href="#request-start">Preparar mi consulta</a>
+              <a class="btn" href="#request-start">Consultar un producto</a>
             </details>
           </section>
 
@@ -1042,7 +1100,7 @@
 
             <div id="request-form-intro">
               <h3>Cuéntanos qué necesitas</h3>
-              <p class="small">Prepara un resumen para enviarlo por WhatsApp o correo. Si ya tienes un archivo, abre el correo, adjúntalo y pulsa Enviar desde tu aplicación.</p>
+              <p class="small">Prepara un resumen para enviarlo por WhatsApp o correo. Si ya tienes una lista o ficha, puedes ir directamente al correo. Adjunta tu archivo y envíalo desde tu aplicación.</p>
               <a class="btn outline" href="mailto:negocios.yakar@gmail.com?subject=YAKAR%20%7C%20Solicitud%20de%20cotizaci%C3%B3n&amp;body=Hola%2C%20equipo%20YAKAR%3A%0D%0A%0D%0AAdjunto%20mi%20lista%20o%20ficha%20para%20cotizar.%0D%0AEmpresa%3A%0D%0AReferencia%20de%20compra%20%28si%20aplica%29%3A%0D%0APunto%20de%20recepci%C3%B3n%3A%0D%0AFecha%20requerida%20de%20entrega%3A%0D%0AFecha%20l%C3%ADmite%20para%20recibir%20la%20cotizaci%C3%B3n%20%28si%20aplica%29%3A%0D%0A%0D%0AGracias." data-rfq-email>Abrir correo para adjuntar mi lista</a>
               <p class="small">Los campos con * son obligatorios. <a href="privacidad.html#referencia-consulta">Privacidad de la consulta</a>.</p>
             </div>
@@ -1062,8 +1120,8 @@
             >
               <fieldset class="request-routes" aria-describedby="route-hint">
                 <legend>¿En qué punto estás? *</legend>
-                <label class="request-route" for="route-defined"><input id="route-defined" type="radio" name="definition" value="Tengo una especificación definida" required><span>Tengo una especificación definida<small>Conozco el producto o alcance y sus características.</small></span></label>
-                <label class="request-route" for="route-help"><input id="route-help" type="radio" name="definition" value="Necesito ayuda para estructurarla" required><span>Necesito ayuda para estructurarla<small>Conozco la necesidad, pero aún faltan detalles.</small></span></label>
+                <label class="request-route" for="route-defined"><input id="route-defined" type="radio" name="definition" value="Tengo una especificación definida" required><span>Ya sé qué producto necesito<small>Tengo una lista, una ficha o características que puedo describir.</small></span></label>
+                <label class="request-route" for="route-help"><input id="route-help" type="radio" name="definition" value="Necesito ayuda para estructurarla" required><span>Necesito ayuda para definir el producto<small>Puedo explicar dónde se usará y qué debe resolver.</small></span></label>
                 <p class="field-hint" id="route-hint" aria-live="polite">Elige una ruta. Puedes cambiarla sin borrar lo escrito.</p>
               </fieldset>
               <aside class="decision-assist" aria-labelledby="decision-assist-title"><h4 id="decision-assist-title">Empecemos por lo importante para ti</h4><p id="decision-question" aria-live="polite">Cuéntanos qué necesitas resolver. No hace falta redactar una ficha técnica.</p><p class="small">Comparte solo los datos de compra necesarios. Si debes compartir un plano reservado, acuerda primero el canal con tu organización y con YAKAR.</p></aside>
@@ -1223,6 +1281,7 @@
 
           <nav aria-label="Conoce YAKAR">
             <h2>Conoce YAKAR</h2>
+            <a href="metodo.html#proposito-y-rumbo">Propósito y rumbo</a>
             <a href="./#productos">Nuestro portafolio</a>
             <a href="./#metodo">Cómo atendemos tu requerimiento</a>
             <a href="./#brochure">Descargar brochure</a>
