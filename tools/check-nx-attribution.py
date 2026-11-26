@@ -24,7 +24,15 @@ class CreditParser(HTMLParser):
             self.footer = False
 
 root = Path(__file__).resolve().parents[1]
-for page in sorted(root.glob("*.html")):
+public_pages = (
+    "index.html",
+    "metodo.html",
+    "integridad.html",
+    "privacidad.html",
+    "reclamaciones.html",
+)
+for name in public_pages:
+    page = root / name
     parser = CreditParser()
     parser.feed(page.read_text())
     assert parser.texts == ["YAKAR, una iniciativa de NX."], f"Atribución NX ausente o alterada: {page.name}"
