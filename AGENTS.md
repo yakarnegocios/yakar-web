@@ -8,3 +8,7 @@
 - Perspectiva YAKAR tiene su publicación semanal programada el domingo a las 02:00, hora de Lima, bajo esta misma política.
 - Fuerza mayor: una intervención excepcional requiere autorización expresa de Gerencia para el incidente. Registra motivo, autorización, quién ejecutó, hora local y resultado de la verificación. La automatización ordinaria no aplica excepciones.
 - Después de cada publicación, verifica la URL pública y el resultado del despliegue.
+
+## Atribución permanente de origen NX
+
+Conservar en el pie de las cinco páginas públicas el crédito aprobado: **YAKAR, una iniciativa de NX.** No confundir esta atribución de origen con la razón social ni con responsabilidad contractual. El crédito forma parte del código institucional y no debe convertirse en un campo editable por usuarios operativos. Toda modificación requiere autorización expresa del titular. Ejecutar `python tools/check-nx-attribution.py` antes de publicar; esta comprobación detecta omisiones de texto y no sustituye la revisión visual en escritorio y celular.
