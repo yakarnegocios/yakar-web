@@ -88,6 +88,7 @@
   <p>Si un colaborador presenta a un cliente o proveedor, registramos el origen de la oportunidad, quién hizo la presentación y quién dará seguimiento. Cuando la relación es previa, incorporamos únicamente la información necesaria para la gestión comercial que corresponda. Las condiciones de cualquier incentivo se acuerdan por escrito de antemano.</p>
 
   <h3>Evaluación de proveedores</h3>
+  <p id="presentar-proveedor">Si tu empresa suministra productos, comparte razón social, líneas de suministro y un contacto comercial. El equipo evaluará la presentación según la operación. <a href="mailto:negocios.yakar@gmail.com?subject=YAKAR%20%7C%20Presentaci%C3%B3n%20de%20proveedor">Abrir correo para presentar mi empresa</a>. <a href="privacidad.html#referencia-consulta">Privacidad de contactos comerciales</a>.</p>
   <p>Solicitamos información suficiente para identificar al proveedor y evaluar su capacidad para el pedido. Quien presenta a un proveedor declara cualquier vínculo personal o interés que pueda influir en la decisión. YAKAR evalúa la oferta según la especificación, la capacidad, el precio, la calidad y el plazo, y registra quién aprueba la selección.</p>
 
 
@@ -659,4 +660,3 @@
 <script>document.addEventListener('DOMContentLoaded',()=>{const lines={"seguridad-industrial":"Seguridad industrial y EPP","textil-industrial":"Uniformes y textil industrial","ferreteria-industrial":"Suministros industriales","equipamiento-industrial":"Equipamiento industrial bajo requerimiento"};const line=new URLSearchParams(location.search).get('linea');if(!Object.hasOwn(lines,line))return;const family=document.querySelector('#family');if(!family)return;family.value='Productos y suministros';family.dispatchEvent(new Event('change',{bubbles:true}));const need=document.querySelector('#need');if(need)need.placeholder=lines[line]+': describe tu necesidad';const label=document.createElement('label');const choice=document.createElement('input');choice.type='checkbox';choice.name='guideLine';choice.value=lines[line];choice.checked=true;label.append(choice,document.createTextNode(' Incluir en mi resumen la guía consultada: '+lines[line]));family.insertAdjacentElement('afterend',label);});</script>
 </body>
 </html>
-
