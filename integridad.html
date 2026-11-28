@@ -52,10 +52,10 @@
         </button>
 
         <nav id="main-nav" class="navlinks" aria-label="Principal">
-          <a href="./#soluciones">Soluciones</a>
+          <a href="./#soluciones">Productos</a>
           <a href="./#metodo">Nuestro método</a>
           <a href="./#perspectiva">Perspectiva</a>
-          <a class="btn" href="./#request-start">Preparar mi consulta</a>
+          <a class="btn" href="./#request-start">Consultar un producto</a>
         </nav>
       </div>
     </header>
@@ -88,6 +88,7 @@
   <p>Si un colaborador presenta a un cliente o proveedor, registramos el origen de la oportunidad, quién hizo la presentación y quién dará seguimiento. Cuando la relación es previa, incorporamos únicamente la información necesaria para la gestión comercial que corresponda. Las condiciones de cualquier incentivo se acuerdan por escrito de antemano.</p>
 
   <h3>Evaluación de proveedores</h3>
+  <p id="presentar-proveedor">Si tu empresa suministra productos, comparte razón social, líneas de suministro y un contacto comercial. El equipo evaluará la presentación según la operación. <a href="mailto:negocios.yakar@gmail.com?subject=YAKAR%20%7C%20Presentaci%C3%B3n%20de%20proveedor">Abrir correo para presentar mi empresa</a>. <a href="privacidad.html#referencia-consulta">Privacidad de contactos comerciales</a>.</p>
   <p>Solicitamos información suficiente para identificar al proveedor y evaluar su capacidad para el pedido. Quien presenta a un proveedor declara cualquier vínculo personal o interés que pueda influir en la decisión. YAKAR evalúa la oferta según la especificación, la capacidad, el precio, la calidad y el plazo, y registra quién aprueba la selección.</p>
 
 
@@ -121,13 +122,13 @@
           </section>
 
           <nav aria-label="Conoce YAKAR">
-            <h2>Conoce YAKAR</h2>
+            <details><summary style="cursor:pointer;min-height:44px">Conoce YAKAR</summary>
             <a href="./">Volver al inicio de YAKAR</a>
             <a href="./#productos">Nuestro portafolio</a>
             <a href="./#metodo">Cómo atendemos tu requerimiento</a>
             <a href="./#brochure">Descargar brochure</a>
             <a href="./#perspectiva">Perspectiva YAKAR</a>
-          </nav>
+          </details></nav>
 
           <section class="footer-contact-v4" aria-label="Contacto comercial">
             <h2>Contacto comercial</h2>
@@ -157,7 +158,8 @@
         </div>
 
         <div class="footer-nx-v5">
-          <strong>El compromiso YAKAR</strong>
+          <!-- Atribución permanente: ver AGENTS.md y DEC-026. -->
+          <strong data-nx-attribution="initiative">YAKAR, una iniciativa de NX.</strong>
           <p>
             Entender tu necesidad, acordar condiciones claras y dar seguimiento a tu pedido. La integridad es parte de cumplir.
           </p>
@@ -165,9 +167,7 @@
 
         <div class="footer-base-v4 footer-utilities">
           <nav aria-label="Información legal" class="footer-legal">
-            <a href="integridad.html">Integridad comercial</a>
-            <a href="integridad.html#relaciones-comerciales">Política de relaciones comerciales</a>
-            <a href="integridad.html#anticorrupcion-antisoborno">Política Anticorrupción y Antisoborno</a>
+            <a href="integridad.html#anticorrupcion-antisoborno">Política Anticorrupción y Antisoborno</a><details><summary style="cursor:pointer;min-height:44px">Otras políticas comerciales</summary><a href="integridad.html">Integridad comercial</a><a href="integridad.html#relaciones-comerciales">Política de relaciones comerciales</a></details>
             <a href="privacidad.html">Privacidad</a>
             <a href="reclamaciones.html">Libro de Reclamaciones</a>
             <div data-measurement-placement></div>
@@ -660,4 +660,3 @@
 <script>document.addEventListener('DOMContentLoaded',()=>{const lines={"seguridad-industrial":"Seguridad industrial y EPP","textil-industrial":"Uniformes y textil industrial","ferreteria-industrial":"Suministros industriales","equipamiento-industrial":"Equipamiento industrial bajo requerimiento"};const line=new URLSearchParams(location.search).get('linea');if(!Object.hasOwn(lines,line))return;const family=document.querySelector('#family');if(!family)return;family.value='Productos y suministros';family.dispatchEvent(new Event('change',{bubbles:true}));const need=document.querySelector('#need');if(need)need.placeholder=lines[line]+': describe tu necesidad';const label=document.createElement('label');const choice=document.createElement('input');choice.type='checkbox';choice.name='guideLine';choice.value=lines[line];choice.checked=true;label.append(choice,document.createTextNode(' Incluir en mi resumen la guía consultada: '+lines[line]));family.insertAdjacentElement('afterend',label);});</script>
 </body>
 </html>
-

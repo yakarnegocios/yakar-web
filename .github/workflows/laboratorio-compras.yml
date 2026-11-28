@@ -1,0 +1,30 @@
+name: Laboratorio de compras YAKAR
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verificacion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Revisar enlaces, archivos y anclas
+        run: python3 tools/check-links.py
+      - name: Preparar el navegador aislado
+        run: |
+          npm install --prefix "$RUNNER_TEMP/yakar-web-lab" --no-save --no-package-lock playwright@1.62.1 jsdom@26.1.0 axe-core@4.14.1
+          echo "NODE_PATH=$RUNNER_TEMP/yakar-web-lab/node_modules" >> "$GITHUB_ENV"
+          "$RUNNER_TEMP/yakar-web-lab/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Revisar guías y preservación de la consulta
+        run: node tests/guide-journeys.cjs
+      - name: Revisar comportamiento del formulario
+        run: node --test tests/request-journey.cjs
+      - name: Revisar diseño móvil y accesibilidad del menú
+        run: node tests/mobile.cjs
+      - name: Revisar el Libro de Reclamaciones sin enviar registros reales
+        run: YAKAR_AXE_PATH="$RUNNER_TEMP/yakar-web-lab/node_modules/axe-core/axe.min.js" node tests/book-lab.cjs
