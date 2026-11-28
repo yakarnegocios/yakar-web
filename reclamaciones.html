@@ -525,12 +525,12 @@
         </strong>
 
         <p>
-          Completa el formulario y conserva la constancia que se abrirá
-          en otra pestaña. Tu caso queda registrado cuando recibes
-          un código de recepción.
+          Completa el formulario y revisa la respuesta que se abre en otra pestaña.
+          La constancia con código confirma el registro. Consérvala para
+          hacer seguimiento.
         </p>
 
-        <p>
+        <p id="ayuda-libro" tabindex="-1">
           Si necesitas ayuda para utilizar el formulario, contáctanos en
           <a href="mailto:negocios.yakar@gmail.com">
             negocios.yakar@gmail.com
@@ -964,16 +964,18 @@
               class="expand-button"
               type="button"
             >Renovar verificación</button>
+            <p class="help"><a href="#ayuda-libro">Pedir ayuda con el Libro</a></p>
           </div>
 
           <button
             id="complaint-submit"
             class="submit-button"
+            aria-describedby="instrucciones-de-envio"
             type="submit"
             disabled
           >Registrar mi caso</button>
 
-          <p class="help registration-note">
+          <p id="instrucciones-de-envio" class="help registration-note">
             La respuesta se abrirá en otra pestaña.
             Conserva esta página hasta comprobar el resultado. Si no aparece
             otra pestaña, revisa si tu navegador la bloqueó. Sin constancia
@@ -1116,6 +1118,7 @@
       const minor = document.getElementById("is-minor");
       const guardian = document.getElementById("guardian-fields");
       const confirmation = document.getElementById("confirmation");
+      const newForm = document.getElementById("new-form");
       const counted = [...form.querySelectorAll("[data-counted]")];
       counted.forEach(field => { field.dataset.initialRows = String(field.rows); });
 
@@ -1277,6 +1280,7 @@
 
       function updateButton() {
         button.disabled = busy || !token.value || !requestId.value;
+        newForm.disabled = busy;
 
         button.textContent = busy
           ? "Envío en curso…"
@@ -1571,9 +1575,10 @@
         }
       );
 
-      document.getElementById("new-form").addEventListener(
+      newForm.addEventListener(
         "click",
         () => {
+          if (busy) return;
           const accepted = window.confirm(
             "Se borrarán los campos y se preparará un identificador nuevo. " +
             "Si el envío anterior tuvo constancia, conserva su código " +

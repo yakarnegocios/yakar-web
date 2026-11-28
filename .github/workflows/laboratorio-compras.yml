@@ -17,7 +17,7 @@ jobs:
         run: python3 tools/check-links.py
       - name: Preparar el navegador aislado
         run: |
-          npm install --prefix "$RUNNER_TEMP/yakar-web-lab" --no-save --no-package-lock playwright@1.62.1 jsdom@26.1.0
+          npm install --prefix "$RUNNER_TEMP/yakar-web-lab" --no-save --no-package-lock playwright@1.62.1 jsdom@26.1.0 axe-core@4.14.1
           echo "NODE_PATH=$RUNNER_TEMP/yakar-web-lab/node_modules" >> "$GITHUB_ENV"
           "$RUNNER_TEMP/yakar-web-lab/node_modules/.bin/playwright" install --with-deps chromium
       - name: Revisar guías y preservación de la consulta
@@ -26,3 +26,5 @@ jobs:
         run: node --test tests/request-journey.cjs
       - name: Revisar diseño móvil y accesibilidad del menú
         run: node tests/mobile.cjs
+      - name: Revisar el Libro de Reclamaciones sin enviar registros reales
+        run: YAKAR_AXE_PATH="$RUNNER_TEMP/yakar-web-lab/node_modules/axe-core/axe.min.js" node tests/book-lab.cjs
