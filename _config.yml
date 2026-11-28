@@ -7,5 +7,4 @@ exclude:
   - scripts/
   - tests/
   - tools/
-  - documentos/yakar-ejemplo-propuesta.pdf
   - documentos/yakar-ficha-proveedor.pdf
